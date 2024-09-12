@@ -1,7 +1,6 @@
 /**
  * @author {Celik Koseoglu} <https://github.com/celikkoseoglu/celikk-personal-website>
  */
-c;
 const BGCOLORS = {
   light: "#EDEDED",
   dark: "#17181a",
