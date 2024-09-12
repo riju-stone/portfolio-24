@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import BackgroundComponent from "@/components/background/Background";
 
 export const metadata: Metadata = {
   title: "Portfolio-24 Arighna",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="app">
+        {children}
+        <BackgroundComponent />
+      </body>
     </html>
   );
 }

@@ -1,3 +1,5 @@
+import BackgroundComponent from "@/components/background/Background";
+
 export default function Home() {
-  return <main>Hello World</main>;
+  <main>Hello World</main>;
 }

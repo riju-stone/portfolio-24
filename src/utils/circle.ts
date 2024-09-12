@@ -1,136 +1,128 @@
-const BG_COLORS = {
+/**
+ * @author {Celik Koseoglu} <https://github.com/celikkoseoglu/celikk-personal-website>
+ */
+
+const BGCOLORS = {
   light: "#EDEDED",
-  dark: "#17181A",
+  dark: "#17181a",
 };
 
 const RADIUS_GROWTH_RATE_MS = 0.025;
 const CIRCLE_RESOLUTION = 0.3;
-const GROWTH_FUNTION_EXPONENTIAL = 2.8;
+const GROWTH_FUNCTION_EXPONENTIAL = 2.8;
 
-export default class Circle {
-  ctx: CanvasRenderingContext2D | null;
-  isDark: boolean | null;
-  radiusMultiplier: number | null;
-  maxRadiusMultiplier: number | null;
-  prevDrawTs: number | null;
-  height: number | null;
-  width: number | null;
+const circleCenterCoordinates = {
+  x: null,
+  y: null,
+};
 
-  circleCenterCoordinates: { x: number | null; y: number | null } = {
-    x: null,
-    y: null,
-  };
+const Circle = {
+  ctx: null,
+  isDark: null,
+  radiusMultiplier: null,
+  maxRadiusMultiplier: null,
+  prevDrawTS: null,
+  height: null,
+  width: null,
 
-  constructor() {
-    this.ctx = null;
-    this.isDark = null;
-    this.radiusMultiplier = null;
-    this.maxRadiusMultiplier = null;
-    this.prevDrawTs = null;
-    this.height = null;
-    this.width = null;
-  }
+  setCircleCenterCoordinates: (x, y) => {
+    circleCenterCoordinates.x = x;
+    circleCenterCoordinates.y = y;
+  },
 
-  setCircleCenterCoordinates(x: number, y: number) {
-    this.circleCenterCoordinates.x = x;
-    this.circleCenterCoordinates.y = y;
-  }
+  resetCircleCenterCoordinates: () => {
+    circleCenterCoordinates.x = null;
+    circleCenterCoordinates.y = null;
+  },
 
-  resetCircleCenterCoordinates() {
-    this.circleCenterCoordinates.x = null;
-    this.circleCenterCoordinates.y = null;
-  }
+  initializeCanvas: (ctx, isDark) => {
+    Circle.ctx = ctx;
+    Circle.isDark = isDark;
 
-  intializeCanvas(ctx: CanvasRenderingContext2D, isDark: boolean) {
-    this.ctx = ctx;
-    this.isDark = isDark;
+    Circle.height = Math.max(window.screen.height, window.innerHeight);
+    Circle.width = Math.max(window.screen.width, window.innerWidth);
+    Circle.maxRadiusMultiplier =
+      Math.max(Circle.width, Circle.height) **
+      (1.0 / GROWTH_FUNCTION_EXPONENTIAL);
+    Circle.prevDrawTS = Date.now();
 
-    this.height = Math.max(window.screen.height, window.innerHeight);
-    this.width = Math.max(window.screen.width, window.innerWidth);
-    this.maxRadiusMultiplier =
-      Math.max(this.width, this.height) ** (1 / GROWTH_FUNTION_EXPONENTIAL);
-    this.prevDrawTs = Date.now();
+    document.body.style.backgroundColor = Circle.isDark
+      ? BGCOLORS.dark
+      : BGCOLORS.light;
 
-    document.body.style.backgroundColor = this.isDark
-      ? BG_COLORS.dark
-      : BG_COLORS.light;
-
-    const { width, height } = this.ctx.canvas.getBoundingClientRect();
-    const canvasWidth = this.ctx.canvas.width;
-    const canvasHeight = this.ctx.canvas.height;
-
-    if (canvasHeight !== height || canvasWidth != width) {
+    const { width, height } = Circle.ctx.canvas.getBoundingClientRect();
+    const canvasWidth = Circle.ctx.canvas.width;
+    const canvasHeight = Circle.ctx.canvas.height;
+    if (canvasHeight !== height || canvasWidth !== width) {
       const { devicePixelRatio } = window;
-      const pixelResolution = devicePixelRatio * CIRCLE_RESOLUTION;
-      this.ctx.canvas.height = height * pixelResolution;
-      this.ctx.canvas.width = width * pixelResolution;
-      this.ctx.scale(pixelResolution, pixelResolution);
+      const lowerResolutionRatio = devicePixelRatio * CIRCLE_RESOLUTION;
+      Circle.ctx.canvas.width = width * lowerResolutionRatio;
+      Circle.ctx.canvas.height = height * lowerResolutionRatio;
+      Circle.ctx.scale(lowerResolutionRatio, lowerResolutionRatio);
     }
 
     if (
-      this.circleCenterCoordinates.x == null ||
-      this.circleCenterCoordinates.y == null
+      circleCenterCoordinates.x == null ||
+      circleCenterCoordinates.y == null
     ) {
-      this.radiusMultiplier = this.isDark ? 0 : this.maxRadiusMultiplier;
+      Circle.radiusMultiplier = Circle.isDark ? 0 : Circle.maxRadiusMultiplier;
     }
 
-    return this.startAnimation;
-  }
+    return Circle.startAnimation;
+  },
 
-  drawCircle() {
-    this.ctx!.fillStyle = BG_COLORS.light;
-    this.ctx!.beginPath();
-    this.ctx!.arc(
-      this.circleCenterCoordinates.x!,
-      this.circleCenterCoordinates.y!,
-      this.radiusMultiplier! ** GROWTH_FUNTION_EXPONENTIAL,
-      0,
-      2 * Math.PI,
-    );
-    this.ctx!.fill();
-    this.prevDrawTs! = Date.now();
+  startAnimation: () =>
+    Circle.isDark ? Circle.shrinkCircle : Circle.growCircle,
 
-    return new Promise((callback) => {
-      const returnAfterAnimation = () => {
-        callback(this.startAnimation);
-      };
+  shrinkCircle: () => {
+    console.log("Shrinking Circle...");
+    Circle.radiusMultiplier -=
+      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS);
+    return Circle.verifyCircleBounds;
+  },
 
-      window.requestAnimationFrame(returnAfterAnimation);
-    });
-  }
+  growCircle: () => {
+    console.log("Expanding Circle...");
+    Circle.radiusMultiplier +=
+      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS);
+    return Circle.verifyCircleBounds;
+  },
 
-  verifyCircleBounds() {
+  verifyCircleBounds: () => {
     if (
-      (this.radiusMultiplier! <= 0 && this.isDark) ||
-      (this.radiusMultiplier! >= this.maxRadiusMultiplier! && !this.isDark)
+      (Circle.radiusMultiplier <= 0 && Circle.isDark) ||
+      (Circle.radiusMultiplier >= Circle.maxRadiusMultiplier && !Circle.isDark)
     ) {
-      this.ctx!.fillStyle = this.isDark ? BG_COLORS.dark : BG_COLORS.light;
-      this.ctx!.fillRect(0, 0, this.width!, this.height!);
-      this.radiusMultiplier! = this.isDark ? 0 : this.maxRadiusMultiplier!;
+      Circle.ctx.fillStyle = Circle.isDark ? BGCOLORS.dark : BGCOLORS.light;
+      Circle.ctx.fillRect(0, 0, Circle.width, Circle.height);
+      Circle.radiusMultiplier = Circle.isDark ? 0 : Circle.maxRadiusMultiplier;
       return null;
     }
 
-    this.ctx!.clearRect(0, 0, this.width!, this.height!);
-    return this.drawCircle;
-  }
+    Circle.ctx.clearRect(0, 0, Circle.width, Circle.height);
+    return Circle.drawCircle;
+  },
 
-  startAnimation() {
-    if (this.isDark) {
-      return this.shrinkCircle;
-    } else {
-      return this.growCircle;
-    }
-  }
+  drawCircle: () => {
+    Circle.ctx.fillStyle = BGCOLORS.light;
+    Circle.ctx.beginPath();
+    Circle.ctx.arc(
+      circleCenterCoordinates.x,
+      circleCenterCoordinates.y,
+      Circle.radiusMultiplier ** GROWTH_FUNCTION_EXPONENTIAL,
+      0,
+      2 * Math.PI,
+    );
+    Circle.ctx.fill();
+    Circle.prevDrawTS = Date.now();
 
-  shrinkCircle() {
-    this.radiusMultiplier! -=
-      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - this.prevDrawTs!);
-    return this.verifyCircleBounds;
-  }
+    return new Promise((callback) => {
+      const returnAfterAnimating = () => {
+        callback(Circle.startAnimation);
+      };
+      window.requestAnimationFrame(returnAfterAnimating);
+    });
+  },
+};
 
-  growCircle() {
-    this.radiusMultiplier! +=
-      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - this.prevDrawTs!);
-    return this.verifyCircleBounds;
-  }
-}
+export default Circle;
