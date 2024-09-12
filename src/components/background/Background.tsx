@@ -18,8 +18,8 @@ function BackgroundComponent() {
   const isDark: boolean = currTheme === "dark";
   useEffect(() => {
     console.log(isDark);
-    Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
-    const ctx: CanvasRenderingContext2D = canvasRef.current?.getContext("2d");
+    Circle.setCircleCenterCoordinates(themeSwitchPos.x!, themeSwitchPos.y!);
+    const ctx: CanvasRenderingContext2D = canvasRef.current!.getContext("2d");
 
     let circleAnimation = null;
     let shouldStartAnimation = true;
@@ -57,7 +57,7 @@ function BackgroundComponent() {
         false,
       );
     };
-  }, []);
+  }, [isDark]);
 
   return <canvas ref={canvasRef} className={styles.circleBackgroundWrapper} />;
 }

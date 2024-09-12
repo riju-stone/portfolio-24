@@ -1,7 +1,7 @@
 /**
  * @author {Celik Koseoglu} <https://github.com/celikkoseoglu/celikk-personal-website>
  */
-
+c;
 const BGCOLORS = {
   light: "#EDEDED",
   dark: "#17181a",
@@ -11,12 +11,35 @@ const RADIUS_GROWTH_RATE_MS = 0.025;
 const CIRCLE_RESOLUTION = 0.3;
 const GROWTH_FUNCTION_EXPONENTIAL = 2.8;
 
-const circleCenterCoordinates = {
+const circleCenterCoordinates: { x: number | null; y: number | null } = {
   x: null,
   y: null,
 };
 
-const Circle = {
+type CircleState = {
+  ctx: CanvasRenderingContext2D | null;
+  isDark: boolean | null;
+  radiusMultiplier: number | null;
+  maxRadiusMultiplier: number | null;
+  prevDrawTS: number | null;
+  height: number | null;
+  width: number | null;
+};
+
+type CircleActions = {
+  setCircleCenterCoordinates: (x: number, y: number) => void;
+  resetCircleCenterCoordinates: () => void;
+  initializeCanvas: (ctx: CanvasRenderingContext2D, isDark: boolean) => void;
+  startAnimation: () => void;
+  shrinkCircle: () => void;
+  growCircle: () => void;
+  verifyCircleBounds: () => void;
+  drawCircle: () => void;
+};
+
+type CircleStore = CircleState & CircleActions;
+
+const Circle: CircleStore = {
   ctx: null,
   isDark: null,
   radiusMultiplier: null,
@@ -25,7 +48,7 @@ const Circle = {
   height: null,
   width: null,
 
-  setCircleCenterCoordinates: (x, y) => {
+  setCircleCenterCoordinates: (x: number, y: number) => {
     circleCenterCoordinates.x = x;
     circleCenterCoordinates.y = y;
   },
@@ -35,7 +58,7 @@ const Circle = {
     circleCenterCoordinates.y = null;
   },
 
-  initializeCanvas: (ctx, isDark) => {
+  initializeCanvas: (ctx: CanvasRenderingContext2D, isDark: boolean) => {
     Circle.ctx = ctx;
     Circle.isDark = isDark;
 
@@ -76,44 +99,47 @@ const Circle = {
 
   shrinkCircle: () => {
     console.log("Shrinking Circle...");
-    Circle.radiusMultiplier -=
-      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS);
+    Circle.radiusMultiplier! -=
+      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS!);
     return Circle.verifyCircleBounds;
   },
 
   growCircle: () => {
     console.log("Expanding Circle...");
-    Circle.radiusMultiplier +=
-      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS);
+    Circle.radiusMultiplier! +=
+      RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS!);
     return Circle.verifyCircleBounds;
   },
 
   verifyCircleBounds: () => {
     if (
-      (Circle.radiusMultiplier <= 0 && Circle.isDark) ||
-      (Circle.radiusMultiplier >= Circle.maxRadiusMultiplier && !Circle.isDark)
+      (Circle.radiusMultiplier! <= 0 && Circle.isDark!) ||
+      (Circle.radiusMultiplier! >= Circle.maxRadiusMultiplier! &&
+        !Circle.isDark!)
     ) {
-      Circle.ctx.fillStyle = Circle.isDark ? BGCOLORS.dark : BGCOLORS.light;
-      Circle.ctx.fillRect(0, 0, Circle.width, Circle.height);
-      Circle.radiusMultiplier = Circle.isDark ? 0 : Circle.maxRadiusMultiplier;
+      Circle.ctx!.fillStyle = Circle.isDark ? BGCOLORS.dark : BGCOLORS.light;
+      Circle.ctx!.fillRect(0, 0, Circle.width!, Circle.height!);
+      Circle.radiusMultiplier! = Circle.isDark!
+        ? 0
+        : Circle.maxRadiusMultiplier!;
       return null;
     }
 
-    Circle.ctx.clearRect(0, 0, Circle.width, Circle.height);
+    Circle.ctx!.clearRect(0, 0, Circle.width!, Circle.height!);
     return Circle.drawCircle;
   },
 
   drawCircle: () => {
-    Circle.ctx.fillStyle = BGCOLORS.light;
-    Circle.ctx.beginPath();
-    Circle.ctx.arc(
-      circleCenterCoordinates.x,
-      circleCenterCoordinates.y,
-      Circle.radiusMultiplier ** GROWTH_FUNCTION_EXPONENTIAL,
+    Circle.ctx!.fillStyle = BGCOLORS.light;
+    Circle.ctx!.beginPath();
+    Circle.ctx!.arc(
+      circleCenterCoordinates.x!,
+      circleCenterCoordinates.y!,
+      Circle.radiusMultiplier! ** GROWTH_FUNCTION_EXPONENTIAL,
       0,
       2 * Math.PI,
     );
-    Circle.ctx.fill();
+    Circle.ctx!.fill();
     Circle.prevDrawTS = Date.now();
 
     return new Promise((callback) => {
