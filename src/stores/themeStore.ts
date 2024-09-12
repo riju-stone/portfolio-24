@@ -23,13 +23,12 @@ export const defaultThemeState: ThemeState = {
   },
 };
 
-  export const useThemeStore = create<ThemeStore>((set) => ({
-    ...defaultThemeState,
-    changeTheme: () =>
-      set((state) => ({ theme: state.theme == "light" ? "dark" : "light" })),
-    calibrateThemeTogglePos: (switchPos: ThemeState["themeTogglePos"]) =>
-      set(() => ({
-        themeTogglePos: switchPos,
-      })),
-  }));
-};
+export const useThemeStore = create<ThemeStore>((set) => ({
+  ...defaultThemeState,
+  changeTheme: () =>
+    set((state) => ({ theme: state.theme == "light" ? "dark" : "light" })),
+  calibrateThemeTogglePos: (switchPos: ThemeState["themeTogglePos"]) =>
+    set(() => ({
+      themeTogglePos: switchPos,
+    })),
+}));
