@@ -3,21 +3,21 @@ import "./globals.scss";
 import BackgroundComponent from "@/components/background/Background";
 
 export const metadata: Metadata = {
-  title: "Portfolio-24 Arighna",
-  description: "Arighna Chakraborty Portfolio",
+	title: "Portfolio-24 Arighna",
+	description: "Arighna Chakraborty Portfolio",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className="app">
-        {children}
-        <BackgroundComponent />
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en'>
+			<body className='app'>
+				<main>{children}</main>
+				<BackgroundComponent />
+			</body>
+		</html>
+	);
 }

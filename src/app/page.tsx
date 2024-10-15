@@ -1,5 +1,7 @@
-import BackgroundComponent from "@/components/background/Background";
+import React from "react";
 
-export default function Home() {
-  <main>Hello World</main>;
+function HomePage() {
+	return <div>HomePage</div>;
 }
+
+export default HomePage;
