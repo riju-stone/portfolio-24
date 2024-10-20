@@ -1,7 +1,9 @@
 @use "../../app/globals.scss" as global;
 
 .circleBackgroundWrapper {
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   background-color: global.$dark-bg-color;

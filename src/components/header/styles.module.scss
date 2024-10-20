@@ -1,0 +1,16 @@
+@use "../../app/globals.scss" as global;
+
+.headerWrapper {
+  height: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.linksContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+}
