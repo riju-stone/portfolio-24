@@ -8,9 +8,41 @@
   padding: 10px 15px;
 }
 
+.nameContainer {
+  &.light {
+    color: global.$light-text-color;
+  }
+
+  &.dark {
+    color: global.$dark-text-color;
+  }
+}
+
 .linksContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 40%;
+
+  .headerLink {
+    &.activeLink {
+      &.light {
+        color: global.$light-text-color;
+      }
+
+      &.dark {
+        color: global.$dark-text-color;
+      }
+    }
+
+    &.inactiveLink {
+      &.light {
+        color: global.$light-disabled-color;
+      }
+
+      &.dark {
+        color: global.$dark-disabled-color;
+      }
+    }
+  }
 }
