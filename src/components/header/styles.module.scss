@@ -1,14 +1,20 @@
 @use "../../app/globals.scss" as global;
 
 .headerWrapper {
+  position: fixed;
+  box-sizing: border-box;
   height: 1.5rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 1.5rem 1.5rem;
 }
 
 .nameContainer {
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: color ease-in 0.4s;
   &.light {
     color: global.$light-text-color;
   }
@@ -19,12 +25,29 @@
 }
 
 .linksContainer {
+  position: absolute;
+  left: 50%;
+  width: fit-content;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  font-weight: 400;
+  font-size: 1.2rem;
 
   .headerLink {
+    position: relative;
+    left: -50%;
+    transition: color ease-in 0.4s;
+
+    &:first-child {
+      margin-right: 2.5rem;
+    }
+
+    &:last-child {
+      margin-left: 2.5rem;
+    }
+
     &.activeLink {
       &.light {
         color: global.$light-text-color;
@@ -45,4 +68,10 @@
       }
     }
   }
+}
+
+.themeSwitchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

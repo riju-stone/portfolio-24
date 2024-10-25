@@ -22,7 +22,7 @@ $dark-bg-color: #17181a;
   -webkit-user-select: none;
   -webkit-user-drag: none;
 
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
 

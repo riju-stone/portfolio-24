@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import Circle from "@/utils/circle";
 import { ThemeState, useThemeStore } from "@/stores/themeStore";
 import { debounce, throttle } from "@/utils/limitors";
@@ -8,64 +8,59 @@ import { debounce, throttle } from "@/utils/limitors";
 import styles from "./styles.module.scss";
 
 function BackgroundComponent() {
-	const currTheme: string = useThemeStore((state: ThemeState) => state.theme);
+  const currTheme: string = useThemeStore((state: ThemeState) => state.theme);
 
-	const themeSwitchPos: ThemeState["themeTogglePos"] = useThemeStore(
-		(state: ThemeState) => state.themeTogglePos
-	);
+  const themeSwitchPos: ThemeState["themeTogglePos"] = useThemeStore(
+    (state: ThemeState) => state.themeTogglePos,
+  );
 
-	const canvasRef = useRef(null);
-	const isDark: boolean = currTheme === "dark";
+  const canvasRef = useRef(null);
+  const isDark: boolean = currTheme === "dark";
 
-	useEffect(() => {
-		console.log("Is Dark ? ", isDark);
-		Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
-		const ctx: CanvasRenderingContext2D = canvasRef.current!.getContext("2d");
+  useLayoutEffect(() => {
+    console.log("Is Dark ? ", isDark);
+    Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
+    const ctx: CanvasRenderingContext2D = canvasRef.current.getContext("2d");
 
-		let circleAnimation = null;
-		let shouldStartAnimation = true;
+    let circleAnimation: void | null = null;
+    let shouldStartAnimation = true;
 
-		const initializeAnimation = () => {
-			circleAnimation = Circle.initializeCanvas(ctx, isDark);
-		};
+    const initializeAnimation = () => {
+      circleAnimation = Circle.initializeCanvas(ctx, isDark);
+    };
 
-		initializeAnimation();
+    initializeAnimation();
 
-		const circleAnimationRunner = async () => {
-			if (circleAnimation !== null && shouldStartAnimation) {
-				if (circleAnimation instanceof Function) {
-					circleAnimation = await circleAnimation();
-					circleAnimationRunner();
-				}
-			}
-		};
+    const circleAnimationRunner = async () => {
+      if (circleAnimation !== null && shouldStartAnimation) {
+        if (circleAnimation instanceof Function) {
+          circleAnimation = await circleAnimation();
+          circleAnimationRunner();
+        }
+      }
+    };
 
-		circleAnimationRunner();
+    circleAnimationRunner();
 
-		const handleResize = () => {
-			Circle.resetCircleCenterCoordinates();
-			initializeAnimation();
-			circleAnimationRunner();
-		};
+    const handleResize = () => {
+      Circle.resetCircleCenterCoordinates();
+      initializeAnimation();
+      circleAnimationRunner();
+    };
 
-		window.addEventListener("resize", throttle(debounce(handleResize)), false);
+    window.addEventListener("resize", throttle(debounce(handleResize)), false);
 
-		return () => {
-			shouldStartAnimation = false;
-			window.removeEventListener(
-				"resize",
-				throttle(debounce(handleResize)),
-				false
-			);
-		};
-	}, [isDark]);
+    return () => {
+      shouldStartAnimation = false;
+      window.removeEventListener(
+        "resize",
+        throttle(debounce(handleResize)),
+        false,
+      );
+    };
+  }, [isDark, themeSwitchPos]);
 
-	return (
-		<canvas
-			ref={canvasRef}
-			className={styles.circleBackgroundWrapper}
-		/>
-	);
+  return <canvas ref={canvasRef} className={styles.circleBackgroundWrapper} />;
 }
 
 export default BackgroundComponent;
