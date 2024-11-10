@@ -1,17 +1,23 @@
 "use client";
 
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 import styles from "./styles.module.scss";
 import { space_grotesk, lexend_deca } from "@/app/fonts";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-
+import { Circle } from "lucide-react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
-import { headerNameInitialAnim, headerNameSuffixAnim } from "./animations";
+import {
+  headerNameInitialAnim,
+  headerNameNonInitialsAnim,
+  headerNameSeparatorAnim,
+  headerLinkAnim,
+} from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 
-const heroName = "Arighna Chakraborty";
+const heroInitials = ["A", "C"];
+const heroNonInitials = "righna hakraborty";
 
 const headerData = [
   {
@@ -52,31 +58,53 @@ function HeaderComponent() {
   return (
     <div className={styles.headerWrapper}>
       <div
-        className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
+        className={`${styles.nameContainer} ${styles[theme]} ${lexend_deca.className}`}
       >
-        {heroName.split("").map((letter, index) => {
-          return (
-            <motion.span
+        <div>{heroInitials[0]}</div>
+        {heroNonInitials.split("").map((letter, index) => {
+          return letter == " " ? (
+            <React.Fragment>
+              <motion.div
+                className={styles.headerNameSeparator}
+                variants={headerNameSeparatorAnim}
+                animate={headerState === "collapsed" ? "collapse" : "expand"}
+              >
+                <Circle />
+              </motion.div>
+              <motion.div
+                className={styles.heroInitialLetter}
+                variants={headerNameInitialAnim}
+                animate={headerState === "collapsed" ? "collapse" : "expand"}
+              >
+                {heroInitials[1]}
+              </motion.div>
+            </React.Fragment>
+          ) : (
+            <motion.div
               key={`hero-letter-${index}`}
-              className={styles.heroNameLetter}
-              variants={headerNameSuffixAnim}
+              className={styles.heroNonInitialLetter}
+              variants={headerNameNonInitialsAnim}
               animate={headerState === "collapsed" ? "collapse" : "expand"}
+              custom={index}
             >
               {letter}
-            </motion.span>
+            </motion.div>
           );
         })}
       </div>
       <div className={`${styles.linksContainer} ${space_grotesk.className}`}>
         {headerData.map((data, index) => (
-          <Link
+          <motion.div
             key={`header-link-${index}`}
+            custom={index}
+            variants={headerLinkAnim}
+            animate={headerState === "collapsed" ? "collapse" : "expand"}
             className={`${styles.headerLink} ${styles[theme]} ${activePage == data.label ? styles.activeLink : styles.inactiveLink}`}
-            href={data.link}
-            onClick={() => setActivePage(data.label)}
           >
-            {data.label}
-          </Link>
+            <Link href={data.link} onClick={() => setActivePage(data.label)}>
+              {data.label}
+            </Link>
+          </motion.div>
         ))}
       </div>
       <div className={styles.themeSwitchContainer}>

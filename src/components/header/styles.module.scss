@@ -3,24 +3,41 @@
 .headerWrapper {
   position: fixed;
   box-sizing: border-box;
-  height: 1.5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1.5rem;
+  padding: 1.2rem 2rem;
 }
 
 .nameContainer {
+  display: flex;
   font-weight: 600;
-  font-size: 1.2rem;
-  transition: color ease-in 0.4s;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  transition: color ease-in 0.2s;
+
+  .headerNameSeparator > svg {
+    height: 12px;
+    width: 20px;
+    transition-property: all;
+    transition-timing-function: ease-in;
+  }
+
   &.light {
     color: global.$light-text-color;
+
+    svg {
+      fill: global.$light-text-color;
+    }
   }
 
   &.dark {
     color: global.$dark-text-color;
+
+    svg {
+      fill: global.$dark-text-color;
+    }
   }
 }
 
@@ -38,7 +55,8 @@
   .headerLink {
     position: relative;
     left: -50%;
-    transition: color ease-in 0.4s;
+    transition: color ease-in 0.2s;
+    text-decoration: none;
 
     &:first-child {
       margin-right: 2.5rem;
@@ -49,21 +67,21 @@
     }
 
     &.activeLink {
-      &.light {
+      &.light a {
         color: global.$light-text-color;
       }
 
-      &.dark {
+      &.dark a {
         color: global.$dark-text-color;
       }
     }
 
     &.inactiveLink {
-      &.light {
+      &.light a {
         color: global.$light-disabled-color;
       }
 
-      &.dark {
+      &.dark a {
         color: global.$dark-disabled-color;
       }
     }

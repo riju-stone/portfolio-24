@@ -1,49 +1,71 @@
-export const headerNameSuffixAnim = {
+export const headerNameNonInitialsAnim = {
   collapse: (i: number) => ({
-    x: -80,
+    y: -10,
+    opacity: 0,
     transition: {
-      duration: 0.2,
-      delay: i * 0.08,
+      duration: 0.1,
+      delay: i * 0.01,
     },
   }),
   expand: (i: number) => ({
-    x: 0,
+    y: 0,
+    opacity: 1,
     transition: {
       duration: 0.2,
-      delay: i * 0.08,
+      delay: 0.4 + i * 0.01,
     },
   }),
 };
 
 export const headerNameInitialAnim = {
   collapse: {
-    x: -2,
+    x: -80,
     transition: {
-      duration: 0.2,
+      ease: [0.76, 0, 0.24, 1],
+      duration: 0.4,
+      delay: 0.1,
     },
   },
   expand: {
     x: 0,
     transition: {
+      ease: [0.76, 0, 0.24, 1],
+      duration: 0.4,
+    },
+  },
+};
+
+export const headerNameSeparatorAnim = {
+  collapse: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  expand: {
+    opacity: 1,
+    transition: {
+      delay: 0.8,
       duration: 0.2,
     },
   },
 };
 
-export const headerMenuButtonAnim = {
-  collapse: {
-    opacity: 1,
-    width: 10,
-    transition: {
-      duration: 0.4,
-      delay: 0.2,
-    },
-  },
-  expand: {
+export const headerLinkAnim = {
+  collapse: (i: number) => ({
+    y: -20,
     opacity: 0,
-    width: 0,
     transition: {
       duration: 0.2,
+      delay: i * 0.1,
     },
-  },
+  }),
+  expand: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      delay: i * 0.1,
+    },
+  }),
 };
