@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useLayoutEffect, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useLayoutEffect,
+  useState,
+} from "react";
 
 import styles from "./styles.module.scss";
 import { space_grotesk, lexend_deca } from "@/app/fonts";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { Circle } from "lucide-react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
 import {
@@ -13,6 +17,9 @@ import {
   headerNameNonInitialsAnim,
   headerNameSeparatorAnim,
   headerLinkAnim,
+  menuUpperAnim,
+  menuMiddleAnim,
+  menuLowerAnim,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 
@@ -34,7 +41,13 @@ const headerData = [
   },
 ];
 
-function HeaderComponent() {
+function HeaderComponent({
+  isMenuOpen,
+  setMenuOpen,
+}: {
+  isMenuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const theme = useThemeStore((state) => state.theme);
   const [activePage, setActivePage] = useState("home");
 
@@ -64,13 +77,52 @@ function HeaderComponent() {
         {heroNonInitials.split("").map((letter, index) => {
           return letter == " " ? (
             <React.Fragment>
-              <motion.div
-                className={styles.headerNameSeparator}
+              <motion.button
+                type="button"
+                className={styles.headerMenuButton}
                 variants={headerNameSeparatorAnim}
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
+                onClick={() => setMenuOpen(!isMenuOpen)}
               >
-                <Circle />
-              </motion.div>
+                <motion.svg
+                  role="Menu Button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-menu"
+                >
+                  <motion.line
+                    variants={menuMiddleAnim}
+                    animate={isMenuOpen ? "close" : "open"}
+                    x1="4"
+                    x2="20"
+                    y1="12"
+                    y2="12"
+                  />
+                  <motion.line
+                    variants={menuUpperAnim}
+                    animate={isMenuOpen ? "close" : "open"}
+                    x1="4"
+                    x2="20"
+                    y1="6"
+                    y2="6"
+                  />
+                  <motion.line
+                    variants={menuLowerAnim}
+                    animate={isMenuOpen ? "close" : "open"}
+                    x1="4"
+                    x2="20"
+                    y1="18"
+                    y2="18"
+                  />
+                </motion.svg>
+              </motion.button>
               <motion.div
                 className={styles.heroInitialLetter}
                 variants={headerNameInitialAnim}
@@ -108,7 +160,7 @@ function HeaderComponent() {
         ))}
       </div>
       <div className={styles.themeSwitchContainer}>
-        <ThemeSwitchComponent />
+        <ThemeSwitchComponent setMenuOpen={setMenuOpen} />
       </div>
     </div>
   );

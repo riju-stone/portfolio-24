@@ -1,7 +1,7 @@
 "use client";
 
 import { useThemeStore } from "@/stores/themeStore";
-import React, { useEffect, useRef } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const animations = {
@@ -37,7 +37,11 @@ const animations = {
   },
 };
 
-function ThemeSwitchComponent() {
+function ThemeSwitchComponent({
+  setMenuOpen,
+}: {
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const theme = useThemeStore((state) => state.theme);
   const switchRef = useRef(null);
   const toggleTheme = useThemeStore((state) => state.changeTheme);
@@ -51,8 +55,13 @@ function ThemeSwitchComponent() {
     setSwitchPos(switchPos);
   }, [setSwitchPos]);
 
+  const handleThemeToggle = () => {
+    setMenuOpen(false);
+    toggleTheme();
+  };
+
   return (
-    <motion.div ref={switchRef} onClick={toggleTheme}>
+    <motion.div ref={switchRef} onClick={() => handleThemeToggle()}>
       <motion.svg
         className="sun-moon"
         ref={switchRef}
