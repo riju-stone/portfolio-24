@@ -3,9 +3,9 @@ export const headerNameNonInitialsAnim = {
     y: -10,
     opacity: 0,
     transition: {
-      duration: 0.1,
-      delay: i * 0.01,
-      ease: [0.68, -0.6, 0.32, 1.6],
+      duration: 0.2,
+      delay: i * 0.02,
+      ease: [0.83, 0, 0.17, 1],
     },
   }),
   expand: (i: number) => ({
@@ -13,26 +13,34 @@ export const headerNameNonInitialsAnim = {
     opacity: 1,
     transition: {
       duration: 0.2,
-      delay: 0.4 + i * 0.01,
-      ease: [0.68, -0.6, 0.32, 1.6],
+      delay: 0.8 + i * 0.02,
+      ease: [0.83, 0, 0.17, 1],
     },
   }),
 };
 
 export const headerNameInitialAnim = {
+  initial: {
+    opacity: 0,
+    y: -50,
+  },
   collapse: {
-    x: -58,
+    x: -32,
+    y: 0,
+    opacity: 1,
     transition: {
       ease: [0.76, 0, 0.24, 1],
-      duration: 0.4,
+      duration: 0.8,
       delay: 0.1,
     },
   },
   expand: {
     x: 0,
+    y: 0,
+    opacity: 1,
     transition: {
       ease: [0.76, 0, 0.24, 1],
-      duration: 0.4,
+      duration: 0.8,
     },
   },
 };

@@ -3,39 +3,9 @@
 import { useThemeStore } from "@/stores/themeStore";
 import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { themeToggleAnim } from "./animations";
 
-const animations = {
-  sunBeams: {
-    light: {
-      rotateZ: -120,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-      },
-    },
-    dark: {
-      rotateZ: 0,
-      opacity: 0,
-      transition: {
-        duration: 0.4,
-      },
-    },
-  },
-  moonCircle: {
-    light: {
-      x: 1,
-      transition: {
-        duration: 0.8,
-      },
-    },
-    dark: {
-      x: -7,
-      transition: {
-        duration: 0.8,
-      },
-    },
-  },
-};
+import styles from "./styles.module.scss";
 
 function ThemeSwitchComponent({
   setMenuOpen,
@@ -71,20 +41,20 @@ function ThemeSwitchComponent({
         viewBox="0 0 24 24"
       >
         <motion.circle
-          className="sun"
+          className={styles.sun}
           cx="12"
           cy="12"
           r="6"
           mask="url(#moon-mask)"
           fill="#ededed"
-          stroke="black"
+          stroke={theme == "light" ? "black" : "white"}
           strokeWidth="1.5px"
         />
         <motion.g
           className="sun-beams"
           stroke="black"
           strokeWidth="1.5px"
-          variants={animations.sunBeams}
+          variants={themeToggleAnim.sunBeams}
           animate={theme === "light" ? "light" : "dark"}
         >
           <line x1="12" y1="1" x2="12" y2="3" />
@@ -113,7 +83,7 @@ function ThemeSwitchComponent({
             fill="black"
             stroke="white"
             strokeWidth="1.5px"
-            variants={animations.moonCircle}
+            variants={themeToggleAnim.moonCircle}
             animate={theme === "light" ? "light" : "dark"}
           />
         </motion.mask>

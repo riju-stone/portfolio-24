@@ -73,7 +73,13 @@ function HeaderComponent({
       <div
         className={`${styles.nameContainer} ${styles[theme]} ${lexend_deca.className}`}
       >
-        <div>{heroInitials[0]}</div>
+        <motion.div
+          variants={headerNameInitialAnim}
+          initial="initial"
+          animate="expand"
+        >
+          {heroInitials[0]}
+        </motion.div>
         {heroNonInitials.split("").map((letter, index) => {
           return letter == " " ? (
             <React.Fragment>
@@ -81,6 +87,7 @@ function HeaderComponent({
                 type="button"
                 className={styles.headerMenuButton}
                 variants={headerNameSeparatorAnim}
+                initial="expand"
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => setMenuOpen(!isMenuOpen)}
               >
@@ -126,6 +133,7 @@ function HeaderComponent({
               <motion.div
                 className={styles.heroInitialLetter}
                 variants={headerNameInitialAnim}
+                initial="initial"
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
               >
                 {heroInitials[1]}
@@ -136,6 +144,7 @@ function HeaderComponent({
               key={`hero-letter-${index}`}
               className={styles.heroNonInitialLetter}
               variants={headerNameNonInitialsAnim}
+              initial="collapse"
               animate={headerState === "collapsed" ? "collapse" : "expand"}
               custom={index}
             >
@@ -150,6 +159,7 @@ function HeaderComponent({
             key={`header-link-${index}`}
             custom={index}
             variants={headerLinkAnim}
+            initial="collapse"
             animate={headerState === "collapsed" ? "collapse" : "expand"}
             className={`${styles.headerLink} ${styles[theme]} ${activePage == data.label ? styles.activeLink : styles.inactiveLink}`}
           >

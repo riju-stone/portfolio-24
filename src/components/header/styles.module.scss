@@ -15,7 +15,7 @@
   display: flex;
   font-weight: 600;
   font-size: 1.5rem;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   transition: color ease-in 0.2s;
 
   .headerMenuButton {
@@ -100,4 +100,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 640px) {
+  .linksContainer {
+    display: none;
+  }
 }
