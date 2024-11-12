@@ -13,7 +13,7 @@ export const headerNameNonInitialsAnim = {
     opacity: 1,
     transition: {
       duration: 0.2,
-      delay: 0.8 + i * 0.02,
+      delay: 0.9 + i * 0.02,
       ease: [0.83, 0, 0.17, 1],
     },
   }),
@@ -22,7 +22,7 @@ export const headerNameNonInitialsAnim = {
 export const headerNameInitialAnim = {
   initial: {
     opacity: 0,
-    y: -50,
+    y: -20,
   },
   collapse: {
     x: -32,
@@ -64,6 +64,10 @@ export const headerNameSeparatorAnim = {
 };
 
 export const headerLinkAnim = {
+  initial: {
+    y: -20,
+    opacity: 0,
+  },
   collapse: (i: number) => ({
     y: -20,
     opacity: 0,
@@ -78,7 +82,7 @@ export const headerLinkAnim = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      delay: i * 0.1,
+      delay: 1.5 + i * 0.1,
       ease: [0.68, -0.6, 0.32, 1.6],
     },
   }),

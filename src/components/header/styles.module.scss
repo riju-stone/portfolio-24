@@ -102,8 +102,11 @@
   align-items: center;
 }
 
+// Mobile Devives
 @media only screen and (max-width: 640px) {
   .linksContainer {
     display: none;
   }
 }
+
+// Tablet Devices

@@ -1,0 +1,15 @@
+.textZoopContainer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  line-height: 1.1;
+}
+
+.textZoopLetter {
+  display: inline-block;
+}
+
+.textZoopHiddenWrapper {
+  position: absolute;
+  inset: 0;
+}

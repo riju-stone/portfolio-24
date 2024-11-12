@@ -22,6 +22,7 @@ import {
   menuLowerAnim,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
+import TextZoopComponent from "../text/TextZoop";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
@@ -159,12 +160,12 @@ function HeaderComponent({
             key={`header-link-${index}`}
             custom={index}
             variants={headerLinkAnim}
-            initial="collapse"
+            initial="initial"
             animate={headerState === "collapsed" ? "collapse" : "expand"}
             className={`${styles.headerLink} ${styles[theme]} ${activePage == data.label ? styles.activeLink : styles.inactiveLink}`}
           >
             <Link href={data.link} onClick={() => setActivePage(data.label)}>
-              {data.label}
+              <TextZoopComponent text={data.label} />
             </Link>
           </motion.div>
         ))}
