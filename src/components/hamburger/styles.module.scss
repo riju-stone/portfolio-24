@@ -18,11 +18,18 @@
 
   a {
     text-decoration: none;
-    color: global.$light-text-color;
+    transition: color ease-in 0.2s;
     font-size: 4rem;
     font-weight: bold;
-    text-transform: uppercase;
   }
+}
+
+.activeMenuLink a {
+  color: global.$light-text-color;
+}
+
+.inactiveMenuLink a {
+  color: #91362c;
 }
 
 .hamburgerMenuCurve {

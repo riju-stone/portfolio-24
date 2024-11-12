@@ -23,24 +23,11 @@ import {
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../text/TextZoop";
+import { pageConfig } from "@/constants/PageConfig";
+import { PageStore, usePageStore } from "@/stores/pageStore";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
-
-const headerData = [
-  {
-    link: "/",
-    label: "home",
-  },
-  {
-    link: "/blog",
-    label: "blog",
-  },
-  {
-    link: "/shelf",
-    label: "shelf",
-  },
-];
 
 function HeaderComponent({
   isMenuOpen,
@@ -50,7 +37,8 @@ function HeaderComponent({
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const theme = useThemeStore((state) => state.theme);
-  const [activePage, setActivePage] = useState("home");
+  const activePageData = usePageStore((state) => state);
+  const changeActivePage = usePageStore((state) => state.setActivePage);
 
   const { scrollY } = useScroll();
   const [headerState, setHeaderState] = useState("expanded");
@@ -62,12 +50,6 @@ function HeaderComponent({
       setHeaderState("collapsed");
     }
   });
-
-  useLayoutEffect(() => {
-    const loc = window.location.pathname.split("/")[1];
-    const path = loc == "" ? "home" : loc;
-    setActivePage(path);
-  }, [setActivePage]);
 
   return (
     <div className={styles.headerWrapper}>
@@ -155,16 +137,16 @@ function HeaderComponent({
         })}
       </div>
       <div className={`${styles.linksContainer} ${space_grotesk.className}`}>
-        {headerData.map((data, index) => (
+        {pageConfig.map((data, index) => (
           <motion.div
             key={`header-link-${index}`}
             custom={index}
             variants={headerLinkAnim}
             initial="initial"
             animate={headerState === "collapsed" ? "collapse" : "expand"}
-            className={`${styles.headerLink} ${styles[theme]} ${activePage == data.label ? styles.activeLink : styles.inactiveLink}`}
+            className={`${styles.headerLink} ${styles[theme]} ${activePageData.pageName == data.label ? styles.activeLink : styles.inactiveLink}`}
           >
-            <Link href={data.link} onClick={() => setActivePage(data.label)}>
+            <Link href={data.link} onClick={() => changeActivePage(data.label)}>
               <TextZoopComponent text={data.label} />
             </Link>
           </motion.div>
