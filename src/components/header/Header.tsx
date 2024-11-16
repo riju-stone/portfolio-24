@@ -39,7 +39,7 @@ function HeaderComponent({
   const [headerState, setHeaderState] = useState("expanded");
 
   useMotionValueEvent(scrollY, "change", (scrollValue) => {
-    if (scrollValue < 80) {
+    if (scrollValue < 120) {
       setHeaderState("expanded");
     } else {
       setHeaderState("collapsed");
