@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import { space_grotesk } from "@/app/fonts";
 import { hamburgerMenuAnim, hamburgerCurveAnim } from "./animations";
-import { pageConfig } from "@/constants/PageConfig";
+import { pageConfig } from "@/utils/pages";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import TextZoopComponent from "../text/TextZoop";

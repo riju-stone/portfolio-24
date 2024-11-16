@@ -36,9 +36,9 @@ function ThemeSwitchComponent({
         className="sun-moon"
         ref={switchRef}
         aria-hidden="true"
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
       >
         <motion.circle
           className={styles.sun}

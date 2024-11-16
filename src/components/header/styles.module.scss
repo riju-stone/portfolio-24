@@ -103,13 +103,40 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 25px;
+  width: 25px;
+
+  div {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 // Mobile Devives
 @media only screen and (max-width: 640px) {
+  .headerWrapper {
+    padding: 1rem;
+  }
+
+  .nameContainer {
+    font-size: 1.4rem;
+
+    .headerMenuButton {
+      left: 2.4rem;
+      height: 1.8rem;
+      width: 1.8rem;
+      padding: 5px;
+    }
+  }
+
   .linksContainer {
     display: none;
   }
 }
 
 // Tablet Devices
+@media only screen and (max-width: 850px) {
+  .linksContainer {
+    display: none;
+  }
+}

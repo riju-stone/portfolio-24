@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  Dispatch,
-  SetStateAction,
-  useLayoutEffect,
-  useState,
-} from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 
 import styles from "./styles.module.scss";
 import { space_grotesk, lexend_deca } from "@/app/fonts";
@@ -23,8 +18,8 @@ import {
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../text/TextZoop";
-import { pageConfig } from "@/constants/PageConfig";
-import { PageStore, usePageStore } from "@/stores/pageStore";
+import { pageConfig } from "@/utils/pages";
+import { usePageStore } from "@/stores/pageStore";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
@@ -44,7 +39,7 @@ function HeaderComponent({
   const [headerState, setHeaderState] = useState("expanded");
 
   useMotionValueEvent(scrollY, "change", (scrollValue) => {
-    if (scrollValue < 180) {
+    if (scrollValue < 80) {
       setHeaderState("expanded");
     } else {
       setHeaderState("collapsed");
