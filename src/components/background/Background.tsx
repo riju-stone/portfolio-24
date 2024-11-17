@@ -22,7 +22,7 @@ function BackgroundComponent() {
     Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
     const ctx: CanvasRenderingContext2D = canvasRef.current.getContext("2d");
 
-    let circleAnimation: void | null = null;
+    let circleAnimation: any = null;
     let shouldStartAnimation = true;
 
     const initializeAnimation = () => {
