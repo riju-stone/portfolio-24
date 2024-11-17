@@ -24,9 +24,10 @@ export default function RootLayout({
 }>) {
   const changeActivePage = usePageStore((state) => state.setActivePage);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const path = window.location.pathname.split("/")[1];
+  let path = "";
 
   useEffect(() => {
+    path = window.location.pathname.split("/")[1];
     changeActivePage(path == "" ? "home" : path);
   }, [path]);
 
