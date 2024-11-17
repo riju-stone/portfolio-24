@@ -2,7 +2,7 @@
 
 import React, { Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
-import { space_grotesk } from "@/app/fonts";
+import { space_grotesk } from "@/utils/fonts";
 import { hamburgerMenuAnim, hamburgerCurveAnim } from "./animations";
 import { pageConfig } from "@/utils/pages";
 import styles from "./styles.module.scss";

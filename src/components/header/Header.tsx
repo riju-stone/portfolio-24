@@ -3,7 +3,7 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 
 import styles from "./styles.module.scss";
-import { space_grotesk } from "@/app/fonts";
+import { space_grotesk, pp_nueue } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
@@ -52,7 +52,7 @@ function HeaderComponent({
         className={`${styles.headerWrapper} ${activePageData.pageName == "studio" ? styles.hideHeader : null}`}
       >
         <div
-          className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
+          className={`${styles.nameContainer} ${styles[theme]} ${pp_nueue.className}`}
         >
           <motion.div
             className={styles.heroInitialLetter}
@@ -132,7 +132,7 @@ function HeaderComponent({
           height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke="#171810"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

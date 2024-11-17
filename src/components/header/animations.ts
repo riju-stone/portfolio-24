@@ -1,6 +1,6 @@
 export const headerNameNonInitialsAnim = {
   collapse: (i: number) => ({
-    y: -10,
+    x: -10,
     opacity: 0,
     transition: {
       duration: 0.2,
@@ -9,7 +9,7 @@ export const headerNameNonInitialsAnim = {
     },
   }),
   expand: (i: number) => ({
-    y: 0,
+    x: 0,
     opacity: 1,
     transition: {
       duration: 0.2,
@@ -27,7 +27,7 @@ export const headerNameInitialAnim = {
   },
   hidden1: {
     y: 0,
-    x: -44,
+    x: -50,
     opacity: 0,
     transition: {
       duration: 0.4,
@@ -42,7 +42,7 @@ export const headerNameInitialAnim = {
     },
   },
   collapse: {
-    x: -44,
+    x: -50,
     y: 0,
     opacity: 1,
     transition: {

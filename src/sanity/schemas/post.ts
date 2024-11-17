@@ -1,5 +1,4 @@
 import { defineType, Rule } from "sanity";
-import { tag } from "./tag";
 
 export const post = defineType({
   name: "post",
