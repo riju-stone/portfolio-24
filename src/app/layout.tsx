@@ -6,8 +6,15 @@ import { AnimatePresence } from "framer-motion";
 import "./globals.scss";
 import BackgroundComponent from "@/components/background/Background";
 import HeaderComponent from "@/components/header/Header";
-import HamburgerMenuComponent from "@/components/hamburger/Hamburger";
 import { usePageStore } from "@/stores/pageStore";
+import dynamic from "next/dynamic";
+
+const HamburgerMenuComponent = dynamic(
+  () => import("@/components/hamburger/Hamburger"),
+  {
+    ssr: false,
+  },
+);
 
 export default function RootLayout({
   children,
