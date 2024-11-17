@@ -17,6 +17,9 @@ const HamburgerMenuComponent = dynamic(
   { ssr: false },
 );
 
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +27,7 @@ export default function RootLayout({
 }>) {
   const changeActivePage = usePageStore((state) => state.setActivePage);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  let path = "";
+  let path = "/";
 
   useEffect(() => {
     path = window.location.pathname.split("/")[1];
@@ -47,6 +50,8 @@ export default function RootLayout({
           {children}
           <BackgroundComponent />
         </main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
