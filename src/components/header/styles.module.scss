@@ -9,45 +9,40 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2rem;
+  mix-blend-mode: difference;
   z-index: 9999;
 }
 
 .nameContainer {
   display: flex;
   font-weight: 600;
-  font-size: 1.5rem;
-  // text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 400;
   transition: color ease-in 0.2s;
+  color: global.$light-text-color;
+  text-transform: lowercase;
 
-  .headerMenuButton {
-    position: absolute;
-    left: 3.5rem;
-    height: 2rem;
-    width: 2rem;
-    border: none;
-    outline: none;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: global.$pale-orange-color;
+  .heroInitialLetter,
+  .heroNonInitialLetter {
+    filter: invert(100%);
   }
+}
 
-  &.light {
-    color: global.$light-text-color;
-
-    svg {
-      fill: global.$light-text-color;
-    }
-  }
-
-  &.dark {
-    color: global.$dark-text-color;
-
-    svg {
-      fill: global.$dark-text-color;
-    }
-  }
+.headerMenuButton {
+  position: fixed;
+  top: 1.1rem;
+  left: 3rem;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: global.$pale-orange-color;
+  z-index: 9999;
+  cursor: pointer;
 }
 
 .linksContainer {
@@ -56,45 +51,28 @@
   width: fit-content;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 2rem;
   font-weight: 400;
   font-size: 1.2rem;
 
   .headerLink {
     position: relative;
     left: -50%;
+    filter: invert(100%);
+
     a {
       transition: color ease-in 0.2s;
       text-decoration: none;
     }
 
-    &:first-child {
-      margin-right: 2.5rem;
+    &.activeLink a {
+      color: global.$light-text-color;
     }
 
-    &:last-child {
-      margin-left: 2.5rem;
-    }
-
-    &.activeLink {
-      &.light a {
-        color: global.$light-text-color;
-      }
-
-      &.dark a {
-        color: global.$dark-text-color;
-      }
-    }
-
-    &.inactiveLink {
-      &.light a {
-        color: global.$light-disabled-color;
-      }
-
-      &.dark a {
-        color: global.$dark-disabled-color;
-      }
+    &.inactiveLink a {
+      color: global.$light-disabled-color;
     }
   }
 }
@@ -105,6 +83,7 @@
   align-items: center;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 
   div {
     height: 100%;
@@ -118,15 +97,12 @@
     padding: 1rem;
   }
 
-  .nameContainer {
-    font-size: 1.4rem;
-
-    .headerMenuButton {
-      left: 2.4rem;
-      height: 1.8rem;
-      width: 1.8rem;
-      padding: 5px;
-    }
+  .headerMenuButton {
+    top: 1rem;
+    left: 2.1rem;
+    height: 1.8rem;
+    width: 1.8rem;
+    padding: 5px;
   }
 
   .linksContainer {

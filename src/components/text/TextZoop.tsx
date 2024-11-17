@@ -36,7 +36,7 @@ function TextZoopComponent({ text }: { text: string }) {
               className={styles.textZoopLetter}
               variants={textZoopUpAnim}
               transition={{
-                duration: 0.2,
+                duration: 0.15,
                 ease: "easeInOut",
                 delay: index * 0.025,
               }}
@@ -55,7 +55,7 @@ function TextZoopComponent({ text }: { text: string }) {
               className={styles.textZoopLetter}
               variants={textZoopDownAnim}
               transition={{
-                duration: 0.2,
+                duration: 0.15,
                 ease: "easeInOut",
                 delay: index * 0.025,
               }}

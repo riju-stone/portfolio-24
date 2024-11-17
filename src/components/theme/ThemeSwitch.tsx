@@ -1,17 +1,13 @@
 "use client";
 
 import { useThemeStore } from "@/stores/themeStore";
-import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { themeToggleAnim } from "./animations";
+import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";
 
-function ThemeSwitchComponent({
-  setMenuOpen,
-}: {
-  setMenuOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+function ThemeSwitchComponent({ isMenuOpen }) {
   const theme = useThemeStore((state) => state.theme);
   const switchRef = useRef(null);
   const toggleTheme = useThemeStore((state) => state.changeTheme);
@@ -20,18 +16,19 @@ function ThemeSwitchComponent({
   useEffect(() => {
     const switchPos = switchRef.current!.getBoundingClientRect();
     // Offsetting the center of the circle to the center of the switch
-    switchPos.x = switchPos.x + 13;
-    switchPos.y = switchPos.y + 13;
+    switchPos.x = switchPos.x + 12.5;
+    switchPos.y = switchPos.y + 12.5;
     setSwitchPos(switchPos);
   }, [setSwitchPos]);
 
-  const handleThemeToggle = () => {
-    setMenuOpen(false);
-    toggleTheme();
-  };
-
   return (
-    <motion.div ref={switchRef} onClick={() => handleThemeToggle()}>
+    <motion.div
+      variants={themeSwitchAnim}
+      initial="initial"
+      animate={isMenuOpen ? "hidden" : "view"}
+      ref={switchRef}
+      onClick={toggleTheme}
+    >
       <motion.svg
         className="sun-moon"
         ref={switchRef}
@@ -46,13 +43,13 @@ function ThemeSwitchComponent({
           cy="12"
           r="6"
           mask="url(#moon-mask)"
-          fill="#ededed"
-          stroke={theme == "light" ? "black" : "white"}
+          fill={theme == "dark" ? "none" : "black"}
+          stroke="#ededed"
           strokeWidth="1.5px"
         />
         <motion.g
           className="sun-beams"
-          stroke="black"
+          stroke="#ededed"
           strokeWidth="1.5px"
           variants={themeToggleAnim.sunBeams}
           animate={theme === "light" ? "light" : "dark"}
@@ -73,15 +70,15 @@ function ThemeSwitchComponent({
             width="100%"
             height="100%"
             fill="#ededed"
-            stroke="black"
+            stroke="#ededed"
             strokeWidth="1.5px"
           />
           <motion.circle
             cx="24"
             cy="10"
             r="6"
-            fill="black"
-            stroke="white"
+            fill="#ededed"
+            stroke="#ededed"
             strokeWidth="1.5px"
             variants={themeToggleAnim.moonCircle}
             animate={theme === "light" ? "light" : "dark"}

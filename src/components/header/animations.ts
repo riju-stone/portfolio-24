@@ -21,11 +21,28 @@ export const headerNameNonInitialsAnim = {
 
 export const headerNameInitialAnim = {
   initial: {
+    x: 0,
     opacity: 0,
     y: -20,
   },
+  hidden1: {
+    y: 0,
+    x: -28,
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+    },
+  },
+  hidden2: {
+    y: 0,
+    x: 0,
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+    },
+  },
   collapse: {
-    x: -32,
+    x: -28,
     y: 0,
     opacity: 1,
     transition: {
