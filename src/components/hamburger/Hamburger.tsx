@@ -24,6 +24,7 @@ function HamburgerMenuComponent({
     setMenuOpen(!isMenuOpen);
     changeActivePage(pageName);
   };
+
   return (
     <motion.div
       className={styles.hamburgerMenuWrapper}

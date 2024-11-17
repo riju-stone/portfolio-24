@@ -4,16 +4,17 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import "./globals.scss";
-import BackgroundComponent from "@/components/background/Background";
+const BackgroundComponent = dynamic(
+  () => import("@/components/background/Background"),
+  { ssr: false },
+);
 import HeaderComponent from "@/components/header/Header";
 import { usePageStore } from "@/stores/pageStore";
 import dynamic from "next/dynamic";
 
 const HamburgerMenuComponent = dynamic(
   () => import("@/components/hamburger/Hamburger"),
-  {
-    ssr: false,
-  },
+  { ssr: false },
 );
 
 export default function RootLayout({
