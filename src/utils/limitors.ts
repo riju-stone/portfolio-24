@@ -9,7 +9,7 @@ export const debounce = (callback: (...args) => void, delay = 250) => {
   };
 };
 
-export const throttle = (callback: (...args) => void, limit = 250) => {
+export const throttle = (callback, limit = 250) => {
   let wait = false;
   return () => {
     if (!wait) {
