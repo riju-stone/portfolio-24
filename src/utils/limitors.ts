@@ -1,4 +1,4 @@
-export const debounce = (callback: Function, delay = 250) => {
+export const debounce = (callback: (...args) => void, delay = 250) => {
   let timeoutId: ReturnType<typeof setTimeout> | null;
   return (...args: any[]) => {
     clearTimeout(timeoutId!);
@@ -9,7 +9,7 @@ export const debounce = (callback: Function, delay = 250) => {
   };
 };
 
-export const throttle = (callback: () => void, limit = 250) => {
+export const throttle = (callback: (...args) => void, limit = 250) => {
   let wait = false;
   return () => {
     if (!wait) {
