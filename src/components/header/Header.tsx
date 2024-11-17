@@ -48,7 +48,9 @@ function HeaderComponent({
 
   return (
     <React.Fragment>
-      <div className={styles.headerWrapper}>
+      <div
+        className={`${styles.headerWrapper} ${activePageData.pageName == "studio" ? styles.hideHeader : null}`}
+      >
         <div
           className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
         >
@@ -63,6 +65,7 @@ function HeaderComponent({
           {heroNonInitials.split("").map((letter, index) => {
             return letter == " " ? (
               <motion.div
+                key={`hero-initial-letter${index}`}
                 className={styles.heroInitialLetter}
                 variants={headerNameInitialAnim}
                 initial="initial"
@@ -78,7 +81,7 @@ function HeaderComponent({
               </motion.div>
             ) : (
               <motion.div
-                key={`hero-letter-${index}`}
+                key={`hero-non-initial-letter-${index}`}
                 className={styles.heroNonInitialLetter}
                 variants={headerNameNonInitialsAnim}
                 initial="collapse"

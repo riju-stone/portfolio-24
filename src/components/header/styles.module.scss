@@ -10,17 +10,20 @@
   align-items: center;
   padding: 1.2rem 2rem;
   mix-blend-mode: difference;
-  z-index: 9999;
+  z-index: 999;
+}
+
+.hideHeader {
+  display: none;
 }
 
 .nameContainer {
   display: flex;
-  font-weight: 600;
-  font-size: 1.2rem;
-  font-weight: 400;
   transition: color ease-in 0.2s;
   color: global.$light-text-color;
   text-transform: lowercase;
+  font-size: 1.4rem;
+  font-weight: 400;
 
   .heroInitialLetter,
   .heroNonInitialLetter {
@@ -30,7 +33,7 @@
 
 .headerMenuButton {
   position: fixed;
-  top: 1.1rem;
+  top: 1.2rem;
   left: 3rem;
   height: 2rem;
   width: 2rem;

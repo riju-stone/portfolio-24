@@ -27,7 +27,7 @@ export const headerNameInitialAnim = {
   },
   hidden1: {
     y: 0,
-    x: -28,
+    x: -44,
     opacity: 0,
     transition: {
       duration: 0.4,
@@ -42,7 +42,7 @@ export const headerNameInitialAnim = {
     },
   },
   collapse: {
-    x: -28,
+    x: -44,
     y: 0,
     opacity: 1,
     transition: {
