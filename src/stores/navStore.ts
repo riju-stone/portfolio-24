@@ -1,23 +1,23 @@
 import { create } from "zustand";
 
 export type PageState = {
-  pageName: string;
+  menuOpen: boolean;
 };
 
 export type PageActions = {
-  setActivePage: (page: string) => void;
+  toggleMenu: () => void;
 };
 
 export type PageStore = PageState & PageActions;
 
 export const defaultPageState: PageState = {
-  pageName: "home",
+  menuOpen: false,
 };
 
 export const usePageStore = create<PageStore>((set) => ({
   ...defaultPageState,
-  setActivePage: (page: string) =>
-    set(() => ({
-      pageName: page,
+  toggleMenu: () =>
+    set((state) => ({
+      menuOpen: !state.menuOpen,
     })),
 }));

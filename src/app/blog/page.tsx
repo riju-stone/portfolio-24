@@ -1,7 +1,8 @@
+import { Metadata } from "next";
 import React from "react";
 
 function BlogsPage() {
-	return <div>BlogsPage</div>;
+  return <div>BlogsPage</div>;
 }
 
 export default BlogsPage;

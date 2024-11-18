@@ -65,7 +65,6 @@
   .headerLink {
     position: relative;
     left: -50%;
-    filter: invert(100%);
 
     a {
       transition: color ease-in 0.2s;
@@ -74,10 +73,12 @@
 
     &.activeLink a {
       color: global.$light-text-color;
+      filter: invert(100%);
     }
 
     &.inactiveLink a {
       color: global.$light-disabled-color;
+      filter: invert(100%);
     }
   }
 }

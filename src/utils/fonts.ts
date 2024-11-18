@@ -4,32 +4,32 @@ import { Space_Grotesk, Inter, Lexend_Deca } from "next/font/google";
 export const pp_nueue = localFont({
   src: [
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-thin.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-thin.otf",
       style: "normal",
       weight: "200",
     },
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-medium.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-medium.otf",
       style: "normal",
       weight: "400",
     },
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-bold.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-bold.otf",
       style: "normal",
       weight: "600",
     },
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-book.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-book.otf",
       style: "normal",
       weight: "800",
     },
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-italic.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-italic.otf",
       style: "italic",
       weight: "400",
     },
     {
-      path: "../fonts/pp_nueue/ppneuemontreal-semibolditalic.otf",
+      path: "../../public/fonts/pp_nueue/ppneuemontreal-semibolditalic.otf",
       style: "italic",
       weight: "600",
     },

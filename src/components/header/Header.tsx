@@ -1,7 +1,6 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useState } from "react";
-
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk, pp_nueue } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
@@ -19,22 +18,17 @@ import {
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../text/TextZoop";
 import { pageConfig } from "@/utils/pages";
-import { usePageStore } from "@/stores/pageStore";
+import { usePageStore } from "@/stores/navStore";
+import { useActivePath } from "@/utils/path";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna_ hakraborty";
 
-function HeaderComponent({
-  isMenuOpen,
-  setMenuOpen,
-}: {
-  isMenuOpen: boolean;
-  setMenuOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+function HeaderComponent() {
   const theme = useThemeStore((state) => state.theme);
-  const activePageData = usePageStore((state) => state);
-  const changeActivePage = usePageStore((state) => state.setActivePage);
-
+  const menuOpen = usePageStore((state) => state.menuOpen);
+  const toggleMenu = usePageStore((state) => state.toggleMenu);
+  const checkActivePath = useActivePath();
   const { scrollY } = useScroll();
   const [headerState, setHeaderState] = useState("expanded");
 
@@ -49,7 +43,7 @@ function HeaderComponent({
   return (
     <React.Fragment>
       <div
-        className={`${styles.headerWrapper} ${activePageData.pageName == "studio" ? styles.hideHeader : null}`}
+        className={`${styles.headerWrapper} ${checkActivePath("/studio") ? styles.hideHeader : null}`}
       >
         <div
           className={`${styles.nameContainer} ${styles[theme]} ${pp_nueue.className}`}
@@ -58,7 +52,7 @@ function HeaderComponent({
             className={styles.heroInitialLetter}
             variants={headerNameInitialAnim}
             initial="initial"
-            animate={isMenuOpen ? "hidden1" : "expand"}
+            animate={menuOpen ? "hidden1" : "expand"}
           >
             {heroInitials[0]}
           </motion.div>
@@ -71,7 +65,7 @@ function HeaderComponent({
                 initial="initial"
                 animate={
                   headerState === "collapsed"
-                    ? isMenuOpen
+                    ? menuOpen
                       ? "hidden2"
                       : "collapse"
                     : "expand"
@@ -101,19 +95,16 @@ function HeaderComponent({
               variants={headerLinkAnim}
               initial="initial"
               animate={headerState === "collapsed" ? "collapse" : "expand"}
-              className={`${styles.headerLink} ${styles[theme]} ${activePageData.pageName == data.label ? styles.activeLink : styles.inactiveLink}`}
+              className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
             >
-              <Link
-                href={data.link}
-                onClick={() => changeActivePage(data.label)}
-              >
+              <Link href={data.link}>
                 <TextZoopComponent text={data.label} />
               </Link>
             </motion.div>
           ))}
         </div>
         <div className={styles.themeSwitchContainer}>
-          <ThemeSwitchComponent isMenuOpen={isMenuOpen} />
+          <ThemeSwitchComponent isMenuOpen={menuOpen} />
         </div>
       </div>
 
@@ -123,7 +114,7 @@ function HeaderComponent({
         variants={headerNameSeparatorAnim}
         initial="expand"
         animate={headerState === "collapsed" ? "collapse" : "expand"}
-        onClick={() => setMenuOpen(!isMenuOpen)}
+        onClick={toggleMenu}
       >
         <motion.svg
           role="Menu Button"
@@ -140,7 +131,7 @@ function HeaderComponent({
         >
           <motion.line
             variants={menuMiddleAnim}
-            animate={isMenuOpen ? "close" : "open"}
+            animate={menuOpen ? "close" : "open"}
             x1="4"
             x2="20"
             y1="12"
@@ -148,7 +139,7 @@ function HeaderComponent({
           />
           <motion.line
             variants={menuUpperAnim}
-            animate={isMenuOpen ? "close" : "open"}
+            animate={menuOpen ? "close" : "open"}
             x1="4"
             x2="20"
             y1="6"
@@ -156,7 +147,7 @@ function HeaderComponent({
           />
           <motion.line
             variants={menuLowerAnim}
-            animate={isMenuOpen ? "close" : "open"}
+            animate={menuOpen ? "close" : "open"}
             x1="4"
             x2="20"
             y1="18"
