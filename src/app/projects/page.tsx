@@ -1,7 +1,12 @@
+import SkewScrollComponent from "@/components/scroll/Scroll";
 import React from "react";
 
 function ProjectPage() {
-  return <div>ProjectPage</div>;
+  return (
+    <SkewScrollComponent>
+      <div>ProjectPage</div>{" "}
+    </SkewScrollComponent>
+  );
 }
 
 export default ProjectPage;

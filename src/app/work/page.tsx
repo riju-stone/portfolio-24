@@ -1,7 +1,12 @@
+import SkewScrollComponent from "@/components/scroll/Scroll";
 import React from "react";
 
 function WorkPage() {
-  return <div>WorkPage</div>;
+  return (
+    <SkewScrollComponent>
+      <main>WorkPage</main>
+    </SkewScrollComponent>
+  );
 }
 
 export default WorkPage;

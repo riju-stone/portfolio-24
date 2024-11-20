@@ -10,7 +10,7 @@ $light-bg-color: #ededed;
 $dark-bg-color: #0c0c0c;
 
 .app {
-  height: 200vh;
+  height: 100vh;
   width: 100vw;
   background: none;
   overflow-x: hidden;
@@ -18,9 +18,13 @@ $dark-bg-color: #0c0c0c;
   margin: 0;
   padding: 0;
   user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
   box-sizing: border-box;
   text-size-adjust: 100%;
-  -webkit-user-select: none;
+
+  user-drag: none;
   -webkit-user-drag: none;
 
   &::-webkit-scrollbar {

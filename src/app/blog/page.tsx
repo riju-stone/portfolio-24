@@ -1,7 +1,12 @@
+import SkewScrollComponent from "@/components/scroll/Scroll";
 import React from "react";
 
 function BlogsPage() {
-  return <div>BlogsPage</div>;
+  return (
+    <SkewScrollComponent>
+      <div>BlogsPage</div>
+    </SkewScrollComponent>
+  );
 }
 
 export default BlogsPage;
