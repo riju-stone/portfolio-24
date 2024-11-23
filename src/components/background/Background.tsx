@@ -18,7 +18,6 @@ function BackgroundComponent() {
   const isDark: boolean = currTheme === "dark";
 
   useLayoutEffect(() => {
-    console.log("Is Dark ? ", isDark);
     Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
     const ctx: CanvasRenderingContext2D = canvasRef.current.getContext("2d");
 

@@ -1,3 +1,5 @@
+"use client";
+
 import SkewScrollComponent from "@/components/scroll/Scroll";
 import React from "react";
 

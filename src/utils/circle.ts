@@ -94,14 +94,12 @@ const Circle: CircleStore = {
     Circle.isDark ? Circle.shrinkCircle : Circle.growCircle,
 
   shrinkCircle: () => {
-    console.log("Shrinking Circle...");
     Circle.radiusMultiplier! -=
       RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS!);
     return Circle.verifyCircleBounds;
   },
 
   growCircle: () => {
-    console.log("Expanding Circle...");
     Circle.radiusMultiplier! +=
       RADIUS_GROWTH_RATE_MS * Math.max(1, Date.now() - Circle.prevDrawTS!);
     return Circle.verifyCircleBounds;
@@ -137,8 +135,6 @@ const Circle: CircleStore = {
     );
     Circle.ctx!.fill();
     Circle.prevDrawTS = Date.now();
-
-    console.log("Drawing");
 
     return new Promise((callback) => {
       const returnAfterAnimating = () => {
