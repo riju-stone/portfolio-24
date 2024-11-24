@@ -8,7 +8,7 @@ import {
   useVelocity,
   useTransform,
   useSpring,
-} from "framer-motion";
+} from "motion/react";
 
 function SkewScrollComponent({ children }) {
   const lenis = new Lenis();

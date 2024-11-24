@@ -2,7 +2,7 @@
 
 import { useThemeStore } from "@/stores/themeStore";
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";

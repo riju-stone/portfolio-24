@@ -18,7 +18,7 @@ function HomePage() {
   return (
     <SkewScrollComponent>
       <main className={styles.homePageWrapper}>
-        <TextRippleComponent text="Full-Stack" />
+        <TextRippleComponent text="Full-Stack Developer" />
       </main>
     </SkewScrollComponent>
   );

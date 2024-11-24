@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { space_grotesk } from "@/utils/fonts";
 import { pageConfig } from "@/utils/pages";
 import styles from "./styles.module.scss";

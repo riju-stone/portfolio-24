@@ -50,7 +50,6 @@ void main() {
     highp int index = int(vId);
 
     if(uKey == -2.){
-      
       mPower = 1. - uStart;
       mPos = (uStart - 1.)*1. ;
 
@@ -58,13 +57,11 @@ void main() {
       sumac = (ripple(vUvR.y ,mPos, cols) * ( (.4  ) * ( 1. - mPower + (1. * uPower) ) ) );
       rippleUV = (vUv.x + (startshit)) + sumac;
       tex = texture2D(tMap, vec2(rippleUV, vUv.y) ).rgb;
-      
     }
     else if(uKey != -1.){
       time2 = uMouse.x * -2. ;
       time3 = .0;
       halfanim = 1.;
-           
           mPos = uPowers[index] * -2.;
           mPower = abs(uPowers[index] * (2. - abs(time2 * .5) ));
           sumac = (ripple(vUvR.y ,mPos, cols) * ( (.2 * (1. - mPower)  ) * ( 1. - mPower  ) ) );
@@ -83,7 +80,6 @@ void main() {
     float signedDist = max(min(tex.r, tex.g), min(max(tex.r, tex.g), tex.b)) - 0.5;
     float d = fwidth(signedDist);
     float alpha = smoothstep(-d, d, signedDist);
-    
     gl_FragColor.rgb = vec3(uColor);
     gl_FragColor.a = alpha * (1. - uStart * 1.9);
     if(uKey ==  -2.){

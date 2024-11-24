@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
 
-import vertexShader from "@/shaders/ripple/ripple.vert";
-import fragmentShader from "@/shaders/ripple/ripple.frag";
+import vertexShader from "../shaders/ripple/ripple.vert";
+import fragmentShader from "../shaders/ripple/ripple.frag";
 
 class RippleShaderMaterial extends THREE.ShaderMaterial {
   constructor() {
@@ -11,15 +11,18 @@ class RippleShaderMaterial extends THREE.ShaderMaterial {
         tMap: { value: undefined },
         uTime: { value: 0 },
         uScreen: {
-          value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+          value: new THREE.Vector2(
+            window.innerWidth / 2,
+            window.innerHeight / 2,
+          ),
         },
         uMouse: { value: new THREE.Vector2(0, 0) },
         uPower: { value: 0 },
         uCols: { value: 1.5 },
         uColor: { value: 1 },
-        uStart: { value: 0 },
+        uStart: { value: 0.0 },
         uKey: { value: -2 },
-        uPowers: { value: new Float32Array(10).fill(1) },
+        uPowers: { value: [50, 0, 1, 0, 0, 0, 1, 1, 0, 0] },
       },
       transparent: true,
       depthWrite: false,
