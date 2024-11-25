@@ -3,12 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import styles from "./styles.module.scss";
-import {
-  motion,
-  AnimatePresence,
-  useAnimationFrame,
-  progress,
-} from "motion/react";
+import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
 import { loadingScreenAnim, progressAnim } from "./animations";
 import { pp_nekkei } from "@/utils/fonts";
 
