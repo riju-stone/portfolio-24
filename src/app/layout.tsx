@@ -16,6 +16,9 @@ const HamburgerMenuComponent = dynamic(
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
+const LoaderComponent = dynamic(() => import("@/components/loader/Loader"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://archst.dev"),
@@ -34,10 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="app">
-        <HamburgerMenuComponent />
-        <HeaderComponent />
-        {children}
-        <BackgroundComponent />
+        <LoaderComponent>
+          <HamburgerMenuComponent />
+          <HeaderComponent />
+          {children}
+          <BackgroundComponent />
+        </LoaderComponent>
         <Analytics />
         <SpeedInsights />
       </body>

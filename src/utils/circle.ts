@@ -4,7 +4,7 @@ const BGCOLORS = {
 };
 
 const RADIUS_GROWTH_RATE_MS = 0.025;
-const CIRCLE_RESOLUTION = 0.3;
+const CIRCLE_RESOLUTION = 0.5;
 const GROWTH_FUNCTION_EXPONENTIAL = 2.8;
 
 const circleCenterCoordinates: { x: number | null; y: number | null } = {
