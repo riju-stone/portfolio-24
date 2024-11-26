@@ -18,7 +18,6 @@ varying vec3 vPos;
 varying vec3 vIndex;
 varying float vId;
 
-
 void main() {
     vUv = uv;
     vUvR = vec2(gl_VertexID << 1 & 2, gl_VertexID & 2);

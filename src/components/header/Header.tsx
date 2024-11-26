@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { space_grotesk, pp_nueue } from "@/utils/fonts";
+import { space_grotesk, pp_nekkei } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
@@ -46,7 +46,7 @@ function HeaderComponent() {
         className={`${styles.headerWrapper} ${checkActivePath("/studio") ? styles.hideHeader : null}`}
       >
         <div
-          className={`${styles.nameContainer} ${styles[theme]} ${pp_nueue.className}`}
+          className={`${styles.nameContainer} ${styles[theme]} ${pp_nekkei.className}`}
         >
           <motion.div
             className={styles.heroInitialLetter}

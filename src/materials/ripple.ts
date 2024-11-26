@@ -1,10 +1,10 @@
 import * as THREE from "three";
-import { extend } from "@react-three/fiber";
+import { extend, Object3DNode } from "@react-three/fiber";
 
-import vertexShader from "../shaders/ripple/ripple.vert";
-import fragmentShader from "../shaders/ripple/ripple.frag";
+import vertexShader from "../shaders/ripple/rippleV.vert";
+import fragmentShader from "../shaders/ripple/rippleF.frag";
 
-class RippleShaderMaterial extends THREE.ShaderMaterial {
+export class RippleShaderMaterial extends THREE.ShaderMaterial {
   constructor() {
     super({
       uniforms: {
@@ -22,7 +22,7 @@ class RippleShaderMaterial extends THREE.ShaderMaterial {
         uColor: { value: 1 },
         uStart: { value: 0.0 },
         uKey: { value: -2 },
-        uPowers: { value: [50, 0, 1, 0, 0, 0, 1, 1, 0, 0] },
+        uPowers: { value: new Float32Array(10).fill(0) },
       },
       transparent: true,
       depthWrite: false,

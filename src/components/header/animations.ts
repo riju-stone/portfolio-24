@@ -42,7 +42,7 @@ export const headerNameInitialAnim = {
     },
   },
   collapse: {
-    x: -58,
+    x: -52,
     y: 0,
     opacity: 1,
     transition: {
@@ -99,7 +99,7 @@ export const headerLinkAnim = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      delay: 1.5 + i * 0.1,
+      delay: 1 + i * 0.1,
       ease: [0.68, -0.6, 0.32, 1.6],
     },
   }),

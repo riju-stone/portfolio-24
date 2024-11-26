@@ -4,7 +4,7 @@ import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { PerspectiveCamera, Text } from "@react-three/drei";
 import { Canvas, createPortal, useFrame } from "@react-three/fiber";
-import "../../materials/ripple";
+import "../../materials/ripple.ts";
 
 function CustomTextComponent({ text }) {
   const matRef = useRef();
@@ -27,8 +27,11 @@ function CustomTextComponent({ text }) {
     gl.render(scene, camera);
     gl.setRenderTarget(null);
 
-    matRef.current.uniforms.uTime.value = clock.getElapsedTime();
-    matRef.current.uniforms.uMouse.value = mouse.current;
+    const materialNode = matRef.current as any;
+    if (materialNode) {
+      materialNode.uniforms.uTime.value = clock.getElapsedTime();
+      materialNode.uniforms.uMouse.value = mouse.current;
+    }
   });
 
   return (

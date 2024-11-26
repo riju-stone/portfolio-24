@@ -6,7 +6,7 @@ import React from "react";
 function ProjectPage() {
   return (
     <SkewScrollComponent>
-      <div>ProjectPage</div>{" "}
+      <div>ProjectPage</div>
     </SkewScrollComponent>
   );
 }
