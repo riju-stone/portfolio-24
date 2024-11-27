@@ -9,10 +9,24 @@ const SkewScrollComponent = dynamic(
   { ssr: false },
 );
 
+const TextRippleComponent = dynamic(
+  () => import("@/components/text/TextRipple"),
+  {
+    ssr: false,
+  },
+);
+
 function HomePage() {
   return (
     <SkewScrollComponent>
-      <main className={styles.homePageWrapper}></main>
+      <main className={styles.homePageWrapper}>
+        <section className={styles.heroSectionWrapper}>
+          <div className={styles.heroTextContainer}>
+            <TextRippleComponent text="Multi-Disciplinary" />
+            <TextRippleComponent text="Full-Stack Developer" />
+          </div>
+        </section>
+      </main>
     </SkewScrollComponent>
   );
 }

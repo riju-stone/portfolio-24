@@ -27,9 +27,9 @@
   display: flex;
   transition: color ease-in 0.2s;
   color: global.$light-text-color;
-  text-transform: uppercase;
   font-size: 1.5rem;
-  font-weight: 200;
+  font-weight: 800;
+  text-transform: uppercase;
 
   .heroInitialLetter,
   .heroNonInitialLetter {
@@ -41,7 +41,7 @@
   position: fixed;
   padding: 4px;
   top: 1.3rem;
-  left: 3rem;
+  left: 3.3rem;
   height: 1.8rem;
   width: 1.8rem;
   border: none;

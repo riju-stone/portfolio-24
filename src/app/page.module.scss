@@ -1,13 +1,29 @@
 .homePageWrapper {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-.homePageWrapper > div {
-  height: 50% !important;
-  width: 100% !important;
+.heroSectionWrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-items: center;
+  align-items: center;
+}
+
+.heroTextContainer {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  flex-direction: column;
+  justify-items: center;
+  align-items: flex-start;
+
+  canvas {
+    width: 75%;
+  }
 }

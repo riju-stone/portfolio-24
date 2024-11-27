@@ -42,7 +42,7 @@ export const headerNameInitialAnim = {
     },
   },
   collapse: {
-    x: -52,
+    x: -58,
     y: 0,
     opacity: 1,
     transition: {
