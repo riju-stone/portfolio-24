@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { extend, Object3DNode } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
 
 import vertexShader from "../shaders/ripple/rippleV.vert";
 import fragmentShader from "../shaders/ripple/rippleF.frag";
