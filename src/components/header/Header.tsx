@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { space_grotesk, pp_nekkei } from "@/utils/fonts";
+import { space_grotesk, pp_nekkei, pp_nueue } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
@@ -14,6 +14,7 @@ import {
   menuUpperAnim,
   menuMiddleAnim,
   menuLowerAnim,
+  menuButtonAnimation,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../text/TextZoop";
@@ -43,10 +44,10 @@ function HeaderComponent() {
   return (
     <React.Fragment>
       <div
-        className={`${styles.headerWrapper} ${checkActivePath("/studio") ? styles.hideHeader : null}`}
+        className={`${styles.headerWrapper} ${checkActivePath("/studio/structure") ? styles.hideHeader : null}`}
       >
         <div
-          className={`${styles.nameContainer} ${styles[theme]} ${pp_nekkei.className}`}
+          className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
         >
           <motion.div
             className={styles.heroInitialLetter}
@@ -128,6 +129,8 @@ function HeaderComponent() {
           strokeLinecap="round"
           strokeLinejoin="round"
           className="lucide lucide-menu"
+          variants={menuButtonAnimation}
+          animate={menuOpen ? "open" : "close"}
         >
           <motion.line
             variants={menuMiddleAnim}

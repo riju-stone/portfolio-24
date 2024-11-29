@@ -1,3 +1,5 @@
+@use "../../app/globals.scss" as global;
+
 .textZoopContainer {
   position: relative;
   display: block;
@@ -12,4 +14,33 @@
 .textZoopHiddenWrapper {
   position: absolute;
   inset: 0;
+}
+
+.textRevealWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: global.$dark-text-color;
+
+  .textRevealContainer {
+    height: 30%;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    p {
+      margin: 0;
+      margin-right: 1rem;
+    }
+
+    span {
+      opacity: 0.1;
+    }
+  }
 }

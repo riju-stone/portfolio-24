@@ -99,10 +99,29 @@ export const headerLinkAnim = {
     opacity: 1,
     transition: {
       duration: 0.4,
-      delay: 1 + i * 0.1,
+      delay: 0.7 + i * 0.1,
       ease: [0.68, -0.6, 0.32, 1.6],
     },
   }),
+};
+
+export const menuButtonAnimation = {
+  open: {
+    scale: 2,
+    transition: {
+      type: "spring",
+      duration: 0.6,
+      delay: 0.5,
+    },
+  },
+  close: {
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 0.8,
+      delay: 0.1,
+    },
+  },
 };
 
 export const menuUpperAnim = {

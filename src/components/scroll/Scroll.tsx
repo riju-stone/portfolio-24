@@ -26,8 +26,8 @@ function SkewScrollComponent({ children }) {
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   const skewVelocity = useSpring(scrollVelocity, {
-    stiffness: 800,
-    damping: 100,
+    stiffness: 500,
+    damping: 50,
   });
   const skewVelocityFactor = useTransform(
     skewVelocity,
@@ -36,7 +36,7 @@ function SkewScrollComponent({ children }) {
   );
 
   return (
-    <motion.div style={{ skewY: skewVelocityFactor }}>{children}</motion.div>
+    <motion.main style={{ skewY: skewVelocityFactor }}>{children}</motion.main>
   );
 }
 

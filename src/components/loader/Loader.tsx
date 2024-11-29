@@ -8,6 +8,7 @@ import { loadingScreenAnim, progressAnim } from "./animations";
 import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
+  const env = process.env.NEXT_PUBLIC_ENV;
   const progressBarRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,7 @@ function LoaderComponent({ children }) {
 
   return (
     <AnimatePresence mode="wait">
-      {loading ? (
+      {loading && env != "dev" ? (
         <motion.div
           key="loader"
           className={`${styles.loaderWrapper} ${pp_nekkei.className}`}
