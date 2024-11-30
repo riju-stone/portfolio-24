@@ -5,9 +5,11 @@ import React from "react";
 
 function BlogsPage() {
   return (
-    <SkewScrollComponent>
-      <div>BlogsPage</div>
-    </SkewScrollComponent>
+    <main>
+      <SkewScrollComponent>
+        <div>BlogsPage</div>
+      </SkewScrollComponent>
+    </main>
   );
 }
 

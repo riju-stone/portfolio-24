@@ -1,6 +1,5 @@
 "use client";
 
-import { Splitext } from "@/utils/splitext";
 import React, { useEffect, useRef } from "react";
 
 import styles from "./styles.module.scss";
@@ -21,8 +20,8 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
     gsap.to(charRefs.current, {
       scrollTrigger: {
         trigger: containerRef.current,
-        start: `top 60%`,
-        end: `+=${window.innerHeight / 1.5}`,
+        start: `top 55%`,
+        end: `+=${window.innerHeight / 1.1}`,
         scrub: true,
       },
       opacity: 1,

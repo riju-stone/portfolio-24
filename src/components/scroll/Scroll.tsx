@@ -14,7 +14,7 @@ function SkewScrollComponent({ children }) {
   const lenis = new Lenis();
 
   useEffect(() => {
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
@@ -36,7 +36,7 @@ function SkewScrollComponent({ children }) {
   );
 
   return (
-    <motion.main style={{ skewY: skewVelocityFactor }}>{children}</motion.main>
+    <motion.div style={{ skewY: skewVelocityFactor }}>{children}</motion.div>
   );
 }
 

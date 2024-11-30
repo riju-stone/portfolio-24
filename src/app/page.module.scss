@@ -1,3 +1,5 @@
+@use "./globals.scss" as global;
+
 .homePageWrapper {
   height: 100%;
   width: 100%;
@@ -10,11 +12,35 @@
 
 .heroSectionWrapper,
 .aboutSectionWrapper,
-.statementSectionWrapper,
-.contactSectionWrapper {
+.statementSectionWrapper {
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   justify-items: center;
   align-items: center;
+}
+
+.contactSectionWrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .introline {
+    display: flex;
+    height: 4rem;
+    width: 75vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 400;
+
+    p {
+      margin: 0px;
+      color: global.$dark-text-color;
+    }
+  }
 }
