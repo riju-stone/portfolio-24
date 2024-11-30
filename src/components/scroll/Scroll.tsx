@@ -32,11 +32,15 @@ function SkewScrollComponent({ children }) {
   const skewVelocityFactor = useTransform(
     skewVelocity,
     [-1000, 1000],
-    [-1.5, 1.5],
+    [-1.2, 1.2],
   );
 
   return (
-    <motion.div style={{ skewY: skewVelocityFactor }}>{children}</motion.div>
+    <motion.div
+      style={{ skewY: skewVelocityFactor, mixBlendMode: "difference" }}
+    >
+      {children}
+    </motion.div>
   );
 }
 

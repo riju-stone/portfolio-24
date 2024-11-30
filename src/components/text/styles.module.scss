@@ -28,7 +28,7 @@
   color: global.$dark-text-color;
 
   .textRevealContainer {
-    height: 30%;
+    height: 35%;
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -43,5 +43,19 @@
     span {
       opacity: 0.1;
     }
+  }
+}
+
+.textDisperseContainer {
+  color: global.$dark-disabled-color;
+  margin: 0px;
+  transition: color 0.4s ease-out;
+  cursor: pointer;
+  &:hover {
+    color: global.$dark-text-color;
+  }
+
+  span {
+    display: inline-block;
   }
 }

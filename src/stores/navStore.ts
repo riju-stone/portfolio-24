@@ -5,7 +5,7 @@ export type PageState = {
 };
 
 export type PageActions = {
-  toggleMenu: () => void;
+  toggleMenu: (open: boolean) => void;
 };
 
 export type PageStore = PageState & PageActions;
@@ -16,8 +16,8 @@ export const defaultPageState: PageState = {
 
 export const usePageStore = create<PageStore>((set) => ({
   ...defaultPageState,
-  toggleMenu: () =>
-    set((state) => ({
-      menuOpen: !state.menuOpen,
+  toggleMenu: (isOpen: boolean) =>
+    set(() => ({
+      menuOpen: isOpen,
     })),
 }));

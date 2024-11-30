@@ -34,6 +34,7 @@ function HeaderComponent() {
   const [headerState, setHeaderState] = useState("expanded");
 
   useMotionValueEvent(scrollY, "change", (scrollValue) => {
+    toggleMenu(false);
     if (scrollValue < 120) {
       setHeaderState("expanded");
     } else {
@@ -115,7 +116,7 @@ function HeaderComponent() {
         variants={headerNameSeparatorAnim}
         initial="expand"
         animate={headerState === "collapsed" ? "collapse" : "expand"}
-        onClick={toggleMenu}
+        onClick={() => toggleMenu(!menuOpen)}
       >
         <motion.svg
           role="Menu Button"
