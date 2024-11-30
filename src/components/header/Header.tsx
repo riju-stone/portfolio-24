@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { space_grotesk, pp_nekkei, pp_nueue } from "@/utils/fonts";
+import { space_grotesk } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
