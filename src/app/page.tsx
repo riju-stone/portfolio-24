@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
-import { ArrowUpRight } from "lucide-react";
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
-import gsap from "gsap";
 
 const SkewScrollComponent = dynamic(
   () => import("@/components/scroll/Scroll"),
@@ -18,13 +16,13 @@ const TextScrollRevealComponent = dynamic(
   { ssr: false },
 );
 
-const heroPhrase = "A multi-disciplinary developer";
+const heroPhrase = "Multi-Disciplinary Creative Developer";
 
-const aboutPhrase =
-  "A full-stack wizard who turns ideas into digital masterpieces. I juggle front-end flair and back-end brains to make the web smarter, faster and a lot less boring.";
-
-const aboutPhrase2 =
-  "It's not just about solving A problem, but more about solving the RIGHT problem. With style and statement - making people's lives easier while also making sure each and every experience is uniquely crafted. Mind of an engineer, heart of an artist...";
+const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
+I juggle front-end flair and back-end brains to make the web smarter, 
+faster and a lot less boring with style and statements - making people's 
+lives easier while also making sure each and every experience is 
+uniquely crafted. Mind of an engineer, heart of an artist...`;
 
 function HomePage() {
   return (
@@ -35,9 +33,7 @@ function HomePage() {
           <section className={styles.aboutSectionWrapper}>
             <TextScrollRevealComponent phrase={aboutPhrase} />
           </section>
-          <section className={styles.statementSectionWrapper}>
-            <TextScrollRevealComponent phrase={aboutPhrase2} />
-          </section>
+          <section className={styles.workSectionWrapper}></section>
           <section
             className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
           >

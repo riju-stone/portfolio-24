@@ -9,21 +9,23 @@ import ThemeSwitchComponent from "../theme/ThemeSwitch";
 import {
   headerNameInitialAnim,
   headerNameNonInitialsAnim,
-  headerNameSeparatorAnim,
+  headerNameMenuButtonAnim,
   headerLinkAnim,
   menuUpperAnim,
   menuMiddleAnim,
   menuLowerAnim,
   menuButtonAnimation,
+  headerNameSeparatorAnim,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../text/TextZoop";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
+import { Sparkle } from "lucide-react";
 
 const heroInitials = ["A", "C"];
-const heroNonInitials = "righna_ hakraborty";
+const heroNonInitials = "righna hakraborty";
 
 function HeaderComponent() {
   const theme = useThemeStore((state) => state.theme);
@@ -60,21 +62,31 @@ function HeaderComponent() {
           </motion.div>
           {heroNonInitials.split("").map((letter, index) => {
             return letter == " " ? (
-              <motion.div
-                key={`hero-initial-letter${index}`}
-                className={styles.heroInitialLetter}
-                variants={headerNameInitialAnim}
-                initial="initial"
-                animate={
-                  headerState === "collapsed"
-                    ? menuOpen
-                      ? "hidden2"
-                      : "collapse"
-                    : "expand"
-                }
-              >
-                {heroInitials[1]}
-              </motion.div>
+              <>
+                <motion.div
+                  className={styles.heroNameSeparator}
+                  variants={headerNameSeparatorAnim}
+                  initial="initial"
+                  animate={headerState === "collapsed" ? "collapse" : "expand"}
+                >
+                  &#10022;
+                </motion.div>
+                <motion.div
+                  key={`hero-initial-letter${index}`}
+                  className={styles.heroInitialLetter}
+                  variants={headerNameInitialAnim}
+                  initial="initial"
+                  animate={
+                    headerState === "collapsed"
+                      ? menuOpen
+                        ? "hidden2"
+                        : "collapse"
+                      : "expand"
+                  }
+                >
+                  {heroInitials[1]}
+                </motion.div>
+              </>
             ) : (
               <motion.div
                 key={`hero-non-initial-letter-${index}`}
@@ -113,7 +125,7 @@ function HeaderComponent() {
       <motion.button
         type="button"
         className={styles.headerMenuButton}
-        variants={headerNameSeparatorAnim}
+        variants={headerNameMenuButtonAnim}
         initial="expand"
         animate={headerState === "collapsed" ? "collapse" : "expand"}
         onClick={() => toggleMenu(!menuOpen)}

@@ -4,10 +4,6 @@ export const pageConfig = [
     link: "/",
   },
   {
-    label: "work",
-    link: "/work",
-  },
-  {
     label: "blog",
     link: "/blog",
   },

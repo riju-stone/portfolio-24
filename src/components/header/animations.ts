@@ -27,7 +27,7 @@ export const headerNameInitialAnim = {
   },
   hidden1: {
     y: 0,
-    x: -34,
+    x: -40,
     opacity: 0,
     transition: {
       duration: 0.4,
@@ -42,7 +42,7 @@ export const headerNameInitialAnim = {
     },
   },
   collapse: {
-    x: -34,
+    x: -40,
     y: 0,
     opacity: 1,
     transition: {
@@ -63,6 +63,31 @@ export const headerNameInitialAnim = {
 };
 
 export const headerNameSeparatorAnim = {
+  initial: {
+    y: -10,
+    opacity: 0,
+    rotateZ: 0,
+  },
+  collapse: {
+    opacity: 0,
+    y: -10,
+    rotateZ: 180,
+    transition: {
+      duration: 0.4,
+    },
+  },
+  expand: {
+    opacity: 1,
+    y: 0,
+    rotateZ: 0,
+    transition: {
+      delay: 0.8,
+      duration: 0.5,
+    },
+  },
+};
+
+export const headerNameMenuButtonAnim = {
   collapse: {
     scale: 1,
     opacity: 1,
