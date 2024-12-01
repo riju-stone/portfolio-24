@@ -22,7 +22,6 @@ import TextZoopComponent from "../text/TextZoop";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
-import { Sparkle } from "lucide-react";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
