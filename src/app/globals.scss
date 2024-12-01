@@ -10,11 +10,10 @@ $light-bg-color: #ededed;
 $dark-bg-color: #0c0c0c;
 
 .app {
-  height: 200vh;
+  height: 100vh;
   width: 100vw;
   background: none;
   overflow-x: hidden;
-
   margin: 0;
   padding: 0;
 
@@ -28,6 +27,8 @@ $dark-bg-color: #0c0c0c;
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
+
+  overscroll-behavior-block: contain;
 
   &::-webkit-scrollbar {
     display: none;

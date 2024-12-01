@@ -19,7 +19,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
   const initAnimation = () => {
     gsap.to(charRefs.current, {
       scrollTrigger: {
-        scrub: true,
+        scrub: 1,
         trigger: containerRef.current,
         start: `top 60%`,
         end: `+=${window.innerHeight}`,

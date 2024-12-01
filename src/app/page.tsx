@@ -5,6 +5,7 @@ import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
+import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
 
 const SkewScrollComponent = dynamic(
   () => import("@/components/scroll/Scroll"),
@@ -29,11 +30,17 @@ function HomePage() {
     <main>
       <SkewScrollComponent>
         <div className={styles.homePageWrapper}>
+          {/* Hero Section */}
           <section className={styles.heroSectionWrapper}>{heroPhrase}</section>
+          {/* About Section */}
           <section className={styles.aboutSectionWrapper}>
             <TextScrollRevealComponent phrase={aboutPhrase} />
           </section>
-          <section className={styles.workSectionWrapper}></section>
+          {/* Work Section */}
+          <section className={styles.workSectionWrapper}>
+            <TextScrollExpandComponent word={"work"} />
+          </section>
+          {/* Contect Section */}
           <section
             className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
           >

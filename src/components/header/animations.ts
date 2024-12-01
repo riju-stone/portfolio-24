@@ -64,24 +64,24 @@ export const headerNameInitialAnim = {
 
 export const headerNameSeparatorAnim = {
   initial: {
-    y: -10,
+    scale: 0,
     opacity: 0,
-    rotateZ: 0,
+    rotateZ: 180,
   },
   collapse: {
+    scale: 0,
     opacity: 0,
-    y: -10,
     rotateZ: 180,
     transition: {
       duration: 0.4,
     },
   },
   expand: {
+    scale: 1,
     opacity: 1,
-    y: 0,
     rotateZ: 0,
     transition: {
-      delay: 0.8,
+      delay: 1.4,
       duration: 0.5,
     },
   },

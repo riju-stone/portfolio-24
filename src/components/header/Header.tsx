@@ -61,7 +61,7 @@ function HeaderComponent() {
           </motion.div>
           {heroNonInitials.split("").map((letter, index) => {
             return letter == " " ? (
-              <>
+              <React.Fragment key={`hero-initial-letter${index}`}>
                 <motion.div
                   className={styles.heroNameSeparator}
                   variants={headerNameSeparatorAnim}
@@ -71,7 +71,6 @@ function HeaderComponent() {
                   &#10022;
                 </motion.div>
                 <motion.div
-                  key={`hero-initial-letter${index}`}
                   className={styles.heroInitialLetter}
                   variants={headerNameInitialAnim}
                   initial="initial"
@@ -85,7 +84,7 @@ function HeaderComponent() {
                 >
                   {heroInitials[1]}
                 </motion.div>
-              </>
+              </React.Fragment>
             ) : (
               <motion.div
                 key={`hero-non-initial-letter-${index}`}

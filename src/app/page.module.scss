@@ -7,12 +7,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .heroSectionWrapper,
-.aboutSectionWrapper,
-.workSectionWrapper {
+.aboutSectionWrapper {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -30,17 +28,45 @@
 
   .introline {
     display: flex;
-    height: 4rem;
-    width: 75vw;
+    height: 5rem;
+    width: 85vw;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 400;
 
     .introHeading {
       margin: 0px;
       color: global.$dark-text-color;
+    }
+  }
+}
+
+.workSectionWrapper {
+  position: relative;
+  height: 500vh;
+  width: 100vw;
+  overscroll-behavior-block: none;
+}
+
+// Mobile Devices
+@media only screen and (min-width: 240px) and (max-width: 639px) {
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
+      font-size: 2.4rem;
+      height: 2.5rem;
+    }
+  }
+}
+
+// Tablet Devices
+@media only screen and (min-width: 640px) and (max-width: 920px) {
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
+      font-size: 4rem;
     }
   }
 }
