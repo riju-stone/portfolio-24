@@ -6,13 +6,36 @@ import styles from "./styles.module.scss";
 import { pp_nekkei } from "@/utils/fonts";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 function TextScrollExpandComponent({ word }: { word: string }) {
   const containerRef = useRef();
   const letterRefs = useRef([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-  });
+    initAnimation();
+  }, []);
+
+  const initAnimation = () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center",
+        end: `bottom`,
+        scrub: 1,
+      },
+    });
+
+    tl.from(letterRefs.current, {
+      letterSpacing: "-0.5em",
+      textIndent: "-0.5em",
+    });
+
+    tl.to(letterRefs.current, {
+      letterSpacing: "0.4em",
+      textIndent: "0.4em",
+    });
+  };
 
   const replLetters = (letter: string, count: number) => {
     const replLetters = [];
@@ -22,21 +45,16 @@ function TextScrollExpandComponent({ word }: { word: string }) {
           key={`repl-letter ${letter}-${i}`}
           className={styles.replLetter}
           data-item={`${letter}-${i}`}
-          ref={(e) => {
-            letterRefs.current.push(e);
-          }}
         >
           {letter}
         </div>,
       );
     }
 
-    console.log(replLetters);
-
     return replLetters;
   };
 
-  const splitChars = (word: string, replCount: number = 5) => {
+  const splitChars = (word: string, replCount: number = 15) => {
     const replWordComponent = [];
 
     word.split("").forEach((letter: string, index: number) => {
@@ -44,6 +62,9 @@ function TextScrollExpandComponent({ word }: { word: string }) {
         <div
           key={`repl-letter-group-${index}`}
           className={styles.replLetterGroup}
+          ref={(e) => {
+            letterRefs.current.push(e);
+          }}
         >
           {replLetters(letter, replCount)}
         </div>,
