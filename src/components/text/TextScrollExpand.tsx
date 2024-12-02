@@ -25,7 +25,7 @@ function TextScrollExpandComponent({ word }: { word: string }) {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: `+=${window.innerHeight * 5}`,
+        end: `+=${window.innerHeight * 3}`,
         scrub: 1,
       },
     });
