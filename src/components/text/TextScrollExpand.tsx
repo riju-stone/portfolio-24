@@ -12,16 +12,20 @@ function TextScrollExpandComponent({ word }: { word: string }) {
   const letterRefs = useRef([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    initAnimation();
+    const ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      initAnimation();
+    });
+
+    return () => ctx.revert();
   }, []);
 
   const initAnimation = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top center",
-        end: `bottom`,
+        start: "top top",
+        end: `bottom top`,
         scrub: 1,
       },
     });
@@ -32,8 +36,8 @@ function TextScrollExpandComponent({ word }: { word: string }) {
     });
 
     tl.to(letterRefs.current, {
-      letterSpacing: "0.4em",
-      textIndent: "0.4em",
+      letterSpacing: "0.1em",
+      textIndent: "0.1em",
     });
   };
 

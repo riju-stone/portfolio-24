@@ -12,8 +12,12 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
   const charRefs = useRef([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    initAnimation();
+    const ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      initAnimation();
+    });
+
+    return () => ctx.revert();
   }, []);
 
   const initAnimation = () => {
