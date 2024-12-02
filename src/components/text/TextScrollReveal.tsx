@@ -26,7 +26,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         scrub: 1,
         trigger: containerRef.current,
         start: `top 60%`,
-        end: `+=${window.innerHeight}`,
+        end: `+=${window.innerHeight / 1.2}`,
       },
       opacity: 1,
       ease: "none",

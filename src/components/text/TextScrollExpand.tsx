@@ -25,7 +25,7 @@ function TextScrollExpandComponent({ word }: { word: string }) {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: `bottom top`,
+        end: `+=${window.innerHeight * 5}`,
         scrub: 1,
       },
     });
@@ -36,8 +36,8 @@ function TextScrollExpandComponent({ word }: { word: string }) {
     });
 
     tl.to(letterRefs.current, {
-      letterSpacing: "0.1em",
-      textIndent: "0.1em",
+      letterSpacing: "0.2em",
+      textIndent: "0.2em",
     });
   };
 
