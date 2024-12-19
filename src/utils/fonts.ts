@@ -1,72 +1,88 @@
 import localFont from "next/font/local";
 import { Space_Grotesk, Inter, Lexend_Deca } from "next/font/google";
 
+export const bigger_display = localFont({
+    src: [{
+        path: "../../public/fonts/bigger_display/bigger-display.otf",
+        style: "normal"
+    }]
+})
+
+export const rubik_mono = localFont({
+    src: [
+        {
+            path: "../../public/fonts/rubik_mono_one/rubik-mono-one.ttf",
+            style: "normal"
+        }
+    ]
+})
+
 export const pp_nueue = localFont({
-  src: [
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-thin.otf",
-      style: "normal",
-      weight: "200",
-    },
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-medium.otf",
-      style: "normal",
-      weight: "400",
-    },
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-bold.otf",
-      style: "normal",
-      weight: "600",
-    },
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-book.otf",
-      style: "normal",
-      weight: "800",
-    },
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-italic.otf",
-      style: "italic",
-      weight: "400",
-    },
-    {
-      path: "../../public/fonts/pp_nueue/ppneuemontreal-semibolditalic.otf",
-      style: "italic",
-      weight: "600",
-    },
-  ],
+    src: [
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-thin.otf",
+            style: "normal",
+            weight: "200",
+        },
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-medium.otf",
+            style: "normal",
+            weight: "400",
+        },
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-bold.otf",
+            style: "normal",
+            weight: "600",
+        },
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-book.otf",
+            style: "normal",
+            weight: "800",
+        },
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-italic.otf",
+            style: "italic",
+            weight: "400",
+        },
+        {
+            path: "../../public/fonts/pp_nueue/ppneuemontreal-semibolditalic.otf",
+            style: "italic",
+            weight: "600",
+        },
+    ],
 });
 
 export const pp_nekkei = localFont({
-  src: [
-    {
-      path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Light.otf",
-      style: "normal",
-      weight: "200",
-    },
-    {
-      path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Regular.otf",
-      style: "normal",
-      weight: "400",
-    },
-    {
-      path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Ultrabold.otf",
-      style: "normal",
-      weight: "800",
-    },
-  ],
+    src: [
+        {
+            path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Light.otf",
+            style: "normal",
+            weight: "200",
+        },
+        {
+            path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Regular.otf",
+            style: "normal",
+            weight: "400",
+        },
+        {
+            path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Ultrabold.otf",
+            style: "normal",
+            weight: "800",
+        },
+    ],
 });
 
 export const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+    subsets: ["latin"],
+    variable: "--font-inter",
 });
 
 export const space_grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
+    subsets: ["latin"],
+    variable: "--font-space-grotesk",
 });
 
 export const lexend_deca = Lexend_Deca({
-  subsets: ["latin"],
-  variable: "--font-lexend-deca",
+    subsets: ["latin"],
+    variable: "--font-lexend-deca",
 });

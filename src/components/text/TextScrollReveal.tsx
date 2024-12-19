@@ -8,69 +8,69 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function TextScrollRevealComponent({ phrase }: { phrase: string }) {
-  const containerRef = useRef(null);
-  const charRefs = useRef([]);
+    const containerRef = useRef(null);
+    const charRefs = useRef([]);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      initAnimation();
-    });
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.registerPlugin(ScrollTrigger);
+            initAnimation();
+        });
 
-    return () => ctx.revert();
-  }, []);
+        return () => ctx.revert();
+    }, []);
 
-  const initAnimation = () => {
-    gsap.to(charRefs.current, {
-      scrollTrigger: {
-        scrub: 1,
-        trigger: containerRef.current,
-        start: `top 60%`,
-        end: `+=${window.innerHeight / 1.2}`,
-      },
-      opacity: 1,
-      ease: "none",
-      stagger: 0.1,
-    });
-  };
+    const initAnimation = () => {
+        gsap.to(charRefs.current, {
+            scrollTrigger: {
+                scrub: 1,
+                trigger: containerRef.current,
+                start: `top 60%`,
+                end: `+=${window.innerHeight * 1.2}`,
+            },
+            opacity: 1,
+            ease: "none",
+            stagger: 0.1,
+        });
+    };
 
-  function splitWords(phrase: string) {
-    const words = [];
+    function splitWords(phrase: string) {
+        const words = [];
 
-    phrase.split(" ").forEach((word, index) => {
-      const letters = splitLetters(word);
-      words.push(<p key={word + "-" + index}>{letters}</p>);
-    });
+        phrase.split(" ").forEach((word, index) => {
+            const letters = splitLetters(word);
+            words.push(<p key={word + "-" + index}>{letters}</p>);
+        });
 
-    return words;
-  }
+        return words;
+    }
 
-  function splitLetters(word: string) {
-    const letters = [];
-    word.split("").forEach((letter, index) => {
-      letters.push(
-        <span
-          key={letter + "-" + index}
-          ref={(e) => {
-            charRefs.current.push(e);
-          }}
+    function splitLetters(word: string) {
+        const letters = [];
+        word.split("").forEach((letter, index) => {
+            letters.push(
+                <span
+                    key={letter + "-" + index}
+                    ref={(e) => {
+                        charRefs.current.push(e);
+                    }}
+                >
+                    {letter}
+                </span>,
+            );
+        });
+
+        return letters;
+    }
+
+    return (
+        <div
+            className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}
+            ref={containerRef}
         >
-          {letter}
-        </span>,
-      );
-    });
-
-    return letters;
-  }
-
-  return (
-    <div
-      className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}
-      ref={containerRef}
-    >
-      <div className={styles.textRevealContainer}>{splitWords(phrase)}</div>
-    </div>
-  );
+            <div className={styles.textRevealContainer}>{splitWords(phrase)}</div>
+        </div>
+    );
 }
 
 export default TextScrollRevealComponent;
