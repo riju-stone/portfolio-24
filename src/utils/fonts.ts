@@ -1,21 +1,5 @@
 import localFont from "next/font/local";
-import { Space_Grotesk, Inter, Lexend_Deca } from "next/font/google";
-
-export const bigger_display = localFont({
-    src: [{
-        path: "../../public/fonts/bigger_display/bigger-display.otf",
-        style: "normal"
-    }]
-})
-
-export const rubik_mono = localFont({
-    src: [
-        {
-            path: "../../public/fonts/rubik_mono_one/rubik-mono-one.ttf",
-            style: "normal"
-        }
-    ]
-})
+import { Space_Grotesk, Inter, Roboto_Mono } from "next/font/google";
 
 export const pp_nueue = localFont({
     src: [
@@ -82,7 +66,8 @@ export const space_grotesk = Space_Grotesk({
     variable: "--font-space-grotesk",
 });
 
-export const lexend_deca = Lexend_Deca({
+export const roboto_mono = Roboto_Mono({
     subsets: ["latin"],
-    variable: "--font-lexend-deca",
-});
+    variable: "--font-roboto-mono"
+})
+

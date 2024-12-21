@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 
 import styles from "./styles.module.scss";
-import { pp_nekkei, rubik_mono } from "@/utils/fonts";
+import { roboto_mono } from "@/utils/fonts";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -81,7 +81,7 @@ function TextScrollExpandComponent({ word }: { word: string }) {
     return (
         <div
             ref={containerRef}
-            className={`${styles.textExpandWrapper} ${rubik_mono.className}`}
+            className={`${styles.textExpandWrapper} ${roboto_mono.className}`}
         >
             {splitChars(word)}
         </div>

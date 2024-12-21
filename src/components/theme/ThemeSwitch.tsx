@@ -6,7 +6,6 @@ import { motion } from "motion/react";
 import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";
-import { debounce } from "@/utils/limitors";
 
 function ThemeSwitchComponent({ isMenuOpen }) {
     const theme = useThemeStore((state) => state.theme);
@@ -22,19 +21,13 @@ function ThemeSwitchComponent({ isMenuOpen }) {
         setSwitchPos(switchPos);
     }, []);
 
-
-    const handleThemeSwitch = debounce(() => {
-        toggleTheme()
-        // localStorage.setItem("currTheme", theme);
-    })
-
     return (
         <motion.div
             variants={themeSwitchAnim}
             initial="initial"
             animate={isMenuOpen ? "hidden" : "view"}
             ref={switchRef}
-            onClick={handleThemeSwitch}
+            onClick={toggleTheme}
         >
             <motion.svg
                 className="sun-moon"
