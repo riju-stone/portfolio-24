@@ -8,7 +8,7 @@ import { loadingScreenAnim, progressAnim } from "./animations";
 import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
-    const env = process.env.NEXT_PUBLIC_ENV;
+    // const env = process.env.NEXT_PUBLIC_ENV;
     const progressBarRef = useRef(null);
 
     const [loading, setLoading] = useState(true);
