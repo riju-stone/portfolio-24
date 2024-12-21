@@ -43,9 +43,9 @@ export default function RootLayout({
                     {children}
                     <BackgroundComponent />
                 </LoaderComponent>
-                <Analytics />
-                <SpeedInsights />
             </body>
+            <Analytics />
+            <SpeedInsights />
         </html>
     );
 }

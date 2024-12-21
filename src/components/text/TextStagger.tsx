@@ -13,7 +13,7 @@ const textStaggerAnim = {
         y: 0,
         transition: {
             duration: 0.6,
-            delay: 1.5 + i * 0.04,
+            delay: 1 + i * 0.04,
             ease: [0.22, 1, 0.36, 1]
         }
     })

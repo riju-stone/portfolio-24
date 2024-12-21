@@ -47,7 +47,7 @@ function LoaderComponent({ children }) {
 
     return (
         <AnimatePresence mode="wait">
-            {loading && env != "dev" ? (
+            {loading ? (
                 <motion.div
                     key="loader"
                     className={`${styles.loaderWrapper} ${pp_nekkei.className}`}
@@ -69,15 +69,8 @@ function LoaderComponent({ children }) {
                             {phraseArray[phraseIndex]}
                         </motion.div>
                     </AnimatePresence>
-                    <motion.div
+                    <div
                         className={styles.loadingPercent}
-                        initial={{ opacity: 0, bottom: 0 }}
-                        animate={{
-                            opacity: 1,
-                            bottom: `${Math.min(progressPercent, 82)}%`,
-                        }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6 }}
                     >
                         <div className={styles.percentDigit}>
                             {progressPercent == 100 ? `${progressPercent / 100}` : "0"}
@@ -88,7 +81,7 @@ function LoaderComponent({ children }) {
                                 : "0"}
                         </div>
                         <div className={styles.percentDigit}>{progressPercent % 10}</div>
-                    </motion.div>
+                    </div>
 
                     <motion.div
                         ref={progressBarRef}

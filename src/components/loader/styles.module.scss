@@ -31,11 +31,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 1rem;
+  margin: 1rem;
   right: 0.5rem;
   font-size: 10rem;
   font-weight: 500;
-  line-height: 10rem;
+  line-height: 8rem;
 
   .percentDigit {
     width: 6.5rem;
@@ -68,8 +68,8 @@
 
   .loadingPercent {
     font-size: 6rem;
-    line-height: 6rem;
-    bottom: 1rem;
+    line-height: 4.5rem;
+    top: 0.5rem;
 
     .percentDigit {
       width: 3.5rem;

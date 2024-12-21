@@ -18,7 +18,7 @@ const TextScrollRevealComponent = dynamic(
     { ssr: false },
 );
 
-const heroPhrase = "A Creative Full Stack Developer"
+const heroPhrase = "Creative Full Stack Developer"
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
