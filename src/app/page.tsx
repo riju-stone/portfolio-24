@@ -8,6 +8,10 @@ import TextDisperseComponent from "@/components/text/TextDisperse";
 import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
 import TextStaggerComponent from "@/components/text/TextStagger";
 
+import DistortGif from "@/assets/gifs/distort.gif"
+import DotGif from "@/assets/gifs/spinning-dots.gif"
+import SnakeGif from "@/assets/gifs/snake.gif"
+
 const SkewScrollComponent = dynamic(
     () => import("@/components/scroll/Scroll"),
     { ssr: false },
@@ -18,7 +22,7 @@ const TextScrollRevealComponent = dynamic(
     { ssr: false },
 );
 
-const heroPhrase = "Creative Full Stack Developer"
+const heroPhrase = ["Creative", SnakeGif, "&", "Full", DistortGif, "Stack", DotGif, "Developer"]
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -47,20 +51,7 @@ function HomePage() {
                     <section
                         className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
                     >
-                        <div className={styles.introline}>
-                            <p className={styles.introHeading}>Arighna</p>
-                            <p className={styles.introHeading}>Chakraborty</p>
-                        </div>
-
-                        <div className={styles.introline}>
-                            <p className={styles.introHeading}>Creative</p>
-                            <p className={styles.introHeading}>&</p>
-                        </div>
-
-                        <div className={styles.introline}>
-                            <p className={styles.introHeading}>Full-Stack</p>
-                            <p className={styles.introHeading}>Developer</p>
-                        </div>
+                        <TextStaggerComponent text={["Coffee", "?"]} />
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
                             <a href="https://www.truecaller.com/search/in/9163411820"> <TextDisperseComponent word="+919163411820" /></a>

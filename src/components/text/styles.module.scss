@@ -26,7 +26,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  width: 90%;
   color: global.$dark-text-color;
   font-size: 12rem;
   font-weight: 600;
@@ -39,6 +39,22 @@
 
     .staggerWord {
       display: flex;
+    }
+  }
+
+  .staggerImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 18px;
+    overflow: hidden;
+
+    .staggerGif {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
     }
   }
 }
@@ -126,6 +142,10 @@
     font-size: 4rem;
     line-height: 4rem;
 
+    .staggerImageContainer {
+      display: none;
+    }
+
   }
 
   .textRevealWrapper {
@@ -148,8 +168,13 @@
 @media only screen and (min-width: 640px) and (max-width: 920px) {
   .textStaggerWrapper {
     width: 90%;
-    font-size: 7rem;
+    font-size: 6rem;
     line-height: 7rem;
+
+    .staggerImageContainer {
+      height: 6rem;
+      width: 6rem;
+    }
   }
 
   .textRevealWrapper {
@@ -166,5 +191,18 @@
 
   .textDisperseContainer {
     font-size: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+  .textStaggerWrapper {
+    width: 90%;
+    font-size: 8rem;
+    line-height: 8rem;
+
+    .staggerImageContainer {
+      height: 7rem;
+      width: 7rem;
+    }
   }
 }

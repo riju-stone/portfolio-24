@@ -36,7 +36,7 @@
 
   .introline {
     display: flex;
-    height: 5rem;
+    height: 6rem;
     width: 75vw;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -74,6 +74,15 @@
     .introline {
       width: 90vw;
       font-size: 4rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
+      font-size: 6rem;
     }
   }
 }
