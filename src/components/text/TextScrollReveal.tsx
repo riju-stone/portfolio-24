@@ -37,7 +37,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
     function splitWords(phrase: string) {
         const words = [];
 
-        phrase.split(" ").forEach((word, index) => {
+        phrase.split(" ").forEach((word: string, index: number) => {
             const letters = splitLetters(word);
             words.push(<p key={word + "-" + index}>{letters}</p>);
         });
@@ -47,7 +47,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
 
     function splitLetters(word: string) {
         const letters = [];
-        word.split("").forEach((letter, index) => {
+        word.split("").forEach((letter: string, index: number) => {
             letters.push(
                 <span
                     key={letter + "-" + index}

@@ -51,7 +51,21 @@ function HomePage() {
                     <section
                         className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
                     >
-                        <TextStaggerComponent text={["Coffee", "?"]} />
+                        <div className={`${styles.introline} ${pp_nekkei.className}`}>
+                            <div className={styles.introHeading}>Arighna</div>
+                            <div className={styles.introHeading}>Chakraborty</div>
+                        </div>
+
+                        <div className={styles.introline}>
+                            <div className={styles.introHeading}>Caught</div>
+                            <div className={styles.introHeading}>a</div>
+                            <div className={styles.introHeading}>Spark ?</div>
+                        </div>
+
+                        <div className={styles.introline}>
+                            <div className={styles.introHeading}>Your</div>
+                            <div className={styles.introHeading}>Move</div>
+                        </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
                             <a href="https://www.truecaller.com/search/in/9163411820"> <TextDisperseComponent word="+919163411820" /></a>
@@ -65,8 +79,8 @@ function HomePage() {
                         </div>
                     </section>
                 </div>
-            </SkewScrollComponent>
-        </main>
+            </SkewScrollComponent >
+        </main >
     );
 }
 

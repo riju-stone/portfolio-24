@@ -1,5 +1,5 @@
 import React from 'react'
-import { delay, motion } from "motion/react"
+import { motion } from "motion/react"
 
 import styles from "./styles.module.scss"
 import { pp_nueue } from '@/utils/fonts'
@@ -10,7 +10,7 @@ const textStaggerAnim = {
     hidden: {
         y: "100%",
     },
-    show: (i) => ({
+    show: (i: number) => ({
         y: 0,
         transition: {
             duration: 0.6,
@@ -37,7 +37,7 @@ const imageStaggerAnim = {
 function TextStaggerComponent({ text }) {
     return (
         <div className={`${styles.textStaggerWrapper} ${pp_nueue.className} `}>
-            {text.map((word, idx) => {
+            {text.map((word: string | HTMLImageElement, idx: number) => {
                 return <div key={`word-${idx}`} className={styles.staggerWordContainer}>
                     <div
                         className={styles.staggerWord}
