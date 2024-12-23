@@ -10,8 +10,6 @@ $light-bg-color: #ededed;
 $dark-bg-color: #0c0c0c;
 
 .app {
-  height: 100vh;
-  width: 100vw;
   background: none;
   overflow-x: hidden;
   margin: 0;
@@ -22,13 +20,16 @@ $dark-bg-color: #0c0c0c;
 
   -webkit-user-drag: none;
 
-  -webkit-touch-callout: none; /* Safari */
-  -webkit-user-select: none; /* Chrome */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: none;
+  /* Safari */
+  -webkit-user-select: none;
+  /* Chrome */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
   user-select: none;
 
-  overscroll-behavior-block: contain;
 
   &::-webkit-scrollbar {
     display: none;
@@ -39,10 +40,14 @@ $dark-bg-color: #0c0c0c;
 
     -webkit-user-drag: none;
 
-    -webkit-touch-callout: none; /* Safari */
-    -webkit-user-select: none; /* Chrome */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Chrome */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
     user-select: none;
   }
 }

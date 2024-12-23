@@ -11,7 +11,6 @@
 
 .heroSectionWrapper {
   display: flex;
-  flex-direction: column;
   height: 100vh;
   width: 100vw;
   justify-content: center;
@@ -36,17 +35,17 @@
 
   .introline {
     display: flex;
-    height: 6rem;
     width: 75vw;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     font-size: 6rem;
     font-weight: 400;
+    line-height: 8rem;
 
     .introHeading {
       margin: 0px;
-      text-transform: uppercase;
+      line-height: 6rem;
       color: global.$dark-text-color;
     }
   }
@@ -62,9 +61,14 @@
 @media only screen and (min-width: 240px) and (max-width: 639px) {
   .contactSectionWrapper {
     .introline {
+      align-items: flex-start;
       width: 90vw;
-      font-size: 2.4rem;
-      height: 2.5rem;
+      font-size: 4rem;
+      line-height: 4rem;
+
+      .introHeading {
+        line-height: 4rem;
+      }
     }
   }
 }
@@ -74,7 +78,8 @@
   .contactSectionWrapper {
     .introline {
       width: 90vw;
-      font-size: 4rem;
+      font-size: 5rem;
+      line-height: 5rem;
     }
   }
 }
@@ -84,6 +89,15 @@
     .introline {
       width: 90vw;
       font-size: 6rem;
+      line-height: 6rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
     }
   }
 }

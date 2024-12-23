@@ -134,18 +134,16 @@
   }
 }
 
-
-
 @media only screen and (min-width: 240px) and (max-width: 639px) {
   .textStaggerWrapper {
-    width: 95%;
-    font-size: 4rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    font-size: 3.5rem;
     line-height: 5rem;
 
     .staggerImageContainer {
-      height: 4rem;
-      width: 5rem;
-      border-radius: 8px;
+      display: none;
     }
 
   }
@@ -163,7 +161,7 @@
   }
 
   .textDisperseContainer {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
   }
 }
 
@@ -192,7 +190,7 @@
   }
 
   .textDisperseContainer {
-    font-size: 3.5rem;
+    font-size: 4rem;
   }
 }
 
@@ -206,5 +204,13 @@
       height: 7rem;
       width: 8rem;
     }
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .textStaggerWrapper {
+    width: 90%;
+    font-size: 10rem;
+    line-height: 10rem;
   }
 }

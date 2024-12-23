@@ -63,6 +63,7 @@ function HomePage() {
                         </div>
 
                         <div className={styles.introline}>
+                            <div className={styles.introHeading}>---</div>
                             <div className={styles.introHeading}>Your</div>
                             <div className={styles.introHeading}>Move</div>
                         </div>

@@ -50,7 +50,7 @@ function TextStaggerComponent({ text }) {
                                 custom={index}>{letter}</motion.div>
                         }) : <motion.div variants={textStaggerAnim} initial="hidden" animate="show">
                             <motion.div className={styles.staggerImageContainer} variants={imageStaggerAnim} initial="hidden" animate="show">
-                                <Image src={word} className={styles.staggerGif} unoptimized={true} alt="hero-gif" />
+                                <Image src={word} className={styles.staggerGif} alt="hero-gif" />
                             </motion.div>
                         </motion.div>}
                     </div>
