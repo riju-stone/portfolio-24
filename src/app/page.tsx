@@ -36,14 +36,14 @@ Currently staying one caffeine-fueled sprint ahead of our AI overloads by outper
 and helping them train by night...
 `
 
-const teckStack = {
-    "frontend": ["js/ts", "react", "gsap/motion", "three", "tailwind", "redux/zustand"],
-    "backend": ["node", "golang"],
-    "automation": ["python"],
-    "db": ["sqlite", "postgresql", "mongodb", "hbase"],
-    "cloud": ["aws", "docker"],
-    "familiar": ["java", "c++"]
-}
+// const teckStack = {
+//     "frontend": ["js/ts", "react", "gsap/motion", "three", "tailwind", "redux/zustand"],
+//     "backend": ["node", "golang"],
+//     "automation": ["python"],
+//     "db": ["sqlite", "postgresql", "mongodb", "hbase"],
+//     "cloud": ["aws", "docker"],
+//     "familiar": ["java", "c++"]
+// }
 
 function HomePage() {
     return (
