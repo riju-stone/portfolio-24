@@ -45,7 +45,7 @@
 
     .introHeading {
       margin: 0px;
-      line-height: 6rem;
+      line-height: 7rem;
       color: global.$dark-text-color;
     }
   }
@@ -55,6 +55,44 @@
   position: relative;
   height: 500vh;
   width: 100vw;
+  color: global.$dark-text-color;
+
+  .experienceWrapper {
+    height: 100vh;
+    width: 100%;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .experienceQuote {
+      font-size: 6rem;
+      font-weight: 800;
+    }
+
+    div {
+      width: 90%;
+    }
+  }
+
+  .toolsWrapper {
+    height: 100vh;
+    width: 100%;
+
+    .toolsHeading {
+      font-size: 6rem;
+    }
+
+    .toolContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .toolName {
+        font-size: 3rem;
+      }
+    }
+  }
 }
 
 // Mobile Devices
@@ -71,6 +109,12 @@
       }
     }
   }
+
+  .workSectionWrapper {
+    .experienceWrapper {
+      font-size: 1.75rem;
+    }
+  }
 }
 
 // Tablet Devices
@@ -80,6 +124,12 @@
       width: 90vw;
       font-size: 5rem;
       line-height: 5rem;
+    }
+  }
+
+  .workSectionWrapper {
+    .experienceWrapper {
+      font-size: 2.5rem;
     }
   }
 }

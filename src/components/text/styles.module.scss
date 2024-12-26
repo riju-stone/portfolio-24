@@ -116,7 +116,8 @@
   align-items: center;
   text-transform: uppercase;
   overflow-x: hidden;
-  opacity: 0.4;
+  opacity: 0.2;
+  z-index: -5;
 
   .replLetterGroup {
     height: 10rem;

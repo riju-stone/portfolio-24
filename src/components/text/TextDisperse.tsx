@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import styles from "./styles.module.scss";
+import { inter, pp_nueue, roboto_mono, space_grotesk } from "@/utils/fonts";
 
 const transforms = [
     {
