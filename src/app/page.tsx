@@ -27,23 +27,33 @@ const heroPhrase = ["Creative", SnakeGif, "&", "Full", DistortGif, "Stack", DotG
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
-faster and a lot less boring with style and statements - making people's 
-lives easier while also making sure each and every experience is 
-uniquely crafted. Mind of an engineer, heart of an artist...`;
+faster and a lot less boring with style and statement - Mind of an engineer, heart of an artist...`;
 
-const expPhrase = `3 years of wrangling cross-functional teams and taming chaotic tech stacks. 
-Currently staying one caffeine-fueled sprint ahead of our AI overloads by outperforming them by day 
-and helping them train by night...
+const expPhrase = `With close to 3 years of experience working with 
+cross-functional teams and making deadlines sweat, my code is like my documentation:
+clean, clear and occasionally sprinkled with weird jokes.
 `
 
-// const teckStack = {
-//     "frontend": ["js/ts", "react", "gsap/motion", "three", "tailwind", "redux/zustand"],
-//     "backend": ["node", "golang"],
-//     "automation": ["python"],
-//     "db": ["sqlite", "postgresql", "mongodb", "hbase"],
-//     "cloud": ["aws", "docker"],
-//     "familiar": ["java", "c++"]
-// }
+const experienceData = [
+    {
+        id: "session-ai",
+        name: "Session AI Inc.",
+        role: "SWE II",
+        duration: "2.5 years"
+    },
+    {
+        id: "simulacra-tech",
+        name: "Simulacra Technologies",
+        role: "Freelancer",
+        duration: "7 months"
+    },
+    {
+        id: "skill-academia",
+        name: "Skill Academia",
+        role: "SWE Intern",
+        duration: "6 months"
+    }
+]
 
 function HomePage() {
     return (
@@ -63,8 +73,25 @@ function HomePage() {
                         <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
                             <div className={styles.experienceMainText}>{expPhrase}</div>
-                            <div className={`${styles.experienceQuote} ${space_grotesk.className}`}>Never Lose. Win or Learn.</div>
-                            <div className={styles.experienceSubText}>Trying to be one of the few. Not one of the many...</div>
+                            <div className={styles.experienceTableWrapper}>
+                                {experienceData.map((exp) => {
+                                    return <div key={exp.id} className={styles.experienceRowContainer}>
+                                        <div className={styles.experienceRow}>
+                                            <div className={styles.experienceName}>{exp.name}</div>
+                                            <div className={styles.experienceRole}>{exp.role}</div>
+                                        </div>
+                                        <div className={styles.experienceMaskRow}>
+                                            <div className={styles.experienceName}>{exp.name}</div>
+                                            <div className={styles.experienceDuration}>{exp.duration}</div>
+                                        </div>
+                                    </div>
+                                })}
+                            </div>
+                            {/* <div className={styles.experienceSubText}>Trying to be one of the few. Not one of the many...</div> */}
+                        </div>
+
+                        <div className={styles.projectWrapper}>
+                            <div className={styles.projectTitle}>Projects</div>
                         </div>
                     </section>
                     {/* Contect Section */}
@@ -84,7 +111,7 @@ function HomePage() {
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
                             <a href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
-                            <a href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗Linkedin" /> </a>
+                            <a href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>

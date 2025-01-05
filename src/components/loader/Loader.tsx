@@ -56,7 +56,6 @@ function LoaderComponent({ children }) {
                     animate="show"
                     exit="exit"
                 >
-                    <div className={styles.portfolioVersion}>Portfolio 24</div>
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`greeting-${phraseIndex}`}

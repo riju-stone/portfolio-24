@@ -16,6 +16,7 @@ const HamburgerMenuComponent = dynamic(
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
+import FooterComponent from "@/components/footer/Footer";
 const LoaderComponent = dynamic(() => import("@/components/loader/Loader"), {
     ssr: false,
 });
@@ -41,6 +42,7 @@ export default function RootLayout({
                     <HamburgerMenuComponent />
                     <HeaderComponent />
                     {children}
+                    <FooterComponent />
                     <BackgroundComponent />
                 </LoaderComponent>
             </body>
