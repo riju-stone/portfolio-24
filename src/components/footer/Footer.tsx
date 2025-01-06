@@ -6,7 +6,10 @@ import { space_grotesk } from '@/utils/fonts'
 function FooterComponent() {
     return (
         <div className={`${styles.footerWrapper} ${space_grotesk.className}`}>
-            <div>&#169; AC {new Date().getUTCFullYear()}</div>
+            <div className={styles.footerContainer}>
+                <div>&#169; AC </div>
+                <div>{new Date().getUTCFullYear()}</div>
+            </div>
         </div>
     )
 }

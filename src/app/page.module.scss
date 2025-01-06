@@ -45,6 +45,7 @@
 
     .introHeading {
       margin: 0px;
+      font-size: 6rem;
       line-height: 7rem;
       color: global.$dark-text-color;
     }
@@ -53,7 +54,7 @@
 
 .workSectionWrapper {
   position: relative;
-  height: 500vh;
+  height: 300vh;
   width: 100vw;
   color: global.$dark-text-color;
 
@@ -64,6 +65,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background-color: global.$dark-bg-color;
 
     .experienceMainText {
       width: 90%;
@@ -75,6 +77,12 @@
 
       .experienceRowContainer {
         position: relative;
+        border-top: 2px solid global.$dark-disabled-color;
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: 2px solid global.$dark-disabled-color;
+        }
 
         .experienceRow {
           position: relative;
@@ -82,8 +90,8 @@
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          padding: 0.75rem 2rem;
-          border-bottom: 2px solid global.$dark-disabled-color;
+          padding: 0.75rem 3rem;
+          z-index: 1;
         }
 
         .experienceMaskRow {
@@ -94,23 +102,32 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 0.75rem 2rem;
-          clip-path: inset(0% 0 0% 0);
+          padding: 0.75rem 3rem;
           background-color: global.$dark-text-color;
+          border: none;
+          z-index: 5;
         }
 
 
         .experienceName {
           font-size: 2rem;
+          color: global.$dark-text-color;
+        }
+
+        .experienceMaskName {
+          font-size: 2rem;
           color: global.$light-text-color;
         }
 
-        .experienceRole,
-        .experienceDuration {
+        .experienceRole {
+          font-size: 1.5rem;
+          color: global.$light-disabled-color;
+        }
+
+        .experienceMaskDuration {
           font-size: 1.5rem;
           color: global.$dark-disabled-color;
         }
-
 
       }
     }
@@ -123,27 +140,72 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background-color: global.$dark-bg-color;
 
     .projectTitle {
       width: 90%;
-      font-size: 10rem;
-    }
-  }
-
-  .toolsWrapper {
-    height: 100vh;
-    width: 100%;
-
-    .toolsHeading {
-      font-size: 6rem;
+      font-size: 3rem;
     }
 
-    .toolContainer {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .projectTableWrapper {
+      width: 100%;
 
-      .toolName {
-        font-size: 3rem;
+      .projectRowContainer {
+        position: relative;
+        border-top: 2px solid global.$dark-disabled-color;
+        cursor: pointer;
+
+        &:last-child {
+          border-bottom: 2px solid global.$dark-disabled-color;
+        }
+
+        .projectRow {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 3rem;
+
+        }
+
+        .projectMaskRow {
+          top: 0;
+          left: 0;
+          right: 0;
+          position: absolute;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 3rem;
+          clip-path: inset(50% 0 50% 0);
+          background-color: global.$dark-text-color;
+          border: none;
+        }
+
+
+        .projectName {
+          font-size: 2rem;
+          color: global.$dark-text-color;
+        }
+
+        .projectMaskName {
+          font-size: 2rem;
+          color: global.$light-text-color;
+        }
+
+        .projectRole {
+          font-size: 1.5rem;
+          color: global.$light-disabled-color;
+          text-align: right;
+        }
+
+        .projectMaskDuration {
+          font-size: 1.5rem;
+          color: global.$dark-disabled-color;
+          text-align: right;
+        }
+
       }
     }
   }
@@ -159,14 +221,63 @@
       line-height: 4rem;
 
       .introHeading {
-        line-height: 4rem;
+        font-size: 4rem;
+        line-height: 4.5rem;
       }
     }
   }
 
   .workSectionWrapper {
     .experienceWrapper {
-      font-size: 1.75rem;
+      .experienceMainText {
+        font-size: 1.75rem;
+      }
+
+      .experienceTableWrapper {
+        .experienceRowContainer {
+
+          .experienceRow,
+          .experienceMaskRow {
+            padding: 1.5rem;
+          }
+
+          .experienceName,
+          .experienceMaskName {
+            font-size: 1.5rem;
+          }
+
+          .experienceRole,
+          .experienceMaskDuration {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .projectWrapper {
+      .projectTitle {
+        font-size: 1.75rem;
+      }
+
+      .projectTableWrapper {
+        .projectRowContainer {
+
+          .projectRow,
+          .projectMaskRow {
+            padding: 1.5rem;
+          }
+
+          .projectName,
+          .projectMaskName {
+            font-size: 1.5rem;
+          }
+
+          .projectRole,
+          .projectMaskDuration {
+            font-size: 1rem;
+          }
+        }
+      }
     }
   }
 }
@@ -183,7 +294,11 @@
 
   .workSectionWrapper {
     .experienceWrapper {
-      font-size: 2.5rem;
+
+      .experienceMainText {
+        font-size: 2.5rem;
+      }
+
     }
   }
 }

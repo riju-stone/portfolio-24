@@ -3,7 +3,8 @@
 import React from "react";
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
-import { pp_nekkei, pp_nueue, space_grotesk } from "@/utils/fonts";
+import { motion } from "motion/react";
+import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
 import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
 import TextStaggerComponent from "@/components/text/TextStagger";
@@ -29,7 +30,7 @@ const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpiec
 I juggle front-end flair and back-end brains to make the web smarter, 
 faster and a lot less boring with style and statement - Mind of an engineer, heart of an artist...`;
 
-const expPhrase = `With close to 3 years of experience working with 
+const expPhrase = `With close to 3 years of experience working in 
 cross-functional teams and making deadlines sweat, my code is like my documentation:
 clean, clear and occasionally sprinkled with weird jokes.
 `
@@ -39,21 +40,84 @@ const experienceData = [
         id: "session-ai",
         name: "Session AI Inc.",
         role: "SWE II",
-        duration: "2.5 years"
+        duration: "2022 - ..."
     },
     {
         id: "simulacra-tech",
         name: "Simulacra Technologies",
-        role: "Freelancer",
-        duration: "7 months"
+        role: "Freelance",
+        duration: "2021 - 2022"
     },
     {
         id: "skill-academia",
         name: "Skill Academia",
         role: "SWE Intern",
-        duration: "6 months"
+        duration: "2021"
     }
 ]
+
+const projectsData = [
+    {
+        id: "portfolio",
+        name: "Portfolio",
+        link: "",
+        desc: "You're looking at it.",
+        stack: "next/sanity/gsap/motion"
+    },
+    {
+        id: "former",
+        name: "Former",
+        link: "",
+        desc: "A simple form builder",
+        stack: "next/tailwind/drizzle/postgres"
+    },
+    {
+        id: "chess",
+        name: "Chess",
+        link: "",
+        desc: "A minimalistic chess engine",
+        stack: "js/electron"
+    },
+    {
+        id: "caligator",
+        name: "Caligator",
+        link: "",
+        desc: "A simple yet smart calculator",
+        stack: "js/electron"
+    },
+    {
+        id: "rss",
+        name: "RSS Aggregator",
+        link: "",
+        desc: "A simple RSS aggregation system",
+        stack: "go/postgres"
+
+    },
+    {
+        id: "tasch",
+        name: "Tasch",
+        link: "",
+        desc: "A distributed task scheduler",
+        stack: "go/grpc/postgres"
+    },
+]
+
+const clipAnimation = {
+    initial: {
+        clipPath: "inset(50% 0)",
+        transition: {
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1]
+        }
+    },
+    hover: {
+        clipPath: "inset(0 0)",
+        transition: {
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1]
+        }
+    }
+}
 
 function HomePage() {
     return (
@@ -75,23 +139,36 @@ function HomePage() {
                             <div className={styles.experienceMainText}>{expPhrase}</div>
                             <div className={styles.experienceTableWrapper}>
                                 {experienceData.map((exp) => {
-                                    return <div key={exp.id} className={styles.experienceRowContainer}>
+                                    return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover">
                                         <div className={styles.experienceRow}>
                                             <div className={styles.experienceName}>{exp.name}</div>
                                             <div className={styles.experienceRole}>{exp.role}</div>
                                         </div>
-                                        <div className={styles.experienceMaskRow}>
-                                            <div className={styles.experienceName}>{exp.name}</div>
-                                            <div className={styles.experienceDuration}>{exp.duration}</div>
-                                        </div>
-                                    </div>
+                                        <motion.div className={styles.experienceMaskRow} variants={clipAnimation}>
+                                            <div className={styles.experienceMaskName}>{exp.name}</div>
+                                            <div className={styles.experienceMaskDuration}>{exp.duration}</div>
+                                        </motion.div>
+                                    </motion.div>
                                 })}
                             </div>
-                            {/* <div className={styles.experienceSubText}>Trying to be one of the few. Not one of the many...</div> */}
                         </div>
 
                         <div className={styles.projectWrapper}>
-                            <div className={styles.projectTitle}>Projects</div>
+                            <div className={styles.projectTitle}>Trying to be one of the few. Not one of the many...</div>
+                            <div className={styles.projectTableWrapper}>
+                                {projectsData.map((project) => {
+                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover">
+                                        <div className={styles.projectRow}>
+                                            <div className={styles.projectName}>{project.name}</div>
+                                            <div className={styles.projectRole}>{project.desc}</div>
+                                        </div>
+                                        <motion.div className={styles.projectMaskRow} variants={clipAnimation}>
+                                            <div className={styles.projectMaskName}>{project.name}</div>
+                                            <div className={styles.projectMaskDuration}>{project.stack}</div>
+                                        </motion.div>
+                                    </motion.div>
+                                })}
+                            </div>
                         </div>
                     </section>
                     {/* Contect Section */}
@@ -111,11 +188,12 @@ function HomePage() {
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
                             <a href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
-                            <a href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
+                            <a href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
-                            <a href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
+
+                            <a href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
                             <a href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
                             <a href="https://www.instagram.com/init_riju.dat"><TextDisperseComponent word="↗Insta" /></a>
                         </div>

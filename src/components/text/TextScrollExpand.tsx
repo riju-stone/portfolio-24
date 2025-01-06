@@ -24,8 +24,8 @@ function TextScrollExpandComponent({ word }: { word: string }) {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top end",
-                end: `+=${window.innerHeight * 3}`,
+                start: "top 20%",
+                end: `+=${window.innerHeight}`,
                 scrub: true,
             },
         });

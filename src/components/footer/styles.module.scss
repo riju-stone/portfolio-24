@@ -4,15 +4,21 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding: 1.2rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: global.$light-text-color;
+  left: 0;
+  right: 0;
   mix-blend-mode: difference;
   filter: invert(100%);
   opacity: 0.2;
+}
+
+.footerContainer {
+  position: relative;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: global.$light-text-color;
+
 }
