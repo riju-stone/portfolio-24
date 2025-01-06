@@ -23,7 +23,6 @@ const TextScrollRevealComponent = dynamic(
     { ssr: false },
 );
 
-
 const heroPhrase = ["Creative", SnakeGif, "&", "Full", DistortGif, "Stack", DotGif, "Developer"]
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
@@ -40,7 +39,7 @@ const experienceData = [
         id: "session-ai",
         name: "Session AI Inc.",
         role: "SWE II",
-        duration: "2022 - ..."
+        duration: "2022 - Present"
     },
     {
         id: "simulacra-tech",
@@ -113,6 +112,7 @@ const clipAnimation = {
     hover: {
         clipPath: "inset(0 0)",
         transition: {
+            delay: 0.2,
             duration: 0.5,
             ease: [0.22, 1, 0.36, 1]
         }
@@ -187,15 +187,16 @@ function HomePage() {
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
-                            <a href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
-                            <a href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
+                            <a target="_blank" href="https://drive.google.com/file/d/1DsP6VKBDvemPPCyn3FOtIfGiOH9SsPb8/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a>
+                            <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
+                            <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
 
-                            <a href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
-                            <a href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
-                            <a href="https://www.instagram.com/init_riju.dat"><TextDisperseComponent word="↗Insta" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
+                            <a target="_blank" href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
+                            <a target="_blank" href="https://www.instagram.com/init_riju.dat"><TextDisperseComponent word="↗Insta" /></a>
                         </div>
                     </section>
                 </div>
