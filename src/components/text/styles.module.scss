@@ -144,7 +144,8 @@
     line-height: 5rem;
 
     .staggerImageContainer {
-      display: none;
+      height: 3.5rem;
+      width: 4rem;
     }
 
   }
@@ -161,9 +162,17 @@
     }
   }
 
-  .textDisperseContainer {
-    font-size: 3.5rem;
+  .textExpandWrapper {
+    .replLetterGroup {
+      font-size: 6rem;
+      height: 7rem;
+    }
   }
+
+  .textDisperseContainer {
+    font-size: 3rem;
+  }
+
 }
 
 @media only screen and (min-width: 640px) and (max-width: 920px) {

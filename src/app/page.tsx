@@ -12,6 +12,7 @@ import TextStaggerComponent from "@/components/text/TextStagger";
 import DistortGif from "@/assets/gifs/distort.gif"
 import DotGif from "@/assets/gifs/spinning-dots.gif"
 import SnakeGif from "@/assets/gifs/snake.gif"
+import { useDevice } from "@/hooks/useDevice";
 
 const SkewScrollComponent = dynamic(
     () => import("@/components/scroll/Scroll"),
@@ -24,6 +25,7 @@ const TextScrollRevealComponent = dynamic(
 );
 
 const heroPhrase = ["Creative", SnakeGif, "&", "Full", DistortGif, "Stack", DotGif, "Developer"]
+const heroPhraseSmall = ["Creative", "&", SnakeGif, "Full", DistortGif, "Stack", DotGif, "Developer"]
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -120,13 +122,15 @@ const clipAnimation = {
 }
 
 function HomePage() {
+    const deviceType = useDevice()
+
     return (
         <main>
             <SkewScrollComponent>
                 <div className={styles.homePageWrapper}>
                     {/* Hero Section */}
                     <section className={styles.heroSectionWrapper}>
-                        <TextStaggerComponent text={heroPhrase} />
+                        <TextStaggerComponent text={deviceType == "mobile" ? heroPhraseSmall : heroPhrase} />
                     </section>
                     {/* About Section */}
                     <section className={styles.aboutSectionWrapper}>
@@ -157,7 +161,7 @@ function HomePage() {
                             <div className={styles.projectTitle}>Trying to be one of the few. Not one of the many...</div>
                             <div className={styles.projectTableWrapper}>
                                 {projectsData.map((project) => {
-                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover">
+                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover" whileFocus="hover">
                                         <div className={styles.projectRow}>
                                             <div className={styles.projectName}>{project.name}</div>
                                             <div className={styles.projectRole}>{project.desc}</div>
@@ -171,6 +175,7 @@ function HomePage() {
                             </div>
                         </div>
                     </section>
+
                     {/* Contect Section */}
                     <section
                         className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}

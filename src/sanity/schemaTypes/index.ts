@@ -3,5 +3,5 @@ import { post } from "../schemas/post";
 import { tag } from "../schemas/tag";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, tag],
+    types: [post, tag],
 };

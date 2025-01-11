@@ -20,5 +20,10 @@
   font-size: 1.2rem;
   font-weight: 400;
   color: global.$light-text-color;
+}
 
+@media only screen and (min-width: 250px) and (max-width: 639px) {
+  .footerContainer {
+    font-size: 1rem;
+  }
 }
