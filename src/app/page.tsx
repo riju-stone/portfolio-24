@@ -143,7 +143,7 @@ function HomePage() {
                             <div className={styles.experienceMainText}>{expPhrase}</div>
                             <div className={styles.experienceTableWrapper}>
                                 {experienceData.map((exp) => {
-                                    return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover">
+                                    return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <div className={styles.experienceRow}>
                                             <div className={styles.experienceName}>{exp.name}</div>
                                             <div className={styles.experienceRole}>{exp.role}</div>
@@ -161,7 +161,7 @@ function HomePage() {
                             <div className={styles.projectTitle}>Trying to be one of the few. Not one of the many...</div>
                             <div className={styles.projectTableWrapper}>
                                 {projectsData.map((project) => {
-                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover" whileFocus="hover">
+                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <div className={styles.projectRow}>
                                             <div className={styles.projectName}>{project.name}</div>
                                             <div className={styles.projectRole}>{project.desc}</div>
