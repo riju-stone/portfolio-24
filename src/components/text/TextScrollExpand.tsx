@@ -27,6 +27,7 @@ function TextScrollExpandComponent({ word }: { word: string }) {
                 start: "top 20%",
                 end: `+=${window.innerHeight}`,
                 scrub: true,
+                once: true
             },
         });
 

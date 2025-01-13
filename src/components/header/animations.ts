@@ -81,7 +81,7 @@ export const headerNameSeparatorAnim = {
         opacity: 1,
         rotateZ: 0,
         transition: {
-            delay: 1.5,
+            delay: 1,
             duration: 0.5,
         },
     },
@@ -95,7 +95,7 @@ export const headerNameMenuButtonAnim = {
         scale: 1,
         opacity: 1,
         transition: {
-            delay: 0.8,
+            delay: 0.4,
             duration: 0.2,
         },
     },
@@ -127,7 +127,7 @@ export const headerLinkAnim = {
         opacity: 1,
         transition: {
             duration: 0.4,
-            delay: 0.7 + i * 0.1,
+            delay: 0.5 + i * 0.1,
             ease: [0.68, -0.6, 0.32, 1.6],
         },
     }),

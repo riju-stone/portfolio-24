@@ -16,10 +16,8 @@ function LoaderComponent({ children }) {
     const [progressPercent, setProgressPercent] = useState(0);
 
     const phraseArray = [
-        "Hola",
-        "مرحبًا",
-        "γεια",
         "Ciao",
+        "مرحبًا",
         "Привет",
         "नमस्ते",
         "Hello",
@@ -29,7 +27,7 @@ function LoaderComponent({ children }) {
         if (phraseIndex === phraseArray.length - 1) return;
         setTimeout(() => {
             setPhraseIndex(phraseIndex + 1);
-        }, 800);
+        }, 1200);
     });
 
     useAnimationFrame(() => {
@@ -56,18 +54,22 @@ function LoaderComponent({ children }) {
                     animate="show"
                     exit="exit"
                 >
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={`greeting-${phraseIndex}`}
-                            className={styles.loadingMessage}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            {phraseArray[phraseIndex]}
-                        </motion.div>
-                    </AnimatePresence>
+
+                    <div className={styles.loadingMessageContainer}>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={`greeting-${phraseIndex}`}
+                                className={styles.loadingMessage}
+                                initial={{ y: 150, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -150, opacity: 0 }}
+                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                {phraseArray[phraseIndex]}
+                            </motion.div>
+
+                        </AnimatePresence>
+                    </div>
                     <div
                         className={styles.loadingPercent}
                     >

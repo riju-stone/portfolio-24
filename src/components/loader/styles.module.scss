@@ -17,13 +17,18 @@
   font-weight: 200;
 }
 
-.loadingMessage {
+.loadingMessageContainer {
   position: absolute;
   bottom: 1.5rem;
   left: 2rem;
-  font-size: 8rem;
-  font-weight: 500;
-  line-height: 8rem;
+  height: 10rem;
+  overflow-y: hidden;
+
+  .loadingMessage {
+    font-size: 7rem;
+    font-weight: 500;
+    line-height: 8rem;
+  }
 }
 
 .loadingPercent {
@@ -61,9 +66,12 @@
     top: 1.5rem;
   }
 
-  .loadingMessage {
-    font-size: 5rem;
-    bottom: 0;
+
+  .loadingMessageContainer {
+    .loadingMessage {
+      font-size: 5rem;
+      bottom: 0;
+    }
   }
 
   .loadingPercent {

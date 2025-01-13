@@ -4,6 +4,8 @@ import React from "react";
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
+import { Dot } from "lucide-react"
+
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
 import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
@@ -13,6 +15,7 @@ import DistortGif from "@/assets/gifs/distort.gif"
 import DotGif from "@/assets/gifs/spinning-dots.gif"
 import SnakeGif from "@/assets/gifs/snake.gif"
 import { useDevice } from "@/hooks/useDevice";
+import Link from "next/link";
 
 const SkewScrollComponent = dynamic(
     () => import("@/components/scroll/Scroll"),
@@ -61,36 +64,36 @@ const projectsData = [
     {
         id: "portfolio",
         name: "Portfolio",
-        link: "",
+        link: "https://www.github.com/riju-stone/portfolio-24",
         desc: "You're looking at it.",
         stack: "next/sanity/gsap/motion"
     },
     {
         id: "former",
         name: "Former",
-        link: "",
+        link: "https://www.github.com/riju-stone/former",
         desc: "A simple form builder",
         stack: "next/tailwind/drizzle/postgres"
     },
     {
         id: "chess",
         name: "Chess",
-        link: "",
+        link: "https://www.github.com/riju-stone/chess",
         desc: "A minimalistic chess engine",
         stack: "js/electron"
     },
     {
         id: "caligator",
         name: "Caligator",
-        link: "",
+        link: "https://www.github.com/riju-stone/caligator",
         desc: "A simple yet smart calculator",
         stack: "js/electron"
     },
     {
         id: "rss",
-        name: "RSS Aggregator",
-        link: "",
-        desc: "A simple RSS aggregation system",
+        name: "RSS",
+        link: "https://www.github.com/riju-stone/go-rss",
+        desc: "An RSS aggregator",
         stack: "go/postgres"
 
     },
@@ -137,11 +140,11 @@ function HomePage() {
                         <TextScrollRevealComponent phrase={aboutPhrase} />
                     </section>
                     {/* Work Section */}
-                    <section className={`${styles.workSectionWrapper} ${pp_nekkei.className}`}>
+                    <section className={styles.workSectionWrapper}>
                         <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
-                            <div className={styles.experienceMainText}>{expPhrase}</div>
-                            <div className={styles.experienceTableWrapper}>
+                            <div className={`${styles.experienceMainText} ${pp_nekkei.className}`}>{expPhrase}</div>
+                            <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
                                 {experienceData.map((exp) => {
                                     return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <div className={styles.experienceRow}>
@@ -158,18 +161,22 @@ function HomePage() {
                         </div>
 
                         <div className={styles.projectWrapper}>
-                            <div className={styles.projectTitle}>Trying to be one of the few. Not one of the many...</div>
+                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Trying to be one of the few. Not one of the many...</div>
                             <div className={styles.projectTableWrapper}>
                                 {projectsData.map((project) => {
                                     return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
-                                        <div className={styles.projectRow}>
-                                            <div className={styles.projectName}>{project.name}</div>
-                                            <div className={styles.projectRole}>{project.desc}</div>
-                                        </div>
-                                        <motion.div className={styles.projectMaskRow} variants={clipAnimation}>
-                                            <div className={styles.projectMaskName}>{project.name}</div>
-                                            <div className={styles.projectMaskDuration}>{project.stack}</div>
-                                        </motion.div>
+                                        <Link href={project.link} target="_blank">
+                                            <div className={`${styles.projectRow} ${pp_nekkei.className}`}>
+                                                <div className={styles.projectName}>{project.name}</div>
+                                                <div className={styles.projectRole}>{project.desc}</div>
+                                            </div>
+                                            <motion.div className={`${styles.projectMaskRow} ${pp_nekkei.className}`} variants={clipAnimation}>
+                                                <div className={styles.projectMaskName}>{project.name}</div>
+                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) => {
+                                                    return <div className={styles.stackContainer} key={`stack-${index}`}><Dot /><span>{stackName}</span></div>
+                                                })}</div>
+                                            </motion.div>
+                                        </Link>
                                     </motion.div>
                                 })}
                             </div>
