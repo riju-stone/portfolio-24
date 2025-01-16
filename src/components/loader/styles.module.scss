@@ -18,16 +18,17 @@
 }
 
 .loadingMessageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 1.5rem;
   left: 2rem;
-  height: 10rem;
-  overflow-y: hidden;
 
   .loadingMessage {
-    font-size: 7rem;
+    font-size: 10rem;
     font-weight: 500;
-    line-height: 8rem;
+    line-height: 9rem;
   }
 }
 

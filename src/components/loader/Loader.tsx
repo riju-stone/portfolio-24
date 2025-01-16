@@ -8,7 +8,6 @@ import { loadingScreenAnim, progressAnim } from "./animations";
 import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
-    // const env = process.env.NEXT_PUBLIC_ENV;
     const progressBarRef = useRef(null);
 
     const [loading, setLoading] = useState(true);
@@ -16,18 +15,44 @@ function LoaderComponent({ children }) {
     const [progressPercent, setProgressPercent] = useState(0);
 
     const phraseArray = [
-        "Ciao",
-        "مرحبًا",
-        "Привет",
-        "नमस्ते",
-        "Hello",
+        "Never",
+        "Lose",
+        "...",
+        "Win",
+        "Or",
+        "Learn..."
     ];
+
+    const greetingAnimation = {
+        "initial": {
+            y: 150,
+            opacity: 0
+        },
+        "animate": (i: number) => ({
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.3,
+                ease: [0.22, 1, 0.36, 1],
+                delay: 0.03 * i
+            }
+        }),
+        "exit": (i: number) => ({
+            y: -150,
+            opacity: 0,
+            transition: {
+                duration: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.03 * i
+            }
+        })
+    }
 
     useEffect(() => {
         if (phraseIndex === phraseArray.length - 1) return;
         setTimeout(() => {
             setPhraseIndex(phraseIndex + 1);
-        }, 1200);
+        }, 1000);
     });
 
     useAnimationFrame(() => {
@@ -54,20 +79,17 @@ function LoaderComponent({ children }) {
                     animate="show"
                     exit="exit"
                 >
-
                     <div className={styles.loadingMessageContainer}>
                         <AnimatePresence mode="wait">
-                            <motion.div
-                                key={`greeting-${phraseIndex}`}
-                                className={styles.loadingMessage}
-                                initial={{ y: 150, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: -150, opacity: 0 }}
-                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                {phraseArray[phraseIndex]}
-                            </motion.div>
-
+                            {phraseArray[phraseIndex].split("").map((letter, idx) => {
+                                return <motion.div className={styles.loadingMessage} key={`greeting-letter-${phraseArray[phraseIndex]}-${letter}-${idx}`}
+                                    variants={greetingAnimation}
+                                    initial="initial"
+                                    animate="animate"
+                                    exit="exit"
+                                    custom={idx}
+                                >{letter}</motion.div>
+                            })}
                         </AnimatePresence>
                     </div>
                     <div
@@ -93,8 +115,9 @@ function LoaderComponent({ children }) {
                 </motion.div>
             ) : (
                 <>{children}</>
-            )}
-        </AnimatePresence>
+            )
+            }
+        </AnimatePresence >
     );
 }
 
