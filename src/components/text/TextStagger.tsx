@@ -22,10 +22,10 @@ const textStaggerAnim = {
 
 const imageStaggerAnim = {
     hidden: {
-        x: "-100%"
+        y: "100%"
     },
     show: {
-        x: 0,
+        y: 0,
         transition: {
             ease: [0.22, 1, 0.36, 1],
             duration: 0.6,

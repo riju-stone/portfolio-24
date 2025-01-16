@@ -25,7 +25,7 @@ function LoaderComponent({ children }) {
 
     const greetingAnimation = {
         "initial": {
-            y: 150,
+            y: 50,
             opacity: 0
         },
         "animate": (i: number) => ({
@@ -38,7 +38,7 @@ function LoaderComponent({ children }) {
             }
         }),
         "exit": (i: number) => ({
-            y: -150,
+            y: -50,
             opacity: 0,
             transition: {
                 duration: 0.3,
