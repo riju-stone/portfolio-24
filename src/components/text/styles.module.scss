@@ -27,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
+  max-width: 1320px;
   color: global.$dark-text-color;
   font-size: 12rem;
   font-weight: 600;
@@ -66,7 +67,7 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 500;
   color: global.$dark-text-color;
 

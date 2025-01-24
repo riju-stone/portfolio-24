@@ -199,7 +199,7 @@ function HomePage() {
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1DsP6VKBDvemPPCyn3FOtIfGiOH9SsPb8/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a>
+                            <a target="_blank" href="https://drive.google.com/file/d/1oABZdgSt0rzR5rCghPk5-bBVCxpuWTGb/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a>
                             <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
                             <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
                         </div>
