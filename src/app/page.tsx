@@ -34,7 +34,7 @@ const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpiec
 I juggle front-end flair and back-end brains to make the web smarter, 
 faster and a lot less boring with style and statement - Mind of an engineer, heart of an artist...`;
 
-const expPhrase = `With close to 3 years of experience working in 
+const expPhrase = `With a little over 2 years of experience working in 
 cross-functional teams and making deadlines sweat, my code is like my documentation:
 clean, clear and occasionally sprinkled with weird jokes.
 `
