@@ -46,7 +46,7 @@ function HeaderComponent() {
     return (
         <React.Fragment>
             <div
-                className={`${styles.headerWrapper} ${checkActivePath("/studio/structure") ? styles.hideHeader : null}`}
+                className={`${styles.headerWrapper} ${checkActivePath("/studio/") ? styles.hideHeader : null}`}
             >
                 <div
                     className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
@@ -69,7 +69,7 @@ function HeaderComponent() {
                                     animate={headerState === "collapsed" ? "collapse" : "expand"}
                                     whileHover="hover"
                                 >
-                                    <Link href="/studio/structure">&#10022;</Link>
+                                    <Link href="/studio">&#10022;</Link>
                                 </motion.div>
                                 <motion.div
                                     className={styles.heroInitialLetter}

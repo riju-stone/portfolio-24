@@ -22,10 +22,10 @@ const textStaggerAnim = {
 
 const imageStaggerAnim = {
     hidden: {
-        y: "100%"
+        scale: 0
     },
     show: {
-        y: 0,
+        scale: 1,
         transition: {
             ease: [0.22, 1, 0.36, 1],
             duration: 0.6,
@@ -50,7 +50,7 @@ function TextStaggerComponent({ text }) {
                                 custom={index}>{letter}</motion.div>
                         }) : <motion.div variants={textStaggerAnim} initial="hidden" animate="show">
                             <motion.div className={styles.staggerImageContainer} variants={imageStaggerAnim} initial="hidden" animate="show">
-                                <Image src={word} className={styles.staggerGif} alt="hero-gif" />
+                                <Image src={word} unoptimized className={styles.staggerGif} alt="hero-gif" />
                             </motion.div>
                         </motion.div>}
                     </div>
