@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Space_Grotesk, Inter, Roboto_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, Roboto_Mono, Yellowtail } from "next/font/google";
 
 export const pp_nueue = localFont({
     src: [
@@ -69,5 +69,10 @@ export const space_grotesk = Space_Grotesk({
 export const roboto_mono = Roboto_Mono({
     subsets: ["latin"],
     variable: "--font-roboto-mono"
+})
+
+export const yellow_tail = Yellowtail({
+    subsets: ["latin"],
+    weight: "400"
 })
 
