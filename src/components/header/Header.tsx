@@ -6,7 +6,8 @@ import { space_grotesk } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
-import {
+import
+{
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
     headerNameMenuButtonAnim,
@@ -26,7 +27,8 @@ import { useActivePath } from "@/utils/path";
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
 
-function HeaderComponent() {
+function HeaderComponent()
+{
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
@@ -34,11 +36,14 @@ function HeaderComponent() {
     const { scrollY } = useScroll();
     const [headerState, setHeaderState] = useState("expanded");
 
-    useMotionValueEvent(scrollY, "change", (scrollValue) => {
+    useMotionValueEvent(scrollY, "change", (scrollValue) =>
+    {
         toggleMenu(false);
-        if (scrollValue < 120) {
+        if (scrollValue < 120)
+        {
             setHeaderState("expanded");
-        } else {
+        } else
+        {
             setHeaderState("collapsed");
         }
     });
@@ -59,7 +64,8 @@ function HeaderComponent() {
                     >
                         {heroInitials[0]}
                     </motion.div>
-                    {heroNonInitials.split("").map((letter, index) => {
+                    {heroNonInitials.split("").map((letter, index) =>
+                    {
                         return letter == " " ? (
                             <React.Fragment key={`hero-initial-letter${index}`}>
                                 <motion.div
@@ -129,46 +135,27 @@ function HeaderComponent() {
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => toggleMenu(!menuOpen)}
             >
-                <motion.svg
-                    role="Menu Button"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#171810"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-menu"
+                <motion.div
+                    className={styles.headerMenuButtonLines}
                     variants={menuButtonAnimation}
                     animate={menuOpen ? "open" : "close"}
                 >
-                    <motion.line
-                        variants={menuMiddleAnim}
-                        animate={menuOpen ? "close" : "open"}
-                        x1="4"
-                        x2="20"
-                        y1="12"
-                        y2="12"
-                    />
-                    <motion.line
+                    <motion.div
+                        className={styles.headerMenuButtonLine}
                         variants={menuUpperAnim}
                         animate={menuOpen ? "close" : "open"}
-                        x1="4"
-                        x2="20"
-                        y1="6"
-                        y2="6"
                     />
-                    <motion.line
+                    <motion.div
+                        className={styles.headerMenuButtonLine}
+                        variants={menuMiddleAnim}
+                        animate={menuOpen ? "close" : "open"}
+                    />
+                    <motion.div
+                        className={styles.headerMenuButtonLine}
                         variants={menuLowerAnim}
                         animate={menuOpen ? "close" : "open"}
-                        x1="4"
-                        x2="20"
-                        y1="18"
-                        y2="18"
                     />
-                </motion.svg>
+                </motion.div>
             </motion.button>
         </React.Fragment>
     );

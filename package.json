@@ -10,9 +10,11 @@
     },
     "dependencies": {
         "@gsap/react": "^2.1.2",
-        "@sanity/client": "^6.28.0",
+        "@sanity/client": "^6.28.3",
+        "@sanity/icons": "^3.7.0",
         "@sanity/image-url": "^1.1.0",
-        "@sanity/vision": "^3.75.1",
+        "@sanity/ui": "^2.15.2",
+        "@sanity/vision": "^3.78.1",
         "@studio-freight/lenis": "^1.0.42",
         "@vercel/analytics": "^1.5.0",
         "@vercel/speed-insights": "^1.2.0",
@@ -20,21 +22,21 @@
         "lucide-react": "^0.439.0",
         "motion": "^11.18.2",
         "next": "^14.2.24",
-        "next-sanity": "^9.8.58",
+        "next-sanity": "^9.9.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "sanity": "^3.75.1",
+        "sanity": "^3.78.1",
         "sanity-plugin-markdown": "^4.1.2",
-        "sass": "^1.85.0",
+        "sass": "^1.85.1",
         "styled-components": "^6.1.15",
         "zustand": "^4.5.6"
     },
     "devDependencies": {
-        "@types/node": "^20.17.19",
+        "@types/node": "^20.17.23",
         "@types/react": "^18.3.18",
         "@types/react-dom": "^18.3.5",
         "eslint": "^8.57.1",
         "eslint-config-next": "14.2.8",
-        "typescript": "^5.7.3"
+        "typescript": "^5.8.2"
     }
 }

@@ -65,7 +65,7 @@ function LoaderComponent({ children }) {
     });
 
     return (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="sync">
             {loading ? (
                 <motion.div
                     key="loader"

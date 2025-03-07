@@ -24,7 +24,7 @@ function BackgroundComponent() {
     let circleAnimation: any = null;
     let shouldStartAnimation = true;
 
-    const initializeAnimation = () => {
+    const initializeAnimation = () => { 
       circleAnimation = Circle.initializeCanvas(ctx, isDark);
     };
 
