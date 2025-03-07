@@ -1,0 +1,12 @@
+@use "../../app/globals.scss" as global;
+
+.lazyLoaderText {
+	font-size: 6rem;
+	color: global.$dark-disabled-color;
+}
+
+@media only screen and (min-width: 240px) and (max-width: 639px) {
+	.lazyLoaderText {
+		font-size: 2rem;
+	}
+}
