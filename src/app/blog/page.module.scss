@@ -4,6 +4,52 @@
 	height: 100dvh;
 	width: 100dvw;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 0 2rem;
+}
+
+.pageTitle {
+	color: global.$dark-text-color;
+	font-size: 5rem;
+}
+
+.postsGrid {
+	padding: 0 4rem;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+
+	.postCard {
+		width: 50%;
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+
+	.postDate {
+		color: global.$pale-orange-color;
+	}
+
+	.postTitle {
+		font-size: 2.5rem;
+		color: global.$dark-text-color;
+	}
+
+	.postExcerpt {
+		font-size: 1.5rem;
+		color: global.$dark-disabled-color;
+	}
+
+	.tagContainer {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 1rem;
+		color: global.$pale-orange-color;
+	}
 }

@@ -48,10 +48,10 @@ function HeaderComponent()
         }
     });
 
-    return (
+    return checkActivePath("/studio") ? null : (
         <React.Fragment>
             <div
-                className={`${styles.headerWrapper} ${checkActivePath("/studio/") ? styles.hideHeader : null}`}
+                className={`${styles.headerWrapper}`}
             >
                 <div
                     className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}

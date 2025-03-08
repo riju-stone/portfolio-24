@@ -1,0 +1,27 @@
+@use "../../globals.scss" as global;
+
+.postContainer {
+	padding: 5rem;
+}
+
+.postHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.postDate {
+		color: global.$dark-disabled-color;
+	}
+
+	.postTitle {
+		color: global.$dark-text-color;
+		font-size: 4rem;
+	}
+
+	.tagContainer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+        gap: 1rem;
+	}
+}
