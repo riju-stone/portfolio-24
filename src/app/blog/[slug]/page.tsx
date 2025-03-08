@@ -64,23 +64,25 @@ function BlogPostPage({ params }: { params: { slug: string } })
             <SkewScrollComponent>
                 <article className={styles.postContainer} style={{ color: "#fff" }}>
                     <header className={styles.postHeader}>
-                        <h1 className={`${styles.postTitle} ${space_grotesk.className}`}>{post.title}</h1>
-                        <time className={`${styles.postDate} ${pp_nekkei.className}`}>
-                            {new Date(post.publishedAt).toLocaleDateString()}
-                        </time>
-                        {post.tags?.length > 0 && (
-                            <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
-                                {post.tags.map((tag: string) => (
-                                    <Link
-                                        key={tag}
-                                        href={`/blog/tags/${tag.toLowerCase()}`}
-                                        className={styles.tag}
-                                    >
-                                        {tag}
-                                    </Link>
-                                ))}
-                            </div>
-                        )}
+                        <h1 className={`${styles.postTitle} ${pp_nueue.className}`}>{post.title}</h1>
+                        <div className={styles.postMetadataWrapper}>
+                            <time className={`${styles.postDate} ${pp_nekkei.className}`}>
+                                {new Date(post.publishedAt).toLocaleDateString()}
+                            </time>
+                            {post.tags?.length > 0 && (
+                                <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
+                                    {post.tags.map((tag: string) => (
+                                        <Link
+                                            key={tag}
+                                            href={`/blog/tags/${tag.toLowerCase()}`}
+                                            className={styles.tag}
+                                        >
+                                            {tag}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </header>
 
                     <section className={`${styles.postContent} ${inter.className}`}>

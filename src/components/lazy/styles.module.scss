@@ -1,8 +1,10 @@
 @use "../../app/globals.scss" as global;
 
 .lazyLoaderText {
-	font-size: 6rem;
+	font-size: 5rem;
+	width: 85%;
 	color: global.$dark-disabled-color;
+	text-align: center;
 }
 
 @media only screen and (min-width: 240px) and (max-width: 639px) {

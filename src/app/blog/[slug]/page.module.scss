@@ -9,6 +9,13 @@
 	justify-content: space-between;
 	align-items: center;
 
+	.postMetadataWrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-end;
+	}
+
 	.postDate {
 		color: global.$dark-disabled-color;
 	}
@@ -22,6 +29,10 @@
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
-        gap: 1rem;
+		gap: 1rem;
+
+		.tag {
+			color: global.$pale-orange-color;
+		}
 	}
 }
