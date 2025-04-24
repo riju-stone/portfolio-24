@@ -15,7 +15,7 @@ import "highlight.js/styles/github.css";
 
 import styles from "./page.module.scss"
 import LazyTextComponent from '@/components/lazy/Lazy'
-import { inter, pp_nekkei, pp_nueue, space_grotesk } from '@/utils/fonts'
+import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts'
 
 function BlogPostPage({ params }: { params: { slug: string } })
 {

@@ -36,3 +36,25 @@
 		}
 	}
 }
+
+.postContent {
+	pre {
+		padding: 2px 4px;
+		filter: invert(1);
+		width: fit-content;
+		border-radius: 4px;
+		cursor: text;
+	}
+
+	code {
+		user-select: all;
+		padding: 1px 4px;
+		border-radius: 4px;
+		background-color: #d8d8d8;
+		color: global.$light-text-color;
+	}
+
+	a {
+		color: global.$pale-orange-color;
+	}
+}

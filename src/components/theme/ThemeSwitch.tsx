@@ -7,19 +7,21 @@ import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";
 
-function ThemeSwitchComponent({ isMenuOpen }) {
+function ThemeSwitchComponent({ isMenuOpen })
+{
     const theme = useThemeStore((state) => state.theme);
     const switchRef = useRef(null);
     const toggleTheme = useThemeStore((state) => state.changeTheme);
     const setSwitchPos = useThemeStore((state) => state.calibrateThemeTogglePos);
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         const switchPos = switchRef.current!.getBoundingClientRect();
         // Offsetting the center of the circle to the center of the switch
         switchPos.x = switchPos.x + 12.5;
         switchPos.y = switchPos.y + 12.5;
         setSwitchPos(switchPos);
-    }, []);
+    });
 
     return (
         <motion.div

@@ -7,7 +7,8 @@ import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
 import { loadingScreenAnim, progressAnim } from "./animations";
 import { pp_nekkei, yellow_tail } from "@/utils/fonts";
 
-function LoaderComponent({ children }) {
+function LoaderComponent({ children })
+{
     const progressBarRef = useRef(null);
 
     const [loading, setLoading] = useState(true);
@@ -44,16 +45,20 @@ function LoaderComponent({ children }) {
         }
     }
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         if (phraseIndex === phraseArray.length - 1) return;
-        setTimeout(() => {
+        setTimeout(() =>
+        {
             setPhraseIndex(phraseIndex + 1);
         }, 2000);
     });
 
-    useAnimationFrame(() => {
+    useAnimationFrame(() =>
+    {
         let progressPos = 0;
-        if (progressBarRef.current) {
+        if (progressBarRef.current)
+        {
             progressPos = progressBarRef.current.getBoundingClientRect().left;
             progressPos = Math.floor(Math.abs(progressPos));
 
@@ -77,7 +82,8 @@ function LoaderComponent({ children }) {
                 >
                     <div className={styles.loadingMessageContainer}>
                         <AnimatePresence mode="wait">
-                            {phraseArray[phraseIndex].split(" ").map((word, idx) => {
+                            {phraseArray[phraseIndex].split(" ").map((word, idx) =>
+                            {
                                 return <motion.div className={`${styles.loadingMessage} ${yellow_tail.className}`} key={`greeting-letter-${phraseArray[phraseIndex]}- ${word} -${idx} `}
                                     variants={greetingAnimation}
                                     initial="initial"

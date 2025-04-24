@@ -7,12 +7,15 @@ import { roboto_mono } from "@/utils/fonts";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-function TextScrollExpandComponent({ word }: { word: string }) {
+function TextScrollExpandComponent({ word }: { word: string })
+{
     const containerRef = useRef();
     const letterRefs = useRef([]);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
+    useEffect(() =>
+    {
+        const ctx = gsap.context(() =>
+        {
             gsap.registerPlugin(ScrollTrigger);
             initAnimation();
         });
@@ -20,14 +23,15 @@ function TextScrollExpandComponent({ word }: { word: string }) {
         return () => ctx.revert();
     }, []);
 
-    const initAnimation = () => {
+    const initAnimation = () =>
+    {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top 20%",
                 end: `+=${window.innerHeight}`,
                 scrub: true,
-                once: true
+                once: false
             },
         });
 
@@ -42,9 +46,11 @@ function TextScrollExpandComponent({ word }: { word: string }) {
         });
     };
 
-    const replLetters = (letter: string, count: number) => {
+    const replLetters = (letter: string, count: number) =>
+    {
         const replLetters = [];
-        for (let i = 0; i <= count - 1; i++) {
+        for (let i = 0; i <= count - 1; i++)
+        {
             replLetters.push(
                 <div
                     key={`repl-letter ${letter}-${i}`}
@@ -59,15 +65,18 @@ function TextScrollExpandComponent({ word }: { word: string }) {
         return replLetters;
     };
 
-    const splitChars = (word: string, replCount: number = 9) => {
+    const splitChars = (word: string, replCount: number = 9) =>
+    {
         const replWordComponent = [];
 
-        word.split("").forEach((letter: string, index: number) => {
+        word.split("").forEach((letter: string, index: number) =>
+        {
             replWordComponent.push(
                 <div
                     key={`repl-letter-group-${index}`}
                     className={styles.replLetterGroup}
-                    ref={(e) => {
+                    ref={(e) =>
+                    {
                         letterRefs.current.push(e);
                     }}
                 >

@@ -108,23 +108,23 @@ const projectsData = [
 
 const clipAnimation = {
     initial: {
-        clipPath: "inset(50% 0)",
+        clipPath: "inset(100% 0px 0px)",
         transition: {
             duration: 0.5,
-            ease: [0.22, 1, 0.36, 1]
+            ease: [0.22, 1, 0.36, 1],
         }
     },
     hover: {
-        clipPath: "inset(0 0)",
+        clipPath: "inset(0% 0px 0px)",
         transition: {
-            delay: 0.2,
             duration: 0.5,
             ease: [0.22, 1, 0.36, 1]
         }
     }
 }
 
-function HomePage() {
+function HomePage()
+{
     const deviceType = useDevice()
 
     return (
@@ -145,7 +145,8 @@ function HomePage() {
                         <div className={styles.experienceWrapper}>
                             <div className={`${styles.experienceMainText} ${pp_nekkei.className}`}>{expPhrase}</div>
                             <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
-                                {experienceData.map((exp) => {
+                                {experienceData.map((exp) =>
+                                {
                                     return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <div className={styles.experienceRow}>
                                             <div className={styles.experienceName}>{exp.name}</div>
@@ -163,7 +164,8 @@ function HomePage() {
                         <div className={styles.projectWrapper}>
                             <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Trying to be one of the few. Not one of the many...</div>
                             <div className={styles.projectTableWrapper}>
-                                {projectsData.map((project) => {
+                                {projectsData.map((project) =>
+                                {
                                     return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <Link href={project.link} target="_blank">
                                             <div className={`${styles.projectRow} ${pp_nekkei.className}`}>
@@ -172,7 +174,8 @@ function HomePage() {
                                             </div>
                                             <motion.div className={`${styles.projectMaskRow} ${pp_nekkei.className}`} variants={clipAnimation}>
                                                 <div className={styles.projectMaskName}>{project.name}</div>
-                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) => {
+                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) =>
+                                                {
                                                     return <div className={styles.stackContainer} key={`stack-${index}`}><Dot /><span>{stackName}</span></div>
                                                 })}</div>
                                             </motion.div>
@@ -208,7 +211,6 @@ function HomePage() {
 
                             <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
                             <a target="_blank" href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
-                            <a target="_blank" href="https://www.instagram.com/init_riju.dat"><TextDisperseComponent word="↗Insta" /></a>
                         </div>
                     </section>
                 </div>
