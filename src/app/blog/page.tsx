@@ -92,6 +92,7 @@ function BlogsPage()
                                                 </div>
                                             </Link>
                                         </article>
+
                                     ))}
                                 </div>
                             </React.Fragment>
