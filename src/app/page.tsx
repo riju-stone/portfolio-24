@@ -14,7 +14,6 @@ import TextStaggerComponent from "@/components/text/TextStagger";
 import DistortGif from "@/assets/gifs/distort.gif"
 import DotGif from "@/assets/gifs/spinning-dots.gif"
 import SnakeGif from "@/assets/gifs/snake.gif"
-import { useDevice } from "@/hooks/useDevice";
 import Link from "next/link";
 
 const SkewScrollComponent = dynamic(
@@ -33,8 +32,8 @@ const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpiec
 I juggle front-end flair and back-end brains to make the web smarter, 
 faster and a lot less boring with style and statement - Mind of an engineer, heart of an artist...`;
 
-const expPhrase = `With a little over 2 years of experience working in 
-cross-functional teams and making deadlines sweat, my code is like my documentation:
+const expPhrase = `With close to 3 years of experience working in 
+cross-functional teams and making deadlines sweat, my code is like my documentation -
 clean, clear and occasionally sprinkled with weird jokes.
 `
 
@@ -72,7 +71,7 @@ const projectsData = [
         name: "Former",
         link: "https://www.github.com/riju-stone/former",
         desc: "A simple form builder",
-        stack: "next/tailwind/drizzle/postgres"
+        stack: "next/tailwind/drizzle/redis/postgres"
     },
     {
         id: "chess",
@@ -97,11 +96,11 @@ const projectsData = [
 
     },
     {
-        id: "tasch",
-        name: "Tasch",
+        id: "sevin",
+        name: "sevin",
         link: "",
         desc: "A distributed task scheduler",
-        stack: "go/grpc/postgres"
+        stack: "go/postgres/redis/aws"
     },
 ]
 
@@ -158,7 +157,7 @@ function HomePage() {
                         </div>
 
                         <div className={styles.projectWrapper}>
-                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Trying to be one of the few. Not one of the many...</div>
+                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Making my life easier, one project at a time. If it helps you too, well that's just a bonus...</div>
                             <div className={styles.projectTableWrapper}>
                                 {projectsData.map((project) => {
                                     return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
@@ -196,7 +195,7 @@ function HomePage() {
                         </div>
 
                         <div className={`${styles.introline} ${pp_nekkei.className}`}>
-                            <a target="_blank" href="https://drive.google.com/file/d/1oABZdgSt0rzR5rCghPk5-bBVCxpuWTGb/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a>
+                            {/* <a target="_blank" href="https://drive.google.com/file/d/1oABZdgSt0rzR5rCghPk5-bBVCxpuWTGb/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a> */}
                             <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
                             <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
                         </div>

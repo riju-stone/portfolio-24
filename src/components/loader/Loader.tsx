@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
 import { loadingScreenAnim, progressAnim } from "./animations";
-import { pp_nekkei, yellow_tail } from "@/utils/fonts";
+import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
     const progressBarRef = useRef(null);
@@ -75,7 +75,7 @@ function LoaderComponent({ children }) {
                     animate="show"
                     exit="exit"
                 >
-                    <div className={styles.loadingMessageContainer}>
+                    {/* <div className={styles.loadingMessageContainer}>
                         <AnimatePresence mode="popLayout">
                             {phraseArray[phraseIndex].split(" ").map((word, idx) => {
                                 return <motion.div className={`${styles.loadingMessage} ${yellow_tail.className}`} key={`greeting-letter-${phraseArray[phraseIndex]}- ${word} -${idx} `}
@@ -87,7 +87,7 @@ function LoaderComponent({ children }) {
                                 >{word}</motion.div>
                             })}
                         </AnimatePresence>
-                    </div>
+                    </div> */}
                     <div
                         className={`${styles.loadingPercent} ${pp_nekkei.className} `}
                     >

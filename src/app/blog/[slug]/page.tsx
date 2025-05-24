@@ -7,38 +7,33 @@ import Link from 'next/link'
 import Markdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from "rehype-highlight";
-import rehypeVideo from "rehype-video"
-import rehypeKatex from 'rehype-katex'
-import remarkMath from 'remark-math'
-import rehypeStringify from "rehype-stringify"
+import rehypeVideo from "rehype-video";
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import rehypeStringify from "rehype-stringify";
 import "highlight.js/styles/github.css";
 
-import styles from "./page.module.scss"
-import LazyTextComponent from '@/components/lazy/Lazy'
-import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts'
+import styles from "./page.module.scss";
+import LazyTextComponent from '@/components/lazy/Lazy';
+import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
 
-function BlogPostPage({ params }: { params: { slug: string } })
-{
+function BlogPostPage({ params }: { params: { slug: string } }) {
     const [post, setPost] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    useEffect(() =>
-    {
-        getPost(params.slug).then(data =>
-        {
+    useEffect(() => {
+        getPost(params.slug).then(data => {
             console.log(data)
             setPost(data);
             setLoading(false);
-        }).catch(error =>
-        {
+        }).catch(error => {
             setError(error);
             setLoading(false);
         })
     }, [params.slug])
 
-    if (loading)
-    {
+    if (loading) {
         return (
             <main>
                 <div className={styles.blogsPageWrapper}>
@@ -48,8 +43,7 @@ function BlogPostPage({ params }: { params: { slug: string } })
         );
     }
 
-    if (error)
-    {
+    if (error) {
         return (
             <main>
                 <div className={styles.blogsPageWrapper}>

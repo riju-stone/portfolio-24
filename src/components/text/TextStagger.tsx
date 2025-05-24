@@ -6,7 +6,6 @@ import { motion } from "motion/react"
 import styles from "./styles.module.scss"
 import { pp_nueue } from '@/utils/fonts'
 import Image from 'next/image'
-import { useDevice } from '@/hooks/useDevice'
 
 // Optimized animation variants with better performance
 const textStaggerAnim = {
@@ -57,7 +56,6 @@ interface TextStaggerComponentProps {
 }
 
 function TextStaggerComponent({ text }: TextStaggerComponentProps) {
-    const deviceType = useDevice();
     // Memoize the text processing to prevent unnecessary re-renders
     const processedText = useMemo(() => {
         return text.map((word, idx) => ({
