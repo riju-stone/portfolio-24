@@ -5,7 +5,7 @@
 	position: fixed;
 	top: 0;
 	box-sizing: border-box;
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -94,9 +94,11 @@
 		&:nth-child(1) {
 			top: 6px;
 		}
+
 		&:nth-child(2) {
 			top: 12px;
 		}
+
 		&:nth-child(3) {
 			top: 18px;
 		}

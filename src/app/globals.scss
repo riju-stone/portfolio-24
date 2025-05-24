@@ -16,6 +16,14 @@ $dark-bg-color: #0c0c0c;
   margin: 0;
   padding: 0;
 
+  // Better text rendering
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Touch optimization
+  touch-action: manipulation;
+
   box-sizing: border-box;
   text-size-adjust: 100%;
 

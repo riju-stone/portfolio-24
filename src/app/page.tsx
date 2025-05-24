@@ -28,7 +28,6 @@ const TextScrollRevealComponent = dynamic(
 );
 
 const heroPhrase = ["Creative", SnakeGif, "&", "Full", DistortGif, "Stack", DotGif, "Developer"]
-const heroPhraseSmall = ["Creative", "&", SnakeGif, "Full", DistortGif, "Stack", DotGif, "Developer"]
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -123,9 +122,7 @@ const clipAnimation = {
     }
 }
 
-function HomePage()
-{
-    const deviceType = useDevice()
+function HomePage() {
 
     return (
         <main>
@@ -133,7 +130,7 @@ function HomePage()
                 <div className={styles.homePageWrapper}>
                     {/* Hero Section */}
                     <section className={styles.heroSectionWrapper}>
-                        <TextStaggerComponent text={deviceType == "mobile" ? heroPhraseSmall : heroPhrase} />
+                        <TextStaggerComponent text={heroPhrase} />
                     </section>
                     {/* About Section */}
                     <section className={styles.aboutSectionWrapper}>
@@ -145,8 +142,7 @@ function HomePage()
                         <div className={styles.experienceWrapper}>
                             <div className={`${styles.experienceMainText} ${pp_nekkei.className}`}>{expPhrase}</div>
                             <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
-                                {experienceData.map((exp) =>
-                                {
+                                {experienceData.map((exp) => {
                                     return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <div className={styles.experienceRow}>
                                             <div className={styles.experienceName}>{exp.name}</div>
@@ -164,8 +160,7 @@ function HomePage()
                         <div className={styles.projectWrapper}>
                             <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Trying to be one of the few. Not one of the many...</div>
                             <div className={styles.projectTableWrapper}>
-                                {projectsData.map((project) =>
-                                {
+                                {projectsData.map((project) => {
                                     return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
                                         <Link href={project.link} target="_blank">
                                             <div className={`${styles.projectRow} ${pp_nekkei.className}`}>
@@ -174,8 +169,7 @@ function HomePage()
                                             </div>
                                             <motion.div className={`${styles.projectMaskRow} ${pp_nekkei.className}`} variants={clipAnimation}>
                                                 <div className={styles.projectMaskName}>{project.name}</div>
-                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) =>
-                                                {
+                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) => {
                                                     return <div className={styles.stackContainer} key={`stack-${index}`}><Dot /><span>{stackName}</span></div>
                                                 })}</div>
                                             </motion.div>
