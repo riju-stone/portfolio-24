@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import styles from "./styles.module.scss";
 import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
@@ -14,7 +14,7 @@ function LoaderComponent({ children }) {
     const [progressPercent, setProgressPercent] = useState("0");
 
     const getPercentPosition = (percentStr: string) => {
-        let percent: number = Number(percentStr);
+        const percent: number = Number(percentStr);
         return Math.min(Math.max(percent - 5, 0), 84) + "%";
     }
 
@@ -50,7 +50,7 @@ function LoaderComponent({ children }) {
                         transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1], delay: 0.2 }}
                         className={`${styles.loadingPercent} ${pp_nekkei.className}`}>
                         {progressPercent.split("").map((letter, idx) => (
-                            <AnimatePresence mode="wait">
+                            <AnimatePresence mode="wait" key={`loading-digit-${idx}`}>
                                 <motion.span
                                     key={`loading-digit-${letter}-${idx}`}
                                     className={styles.percentDigit}
