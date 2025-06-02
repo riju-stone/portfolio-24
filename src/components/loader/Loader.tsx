@@ -11,45 +11,12 @@ function LoaderComponent({ children }) {
     const progressBarRef = useRef(null);
 
     const [loading, setLoading] = useState(true);
-    const [phraseIndex, setPhraseIndex] = useState(0);
-    const [progressPercent, setProgressPercent] = useState(0);
+    const [progressPercent, setProgressPercent] = useState("0");
 
-    const phraseArray = [
-        "Never Lose",
-        "Win or Learn",
-    ];
-
-    const greetingAnimation = {
-        "initial": {
-            // y: 50,
-            opacity: 0
-        },
-        "animate": (i: number) => ({
-            // y: 0,
-            opacity: 1,
-            transition: {
-                duration: 1.8,
-                // ease: [0.22, 1, 0.36, 1],
-                delay: 0.65 * i
-            }
-        }),
-        "exit": {
-            // y: -50,
-            opacity: 0,
-            transition: {
-                duration: 0.8,
-                // ease: [0.16, 1, 0.3, 1],
-                // delay: 0.3 * i
-            }
-        }
+    const getPercentPosition = (percentStr: string) => {
+        let percent: number = Number(percentStr);
+        return Math.min(Math.max(percent - 5, 0), 84) + "%";
     }
-
-    useEffect(() => {
-        if (phraseIndex === phraseArray.length - 1) return;
-        setTimeout(() => {
-            setPhraseIndex(phraseIndex + 1);
-        }, 2000);
-    });
 
     useAnimationFrame(() => {
         let progressPos = 0;
@@ -60,7 +27,9 @@ function LoaderComponent({ children }) {
             let percent = Math.abs(progressPos - window.screen.width);
             percent = Math.floor((percent / window.screen.width) * 100);
 
-            setProgressPercent(percent);
+            if (percent % 25 == 0) {
+                setProgressPercent(String(percent).padStart(3, "0"));
+            }
         }
     });
 
@@ -75,38 +44,33 @@ function LoaderComponent({ children }) {
                     animate="show"
                     exit="exit"
                 >
-                    {/* <div className={styles.loadingMessageContainer}>
-                        <AnimatePresence mode="popLayout">
-                            {phraseArray[phraseIndex].split(" ").map((word, idx) => {
-                                return <motion.div className={`${styles.loadingMessage} ${yellow_tail.className}`} key={`greeting-letter-${phraseArray[phraseIndex]}- ${word} -${idx} `}
-                                    variants={greetingAnimation}
-                                    initial="initial"
-                                    animate="animate"
-                                    exit="exit"
-                                    custom={idx}
-                                >{word}</motion.div>
-                            })}
-                        </AnimatePresence>
-                    </div> */}
-                    <div
-                        className={`${styles.loadingPercent} ${pp_nekkei.className} `}
-                    >
-                        <div className={styles.percentDigit}>
-                            {progressPercent == 100 ? `${progressPercent / 100} ` : "0"}
-                        </div>
-                        <div className={styles.percentDigit}>
-                            {progressPercent >= 10 && progressPercent < 100
-                                ? `${Math.floor(progressPercent / 10)} `
-                                : "0"}
-                        </div>
-                        <div className={styles.percentDigit}>{progressPercent % 10}</div>
-                    </div>
+                    <motion.div
+                        initial={{ bottom: "0%" }}
+                        animate={{ bottom: getPercentPosition(progressPercent) }}
+                        transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1], delay: 0.2 }}
+                        className={`${styles.loadingPercent} ${pp_nekkei.className}`}>
+                        {progressPercent.split("").map((letter, idx) => (
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={`loading-digit-${letter}-${idx}`}
+                                    className={styles.percentDigit}
+                                    initial={{ opacity: 0, y: -80 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 80 }}
+                                    transition={{ duration: 0.2, delay: idx * 0.06 }}
+                                >
+                                    {letter}
+                                </motion.span>
+                            </AnimatePresence>
 
+                        ))}
+
+                    </motion.div>
                     <motion.div
                         ref={progressBarRef}
                         className={styles.loadingProgress}
                         variants={progressAnim}
-                        onAnimationComplete={() => setLoading(false)}
+                        onAnimationComplete={() => setTimeout(() => setLoading(false), 400)}
                     />
                 </motion.div>
             ) : (

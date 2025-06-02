@@ -18,8 +18,8 @@ export const progressAnim = {
   show: {
     x: 0,
     transition: {
-      ease: [0.5, 0.001, 0.08, 0.95],
-      duration: 6,
+      ease: [0.65, 0, 0.35, 1],
+      duration: 8,
     },
   },
   exit: {
