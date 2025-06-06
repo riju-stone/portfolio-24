@@ -24,7 +24,7 @@ function BlogPostPage({ params }: { params: { slug: string } }) {
 
     useEffect(() => {
         getPost(params.slug).then(data => {
-            console.log(data)
+            // console.log(data)
             setPost(data);
             setLoading(false);
         }).catch(error => {

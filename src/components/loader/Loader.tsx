@@ -47,7 +47,7 @@ function LoaderComponent({ children }) {
                     <motion.div
                         initial={{ bottom: "0%" }}
                         animate={{ bottom: getPercentPosition(progressPercent) }}
-                        transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1], delay: 0.2 }}
+                        transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1], delay: 0.1 }}
                         className={`${styles.loadingPercent} ${pp_nekkei.className}`}>
                         {progressPercent.split("").map((letter, idx) => (
                             <AnimatePresence mode="wait" key={`loading-digit-${idx}`}>
@@ -57,7 +57,10 @@ function LoaderComponent({ children }) {
                                     initial={{ opacity: 0, y: -80 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 80 }}
-                                    transition={{ duration: 0.2, delay: idx * 0.06 }}
+                                    transition={{
+                                        duration: 0.125,
+                                        delay: (progressPercent.length - idx) * 0.1
+                                    }}
                                 >
                                     {letter}
                                 </motion.span>

@@ -43,38 +43,29 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         // Set initial state for better performance
         gsap.set(charRefs.current, {
             opacity: 0,
-            y: 30, // Add slight vertical movement for better effect
-            willChange: "opacity, transform",
+            y: 20
         });
 
         // Create optimized animation
         const animation = gsap.to(charRefs.current, {
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top 40%", // Start earlier for smoother entry
-                end: `+=${window.innerHeight}`, // End later for complete animation
-                scrub: 1.2, // Slightly slower scrub for smoother feel
-                once: false, // Allow re-triggering for better UX
-                invalidateOnRefresh: true,
-                // Performance optimizations
-                refreshPriority: -1,
-                fastScrollEnd: true,
+                start: "top 50%",
+                end: `+=${window.innerHeight}`,
+                scrub: 0,
+                once: false,
+                invalidateOnRefresh: false,
+                fastScrollEnd: false,
                 anticipatePin: 1,
             },
             opacity: 1,
             y: 0,
-            duration: 1,
-            ease: "power2.out", // Better easing for smoother animation
+            duration: 0.5,
+            ease: "power2.out",
             stagger: {
-                amount: 1.2, // Reduced stagger time for faster reveal
+                amount: 1,
                 from: "start",
                 ease: "power2.inOut",
-            },
-            onComplete: () => {
-                // Clean up will-change after animation
-                gsap.set(charRefs.current, {
-                    willChange: "auto",
-                });
             },
         });
 
@@ -83,14 +74,12 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
 
     function splitWords(phrase: string) {
         const words: JSX.Element[] = [];
-        let charIndex = 0;
 
         phrase.split(" ").forEach((word: string, wordIndex: number) => {
-            const letters = splitLetters(word, charIndex);
-            charIndex += word.length;
+            const letters = splitLetters(word);
 
             words.push(
-                <p key={`word-${wordIndex}`} className={styles.wordContainer}>
+                <p key={`word-${wordIndex}`} data-index={wordIndex} className={styles.wordContainer}>
                     {letters}
                 </p>
             );
@@ -99,24 +88,16 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         return words;
     }
 
-    function splitLetters(word: string, startIndex: number) {
+    function splitLetters(word: string) {
         const letters: JSX.Element[] = [];
 
-        word.split("").forEach((letter: string, letterIndex: number) => {
-            const globalIndex = startIndex + letterIndex;
 
+        word.split("").forEach((letter: string, letterIndex: number) => {
             letters.push(
                 <span
-                    key={`letter-${globalIndex}`}
+                    key={`letter-${letter}-${letterIndex}`}
                     className={styles.letterContainer}
-                    ref={(el) => {
-                        if (el) charRefs.current[globalIndex] = el;
-                    }}
-                    style={{
-                        // Inline optimization hints
-                        display: "inline-block",
-                        backfaceVisibility: "hidden",
-                    }}
+                    ref={(el) => { charRefs.current.push(el); }}
                 >
                     {letter}
                 </span>
@@ -130,11 +111,6 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         <div
             className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}
             ref={containerRef}
-            style={{
-                // Performance optimizations
-                contain: "layout style",
-                willChange: "transform",
-            }}
         >
             <div className={styles.textRevealContainer}>
                 {memoizedWords}

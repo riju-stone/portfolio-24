@@ -19,7 +19,7 @@ function BlogsPage()
     {
         getLatestPosts().then(data =>
         {
-            console.log(data)
+            // console.log(data)
             setPosts(data);
             setLoading(false);
         }).catch(error =>

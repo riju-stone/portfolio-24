@@ -78,14 +78,14 @@
     flex-wrap: wrap;
     align-items: center;
 
-    p {
+    .wordContainer {
       margin: 0;
       margin-right: 0.75rem;
       // filter: invert(100%);
     }
 
-    span {
-      opacity: 0.05;
+    .letterContainer {
+      display: inline-block;
     }
   }
 }
