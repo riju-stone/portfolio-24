@@ -1,0 +1,43 @@
+.heroImageWrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heroImageSplits {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .heroImageSplit {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+// Mobile Devices
+@media only screen and (min-width: 240px) and (max-width: 639px) {
+  .heroImageWrapper {
+    width: 100%;
+  }
+}
+
+// Tablet Devices
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+  .heroImageWrapper {
+    width: 85%;
+  }
+}

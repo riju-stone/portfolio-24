@@ -16,7 +16,7 @@ function LoaderComponent({ children }) {
 
     const getPercentPosition = (percentStr: string) => {
         const percent: number = Number(percentStr);
-        return Math.min(Math.max(percent - 5, 0), 84) + "%";
+        return Math.min(Math.max(percent - 5, 0), 88) + "%";
     }
 
     // Only get the animation object after component mounts
@@ -45,7 +45,7 @@ function LoaderComponent({ children }) {
     }
 
     return (
-        <AnimatePresence mode="sync">
+        <AnimatePresence mode="wait">
             {loading ? (
                 <motion.div
                     key="loader"

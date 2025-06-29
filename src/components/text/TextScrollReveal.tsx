@@ -45,8 +45,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         if (validRefs.length === 0) return;
 
         gsap.set(validRefs, {
-            opacity: 0,
-            y: 20
+            opacity: 0.05,
         });
 
         // Create optimized animation
@@ -59,7 +58,6 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
                 once: true,
             },
             opacity: 1,
-            y: 0,
             duration: 0.5,
             ease: "power2.out",
             stagger: {

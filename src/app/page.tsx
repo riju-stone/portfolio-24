@@ -2,21 +2,18 @@
 
 import React from "react";
 import styles from "./page.module.scss";
-import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
 import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
-import Image from "next/image";
 
-import HeroLightImage from "@/assets/images/hero-light.jpg"
-import HeroDarkImage from "@/assets/images/hero-dark.jpg"
 import { useThemeStore } from "@/stores/themeStore";
 import TextStaggerComponent from "@/components/text/TextStagger";
 
 import SkewScrollComponent from "@/components/scroll/Scroll";
 import TextScrollRevealComponent from "@/components/text/TextScrollReveal";
+import HeroImage from "@/components/hero-image/hero-image";
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -120,9 +117,13 @@ function HomePage() {
             <SkewScrollComponent>
                 <div className={styles.homePageWrapper}>
                     {/* Hero Section */}
-                    <TextStaggerComponent text={["Creative"]} />
                     <section className={styles.heroSectionWrapper}>
-                        <Image className={styles.heroImage} src={theme === "light" ? HeroLightImage : HeroDarkImage} alt="Snake" />
+                        <div className={styles.heroTextWrapper}>
+                            <TextStaggerComponent className={styles.heroText} text={["Creative"]} />
+                            <TextStaggerComponent className={styles.heroText} text={["Full-Stack"]} />
+                            <TextStaggerComponent className={styles.heroText} text={["Developer"]} />
+                        </div>
+                        <HeroImage />
                         {/* <TextStaggerComponent text={heroPhrase} /> */}
                     </section>
                     {/* About Section */}

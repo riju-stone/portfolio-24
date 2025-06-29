@@ -53,9 +53,10 @@ const containerAnim = {
 
 interface TextStaggerComponentProps {
     text: (string | any)[];
+    className?: string;
 }
 
-function TextStaggerComponent({ text }: TextStaggerComponentProps) {
+function TextStaggerComponent({ text, className }: TextStaggerComponentProps) {
     // Memoize the text processing to prevent unnecessary re-renders
     const processedText = useMemo(() => {
         return text.map((word, idx) => ({
@@ -78,21 +79,15 @@ function TextStaggerComponent({ text }: TextStaggerComponentProps) {
 
     return (
         <motion.div
-            className={`${styles.textStaggerWrapper} ${pp_nueue.className}`}
+            className={`${styles.textStaggerWrapper} ${pp_nueue.className} ${className || ''}`}
             variants={containerAnim}
             initial="hidden"
             animate="show"
-            style={{
-                // Performance optimizations
-                contain: "layout style",
-                willChange: "transform",
-            }}
         >
             {processedText.map(({ id, content, isString }, wordIdx) => (
                 <div key={id} className={styles.staggerWordContainer}>
                     <div className={styles.staggerWord}>
-                        {isString ? (
-                            // Optimized letter rendering
+                        {
                             splitLetters(content, wordIdx).map(({ letter, key, index }) => (
                                 <motion.div
                                     key={key}
@@ -108,46 +103,7 @@ function TextStaggerComponent({ text }: TextStaggerComponentProps) {
                                 >
                                     {letter}
                                 </motion.div>
-                            ))
-                        ) : (
-                            // Optimized image rendering
-                            <motion.div
-                                variants={textStaggerAnim}
-                                initial="hidden"
-                                animate="show"
-                                style={{
-                                    willChange: "transform, opacity",
-                                    backfaceVisibility: "hidden",
-                                }}
-                            >
-                                <motion.div
-                                    className={styles.staggerImageContainer}
-                                    variants={imageStaggerAnim}
-                                    initial="hidden"
-                                    animate="show"
-                                    style={{
-                                        willChange: "transform, opacity",
-                                        contain: "layout style",
-                                    }}
-                                >
-                                    <Image
-                                        src={content}
-                                        unoptimized
-                                        className={styles.staggerGif}
-                                        alt="hero-animation"
-                                        priority={wordIdx < 3} // Priority for first 3 images
-                                        loading={wordIdx < 3 ? 'eager' : 'lazy'}
-                                        blurDataURL='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-                                        placeholder='blur'
-                                        // sizes="(max-width: 768px) 50px, 80px"
-                                        style={{
-                                            willChange: "transform",
-                                            backfaceVisibility: "hidden",
-                                        }}
-                                    />
-                                </motion.div>
-                            </motion.div>
-                        )}
+                            ))}
                     </div>
                 </div>
             ))}
