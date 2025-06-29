@@ -2,7 +2,7 @@
 
 import SkewScrollComponent from '@/components/scroll/Scroll'
 import { getPost } from '@/sanity/queries/posts'
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Markdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
@@ -17,13 +17,15 @@ import styles from "./page.module.scss";
 import LazyTextComponent from '@/components/lazy/Lazy';
 import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
 
-function BlogPostPage({ params }: { params: { slug: string } }) {
+function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const [post, setPost] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+    const resolvedParams = use(params);
+
     useEffect(() => {
-        getPost(params.slug).then(data => {
+        getPost(resolvedParams.slug).then(data => {
             // console.log(data)
             setPost(data);
             setLoading(false);
@@ -31,7 +33,7 @@ function BlogPostPage({ params }: { params: { slug: string } }) {
             setError(error);
             setLoading(false);
         })
-    }, [params.slug])
+    }, [resolvedParams.slug])
 
     if (loading) {
         return (
@@ -80,8 +82,19 @@ function BlogPostPage({ params }: { params: { slug: string } }) {
                     </header>
 
                     <section className={`${styles.postContent} ${inter.className}`}>
-                        <Markdown remarkPlugins={[remarkGfm, remarkMath]}
-                            rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}>
+                        <Markdown
+                            remarkPlugins={[remarkGfm, remarkMath]}
+                            rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}
+                            components={{
+                                img: ({ src, alt, title, ...props }) => {
+                                    // Don't render img if src is empty or undefined
+                                    if (!src || src.trim() === '') {
+                                        return null;
+                                    }
+                                    return <img src={src} alt={alt} title={title} {...props} />;
+                                }
+                            }}
+                        >
                             {post.content}
                         </Markdown>
                     </section>

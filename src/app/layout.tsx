@@ -1,25 +1,14 @@
 import React from "react";
-
-import "./globals.scss";
-const BackgroundComponent = dynamic(
-    () => import("@/components/background/Background"),
-    { ssr: false },
-);
+import BackgroundComponent from "@/components/background/Background";
 import HeaderComponent from "@/components/header/Header";
-import dynamic from "next/dynamic";
-
-const HamburgerMenuComponent = dynamic(
-    () => import("@/components/hamburger/Hamburger"),
-    { ssr: false },
-);
+import HamburgerMenuComponent from "@/components/hamburger/Hamburger";
+import LoaderComponent from "@/components/loader/Loader";
+import "./globals.scss";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
 import FooterComponent from "@/components/footer/Footer";
-const LoaderComponent = dynamic(() => import("@/components/loader/Loader"), {
-    ssr: false,
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),

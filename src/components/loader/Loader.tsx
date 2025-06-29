@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import styles from "./styles.module.scss";
 import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
-import { loadingScreenAnim, progressAnim } from "./animations";
+import { loadingScreenAnim, getProgressAnim } from "./animations";
 import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
@@ -12,15 +12,21 @@ function LoaderComponent({ children }) {
 
     const [loading, setLoading] = useState(true);
     const [progressPercent, setProgressPercent] = useState("0");
+    const [progressAnim, setProgressAnim] = useState(null);
 
     const getPercentPosition = (percentStr: string) => {
         const percent: number = Number(percentStr);
         return Math.min(Math.max(percent - 5, 0), 84) + "%";
     }
 
+    // Only get the animation object after component mounts
+    useEffect(() => {
+        setProgressAnim(getProgressAnim());
+    }, []);
+
     useAnimationFrame(() => {
         let progressPos = 0;
-        if (progressBarRef.current) {
+        if (progressBarRef.current && typeof window !== 'undefined') {
             progressPos = progressBarRef.current.getBoundingClientRect().left;
             progressPos = Math.floor(Math.abs(progressPos));
 
@@ -32,6 +38,11 @@ function LoaderComponent({ children }) {
             }
         }
     });
+
+    // Don't render the progress bar until we have the animation object
+    if (!progressAnim) {
+        return <>{children}</>;
+    }
 
     return (
         <AnimatePresence mode="sync">

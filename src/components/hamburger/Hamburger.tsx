@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { space_grotesk } from "@/utils/fonts";
 import { pageConfig } from "@/utils/pages";
@@ -17,26 +17,40 @@ function HamburgerMenuComponent() {
     const toggleMenu = usePageStore((state) => state.toggleMenu);
     const checkActivePage = useActivePath();
 
-    const initialCurvePath = `M0 0 L${window.innerWidth} 0 Q ${window.innerWidth / 2} 200 0 0`;
-    const initialCurvePathSmall = `M0 0 L${window.innerWidth} 0 Q ${window.innerWidth / 2} 100 0 0`;
+    const [windowWidth, setWindowWidth] = useState(1920); // fallback width
 
-    const targetCurvePath = `M0 0 L${window.innerWidth} 0 Q ${window.innerWidth / 2} 0 0 0`;
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setWindowWidth(window.innerWidth);
+
+            const handleResize = () => {
+                setWindowWidth(window.innerWidth);
+            };
+
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
+    const initialCurvePath = `M0 0 L${windowWidth} 0 Q ${windowWidth / 2} 200 0 0`;
+    const initialCurvePathSmall = `M0 0 L${windowWidth} 0 Q ${windowWidth / 2} 100 0 0`;
+    const targetCurvePath = `M0 0 L${windowWidth} 0 Q ${windowWidth / 2} 0 0 0`;
 
     const hamburgerMenuAnim = {
         initial: {
-            y: -500,
+            y: "-115vh",
         },
         animate: {
             y: 0,
             transition: {
-                duration: 0.7,
+                duration: 1,
                 ease: [0.76, 0, 0.24, 1],
             },
         },
         exit: {
-            y: -500,
+            y: "-115vh",
             transition: {
-                duration: 0.7,
+                duration: 1,
                 ease: [0.76, 0, 0.24, 1],
             },
         },
@@ -81,7 +95,7 @@ function HamburgerMenuComponent() {
                                     key={`MenuLink-${index}`}
                                     className={`${checkActivePage(data.link) ? styles.activeMenuLink : styles.inactiveMenuLink}`}
                                 >
-                                    <Link href={data.link} onClick={toggleMenu}>
+                                    <Link href={data.link} onClick={() => toggleMenu(false)}>
                                         <TextZoopComponent text={data.label} />
                                     </Link>
                                 </div>

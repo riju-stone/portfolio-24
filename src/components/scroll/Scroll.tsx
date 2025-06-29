@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import {
     motion,
@@ -10,17 +10,25 @@ import {
     useSpring,
 } from "motion/react";
 
-function SkewScrollComponent({ children }) {
-    const lenis = new Lenis();
+function SkewScrollComponent({ children }: { children: React.ReactNode }) {
+    const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        // Initialize Lenis only on the client side
+        lenisRef.current = new Lenis();
+
         function raf(time: number) {
-            lenis.raf(time);
+            lenisRef.current?.raf(time);
             requestAnimationFrame(raf);
         }
 
         requestAnimationFrame(raf);
-    });
+
+        // Cleanup function
+        return () => {
+            lenisRef.current?.destroy();
+        };
+    }, []);
 
     // Skew logic
     const { scrollY } = useScroll();

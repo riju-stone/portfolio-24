@@ -11,7 +11,7 @@ export const loadingScreenAnim = {
   },
 };
 
-export const progressAnim = {
+export const getProgressAnim = () => ({
   hidden: {
     x: -window.screen.width,
   },
@@ -32,4 +32,4 @@ export const progressAnim = {
       delay: 0.5,
     },
   },
-};
+});

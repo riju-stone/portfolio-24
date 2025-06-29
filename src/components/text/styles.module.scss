@@ -22,17 +22,8 @@
 }
 
 .textStaggerWrapper {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  max-width: 1320px;
   color: global.$dark-text-color;
-  font-size: 12rem;
-  font-weight: 600;
   text-transform: uppercase;
-  line-height: 11rem;
   overflow: hidden;
 
   .staggerWordContainer {
@@ -117,7 +108,7 @@
   align-items: center;
   text-transform: uppercase;
   overflow-x: hidden;
-  opacity: 0.8;
+  opacity: 0.25;
   z-index: -5;
 
   .replLetterGroup {

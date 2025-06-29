@@ -41,22 +41,22 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
         }
 
         // Set initial state for better performance
-        gsap.set(charRefs.current, {
+        const validRefs = charRefs.current.filter(ref => ref !== null);
+        if (validRefs.length === 0) return;
+
+        gsap.set(validRefs, {
             opacity: 0,
             y: 20
         });
 
         // Create optimized animation
-        const animation = gsap.to(charRefs.current, {
+        const animation = gsap.to(validRefs, {
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: "top 50%",
+                start: "top 20%",
                 end: `+=${window.innerHeight}`,
                 scrub: 0,
-                once: false,
-                invalidateOnRefresh: false,
-                fastScrollEnd: false,
-                anticipatePin: 1,
+                once: true,
             },
             opacity: 1,
             y: 0,
