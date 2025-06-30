@@ -74,13 +74,9 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
                             {post.tags?.length > 0 && (
                                 <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
                                     {post.tags.map((tag: string) => (
-                                        <Link
-                                            key={tag}
-                                            href={`/blog/tags/${tag.toLowerCase()}`}
-                                            className={styles.tag}
-                                        >
+                                        <div className={styles.tag} key={tag}>
                                             {tag}
-                                        </Link>
+                                        </div>
                                     ))}
                                 </div>
                             )}

@@ -7,8 +7,6 @@ import { motion } from "motion/react";
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextDisperseComponent from "@/components/text/TextDisperse";
 import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
-
-import { useThemeStore } from "@/stores/themeStore";
 import TextStaggerComponent from "@/components/text/TextStagger";
 
 import SkewScrollComponent from "@/components/scroll/Scroll";
@@ -109,9 +107,6 @@ const clipAnimation = {
 }
 
 function HomePage() {
-
-    const theme = useThemeStore(state => state.theme);
-
     return (
         <main>
             <SkewScrollComponent>

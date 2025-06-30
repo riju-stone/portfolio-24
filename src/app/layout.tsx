@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Arighna Chakraborty - Portfolio",
     description: "Arighna's little corner on the Internet",
     openGraph: {
-        images: "",
+        images: "/images/seo-hero.jpg",
     },
 };
 

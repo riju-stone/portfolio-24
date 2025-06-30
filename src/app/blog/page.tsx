@@ -49,7 +49,7 @@ function BlogsPage() {
     if (posts.length === 0) {
         return <main>
             <div className={styles.blogMessageWrapper}>
-                <LazyTextComponent text="I'll come up with something. I promise!" />
+                <LazyTextComponent text="I'm a work in progress!" />
             </div>
         </main>
     }

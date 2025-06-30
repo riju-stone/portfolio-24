@@ -1,7 +1,10 @@
 import localFont from "next/font/local";
-import { Space_Grotesk, Inter, Roboto_Mono, Yellowtail } from "next/font/google";
+import { Space_Grotesk, Inter, Roboto_Mono } from "next/font/google";
 
 export const pp_nueue = localFont({
+    display: "swap",
+    preload: true,
+    fallback: ["system-ui", "arial"],
     src: [
         {
             path: "../../public/fonts/pp_nueue/ppneuemontreal-thin.otf",
@@ -22,21 +25,14 @@ export const pp_nueue = localFont({
             path: "../../public/fonts/pp_nueue/ppneuemontreal-book.otf",
             style: "normal",
             weight: "800",
-        },
-        {
-            path: "../../public/fonts/pp_nueue/ppneuemontreal-italic.otf",
-            style: "italic",
-            weight: "400",
-        },
-        {
-            path: "../../public/fonts/pp_nueue/ppneuemontreal-semibolditalic.otf",
-            style: "italic",
-            weight: "600",
-        },
+        }
     ],
 });
 
 export const pp_nekkei = localFont({
+    display: "swap",
+    preload: true,
+    fallback: ["system-ui", "arial"],
     src: [
         {
             path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Light.otf",
@@ -57,6 +53,7 @@ export const pp_nekkei = localFont({
 });
 
 export const inter = Inter({
+    fallback: ["system-ui", "arial"],
     subsets: ["latin"],
     variable: "--font-inter",
 });
@@ -69,10 +66,5 @@ export const space_grotesk = Space_Grotesk({
 export const roboto_mono = Roboto_Mono({
     subsets: ["latin"],
     variable: "--font-roboto-mono"
-})
-
-export const yellow_tail = Yellowtail({
-    subsets: ["latin"],
-    weight: "400"
 })
 
