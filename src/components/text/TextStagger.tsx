@@ -18,7 +18,7 @@ const textStaggerAnim = {
         opacity: 1,
         transition: {
             duration: 0.5, // Slightly faster for better perceived performance
-            delay: 0.8 + i * 0.03, // Reduced delay for faster start
+            delay: 0.5 + i * 0.03, // Reduced delay for faster start
             ease: [0.22, 1, 0.36, 1]
         }
     })

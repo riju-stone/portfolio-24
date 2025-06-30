@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { use } from 'react'
 
-function TagPostsPage({
-    params
-}: {
-    params: {
-        tag: string
-    }
-})
-{
+function TagPostsPage({ params }: {
+    params: Promise<{ tag: string }>
+}) {
+    const resolvedParams = use(params)
     return (
-        <div>TagPostsPage: {params.tag}</div>
+        <div>TagPostsPage: {resolvedParams.tag}</div>
     )
 }
 

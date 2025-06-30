@@ -28,6 +28,7 @@
 			color: global.$dark-text-color;
 			font-size: 8rem;
 			font-weight: 500;
+			text-transform: uppercase;
 
 			&:first-child {
 				top: 10%;
@@ -77,7 +78,22 @@
 		.introHeading {
 			margin: 0px;
 			font-size: 6rem;
-			line-height: 7rem;
+			margin-top: 1rem;
+			color: global.$dark-text-color;
+		}
+	}
+
+	.introlinkContainer {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 75vw;
+		margin-top: 1rem;
+		font-size: 5.75rem;
+
+		a {
+			text-decoration: none;
 			color: global.$dark-text-color;
 		}
 	}
@@ -289,8 +305,19 @@
 			line-height: 4rem;
 
 			.introHeading {
-				font-size: 4rem;
-				line-height: 5rem;
+				font-size: 2.75rem;
+				margin-top: 1.5rem;
+			}
+		}
+
+		.introlinkContainer {
+			width: 90vw;
+			margin-top: 1.5rem;
+			font-size: 2.75rem;
+
+			a {
+				text-decoration: none;
+				color: global.$dark-text-color;
 			}
 		}
 	}
@@ -376,7 +403,13 @@
 		.introline {
 			width: 90vw;
 			font-size: 5rem;
-			line-height: 5rem;
+			margin-top: 1rem;
+		}
+
+		.introlinkContainer {
+			width: 90vw;
+			margin-top: 1.5rem;
+			font-size: 5rem;
 		}
 	}
 
@@ -394,7 +427,13 @@
 		.introline {
 			width: 90vw;
 			font-size: 6rem;
-			line-height: 6rem;
+			margin-top: 1rem;
+		}
+
+		.introlinkContainer {
+			width: 90vw;
+			margin-top: 1.5rem;
+			font-size: 6rem;
 		}
 	}
 }
@@ -402,7 +441,11 @@
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
 	.contactSectionWrapper {
 		.introline {
-			width: 90vw;
+			width: 80vw;
+		}
+
+		.introlinkContainer {
+			width: 80vw;
 		}
 	}
 }

@@ -189,15 +189,15 @@ function HomePage() {
                             <div className={styles.introHeading}>Move</div>
                         </div>
 
-                        <div className={`${styles.introline} ${pp_nekkei.className}`}>
+                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
                             {/* <a target="_blank" href="https://drive.google.com/file/d/1oABZdgSt0rzR5rCghPk5-bBVCxpuWTGb/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a> */}
                             <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
                             <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
                         </div>
 
-                        <div className={`${styles.introline} ${pp_nekkei.className}`}>
-
-                            <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/"><TextDisperseComponent word="↗LinkedIn" /> </a>
+                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
+                            <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
+                                <TextDisperseComponent word="↗LinkedIn" /></a>
                             <a target="_blank" href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
                         </div>
                     </section>

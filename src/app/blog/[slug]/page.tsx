@@ -12,10 +12,11 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import rehypeStringify from "rehype-stringify";
 import "highlight.js/styles/github.css";
-
+import { motion } from 'motion/react';
 import styles from "./page.module.scss";
 import LazyTextComponent from '@/components/lazy/Lazy';
 import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
+import { ArrowLeftIcon } from "lucide-react"
 
 function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const [post, setPost] = useState(null)
@@ -58,7 +59,12 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     return (
         <main>
             <SkewScrollComponent>
-                <article className={styles.postContainer} style={{ color: "#fff" }}>
+                <motion.article
+                    className={styles.postContainer}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                    style={{ color: "#fff" }}>
                     <header className={styles.postHeader}>
                         <h1 className={`${styles.postTitle} ${pp_nueue.className}`}>{post.title}</h1>
                         <div className={styles.postMetadataWrapper}>
@@ -97,12 +103,12 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
                         >
                             {post.content}
                         </Markdown>
-                    </section>
 
-                    <div className={styles.backLink}>
-                        <Link href="/blog">← All Articles</Link>
+                    </section>
+                    <div className={`${styles.backLink} ${inter.className}`}>
+                        <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
                     </div>
-                </article>
+                </motion.article>
             </SkewScrollComponent>
         </main>
     )
