@@ -3,7 +3,7 @@ const BGCOLORS = {
     dark: "#0c0c0c",
 };
 
-const RADIUS_GROWTH_RATE_MS = 0.03;
+const RADIUS_GROWTH_RATE_MS = 0.025;
 const CIRCLE_RESOLUTION = 0.35;
 const GROWTH_FUNCTION_EXPONENTIAL = 2.8;
 
