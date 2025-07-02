@@ -12,6 +12,7 @@ import TextStaggerComponent from "@/components/text/TextStagger";
 import SkewScrollComponent from "@/components/scroll/Scroll";
 import TextScrollRevealComponent from "@/components/text/TextScrollReveal";
 import HeroImage from "@/components/hero-image/hero-image";
+import FileStackComponent from "@/components/file/file-stack";
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -21,6 +22,8 @@ const expPhrase = `With close to 3 years of experience working in
 cross-functional teams and making deadlines sweat, my code is like my documentation -
 clean, clear and occasionally sprinkled with weird jokes.
 `
+
+const projectPhrase1 = `Breaking down abstractions for my own amusement. I design, build and ship experiences that are not just functional, but also a joy to use. Trying my best to stay one step ahead of the AI overlords...`
 
 const experienceData = [
     {
@@ -41,52 +44,6 @@ const experienceData = [
         role: "SWE Intern",
         duration: "2021"
     }
-]
-
-const projectsData = [
-    {
-        id: "portfolio",
-        name: "Portfolio",
-        link: "https://www.github.com/riju-stone/portfolio-24",
-        desc: "You're looking at it.",
-        stack: "next/sanity/gsap/motion"
-    },
-    {
-        id: "former",
-        name: "Former",
-        link: "https://www.github.com/riju-stone/former",
-        desc: "A simple form builder",
-        stack: "next/tailwind/drizzle/redis/postgres"
-    },
-    {
-        id: "chess",
-        name: "Chess",
-        link: "https://www.github.com/riju-stone/chess",
-        desc: "A minimalistic chess engine",
-        stack: "js/electron"
-    },
-    {
-        id: "caligator",
-        name: "Caligator",
-        link: "https://www.github.com/riju-stone/caligator",
-        desc: "A simple yet smart calculator",
-        stack: "js/electron"
-    },
-    {
-        id: "rss",
-        name: "RSS",
-        link: "https://www.github.com/riju-stone/go-rss",
-        desc: "An RSS aggregator",
-        stack: "go/postgres"
-
-    },
-    {
-        id: "sevin",
-        name: "sevin",
-        link: "",
-        desc: "A distributed task scheduler",
-        stack: "go/postgres/redis/aws"
-    },
 ]
 
 const clipAnimation = {
@@ -146,27 +103,10 @@ function HomePage() {
                             </div>
                         </div>
 
-                        {/* <div className={styles.projectWrapper}>
-                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>Making my life easier, one project at a time. If it helps you too, well that's just a bonus...</div>
-                            <div className={styles.projectTableWrapper}>
-                                {projectsData.map((project) => {
-                                    return <motion.div key={project.id} className={styles.projectRowContainer} initial="initial" whileHover="hover" whileTap="hover">
-                                        <Link href={project.link} target="_blank">
-                                            <div className={`${styles.projectRow} ${pp_nekkei.className}`}>
-                                                <div className={styles.projectName}>{project.name}</div>
-                                                <div className={styles.projectRole}>{project.desc}</div>
-                                            </div>
-                                            <motion.div className={`${styles.projectMaskRow} ${pp_nekkei.className}`} variants={clipAnimation}>
-                                                <div className={styles.projectMaskName}>{project.name}</div>
-                                                <div className={styles.projectMaskStack}> {project.stack.split("/").map((stackName, index) => {
-                                                    return <div className={styles.stackContainer} key={`stack-${index}`}><Dot /><span>{stackName}</span></div>
-                                                })}</div>
-                                            </motion.div>
-                                        </Link>
-                                    </motion.div>
-                                })}
-                            </div>
-                        </div> */}
+                        <div className={styles.projectWrapper}>
+                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase1}</div>
+                            <FileStackComponent />
+                        </div>
                     </section>
 
                     {/* Contect Section */}

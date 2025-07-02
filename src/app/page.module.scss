@@ -186,94 +186,17 @@
 
 	.projectWrapper {
 		height: 100dvh;
-		width: 100%;
+		width: 100dvw;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-evenly;
+		flex-direction: row;
+		justify-content: center;
 		align-items: center;
 		background-color: global.$dark-bg-color;
 
 		.projectTitle {
 			width: 90%;
-			font-size: 3rem;
-		}
-
-		.projectTableWrapper {
-			width: 100%;
-
-			.projectRowContainer {
-				position: relative;
-				border-top: 2px solid global.$dark-disabled-color;
-				cursor: pointer;
-
-				&:last-child {
-					border-bottom: 2px solid global.$dark-disabled-color;
-				}
-
-				.projectRow {
-					position: relative;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0.75rem 3rem;
-				}
-
-				.projectMaskRow {
-					top: 0;
-					left: 0;
-					right: 0;
-					position: absolute;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0.75rem 3rem;
-					clip-path: inset(50% 0 50% 0);
-					background-color: global.$dark-text-color;
-					border: none;
-				}
-
-				.projectName {
-					font-size: 2.5rem;
-					letter-spacing: 4px;
-					text-transform: uppercase;
-					color: global.$dark-text-color;
-				}
-
-				.projectMaskName {
-					font-size: 2.5rem;
-					letter-spacing: 4px;
-					text-transform: uppercase;
-					color: global.$light-text-color;
-				}
-
-				.projectRole {
-					font-size: 1.5rem;
-					color: global.$light-disabled-color;
-					text-align: right;
-					text-transform: uppercase;
-				}
-
-				.projectMaskStack {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					font-size: 1.5rem;
-					text-transform: uppercase; // Add this line to make the text uppercase;
-					color: global.$dark-disabled-color;
-					text-align: right;
-
-					.stackContainer {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-
-						svg {
-							stroke-width: 5px;
-						}
-					}
-				}
-			}
+			padding: 2rem;
+			font-size: 1.75rem;
 		}
 	}
 }
@@ -352,38 +275,10 @@
 		}
 
 		.projectWrapper {
+			flex-direction: column;
+
 			.projectTitle {
 				font-size: 1.75rem;
-			}
-
-			.projectTableWrapper {
-				.projectRowContainer {
-
-					.projectRow,
-					.projectMaskRow {
-						padding: 1.5rem;
-					}
-
-					.projectName,
-					.projectMaskName {
-						font-size: 1.5rem;
-						letter-spacing: 2px;
-					}
-
-					.projectRole,
-					.projectMaskStack {
-						font-size: 1rem;
-						text-transform: none;
-					}
-
-					.projectMaskStack {
-						.stackContainer {
-							svg {
-								stroke-width: 3px;
-							}
-						}
-					}
-				}
 			}
 		}
 	}
@@ -419,10 +314,28 @@
 				font-size: 2.5rem;
 			}
 		}
+
+		.projectWrapper {
+			flex-direction: column;
+
+			.projectTitle {
+				font-size: 2.5rem;
+			}
+		}
 	}
 }
 
 @media only screen and (min-width: 921px) and (max-width: 1024px) {
+	.workSectionWrapper {
+		.projectWrapper {
+			flex-direction: column;
+
+			.projectTitle {
+				font-size: 2.5rem;
+			}
+		}
+	}
+
 	.contactSectionWrapper {
 		.introline {
 			width: 90vw;
