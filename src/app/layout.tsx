@@ -12,11 +12,90 @@ import FooterComponent from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
-    title: "Arighna Chakraborty - Portfolio",
-    description: "Arighna's little corner on the Internet",
-    openGraph: {
-        images: "/images/seo-hero.jpg",
+    title: {
+        default: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        template: "%s | Arighna Chakraborty"
     },
+    description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
+    keywords: [
+        "Arighna Chakraborty",
+        "Full Stack Developer",
+        "Web Developer",
+        "Portfolio",
+        "React",
+        "Next.js",
+        "JavaScript",
+        "Frontend Developer",
+        "Backend Developer",
+        "Software Engineer",
+        "Web Design",
+        "UI/UX",
+        "Technology"
+    ],
+    authors: [
+        {
+            name: "Arighna Chakraborty",
+            url: "https://archst.dev"
+        }
+    ],
+    creator: "Arighna Chakraborty",
+    publisher: "Arighna Chakraborty",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: "https://archst.dev",
+        siteName: "Arighna Chakraborty - Portfolio",
+        title: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
+        images: [
+            {
+                url: "/images/seo-hero.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Arighna Chakraborty - Full Stack Developer Portfolio",
+                type: "image/jpeg"
+            }
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills.",
+        images: ["/images/seo-hero.jpg"],
+        creator: "@RijuStone",
+        site: "@RijuStone",
+    },
+    alternates: {
+        canonical: "https://archst.dev",
+    },
+    category: "Technology",
+    classification: "Portfolio Website",
+    verification: {
+        google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION_ID, // Add your Google Search Console 
+    },
+    applicationName: "Arighna Chakraborty Portfolio",
+    referrer: "origin-when-cross-origin",
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
+    other: {
+        "theme-color": "#000000", // Adjust to match your site's theme
+        "color-scheme": "dark light",
+        "twitter:image:alt": "Arighna Chakraborty - Full Stack Developer Portfolio",
+    }
 };
 
 export default function RootLayout({
