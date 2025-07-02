@@ -16,6 +16,9 @@ export const metadata: Metadata = {
         default: "Arighna Chakraborty - Full Stack Developer & Portfolio",
         template: "%s | Arighna Chakraborty"
     },
+    icons: {
+        icon: "/images/seo-hero.jpg",
+    },
     description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
     keywords: [
         "Arighna Chakraborty",
@@ -107,6 +110,7 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 {/* Preload critical hero images */}
+                <link rel="preload" as="image" href="/images/seo-hero.jpg" />
                 <link rel="preload" as="image" href="/images/hero-light/row-1-column-1.jpg" />
                 <link rel="preload" as="image" href="/images/hero-light/row-1-column-2.jpg" />
                 <link rel="preload" as="image" href="/images/hero-light/row-1-column-3.jpg" />
