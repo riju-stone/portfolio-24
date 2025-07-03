@@ -79,51 +79,61 @@ const fileTagPositions = {
 
 function FileStackComponent() {
   const topIndex = projectsData.length - 1; // Index of the topmost file
+  const totalItems = projectsData.length;
+
+  // Calculate base offset to center the stack
+  const stackHeight = totalItems * 8; // Total height of the stack in percentage
+  const centerOffset = 50 - (stackHeight / 2.5); // Offset to center the stack
 
   return (
     <div className={styles.fileStackWrapper}>
       <div className={styles.fileStackContainer}>
-        {projectsData.map((project, index) => (
-          <motion.div
-            key={project.id}
-            className={styles.fileItemContainer}
-            style={{
-              zIndex: index * 20,
-            }}
-            whileHover={index !== topIndex ? {
-              top: `${index * 5 - 25}%`,
-              transform: `scale(${(0.8 + (index * 0.02))}) rotateX(0deg)`,
-              transition: {
-                delay: 0.1,
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-              }
-            } : undefined}
-            whileTap={index !== topIndex ? {
-              top: `${index * 5 - 25}%`,
-              transform: `scale(${(0.8 + (index * 0.02))}) rotateX(0deg)`,
-              transition: {
-                delay: 0.1,
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-              }
-            } : undefined}
-            initial={{
-              top: `${index * 5}%`,
-              transform: `scale(${(0.8 + (index * 0.02))}) rotateX(0deg)`
-            }}
-          >
-            <div className={`${styles.fileItemName} ${inter.className}`}
+        {projectsData.map((project, index) => {
+
+          // Calculate centered position for each item
+          const basePosition = centerOffset + ((index + 1) * 2.5);
+          const hoverPosition = basePosition - ((index * 1.2) + 20);
+
+          return (
+            <motion.div
+              key={project.id}
+              className={styles.fileItemContainer}
               style={{
-                left: fileTagPositions[(index + 1) % 3]
+                zIndex: index * 20,
+                transform: `scale(${(0.75 + (index * 0.02))}) rotateX(0deg)`
               }}
-            >{project.name}</div>
-            <div className={styles.fileStackItemStack}>[{project.stack}]</div>
-            <div className={styles.fileStackItemDesc}>{project.desc}</div>
-          </motion.div>
-        ))}
+              whileHover={index !== topIndex ? {
+                top: `${hoverPosition}%`,
+                transition: {
+                  delay: 0.1,
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25
+                }
+              } : undefined}
+              whileTap={index !== topIndex ? {
+                top: `${hoverPosition}%`,
+                transition: {
+                  delay: 0.1,
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25
+                }
+              } : undefined}
+              initial={{
+                top: `${basePosition}%`,
+              }}
+            >
+              <div className={`${styles.fileItemName} ${inter.className}`}
+                style={{
+                  left: fileTagPositions[(index + 1) % 3]
+                }}
+              >{project.name}</div>
+              <div className={styles.fileStackItemStack}>[{project.stack}]</div>
+              <div className={styles.fileStackItemDesc}>{project.desc}</div>
+            </motion.div>
+          );
+        })}
       </div>
     </div >
   )

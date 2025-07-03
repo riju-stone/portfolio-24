@@ -65,9 +65,9 @@ function LoaderComponent({ children }) {
                                 <motion.span
                                     key={`loading-digit-${letter}-${idx}`}
                                     className={styles.percentDigit}
-                                    initial={{ opacity: 0, y: -80 }}
+                                    initial={{ opacity: 0, y: -50 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 80 }}
+                                    exit={{ opacity: 0, y: 50 }}
                                     transition={{
                                         duration: 0.125,
                                         delay: (progressPercent.length - idx) * 0.1

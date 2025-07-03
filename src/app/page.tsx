@@ -23,7 +23,9 @@ cross-functional teams and making deadlines sweat, my code is like my documentat
 clean, clear and occasionally sprinkled with weird jokes.
 `
 
-const projectPhrase1 = `Breaking down abstractions for my own amusement. I design, build and ship experiences that are not just functional, but also a joy to use. Trying my best to stay one step ahead of the AI overlords...`
+const projectPhrase1 = `Breaking down abstractions for my own amusement.`
+const projectPhrase2 = `I design, build and ship experiences that are not just functional, but also a joy to use.`
+const projectPhrase3 = `Trying my best to stay one step ahead of the AI overlords...`
 
 const experienceData = [
     {
@@ -104,7 +106,11 @@ function HomePage() {
                         </div>
 
                         <div className={styles.projectWrapper}>
-                            <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase1}</div>
+                            <div className={styles.projectTitleWrapper}>
+                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase1}</div>
+                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase2}</div>
+                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase3}</div>
+                            </div>
                             <FileStackComponent />
                         </div>
                     </section>
@@ -133,7 +139,7 @@ function HomePage() {
                         <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
                             <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
                                 <TextDisperseComponent word="↗LinkedIn" /></a>
-                            <a target="_blank" href="https://www.x.com/RijuStone"><TextDisperseComponent word="↗Twitter" /></a>
+                            <a target="_blank" href="https://www.x.com/archrstone"><TextDisperseComponent word="↗Twitter" /></a>
                         </div>
                     </section>
                 </div>
