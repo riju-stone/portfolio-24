@@ -13,7 +13,7 @@ import FooterComponent from "@/components/footer/Footer";
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
     title: {
-        default: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        default: "Arighna Chakraborty - Full Stack Developer Portfolio",
         template: "%s | Arighna Chakraborty"
     },
     icons: {
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://archst.dev",
-        siteName: "Arighna Chakraborty - Portfolio",
-        title: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        siteName: "Arighna Chakraborty - Full Stack Developer Portfolio",
+        title: "Arighna Chakraborty - Full Stack Developer Portfolio",
         description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
         images: [
             {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Arighna Chakraborty - Full Stack Developer & Portfolio",
+        title: "Arighna Chakraborty - Full Stack Developer Portfolio",
         description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills.",
         images: ["/images/seo-hero.jpg"],
         creator: "@RijuStone",

@@ -14,7 +14,7 @@
 		"@sanity/icons": "^3.7.4",
 		"@sanity/image-url": "^1.1.0",
 		"@sanity/ui": "^2.16.2",
-		"@sanity/vision": "^3.95.0",
+		"@sanity/vision": "^3.97.1",
 		"@studio-freight/lenis": "^1.0.42",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
@@ -22,7 +22,7 @@
 		"highlight.js": "^11.11.1",
 		"lucide-react": "^0.439.0",
 		"motion": "^11.18.2",
-		"next": "^15.3.4",
+		"next": "^15.3.5",
 		"next-sanity": "^9.12.0",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
@@ -33,19 +33,19 @@
 		"rehype-video": "^2.3.0",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",
-		"sanity": "^3.95.0",
+		"sanity": "^3.97.1",
 		"sanity-plugin-markdown": "^4.1.2",
 		"sass": "^1.89.2",
 		"styled-components": "^6.1.19",
 		"zustand": "^4.5.7"
 	},
 	"devDependencies": {
-		"@types/node": "^20.19.2",
+		"@types/node": "^20.19.4",
 		"@types/react": "^18.3.23",
 		"@types/react-dom": "^18.3.7",
 		"critters": "^0.0.25",
 		"eslint": "^8.57.1",
-		"eslint-config-next": "^15.3.4",
+		"eslint-config-next": "^15.3.5",
 		"typescript": "^5.8.3"
 	}
 }

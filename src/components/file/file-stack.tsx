@@ -2,35 +2,33 @@ import React from 'react'
 import { motion } from 'motion/react'
 
 import styles from './styles.module.scss'
-import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts'
+import { inter, pp_nueue, space_grotesk } from '@/utils/fonts'
+import { Dot } from "lucide-react"
 
 const projectsData = [
-  {
-    id: "former",
-    name: "Former",
-    link: "https://www.github.com/riju-stone/former",
-    desc: "A simple form builder",
-    stack: "next/tailwind/drizzle/redis/postgres"
-  },
   {
     id: "chess",
     name: "Chess",
     link: "https://www.github.com/riju-stone/chess",
-    desc: "A minimalistic chess engine",
+    desc: `A minimalistic chess engine. 
+    It's a simple chess engine that can be used to play chess against a computer.
+    Uses the Minimax algorithm to make moves and the Alpha-Beta pruning algorithm to improve the performance.`,
     stack: "js/electron"
   },
   {
     id: "caligator",
     name: "Caligator",
     link: "https://www.github.com/riju-stone/caligator",
-    desc: "A simple yet smart calculator",
+    desc: `A simple yet smart calculator. It understands natural language and can perform complex calculations.
+    Inspired from the likes of Numi.`,
     stack: "js/electron"
   },
   {
     id: "rss",
     name: "RSS",
     link: "https://www.github.com/riju-stone/go-rss",
-    desc: "An RSS aggregator",
+    desc: `A simple RSS aggregator. It fetches RSS feeds and displays them in a readable format, 
+    by authenticating with users and storing their following feeds.`,
     stack: "go/postgres"
 
   },
@@ -68,6 +66,15 @@ const projectsData = [
     link: "",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
+  },
+  {
+    id: "former",
+    name: "Former",
+    link: "https://www.github.com/riju-stone/former",
+    desc: `A modular form builder, with extensive customizability and a powerful validation system. 
+    It offers granular control over the form fields, including the ability to add custom fields and validation rules and
+    a detailed analytics dashboard. Inspired from the likes of Google Forms and Typeform.`,
+    stack: "next/tailwind/drizzle/redis/postgres"
   },
 ]
 
@@ -124,13 +131,20 @@ function FileStackComponent() {
                 top: `${basePosition}%`,
               }}
             >
-              <div className={`${styles.fileItemName} ${inter.className}`}
+              <div className={`${styles.fileItemName} ${pp_nueue.className}`}
                 style={{
-                  left: fileTagPositions[(index + 1) % 3]
+                  left: fileTagPositions[(index + 1) % 3],
                 }}
               >{project.name}</div>
-              <div className={styles.fileStackItemStack}>[{project.stack}]</div>
-              <div className={styles.fileStackItemDesc}>{project.desc}</div>
+              <div className={`${styles.fileStackItemStack} ${space_grotesk.className}`}>
+                {project.stack.split("/").map((stackName, index) => (
+                  <div key={`${project.id}-stack-${index}`} className={styles.fileItemStackContainer}>
+                    {index > 0 ? <Dot /> : null}
+                    <div className={styles.fileStackItemStackItem}>{stackName}</div>
+                  </div>
+                ))}
+              </div>
+              <div className={`${styles.fileStackItemDesc} ${inter.className}`}>{project.desc}</div>
             </motion.div>
           );
         })}

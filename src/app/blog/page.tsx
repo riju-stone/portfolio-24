@@ -29,9 +29,11 @@ function BlogsPage() {
     if (loading) {
         return (
             <main>
-                <div className={styles.blogMessageWrapper}>
-                    <LazyTextComponent text="Hold on! Contemplating." />
-                </div>
+                <SkewScrollComponent>
+                    <div className={styles.blogMessageWrapper}>
+                        <LazyTextComponent text="Hold on! Contemplating." />
+                    </div>
+                </SkewScrollComponent>
             </main>
         );
     }
@@ -39,18 +41,22 @@ function BlogsPage() {
     if (error) {
         return (
             <main>
-                <div className={styles.blogMessageWrapper}>
-                    <LazyTextComponent text="Oops! Guess I fucked something up." />
-                </div>
+                <SkewScrollComponent>
+                    <div className={styles.blogMessageWrapper}>
+                        <LazyTextComponent text="Oops! Guess I fucked something up." />
+                    </div>
+                </SkewScrollComponent>
             </main>
         );
     }
 
     if (posts.length === 0) {
         return <main>
-            <div className={styles.blogMessageWrapper}>
-                <LazyTextComponent text="I'm a work in progress!" />
-            </div>
+            <SkewScrollComponent>
+                <div className={styles.blogMessageWrapper}>
+                    <LazyTextComponent text="I'm a work in progress!" />
+                </div>
+            </SkewScrollComponent>
         </main>
     }
 
