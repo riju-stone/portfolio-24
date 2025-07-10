@@ -23,7 +23,7 @@
   .fileItemContainer {
     position: absolute;
     transform: translateX(-50%) translateY(-50%);
-    width: 85%;
+    width: 80%;
     height: 300px;
     outline: 2px solid global.$dark-disabled-color;
     display: flex;
@@ -36,8 +36,8 @@
     cursor: pointer;
 
     .fileItemName {
-      height: 2.4rem;
-      width: 150px;
+      height: 2rem;
+      width: 135px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,7 +46,7 @@
       font-weight: 200;
       position: absolute;
       transform: translateX(-50%);
-      top: -42px;
+      top: -34px;
       background-color: global.$dark-bg-color;
       font-size: 1.15rem;
       font-weight: 600;
@@ -90,25 +90,25 @@
     .fileStackContainer {
       .fileItemContainer {
         width: 80%;
-        height: 200px;
+        height: 150px;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
 
         .fileItemName {
-          width: 85px;
+          width: 80px;
           height: 1.5rem;
-          font-size: 0.75rem;
-          top: -25px;
+          font-size: 0.625rem;
+          top: -26px;
         }
 
         .fileStackItemStack {
-          font-size: 0.7rem;
+          font-size: 0.625rem;
         }
 
         .fileStackItemDesc {
-          font-size: 0.85rem;
+          font-size: 0.625rem;
         }
       }
     }

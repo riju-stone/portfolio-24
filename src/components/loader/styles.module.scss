@@ -9,14 +9,6 @@
   z-index: 999999;
 }
 
-.portfolioVersion {
-  position: absolute;
-  top: 0.5rem;
-  left: 1rem;
-  font-size: 2rem;
-  font-weight: 200;
-}
-
 .loadingPercent {
   position: absolute;
   display: flex;
@@ -65,11 +57,11 @@
   }
 
   .loadingPercent {
-    font-size: 6rem;
-    line-height: 5rem;
+    font-size: 3rem;
+    line-height: 4rem;
 
     .percentDigit {
-      width: 3.5rem;
+      width: 2rem;
     }
   }
 }

@@ -98,8 +98,8 @@ function FileStackComponent() {
         {projectsData.map((project, index) => {
 
           // Calculate centered position for each item
-          const basePosition = centerOffset + ((index + 1) * 2.5);
-          const hoverPosition = basePosition - ((index * 1.2) + 20);
+          const basePosition = centerOffset + ((index + 1) * 2.85);
+          const hoverPosition = basePosition - ((index * 1.2) + 18);
 
           return (
             <motion.div

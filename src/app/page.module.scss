@@ -170,12 +170,18 @@
 				}
 
 				.experienceRole {
+					display: flex;
+					justify-content: flex-end;
+					width: 45%;
 					font-size: 1.5rem;
 					text-transform: uppercase;
 					color: global.$light-disabled-color;
 				}
 
 				.experienceMaskDuration {
+					display: flex;
+					justify-content: flex-end;
+					width: 45%;
 					font-size: 1.5rem;
 					text-transform: uppercase;
 					color: global.$dark-disabled-color;
@@ -201,7 +207,7 @@
 			align-items: flex-start;
 
 			.projectTitle {
-				padding: 2rem;
+				padding: 2rem 4rem;
 				font-size: 2rem;
 			}
 		}
@@ -255,7 +261,7 @@
 	.workSectionWrapper {
 		.experienceWrapper {
 			.experienceMainText {
-				font-size: 1.75rem;
+				font-size: 1.5rem;
 			}
 
 			.experienceTableWrapper {
@@ -263,12 +269,12 @@
 
 					.experienceRow,
 					.experienceMaskRow {
-						padding: 1.5rem;
+						padding: 1.25rem;
 					}
 
 					.experienceName,
 					.experienceMaskName {
-						font-size: 1.5rem;
+						font-size: 1.25rem;
 						letter-spacing: 2px;
 					}
 
@@ -288,7 +294,7 @@
 
 				.projectTitle {
 					padding: 0.5rem 1rem;
-					font-size: 1.25rem;
+					font-size: 1.5rem;
 				}
 			}
 		}
