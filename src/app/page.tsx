@@ -20,12 +20,11 @@ faster and a lot less boring with style and statement - Mind of an engineer, hea
 
 const expPhrase = `With close to 3 years of experience working in 
 cross-functional teams and making deadlines sweat, my code is like my documentation -
-clean, clear and occasionally sprinkled with weird jokes.
-`
+clean, clear and occasionally sprinkled with weird jokes.`
 
-const projectPhrase1 = `Breaking down abstractions for my own amusement.`
-const projectPhrase2 = `I design, build and ship experiences that are not just functional, but also a joy to use.`
-const projectPhrase3 = `Trying my best to stay one step ahead of the AI overlords...`
+const projectPhrase = `Breaking down abstractions for my own amusement.
+I design, build and ship experiences that are not just functional, but also a joy to use.
+Trying my best to stay one step ahead of the AI overlords...`
 
 const experienceData = [
     {
@@ -81,13 +80,23 @@ function HomePage() {
                     </section>
                     {/* About Section */}
                     <section className={styles.aboutSectionWrapper}>
-                        <TextScrollRevealComponent phrase={aboutPhrase} />
+                        <TextScrollRevealComponent
+                            phrase={aboutPhrase}
+                            fontSize="4rem"
+                            startOffset="0.8"
+                            endOffset="0.25"
+                        />
                     </section>
                     {/* Work Section */}
                     <section className={styles.workSectionWrapper}>
                         <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
-                            <TextScrollRevealComponent phrase={expPhrase} />
+                            <TextScrollRevealComponent
+                                phrase={expPhrase}
+                                fontSize="3.25rem"
+                                startOffset="0.8"
+                                endOffset="0.25"
+                            />
                             <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
                                 {experienceData.map((exp) => {
                                     return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
@@ -105,11 +114,12 @@ function HomePage() {
                         </div>
 
                         <div className={styles.projectWrapper}>
-                            <div className={styles.projectTitleWrapper}>
-                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase1}</div>
-                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase2}</div>
-                                <div className={`${styles.projectTitle} ${pp_nekkei.className}`}>{projectPhrase3}</div>
-                            </div>
+                            <TextScrollRevealComponent
+                                phrase={projectPhrase}
+                                fontSize="2.75rem"
+                                startOffset="0.9"
+                                endOffset="0.7"
+                            />
                             <FileStackComponent />
                         </div>
                     </section>

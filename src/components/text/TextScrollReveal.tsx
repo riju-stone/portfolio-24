@@ -19,11 +19,13 @@ function Word({ children, range, progress }:
     </div>
 }
 
-function TextScrollRevealComponent({ phrase }: { phrase: string }) {
+function TextScrollRevealComponent(
+    { phrase, fontSize, startOffset, endOffset }:
+        { phrase: string, fontSize: string, startOffset: string, endOffset: string }) {
     const elementRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: elementRef,
-        offset: ["start 0.8", "end 0.25"],
+        offset: [`start ${Number(startOffset)}`, `end ${Number(endOffset)}`],
     });
 
     const words = phrase.split(" ");
@@ -31,7 +33,7 @@ function TextScrollRevealComponent({ phrase }: { phrase: string }) {
 
     return (
         <div className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}>
-            <div className={styles.textRevealContainer} ref={elementRef}>
+            <div className={styles.textRevealContainer} ref={elementRef} style={{ fontSize: fontSize }}>
                 {words.map((word, index) => {
                     const start = index / words.length;
                     const end = start + (1 / words.length);
