@@ -139,8 +139,10 @@
     .textRevealContainer {
       width: 90vw;
 
-      p {
-        margin-right: 0.5rem;
+      .wordWrapper {
+        .shadowWordContainer {
+          height: 1.5rem;
+        }
       }
     }
   }
@@ -160,8 +162,10 @@
     .textRevealContainer {
       width: 90vw;
 
-      p {
-        margin-right: 0.75rem;
+      .wordWrapper {
+        .shadowWordContainer {
+          height: 1.75rem;
+        }
       }
     }
   }

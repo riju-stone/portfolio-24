@@ -41,7 +41,7 @@ function SkewScrollComponent({ children }: { children: React.ReactNode }) {
         stiffness: 250,
         damping: 50,
     });
-    const skewVelocityFactor = useTransform(skewVelocity, [-1000, 1000], [-1, 1]);
+    const skewVelocityFactor = useTransform(skewVelocity, [-1000, 1000], [-0.75, 0.75]);
 
     return (
         <motion.div

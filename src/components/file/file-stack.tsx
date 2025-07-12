@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 import styles from './styles.module.scss'
 import { inter, pp_nueue, space_grotesk } from '@/utils/fonts'
 import { Dot } from "lucide-react"
+import Link from 'next/link'
 
 const projectsData = [
   {
@@ -35,21 +36,21 @@ const projectsData = [
   {
     id: "sevin",
     name: "sevin",
-    link: "",
+    link: "https://www.github.com/riju-stone/sevin",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
   },
   {
     id: "hostl",
     name: "hostl",
-    link: "",
+    link: "https://www.github.com/riju-stone/hostl",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
   },
   {
     id: "wordinary",
     name: "wordinary",
-    link: "",
+    link: "https://www.github.com/riju-stone/wordinary",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
   },
@@ -63,7 +64,7 @@ const projectsData = [
   {
     id: "synk",
     name: "synk",
-    link: "",
+    link: "https://www.github.com/riju-stone/synk",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
   },
@@ -99,7 +100,7 @@ function FileStackComponent() {
 
           // Calculate centered position for each item
           const basePosition = centerOffset + ((index + 1) * 2.85);
-          const hoverPosition = basePosition - ((index * 1.2) + 18);
+          const hoverPosition = basePosition - ((index * 1.2) + 20);
 
           return (
             <motion.div
@@ -131,6 +132,7 @@ function FileStackComponent() {
                 top: `${basePosition}%`,
               }}
             >
+
               <div className={`${styles.fileItemName} ${pp_nueue.className}`}
                 style={{
                   left: fileTagPositions[(index + 1) % 3],

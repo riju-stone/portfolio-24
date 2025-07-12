@@ -55,6 +55,10 @@
 	width: 100vw;
 	justify-items: center;
 	align-items: center;
+
+	.aboutText {
+		font-size: 4rem;
+	}
 }
 
 .contactSectionWrapper {
@@ -114,9 +118,8 @@
 		align-items: center;
 		background-color: global.$dark-bg-color;
 
-		.experienceMainText {
-			width: 90%;
-			font-size: 3rem;
+		.experienceText {
+			font-size: 3.75rem;
 		}
 
 		.experienceTableWrapper {
@@ -199,17 +202,8 @@
 		align-items: center;
 		background-color: global.$dark-bg-color;
 
-		.projectTitleWrapper {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
-
-			.projectTitle {
-				padding: 2rem 4rem;
-				font-size: 2rem;
-			}
+		.projectText {
+			font-size: 2.75rem;
 		}
 	}
 }
@@ -258,10 +252,16 @@
 		}
 	}
 
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 2rem;
+		}
+	}
+
 	.workSectionWrapper {
 		.experienceWrapper {
-			.experienceMainText {
-				font-size: 1.5rem;
+			.experienceText {
+				font-size: 1.75rem;
 			}
 
 			.experienceTableWrapper {
@@ -289,13 +289,10 @@
 
 		.projectWrapper {
 			flex-direction: column;
+			align-items: flex-start;
 
-			.projectTitleWrapper {
-
-				.projectTitle {
-					padding: 0.5rem 1rem;
-					font-size: 1.5rem;
-				}
+			.projectText {
+				font-size: 1.25rem;
 			}
 		}
 	}
@@ -325,19 +322,24 @@
 		}
 	}
 
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 3rem;
+		}
+	}
+
 	.workSectionWrapper {
 		.experienceWrapper {
-			.experienceMainText {
-				font-size: 2.5rem;
+			.experienceText {
+				font-size: 2.75rem;
 			}
 		}
 
 		.projectWrapper {
 			flex-direction: column;
 
-			.projectTitle {
-				width: 80%;
-				font-size: 2.5rem;
+			.projectText {
+				font-size: 2.75rem;
 			}
 		}
 	}
@@ -348,10 +350,15 @@
 		.projectWrapper {
 			flex-direction: column;
 
-			.projectTitle {
-				width: 80%;
-				font-size: 2.5rem;
+			.projectText {
+				font-size: 2.75rem;
 			}
+		}
+	}
+
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 2.75rem;
 		}
 	}
 
@@ -371,6 +378,12 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 3.25rem;
+		}
+	}
+
 	.contactSectionWrapper {
 		.introline {
 			width: 80vw;
@@ -378,6 +391,14 @@
 
 		.introlinkContainer {
 			width: 80vw;
+		}
+	}
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 3.5rem;
 		}
 	}
 }

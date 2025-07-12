@@ -39,12 +39,6 @@
     overflow: hidden;
   }
 
-  .portfolioVersion {
-    font-size: 1.2rem;
-    top: 1.5rem;
-  }
-
-
   .loadingMessageContainer {
     flex-direction: column;
     align-items: flex-start;
@@ -69,8 +63,6 @@
 @media only screen and (min-width: 640px) and (max-width: 920px) {
   .portfolioVersion {
     left: 1.5rem;
-    top: 10px;
-    bottom: none;
     transform: translateX(0);
   }
 }

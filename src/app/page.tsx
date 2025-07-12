@@ -81,8 +81,8 @@ function HomePage() {
                     {/* About Section */}
                     <section className={styles.aboutSectionWrapper}>
                         <TextScrollRevealComponent
+                            className={styles.aboutText}
                             phrase={aboutPhrase}
-                            fontSize="4rem"
                             startOffset="0.8"
                             endOffset="0.25"
                         />
@@ -92,8 +92,8 @@ function HomePage() {
                         <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
                             <TextScrollRevealComponent
+                                className={styles.experienceText}
                                 phrase={expPhrase}
-                                fontSize="3.25rem"
                                 startOffset="0.8"
                                 endOffset="0.25"
                             />
@@ -115,10 +115,10 @@ function HomePage() {
 
                         <div className={styles.projectWrapper}>
                             <TextScrollRevealComponent
+                                className={styles.projectText}
                                 phrase={projectPhrase}
-                                fontSize="2.75rem"
-                                startOffset="0.9"
-                                endOffset="0.7"
+                                startOffset="0.85"
+                                endOffset="0.65"
                             />
                             <FileStackComponent />
                         </div>
