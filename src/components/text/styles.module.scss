@@ -44,7 +44,7 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 4rem;
+  font-size: 3.25rem;
   font-weight: 500;
   color: global.$dark-text-color;
 
@@ -54,15 +54,33 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-start;
 
-    .wordContainer {
-      margin: 0;
+    .wordWrapper {
       margin-right: 0.75rem;
-      // filter: invert(100%);
-    }
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
 
-    .letterContainer {
-      display: inline-block;
+      .wordContainer {
+        transition: opacity 0.2s ease-out;
+      }
+
+      .shadowWordContainer {
+        position: absolute;
+        width: fit-content;
+        height: 2rem;
+        color: global.$dark-disabled-color;
+        background-color: global.$dark-disabled-color;
+        border-radius: 12px;
+        transition: opacity 0.2s ease-out;
+
+        .shadowWord {
+          opacity: 0;
+        }
+      }
     }
   }
 }

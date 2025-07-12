@@ -1,117 +1,44 @@
 "use client";
 
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useRef } from "react";
 
 import styles from "./styles.module.scss";
 import { pp_nekkei } from "@/utils/fonts";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, MotionValue, useScroll, useTransform } from "motion/react";
+
+function Word({ children, range, progress }:
+    { children: React.ReactNode, range: [number, number], progress: MotionValue<number> }) {
+    const opacity = useTransform(progress, range, [0, 1]);
+    const shadowOpacity = useTransform(progress, range, [0.4, 0]);
+
+    return <div className={styles.wordWrapper}>
+        <motion.div className={styles.shadowWordContainer} style={{ opacity: shadowOpacity }}>
+            <span className={styles.shadowWord}>{children}</span>
+        </motion.div>
+        <motion.span className={styles.wordContainer} style={{ opacity }}>{children}</motion.span>
+    </div>
+}
 
 function TextScrollRevealComponent({ phrase }: { phrase: string }) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
-    const animationRef = useRef<gsap.core.Tween | null>(null);
+    const elementRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: elementRef,
+        offset: ["start 0.8", "end 0.25"],
+    });
 
-    // Memoize the phrase splitting to prevent unnecessary re-renders
-    const memoizedWords = useMemo(() => {
-        charRefs.current = []; // Reset refs array
-        return splitWords(phrase);
-    }, [phrase]);
+    const words = phrase.split(" ");
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.registerPlugin(ScrollTrigger);
-            initOptimizedAnimation();
-        });
-
-        return () => {
-            ctx.revert();
-            if (animationRef.current) {
-                animationRef.current.kill();
-            }
-        };
-    }, [memoizedWords]);
-
-    const initOptimizedAnimation = () => {
-        if (!containerRef.current || charRefs.current.length === 0) return;
-
-        // Kill existing animation if any
-        if (animationRef.current) {
-            animationRef.current.kill();
-        }
-
-        // Set initial state for better performance
-        const validRefs = charRefs.current.filter(ref => ref !== null);
-        if (validRefs.length === 0) return;
-
-        gsap.set(validRefs, {
-            opacity: 0.05,
-        });
-
-        // Create optimized animation
-        const animation = gsap.to(validRefs, {
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top 20%",
-                end: `+=${window.innerHeight}`,
-                scrub: 0,
-                once: true,
-            },
-            opacity: 1,
-            duration: 0.5,
-            ease: "power2.out",
-            stagger: {
-                amount: 1,
-                from: "start",
-                ease: "power2.inOut",
-            },
-        });
-
-        animationRef.current = animation;
-    };
-
-    function splitWords(phrase: string) {
-        const words: JSX.Element[] = [];
-
-        phrase.split(" ").forEach((word: string, wordIndex: number) => {
-            const letters = splitLetters(word);
-
-            words.push(
-                <p key={`word-${wordIndex}`} data-index={wordIndex} className={styles.wordContainer}>
-                    {letters}
-                </p>
-            );
-        });
-
-        return words;
-    }
-
-    function splitLetters(word: string) {
-        const letters: JSX.Element[] = [];
-
-
-        word.split("").forEach((letter: string, letterIndex: number) => {
-            letters.push(
-                <span
-                    key={`letter-${letter}-${letterIndex}`}
-                    className={styles.letterContainer}
-                    ref={(el) => { charRefs.current.push(el); }}
-                >
-                    {letter}
-                </span>
-            );
-        });
-
-        return letters;
-    }
 
     return (
-        <div
-            className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}
-            ref={containerRef}
-        >
-            <div className={styles.textRevealContainer}>
-                {memoizedWords}
+        <div className={`${styles.textRevealWrapper} ${pp_nekkei.className}`}>
+            <div className={styles.textRevealContainer} ref={elementRef}>
+                {words.map((word, index) => {
+                    const start = index / words.length;
+                    const end = start + (1 / words.length);
+                    return <Word
+                        key={`word-${index}`}
+                        range={[start, end]} progress={scrollYProgress}>{word}</Word>
+                })}
             </div>
         </div>
     );

@@ -78,7 +78,6 @@ function HomePage() {
                             <TextStaggerComponent className={styles.heroText} text={["Developer"]} />
                         </div>
                         <HeroImage />
-                        {/* <TextStaggerComponent text={heroPhrase} /> */}
                     </section>
                     {/* About Section */}
                     <section className={styles.aboutSectionWrapper}>
@@ -88,7 +87,7 @@ function HomePage() {
                     <section className={styles.workSectionWrapper}>
                         <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
-                            <div className={`${styles.experienceMainText} ${pp_nekkei.className}`}>{expPhrase}</div>
+                            <TextScrollRevealComponent phrase={expPhrase} />
                             <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
                                 {experienceData.map((exp) => {
                                     return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
