@@ -9,7 +9,6 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@gsap/react": "^2.1.2",
 		"@sanity/client": "^6.29.1",
 		"@sanity/icons": "^3.7.4",
 		"@sanity/image-url": "^1.1.0",
@@ -18,12 +17,11 @@
 		"@studio-freight/lenis": "^1.0.42",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
-		"gsap": "^3.13.0",
 		"highlight.js": "^11.11.1",
 		"lucide-react": "^0.439.0",
 		"motion": "^11.18.2",
-		"next": "^15.3.5",
-		"next-sanity": "^9.12.2",
+		"next": "^15.4.1",
+		"next-sanity": "^9.12.3",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"react-markdown": "^10.1.0",
@@ -40,12 +38,12 @@
 		"zustand": "^4.5.7"
 	},
 	"devDependencies": {
-		"@types/node": "^20.19.7",
+		"@types/node": "^20.19.8",
 		"@types/react": "^18.3.23",
 		"@types/react-dom": "^18.3.7",
 		"critters": "^0.0.25",
 		"eslint": "^8.57.1",
-		"eslint-config-next": "^15.3.5",
+		"eslint-config-next": "^15.4.1",
 		"typescript": "^5.8.3"
 	}
 }

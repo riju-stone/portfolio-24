@@ -89,7 +89,7 @@ function HomePage() {
                     </section>
                     {/* Work Section */}
                     <section className={styles.workSectionWrapper}>
-                        <TextScrollExpandComponent word={"work"} />
+                        <TextScrollExpandComponent word={"work"} letterCount={7} />
                         <div className={styles.experienceWrapper}>
                             <TextScrollRevealComponent
                                 className={styles.experienceText}
