@@ -1,10 +1,11 @@
-import React from 'react'
-import { motion } from 'motion/react'
+import React, { useState } from 'react'
+import { animate, motion, useAnimate } from 'motion/react'
 
 import styles from './styles.module.scss'
 import { inter, pp_nueue, space_grotesk } from '@/utils/fonts'
 import { Dot } from "lucide-react"
 import Link from 'next/link'
+import { useDevice } from '@/hooks/useDevice'
 
 const projectsData = [
   {
@@ -86,6 +87,8 @@ const fileTagPositions = {
 }
 
 function FileStackComponent() {
+  const device = useDevice();
+  const [tappedItem, setTappedItem] = useState<string | null>(null);
   const topIndex = projectsData.length - 1; // Index of the topmost file
   const totalItems = projectsData.length;
 
@@ -93,14 +96,45 @@ function FileStackComponent() {
   const stackHeight = totalItems * 8; // Total height of the stack in percentage
   const centerOffset = 50 - (stackHeight / 2.5); // Offset to center the stack
 
+  const handleTap = (projectId: string) => {
+    if (device === 'mobile' || device === 'tablet') {
+      setTappedItem(prev => {
+        // If the same item is tapped, collapse it
+        if (prev === projectId) {
+          return null;
+        }
+        // Otherwise, expand the new item (and collapse any previously expanded item)
+        return projectId;
+      });
+    }
+  };
+
+  const isTouchDevice = device === 'mobile' || device === 'tablet';
+
   return (
-    <div className={styles.fileStackWrapper}>
+    <div className={styles.fileStackWrapper} >
       <div className={styles.fileStackContainer}>
         {projectsData.map((project, index) => {
 
           // Calculate centered position for each item
-          const basePosition = centerOffset + ((index + 1) * 2.85);
-          const hoverPosition = basePosition - ((index * 1.2) + 20);
+          const basePosition = Number(centerOffset + ((index + 1) * 2.85));
+          const hoverPosition = Number(basePosition - ((index * 1.2) + 20));
+
+          const isTapped = tappedItem === project.id;
+          const shouldAnimate = isTouchDevice ? isTapped : undefined;
+
+          const fileItemAnimation = {
+            inactive: {
+              top: `${basePosition}%`,
+            },
+            active: {
+              top: `${hoverPosition}%`,
+              transition: {
+                delay: 0.02,
+                type: "spring",
+              }
+            }
+          }
 
           return (
             <motion.div
@@ -110,29 +144,10 @@ function FileStackComponent() {
                 zIndex: index * 20,
                 transform: `scale(${(0.75 + (index * 0.02))}) rotateX(0deg)`
               }}
-              whileHover={index !== topIndex ? {
-                top: `${hoverPosition}%`,
-                transition: {
-                  delay: 0.1,
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 25
-                }
-              } : undefined}
-              whileTap={index !== topIndex ? {
-                top: `${hoverPosition}%`,
-                transition: {
-                  delay: 0.1,
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 25
-                }
-              } : undefined}
-              initial={{
-                top: `${basePosition}%`,
-              }}
-            >
-
+              whileHover={index !== topIndex && !isTouchDevice ? fileItemAnimation.active : undefined}
+              animate={index !== topIndex && shouldAnimate ? fileItemAnimation.active : fileItemAnimation.inactive}
+              initial={fileItemAnimation.inactive}
+              onTap={() => handleTap(project.id)}>
               <div className={`${styles.fileItemName} ${pp_nueue.className}`}
                 style={{
                   left: fileTagPositions[(index + 1) % 3],
@@ -146,7 +161,9 @@ function FileStackComponent() {
                   </div>
                 ))}
               </div>
-              <div className={`${styles.fileStackItemDesc} ${inter.className}`}>{project.desc}</div>
+              <Link href={project.link} target='_blank' className={styles.fileStackItemLink}>
+                <div className={`${styles.fileStackItemDesc} ${inter.className}`}>{project.desc}</div>
+              </Link>
             </motion.div>
           );
         })}

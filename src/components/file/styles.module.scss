@@ -34,6 +34,7 @@
     background-color: global.$dark-bg-color;
     padding: 2rem;
     cursor: pointer;
+    touch-action: none;
 
     .fileItemName {
       height: 2rem;
@@ -118,7 +119,7 @@
   .fileStackWrapper {
     .fileStackContainer {
       .fileItemContainer {
-        width: 70%;
+        width: 60%;
         height: 200px;
 
         .fileItemName {
@@ -129,11 +130,11 @@
         }
 
         .fileStackItemStack {
-          font-size: 0.8rem;
+          font-size: 0.85rem;
         }
 
         .fileStackItemDesc {
-          font-size: 0.9rem;
+          font-size: 0.85rem;
         }
       }
     }

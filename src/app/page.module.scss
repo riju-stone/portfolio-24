@@ -293,6 +293,7 @@
 
 			.projectText {
 				font-size: 1.25rem;
+				height: 50%;
 			}
 		}
 	}
@@ -337,9 +338,11 @@
 
 		.projectWrapper {
 			flex-direction: column;
+			justify-content: flex-end;
 
 			.projectText {
-				font-size: 2.75rem;
+				font-size: 2.5rem;
+				height: 50%;
 			}
 		}
 	}
@@ -351,7 +354,7 @@
 			flex-direction: column;
 
 			.projectText {
-				font-size: 2.75rem;
+				font-size: 2.5rem;
 			}
 		}
 	}
