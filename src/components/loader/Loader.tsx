@@ -16,7 +16,7 @@ function LoaderComponent({ children }) {
 
     const getPercentPosition = (percentStr: string) => {
         const percent: number = Number(percentStr);
-        return Math.min(Math.max(percent - 5, 0), 88) + "%";
+        return Math.min(Math.max(percent - 5, 0), 90) + "%";
     }
 
     // Only get the animation object after component mounts
