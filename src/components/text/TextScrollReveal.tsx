@@ -30,7 +30,6 @@ function TextScrollRevealComponent(
 
     const words = phrase.split(" ");
 
-
     return (
         <div className={`${styles.textRevealWrapper} ${pp_nekkei.className} ${className}`}>
             <div className={styles.textRevealContainer} ref={elementRef}>

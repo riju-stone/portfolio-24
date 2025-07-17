@@ -35,6 +35,10 @@
     padding: 2rem;
     cursor: pointer;
     touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 
     .fileItemName {
       height: 2rem;
@@ -56,6 +60,10 @@
       border-top: 2px solid global.$dark-disabled-color;
       border-left: 2px solid global.$dark-disabled-color;
       border-right: 2px solid global.$dark-disabled-color;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
 
     .fileStackItemStack {
@@ -67,6 +75,10 @@
       font-size: 1rem;
       color: global.$pale-orange-color;
       margin-bottom: 0.5rem;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
 
       .fileItemStackContainer {
         display: flex;
@@ -81,6 +93,10 @@
       font-size: 1rem;
       color: global.$dark-text-color;
       line-height: 1.4;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
   }
 }
@@ -136,6 +152,17 @@
         .fileStackItemDesc {
           font-size: 0.85rem;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+  .fileStackWrapper {
+    .fileStackContainer {
+      .fileItemContainer {
+        width: 60%;
+        height: 250px;
       }
     }
   }

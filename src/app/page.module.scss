@@ -254,14 +254,14 @@
 
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 2rem;
+			font-size: 2.25rem;
 		}
 	}
 
 	.workSectionWrapper {
 		.experienceWrapper {
 			.experienceText {
-				font-size: 1.75rem;
+				font-size: 1.8rem;
 			}
 
 			.experienceTableWrapper {
@@ -289,10 +289,10 @@
 
 		.projectWrapper {
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: flex-end;
 
 			.projectText {
-				font-size: 1.25rem;
+				font-size: 1.5rem;
 				height: 50%;
 			}
 		}
@@ -361,7 +361,14 @@
 
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 2.75rem;
+			font-size: 3.75rem;
+		}
+	}
+
+	.projectWrapper {
+		.projectText {
+			height: 50%;
+			font-size: 3.75rem;
 		}
 	}
 
@@ -383,7 +390,7 @@
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 3.25rem;
+			font-size: 3.75rem;
 		}
 	}
 
@@ -401,7 +408,7 @@
 @media only screen and (min-width: 1281px) and (max-width: 1440px) {
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 3.5rem;
+			font-size: 3.75rem;
 		}
 	}
 }

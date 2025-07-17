@@ -54,7 +54,7 @@ function BlogsPage() {
         return <main>
             <SkewScrollComponent>
                 <div className={styles.blogMessageWrapper}>
-                    <LazyTextComponent text="I'm a work in progress!" />
+                    <LazyTextComponent text="Working on some stuff!" />
                 </div>
             </SkewScrollComponent>
         </main>

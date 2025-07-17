@@ -58,7 +58,7 @@ const projectsData = [
   {
     id: "ask",
     name: "ask",
-    link: "",
+    link: "https://www.github.com/riju-stone/ask",
     desc: "A distributed task scheduler",
     stack: "go/postgres/redis/aws"
   },
