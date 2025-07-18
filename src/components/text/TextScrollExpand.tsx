@@ -8,7 +8,7 @@ import { MotionValue, useScroll, useTransform, motion, useMotionValueEvent } fro
 
 function LetterGroup({ children, progress, count }:
     { children: string, progress: MotionValue<number>, count: number }) {
-    const letterSpacing = useTransform(progress, [0, 1], ["-3rem", "7rem"]);
+    const letterSpacing = useTransform(progress, [0, 1], ["-3rem", "5rem"]);
     return <motion.div className={styles.replLetterGroup} style={{ letterSpacing, textIndent: letterSpacing }}>
         <div className={styles.replLetter}>{children}</div>
         <div className={styles.replLetter}>{children}</div>
@@ -25,11 +25,6 @@ function TextScrollExpandComponent({ word, letterCount }: { word: string, letter
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start 0.8", "end 0.65"],
-    });
-
-    // Use useMotionValueEvent to listen to scroll progress changes
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        console.log("Scroll progress:", latest);
     });
 
     return (

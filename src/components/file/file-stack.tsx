@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { animate, motion, useAnimate } from 'motion/react'
+import { motion } from 'motion/react'
 
 import styles from './styles.module.scss'
 import { inter, pp_nueue, space_grotesk } from '@/utils/fonts'
@@ -29,8 +29,8 @@ const projectsData = [
     id: "rss",
     name: "RSS",
     link: "https://www.github.com/riju-stone/go-rss",
-    desc: `A simple RSS aggregator. It fetches RSS feeds and displays them in a readable format, 
-    by authenticating with users and storing their following feeds.`,
+    desc: `An RSS aggregator capable of fetching RSS feeds and displaying them in a readable format. 
+    Users can authenticate into the system and store their followed RSS feeds.`,
     stack: "go/postgres"
 
   },
@@ -38,36 +38,44 @@ const projectsData = [
     id: "sevin",
     name: "sevin",
     link: "https://www.github.com/riju-stone/sevin",
-    desc: "A distributed task scheduler",
-    stack: "go/postgres/redis/aws"
+    desc: `An asynchronous coding agent that can plan, run, debug and create 
+    appropriate PRs for any given task. It supports local LLMs like Ollama and HuggingFace models, hence
+    all your data stays with you. Inspired from Google Jules and OAI Codex.`,
+    stack: "go/postgres/redis/rabbitmq"
   },
   {
     id: "hostl",
     name: "hostl",
     link: "https://www.github.com/riju-stone/hostl",
-    desc: "A distributed task scheduler",
-    stack: "go/postgres/redis/aws"
+    desc: `A minimlistic hosting platform. It's a simple hosting platform that can be used to host static websites.
+    Since, vercel openly admitted itself as an AWS wrapper, why not create something of our own?`,
+    stack: "go/postgres/redis/rabbitmq"
   },
   {
     id: "wordinary",
     name: "wordinary",
     link: "https://www.github.com/riju-stone/wordinary",
-    desc: "A distributed task scheduler",
-    stack: "go/postgres/redis/aws"
+    desc: `A beautiful, minimalistic dictionary app. 
+    You can look up words and get their definitions, synonyms, antonyms, and more.
+    It also serves you a few words of the day, just to keep you smart and soophisticated.`,
+    stack: "expo/react-native/reanimated/sqlite"
   },
   {
     id: "ask",
     name: "ask",
     link: "https://www.github.com/riju-stone/ask",
-    desc: "A distributed task scheduler",
-    stack: "go/postgres/redis/aws"
+    desc: `A beautiful cross-pllatform LLM chat app capable of utilising both Local and Online LLMs.
+    This app is also designed to be able to hide from any screen sharing app, including Google Meet, Zoom, MS Teams and you name it.
+    Inspired from Raycast.`,
+    stack: "typescript/rust/tauri"
   },
   {
     id: "synk",
     name: "synk",
     link: "https://www.github.com/riju-stone/synk",
-    desc: "A distributed task scheduler",
-    stack: "go/postgres/redis/aws"
+    desc: `A self-hostable service to sync clipboard and files across all your devices.
+    It's like air drop for all your devices.`,
+    stack: "go/postgres/redis"
   },
   {
     id: "former",
@@ -76,7 +84,7 @@ const projectsData = [
     desc: `A modular form builder, with extensive customizability and a powerful validation system. 
     It offers granular control over the form fields, including the ability to add custom fields and validation rules and
     a detailed analytics dashboard. Inspired from the likes of Google Forms and Typeform.`,
-    stack: "next/tailwind/drizzle/redis/postgres"
+    stack: "next/tailwind/drizzle/postgres"
   },
 ]
 
@@ -96,20 +104,18 @@ function FileStackComponent() {
   const stackHeight = totalItems * 8; // Total height of the stack in percentage
   const centerOffset = 50 - (stackHeight / 2.5); // Offset to center the stack
 
+  const isTouchDevice = device === 'mobile' || device === 'tablet';
+
   const handleTap = (projectId: string) => {
-    if (device === 'mobile' || device === 'tablet') {
+    if (isTouchDevice) {
       setTappedItem(prev => {
-        // If the same item is tapped, collapse it
         if (prev === projectId) {
           return null;
         }
-        // Otherwise, expand the new item (and collapse any previously expanded item)
         return projectId;
       });
     }
   };
-
-  const isTouchDevice = device === 'mobile' || device === 'tablet';
 
   return (
     <div className={styles.fileStackWrapper} >
