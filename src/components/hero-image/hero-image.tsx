@@ -1,38 +1,13 @@
 "use client"
 
-import React, { useMemo } from "react";
+import React from "react";
 import Image from "next/image";
 
 import styles from "./styles.module.scss"
 
 import { useThemeStore } from "@/stores/themeStore";
 import { AnimatePresence, motion } from "motion/react";
-
-const heroImageSplitsLight = [
-  "/images/hero-light/row-1-column-1.jpg",
-  "/images/hero-light/row-1-column-2.jpg",
-  "/images/hero-light/row-1-column-3.jpg",
-  "/images/hero-light/row-1-column-4.jpg",
-  "/images/hero-light/row-1-column-5.jpg",
-  "/images/hero-light/row-1-column-6.jpg",
-  "/images/hero-light/row-1-column-7.jpg",
-  "/images/hero-light/row-1-column-8.jpg",
-  "/images/hero-light/row-1-column-9.jpg",
-  "/images/hero-light/row-1-column-10.jpg",
-]
-
-const heroImageSplitsDark = [
-  "/images/hero-dark/row-1-column-1.jpg",
-  "/images/hero-dark/row-1-column-2.jpg",
-  "/images/hero-dark/row-1-column-3.jpg",
-  "/images/hero-dark/row-1-column-4.jpg",
-  "/images/hero-dark/row-1-column-5.jpg",
-  "/images/hero-dark/row-1-column-6.jpg",
-  "/images/hero-dark/row-1-column-7.jpg",
-  "/images/hero-dark/row-1-column-8.jpg",
-  "/images/hero-dark/row-1-column-9.jpg",
-  "/images/hero-dark/row-1-column-10.jpg",
-]
+import { useDevice } from "@/hooks/useDevice";
 
 const heroImageAnimation = {
   initial: {
@@ -48,42 +23,53 @@ const heroImageAnimation = {
   }
 }
 
+const IMAGE_CONFIG = {
+  light: {
+    desktop: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    mobile: [3, 4, 5, 6, 7, 8]
+  },
+  dark: {
+    desktop: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    mobile: [3, 4, 5, 6, 7, 8]
+  }
+} as const;
+
 export default function HeroImage() {
+  const device = useDevice();
   const theme = useThemeStore(state => state.theme);
 
-  const currentImages = useMemo(() => {
-    return theme === "light" ? heroImageSplitsLight : heroImageSplitsDark;
-  }, [theme]);
+  const deviceKey = device === "mobile" ? "mobile" : "desktop";
+  const themeFolder = theme === "light" ? "hero-light" : "hero-dark";
+  const indices = IMAGE_CONFIG[theme][deviceKey];
 
-  const imageSizes = "(max-width: 639px) 100vw, (max-width: 1024px) 85vw, 65vw";
-
-  return <div className={styles.heroImageWrapper}>
-    <div className={styles.heroImageSplits}>
-      <AnimatePresence mode="wait">
-        {currentImages.map((split, index) => (
-          <div className={styles.heroImageSplit} key={`hero-image-${theme}-split-${index}`}>
-            <motion.div
-              variants={heroImageAnimation}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <Image
-                key={`${index}-${theme}`}
-                src={split}
-                alt={`Hero image segment ${index + 1}`}
-                width={400}
-                height={400}
-                priority={index < 3} // Prioritize first 3 images
-                quality={55}
-                sizes={imageSizes}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyv"
-              />
-            </motion.div>
-          </div>
-        ))}
-      </AnimatePresence>
+  return (
+    <div className={styles.heroImageWrapper}>
+      <div className={styles.heroImageSplits}>
+        <AnimatePresence mode="wait">
+          {indices.map((num: number, index: number) => (
+            <div className={styles.heroImageSplit} key={`hero-image-${theme}-split-${index}`}>
+              <motion.div
+                variants={heroImageAnimation}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <Image
+                  key={`${index}-${theme}`}
+                  src={`/images/${themeFolder}/row-1-column-${num}.jpg`}
+                  alt={`Hero image segment ${index + 1}`}
+                  width={400}
+                  height={400}
+                  priority={index < 3}
+                  quality={55}
+                  placeholder="blur"
+                  blurDataURL="..."
+                />
+              </motion.div>
+            </div>
+          ))}
+        </AnimatePresence>
+      </div>
     </div>
-  </div>
+  );
 }

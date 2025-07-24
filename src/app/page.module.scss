@@ -216,13 +216,13 @@
 				font-size: 2.75rem;
 
 				&:first-child {
-					top: 25%;
+					top: 20%;
 					left: 10%;
 				}
 
 				&:last-child {
 					right: 10%;
-					bottom: 25%;
+					bottom: 20%;
 				}
 			}
 		}
@@ -254,14 +254,14 @@
 
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 2.25rem;
+			font-size: 2rem;
 		}
 	}
 
 	.workSectionWrapper {
 		.experienceWrapper {
 			.experienceText {
-				font-size: 1.8rem;
+				font-size: 1.65rem;
 			}
 
 			.experienceTableWrapper {
@@ -292,7 +292,7 @@
 			align-items: flex-end;
 
 			.projectText {
-				font-size: 1.5rem;
+				font-size: 1.35rem;
 				height: 50%;
 			}
 		}

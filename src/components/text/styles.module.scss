@@ -121,6 +121,12 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    letter-spacing: var(--letter-spacing, 0);
+    text-indent: var(--letter-spacing, 0);
+
+    // Optimize rendering
+    contain: layout style;
+    transform: translateZ(0); // Force GPU layer
 
     .replLetter {
       aspect-ratio: 1;
