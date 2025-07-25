@@ -134,20 +134,43 @@
   }
 }
 
-@media only screen and (min-width: 240px) and (max-width: 639px) {
+@media only screen and (min-width: 240px) and (max-width: 399px) {
   .textStaggerWrapper {
     gap: 0.5rem;
   }
 
   .textRevealWrapper {
-    font-size: 2.2rem;
-
     .textRevealContainer {
       width: 90vw;
 
       .wordWrapper {
         .shadowWordContainer {
-          height: 1.45rem;
+          height: 1rem;
+        }
+      }
+    }
+  }
+
+  .textExpandWrapper {
+    .replLetterGroup {
+      font-size: 6rem;
+      height: 7rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 639px) {
+  .textStaggerWrapper {
+    gap: 0.5rem;
+  }
+
+  .textRevealWrapper {
+    .textRevealContainer {
+      width: 90vw;
+
+      .wordWrapper {
+        .shadowWordContainer {
+          height: 1.25rem;
         }
       }
     }
@@ -163,8 +186,6 @@
 
 @media only screen and (min-width: 640px) and (max-width: 920px) {
   .textRevealWrapper {
-    font-size: 2.5rem;
-
     .textRevealContainer {
       width: 90vw;
 

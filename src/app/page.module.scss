@@ -209,7 +209,7 @@
 }
 
 // Mobile Devices
-@media only screen and (min-width: 240px) and (max-width: 639px) {
+@media only screen and (min-width: 240px) and (max-width: 399px) {
 	.heroSectionWrapper {
 		.heroTextWrapper {
 			.heroText {
@@ -254,14 +254,14 @@
 
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 2rem;
+			font-size: 1.75rem;
 		}
 	}
 
 	.workSectionWrapper {
 		.experienceWrapper {
 			.experienceText {
-				font-size: 1.65rem;
+				font-size: 1.4rem;
 			}
 
 			.experienceTableWrapper {
@@ -292,7 +292,97 @@
 			align-items: flex-end;
 
 			.projectText {
-				font-size: 1.35rem;
+				font-size: 1.4rem;
+				height: 50%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 400px) and (max-width: 639px) {
+	.heroSectionWrapper {
+		.heroTextWrapper {
+			.heroText {
+				font-size: 2.75rem;
+
+				&:first-child {
+					top: 20%;
+					left: 10%;
+				}
+
+				&:last-child {
+					right: 10%;
+					bottom: 20%;
+				}
+			}
+		}
+	}
+
+	.contactSectionWrapper {
+		.introline {
+			align-items: flex-start;
+			width: 90vw;
+			line-height: 4rem;
+
+			.introHeading {
+				font-size: 2.75rem;
+				margin-top: 1.5rem;
+			}
+		}
+
+		.introlinkContainer {
+			width: 90vw;
+			margin-top: 1.5rem;
+			font-size: 2.75rem;
+
+			a {
+				text-decoration: none;
+				color: global.$dark-text-color;
+			}
+		}
+	}
+
+	.aboutSectionWrapper {
+		.aboutText {
+			font-size: 2.25rem;
+		}
+	}
+
+	.workSectionWrapper {
+		.experienceWrapper {
+			.experienceText {
+				font-size: 1.75rem;
+			}
+
+			.experienceTableWrapper {
+				.experienceRowContainer {
+
+					.experienceRow,
+					.experienceMaskRow {
+						padding: 1.25rem;
+					}
+
+					.experienceName,
+					.experienceMaskName {
+						font-size: 1.25rem;
+						letter-spacing: 2px;
+					}
+
+					.experienceRole,
+					.experienceMaskDuration {
+						font-size: 1rem;
+						text-transform: none;
+					}
+				}
+			}
+		}
+
+		.projectWrapper {
+			flex-direction: column;
+			align-items: flex-end;
+
+			.projectText {
+				font-size: 1.65rem;
 				height: 50%;
 			}
 		}

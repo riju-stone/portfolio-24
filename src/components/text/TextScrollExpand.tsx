@@ -51,7 +51,7 @@ const Letter = memo(({ letter, duplicateCount = 6 }: LetterProps) => {
 function TextScrollExpandComponent({
     word,
     duplicateCount = 6,
-    spacingRange = ["-3rem", "5rem"]
+    spacingRange = ["-3rem", "4rem"]
 }: TextScrollExpandProps) {
     // Validate inputs
     if (!word || typeof word !== 'string') {
