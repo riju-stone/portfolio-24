@@ -95,6 +95,21 @@
 	a {
 		color: global.$pale-orange-color;
 	}
+
+	blockquote {
+		background-color: global.$pale-orange-color;
+		padding: 5px 15px;
+		border-radius: 12px;
+		color: global.$light-text-color;
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+
+	img {
+		width: 100%;
+		border-radius: 12px;
+		filter: invert(1);
+	}
 }
 
 // Mobile Devices
