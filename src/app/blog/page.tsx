@@ -71,7 +71,7 @@ function BlogsPage() {
                                 <motion.article
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: 0.6 + index * 0.08 }}
+                                    transition={{ duration: 0.5, delay: 1 + index * 0.08 }}
                                     key={post._id} className={styles.postCard}>
                                     <Link href={`/blog/${post.slug}`} className={styles.postLink}>
                                         <div className={`${styles.postTitle} ${pp_nekkei.className}`}>{post.title}</div>
