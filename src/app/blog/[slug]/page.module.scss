@@ -176,3 +176,21 @@
 		}
 	}
 }
+
+// Tablet Devices
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+	.postContainer {
+		padding: 2rem 2rem 4rem 2rem;
+		align-items: center;
+	}
+
+	.postContent {
+		max-width: 100%;
+		font-size: 0.85rem;
+		line-height: 1.3rem;
+
+		pre {
+			padding: 1px 2px;
+		}
+	}
+}

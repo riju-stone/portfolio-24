@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import styles from "./styles.module.scss"
@@ -38,15 +38,25 @@ export default function HeroImage() {
   const device = useDevice();
   const theme = useThemeStore(state => state.theme);
 
-  const deviceKey = device === "mobile" ? "mobile" : "desktop";
-  const themeFolder = theme === "light" ? "hero-light" : "hero-dark";
-  const indices = IMAGE_CONFIG[theme][deviceKey];
+  // Initialize with default values instead of empty states
+  const [heroImageDir, setHeroImageDir] = useState("hero-dark")
+  const [heroImageIndices, setHeroImageIndices] = useState<number[]>(
+    [...IMAGE_CONFIG.dark.mobile] // Default to desktop dark theme
+  )
+
+  useEffect(() => {
+    // Only update if device is detected (not empty string)
+    if (device) {
+      setHeroImageDir(theme === "light" ? "hero-light" : "hero-dark")
+      setHeroImageIndices(IMAGE_CONFIG[theme][device])
+    }
+  }, [theme, device])
 
   return (
     <div className={styles.heroImageWrapper}>
       <div className={styles.heroImageSplits}>
         <AnimatePresence mode="wait">
-          {indices.map((num: number, index: number) => (
+          {heroImageIndices.map((num: number, index: number) => (
             <div className={styles.heroImageSplit} key={`hero-image-${theme}-split-${index}`}>
               <motion.div
                 variants={heroImageAnimation}
@@ -55,8 +65,8 @@ export default function HeroImage() {
                 exit="exit"
               >
                 <Image
-                  key={`${index}-${theme}`}
-                  src={`/images/${themeFolder}/row-1-column-${num}.jpg`}
+                  key={`${index}-${heroImageDir}`}
+                  src={`/images/${heroImageDir}/row-1-column-${num}.jpg`}
                   alt={`Hero image segment ${index + 1}`}
                   width={400}
                   height={400}

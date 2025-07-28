@@ -4,8 +4,7 @@ import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "motion/react";
 import styles from "./styles.module.scss";
 
-// Optimized transforms with better distribution and reduced extreme values
-const transforms = [
+const hoverTransforms = [
     { x: -0.6, y: -0.4, rotationZ: -20 },
     { x: -0.15, y: -0.3, rotationZ: -5 },
     { x: -0.05, y: 0.08, rotationZ: 8 },
@@ -21,10 +20,9 @@ const transforms = [
     { x: 0.6, y: 0.4, rotationZ: 15 },
 ];
 
-// Optimized animation variants with better performance
 const disperseAnim = {
     hover: (i: number) => {
-        const transform = transforms[i % transforms.length]; // Safe array access
+        const transform = hoverTransforms[i % hoverTransforms.length]; // Safe array access
         return {
             x: transform.x + "em",
             y: transform.y + "em",
@@ -52,20 +50,6 @@ const disperseAnim = {
     },
 };
 
-// Container animation for orchestration
-const containerAnim = {
-    hover: {
-        transition: {
-            staggerChildren: 0.02, // Reduced stagger for smoother effect
-        },
-    },
-    leave: {
-        transition: {
-            staggerChildren: 0.01,
-        },
-    },
-};
-
 interface TextDisperseComponentProps {
     word: string;
 }
@@ -82,7 +66,6 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
         }));
     }, [word]);
 
-    // Memoized event handlers for better performance
     const handleMouseEnter = useCallback(() => {
         setIsHovered(true);
     }, []);
@@ -97,7 +80,6 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
             <motion.span
                 key={key}
                 variants={disperseAnim}
-                initial="leave"
                 animate={isHovered ? "hover" : "leave"}
                 custom={index}
                 style={{
@@ -114,24 +96,16 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
     }, [splitCharacters, isHovered]);
 
     return (
-        <motion.p
+        <p
             className={styles.textDisperseContainer}
-            variants={containerAnim}
-            initial="leave"
-            animate={isHovered ? "hover" : "leave"}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onTouchStart={handleMouseEnter} // Touch support for mobile
-            onTouchEnd={handleMouseLeave}
             style={{
-                // Performance optimizations
-                contain: "layout style",
-                willChange: "transform",
                 cursor: "pointer",
             }}
         >
             {renderCharacters}
-        </motion.p>
+        </p>
     );
 }
 
