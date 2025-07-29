@@ -1,0 +1,253 @@
+@use '../../app/globals.scss' as global;
+
+.tableWrapper {
+  width: 100%;
+
+  .tableHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 3rem;
+    color: global.$dark-disabled-color;
+    font-size: 1.25rem;
+
+    .tableHeaderContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 155px;
+    }
+  }
+
+  .rowWrapper {
+    position: relative;
+    border-top: 2px solid global.$dark-disabled-color;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: 2px solid global.$dark-disabled-color;
+    }
+
+    .rowContainer {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 3rem;
+      z-index: 1;
+    }
+
+    .maskRowContainer {
+      top: 0;
+      left: 0;
+      right: 0;
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 3rem;
+      background-color: global.$dark-text-color;
+      border: none;
+      z-index: 5;
+    }
+
+    .rowContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .dataCol1 {
+      width: 175px;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: global.$dark-text-color;
+    }
+
+    .dataMaskCol1 {
+      width: 175px;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: global.$light-text-color;
+    }
+
+    .dataCol2 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: global.$dark-text-color;
+    }
+
+    .dataMaskCol2 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 2.5rem;
+      color: global.$light-text-color;
+    }
+
+    .dataCol3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: global.$dark-text-color;
+    }
+
+    .dataMaskCol3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: global.$light-text-color;
+    }
+  }
+}
+
+// Mobile Devices
+@media only screen and (min-width: 240px) and (max-width: 640px) {
+  .tableWrapper {
+    width: 100%;
+
+    .tableHeader {
+      display: none;
+    }
+
+    .rowWrapper {
+      position: relative;
+      border-top: 2px solid global.$dark-disabled-color;
+      cursor: pointer;
+
+      &:last-child {
+        border-bottom: 2px solid global.$dark-disabled-color;
+      }
+
+      .rowContainer {
+        padding: 0.75rem 1.25rem;
+        z-index: 1;
+      }
+
+      .maskRowContainer {
+        display: none;
+      }
+
+      .rowContent {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0.15rem;
+      }
+
+      .dataCol1 {
+        font-size: 0.75rem;
+      }
+
+      .dataCol2 {
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: global.$dark-text-color;
+      }
+
+      .dataCol3 {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+// Tablet Devices
+@media only screen and (min-width: 640px) and (max-width: 920px) {
+  .tableWrapper {
+    width: 100%;
+
+    .tableHeader {
+      .tableHeaderContent {
+        width: 130px;
+      }
+    }
+
+    .rowWrapper {
+
+      &:last-child {
+        border-bottom: 2px solid global.$dark-disabled-color;
+      }
+
+      .rowContainer {
+        padding: 1.5rem 2.4rem;
+        z-index: 1;
+      }
+
+      .maskRowContainer {
+        display: none;
+      }
+
+      .rowContent {
+        gap: 1.25rem;
+      }
+
+      .dataCol1 {
+        font-size: 1.2rem;
+      }
+
+      .dataCol2 {
+        font-size: 1.875rem;
+      }
+
+      .dataCol3 {
+        text-wrap: nowrap;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// Desktop Devices
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+  .tableWrapper {
+    width: 100%;
+
+    .tableHeader {
+      .tableHeaderContent {
+        width: 150px;
+      }
+    }
+
+    .rowWrapper {
+
+      &:last-child {
+        border-bottom: 2px solid global.$dark-disabled-color;
+      }
+
+      .rowContainer {
+        padding: 1.5rem 2.4rem;
+        z-index: 1;
+      }
+
+      .maskRowContainer {
+        display: none;
+      }
+
+      .rowContent {
+        gap: 1.5rem;
+      }
+
+      .dataCol1 {
+        width: 150px;
+        font-size: 1.25rem;
+      }
+
+      .dataCol2 {
+        font-size: 2.2rem;
+      }
+
+      .dataCol3 {
+        text-wrap: nowrap;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

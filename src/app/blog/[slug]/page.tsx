@@ -40,7 +40,7 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
         return (
             <main>
                 <div className={styles.blogsPageWrapper}>
-                    <LazyTextComponent text="Collecting my thoughts..." />
+                    <LazyTextComponent text="Collecting my thoughts." />
                 </div>
             </main>
         );
@@ -50,7 +50,7 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
         return (
             <main>
                 <div className={styles.blogsPageWrapper}>
-                    <LazyTextComponent text="Fuck. I don't seem to be able to recall.." />
+                    <LazyTextComponent text="Fuck. I don't seem to be able to recall." />
                 </div>
             </main>
         );

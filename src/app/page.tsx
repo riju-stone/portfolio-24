@@ -13,6 +13,7 @@ import SkewScrollComponent from "@/components/scroll/Scroll";
 import TextScrollRevealComponent from "@/components/text/TextScrollReveal";
 import HeroImage from "@/components/hero-image/hero-image";
 import FileStackComponent from "@/components/file/file-stack";
+import FancyTableComponent from "@/components/table/table";
 
 const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
 I juggle front-end flair and back-end brains to make the web smarter, 
@@ -26,43 +27,35 @@ const projectPhrase = `Breaking down abstractions for my own amusement.
 I design, build and ship experiences that are not just functional, but also a joy to use.
 Trying my best to stay one step ahead of the AI overlords...`
 
+const experienceMetadata = {
+    col1: "role",
+    col2: "title",
+    col3: "duration",
+    link: "#"
+}
 const experienceData = [
     {
-        id: "session-ai",
-        name: "Session AI Inc.",
+        _id: "session-ai",
+        title: "Session AI Inc.",
         role: "SWE II",
-        duration: "2022 - Present"
+        duration: "2022 - Present",
+        link: "#"
     },
     {
-        id: "simulacra-tech",
-        name: "Simulacra Technologies",
+        _id: "simulacra-tech",
+        title: "Simulacra Technologies",
         role: "Freelance",
-        duration: "2021 - 2022"
+        duration: "2021 - 2022",
+        link: "#"
     },
     {
-        id: "skill-academia",
-        name: "Skill Academia",
+        _id: "skill-academia",
+        title: "Skill Academia",
         role: "SWE Intern",
-        duration: "2021"
+        duration: "2021",
+        link: "#"
     }
 ]
-
-const clipAnimation = {
-    initial: {
-        clipPath: "inset(100% 0px 0px)",
-        transition: {
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-        }
-    },
-    hover: {
-        clipPath: "inset(0% 0px 0px)",
-        transition: {
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1]
-        }
-    }
-}
 
 function HomePage() {
     return (
@@ -89,7 +82,7 @@ function HomePage() {
                     </section>
                     {/* Work Section */}
                     <section className={styles.workSectionWrapper}>
-                        <TextScrollExpandComponent word={"work"} letterCount={7} />
+                        <TextScrollExpandComponent word={"work"} />
                         <div className={styles.experienceWrapper}>
                             <TextScrollRevealComponent
                                 className={styles.experienceText}
@@ -97,20 +90,7 @@ function HomePage() {
                                 startOffset="0.8"
                                 endOffset="0.25"
                             />
-                            <div className={`${styles.experienceTableWrapper} ${pp_nekkei.className}`}>
-                                {experienceData.map((exp) => {
-                                    return <motion.div key={exp.id} className={styles.experienceRowContainer} initial="initial" whileHover="hover" whileTap="hover">
-                                        <div className={styles.experienceRow}>
-                                            <div className={styles.experienceName}>{exp.name}</div>
-                                            <div className={styles.experienceRole}>{exp.role}</div>
-                                        </div>
-                                        <motion.div className={styles.experienceMaskRow} variants={clipAnimation}>
-                                            <div className={styles.experienceMaskName}>{exp.name}</div>
-                                            <div className={styles.experienceMaskDuration}>{exp.duration}</div>
-                                        </motion.div>
-                                    </motion.div>
-                                })}
-                            </div>
+                            <FancyTableComponent metadata={experienceMetadata} tableData={experienceData} />
                         </div>
 
                         <div className={styles.projectWrapper}>

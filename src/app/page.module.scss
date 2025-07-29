@@ -121,76 +121,6 @@
 		.experienceText {
 			font-size: 3.75rem;
 		}
-
-		.experienceTableWrapper {
-			width: 100%;
-
-			.experienceRowContainer {
-				position: relative;
-				border-top: 2px solid global.$dark-disabled-color;
-				cursor: pointer;
-
-				&:last-child {
-					border-bottom: 2px solid global.$dark-disabled-color;
-				}
-
-				.experienceRow {
-					position: relative;
-					display: flex;
-					flex-direction: row;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0.75rem 3rem;
-					z-index: 1;
-				}
-
-				.experienceMaskRow {
-					top: 0;
-					left: 0;
-					right: 0;
-					position: absolute;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0.75rem 3rem;
-					background-color: global.$dark-text-color;
-					border: none;
-					z-index: 5;
-				}
-
-				.experienceName {
-					font-size: 2.5rem;
-					text-transform: uppercase;
-					letter-spacing: 4px;
-					color: global.$dark-text-color;
-				}
-
-				.experienceMaskName {
-					font-size: 2.5rem;
-					text-transform: uppercase;
-					letter-spacing: 4px;
-					color: global.$light-text-color;
-				}
-
-				.experienceRole {
-					display: flex;
-					justify-content: flex-end;
-					width: 45%;
-					font-size: 1.5rem;
-					text-transform: uppercase;
-					color: global.$light-disabled-color;
-				}
-
-				.experienceMaskDuration {
-					display: flex;
-					justify-content: flex-end;
-					width: 45%;
-					font-size: 1.5rem;
-					text-transform: uppercase;
-					color: global.$dark-disabled-color;
-				}
-			}
-		}
 	}
 
 	.projectWrapper {
@@ -263,28 +193,6 @@
 			.experienceText {
 				font-size: 1.4rem;
 			}
-
-			.experienceTableWrapper {
-				.experienceRowContainer {
-
-					.experienceRow,
-					.experienceMaskRow {
-						padding: 1.25rem;
-					}
-
-					.experienceName,
-					.experienceMaskName {
-						font-size: 1.25rem;
-						letter-spacing: 2px;
-					}
-
-					.experienceRole,
-					.experienceMaskDuration {
-						font-size: 1rem;
-						text-transform: none;
-					}
-				}
-			}
 		}
 
 		.projectWrapper {
@@ -352,28 +260,6 @@
 		.experienceWrapper {
 			.experienceText {
 				font-size: 1.75rem;
-			}
-
-			.experienceTableWrapper {
-				.experienceRowContainer {
-
-					.experienceRow,
-					.experienceMaskRow {
-						padding: 1.25rem;
-					}
-
-					.experienceName,
-					.experienceMaskName {
-						font-size: 1.25rem;
-						letter-spacing: 2px;
-					}
-
-					.experienceRole,
-					.experienceMaskDuration {
-						font-size: 1rem;
-						text-transform: none;
-					}
-				}
 			}
 		}
 
@@ -444,20 +330,13 @@
 			flex-direction: column;
 
 			.projectText {
-				font-size: 2.5rem;
+				font-size: 3.5rem;
 			}
 		}
 	}
 
 	.aboutSectionWrapper {
 		.aboutText {
-			font-size: 3.75rem;
-		}
-	}
-
-	.projectWrapper {
-		.projectText {
-			height: 50%;
 			font-size: 3.75rem;
 		}
 	}

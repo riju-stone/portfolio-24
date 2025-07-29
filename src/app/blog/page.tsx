@@ -2,13 +2,29 @@
 
 import SkewScrollComponent from "@/components/scroll/Scroll";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import styles from "./page.module.scss";
 import LazyTextComponent from "@/components/lazy/Lazy";
 import { getLatestPosts } from "@/sanity/queries/posts";
-import { pp_nekkei } from "@/utils/fonts";
-import { motion } from "motion/react";
 import TextStaggerComponent from "@/components/text/TextStagger";
+import FancyTableComponent from "@/components/table/table";
+
+const blogMetadata = {
+    col1: "publishedAt",
+    col2: "title",
+    col3: "tags"
+}
+
+function formatPostsData(posts: any[]) {
+    return posts.map(post => ({
+        ...post,
+        publishedAt: new Date(post.publishedAt).toLocaleString("en-US", {
+            month: "numeric",
+            day: "numeric",
+            year: "numeric",
+        }),
+        link: `/blog/${post.slug}`
+    }))
+}
 
 function BlogsPage() {
     const [posts, setPosts] = useState([])
@@ -17,8 +33,8 @@ function BlogsPage() {
 
     useEffect(() => {
         getLatestPosts().then(data => {
-            // console.log(data)
-            setPosts(data);
+            const formattedData = formatPostsData(data);
+            setPosts(formattedData);
             setLoading(false);
         }).catch(error => {
             setError(error);
@@ -43,7 +59,7 @@ function BlogsPage() {
             <main>
                 <SkewScrollComponent>
                     <div className={styles.blogMessageWrapper}>
-                        <LazyTextComponent text="Oops! Guess I fucked something up." />
+                        <LazyTextComponent text="Oops! I fucked up." />
                     </div>
                 </SkewScrollComponent>
             </main>
@@ -64,37 +80,15 @@ function BlogsPage() {
         <main>
             <SkewScrollComponent>
                 <div className={styles.blogsPageWrapper}>
-                    <div key="postsWrapper">
-                        <TextStaggerComponent className={styles.pageTitle} text={["What", "I've", "been", "upto"]} />
+                    <div className={styles.postsWrapper}>
+                        <TextStaggerComponent className={styles.pageTitle} text={["Feed"]} />
                         <div className={styles.postsGrid}>
-                            {posts.map((post, index) => (
-                                <motion.article
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: 1 + index * 0.08 }}
-                                    key={post._id} className={styles.postCard}>
-                                    <Link href={`/blog/${post.slug}`} className={styles.postLink}>
-                                        <div className={`${styles.postTitle} ${pp_nekkei.className}`}>{post.title}</div>
-                                        <div className={`${styles.postMetadataContainer} ${pp_nekkei.className}`}>
-                                            {post.tags?.length > 0 && (
-                                                <div className={styles.tagContainer}>
-                                                    {post.tags.map((tag: string) => (
-                                                        <span key={tag} className={styles.tag}>{tag}</span>
-                                                    ))}
-                                                </div>
-                                            )}
-                                            <time className={styles.postDate}>
-                                                {new Date(post.publishedAt).toLocaleString("en-US", {
-                                                    month: "short",
-                                                    day: "numeric",
-                                                    year: "numeric",
-                                                }).replace(/,/g, "")}
-                                            </time>
-                                        </div>
-                                    </Link>
-                                </motion.article>
-                            ))}
+                            <FancyTableComponent metadata={blogMetadata} tableData={posts} />
                         </div>
+                        {/* <div className={styles.pagination}>
+                            <button>Previous</button>
+                            <button>Next</button>
+                        </div> */}
                     </div>
                 </div>
             </SkewScrollComponent>
