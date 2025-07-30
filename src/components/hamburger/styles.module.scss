@@ -35,12 +35,22 @@
   }
 }
 
-.activeMenuLink a {
+.activeMenuLink.light>a {
+  color: global.$dark-text-color;
+}
+
+.activeMenuLink.dark>a {
   color: global.$light-text-color;
 }
 
-.inactiveMenuLink a {
-  opacity: 0.5;
+.inactiveMenuLink.light>a {
+  color: global.$dark-text-color;
+  opacity: 0.4;
+}
+
+.inactiveMenuLink.dark>a {
+  color: global.$light-text-color;
+  opacity: 0.4;
 }
 
 .hamburgerMenuCurve {

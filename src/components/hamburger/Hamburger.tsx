@@ -95,7 +95,7 @@ function HamburgerMenuComponent() {
                             return (
                                 <div
                                     key={`MenuLink-${index}`}
-                                    className={`${checkActivePage(data.link) ? styles.activeMenuLink : styles.inactiveMenuLink}`}
+                                    className={`${checkActivePage(data.link) ? styles.activeMenuLink : styles.inactiveMenuLink} ${styles[theme]}`}
                                 >
                                     <Link href={data.link} onClick={() => toggleMenu(false)}>
                                         <TextZoopComponent text={data.label} />
