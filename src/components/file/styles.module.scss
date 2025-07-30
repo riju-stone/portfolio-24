@@ -104,10 +104,12 @@
 // Mobile Devices
 @media only screen and (min-width: 240px) and (max-width: 639px) {
   .fileStackWrapper {
+
     .fileItemContainer {
       width: 80%;
       height: 150px;
       user-select: none;
+      padding: 1rem 1.5rem;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -121,6 +123,7 @@
 
       .fileStackItemStack {
         font-size: 0.625rem;
+        margin-bottom: 0.2rem;
       }
 
       .fileStackItemDesc {

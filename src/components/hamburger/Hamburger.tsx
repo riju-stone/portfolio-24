@@ -10,9 +10,11 @@ import TextZoopComponent from "../text/TextZoop";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 import { useDevice } from "@/hooks/useDevice";
+import { useThemeStore } from "@/stores/themeStore";
 
 function HamburgerMenuComponent() {
     const deviceType = useDevice();
+    const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
     const checkActivePage = useActivePath();
@@ -80,7 +82,7 @@ function HamburgerMenuComponent() {
         <AnimatePresence mode="wait">
             {menuOpen ? (
                 <motion.div
-                    className={styles.hamburgerMenuWrapper}
+                    className={`${styles.hamburgerMenuWrapper} ${styles[theme]}`}
                     variants={hamburgerMenuAnim}
                     initial="initial"
                     animate="animate"
@@ -102,7 +104,7 @@ function HamburgerMenuComponent() {
                             );
                         })}
                     </div>
-                    <svg className={styles.hamburgerMenuCurve}>
+                    <svg className={`${styles.hamburgerMenuCurve} ${styles[theme]}`}>
                         <motion.path
                             variants={hamburgerCurveAnim}
                             initial="initial"

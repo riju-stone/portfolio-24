@@ -124,7 +124,7 @@ function FileStackComponent() {
 
           // Calculate centered position for each item
           const basePosition = Number(centerOffset + ((index + 1) * 2.85));
-          const hoverPosition = Number(basePosition - ((index * 1.2) + 16));
+          const hoverPosition = Number(basePosition - ((index * 1.2) + 18));
 
           const isTapped = tappedItem === project.id;
           const shouldAnimate = isTouchDevice ? isTapped : undefined;

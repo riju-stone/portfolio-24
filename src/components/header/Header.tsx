@@ -6,8 +6,7 @@ import { space_grotesk } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/ThemeSwitch";
-import
-{
+import {
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
     headerNameMenuButtonAnim,
@@ -27,8 +26,7 @@ import { useActivePath } from "@/utils/path";
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
 
-function HeaderComponent()
-{
+function HeaderComponent() {
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
@@ -36,14 +34,11 @@ function HeaderComponent()
     const { scrollY } = useScroll();
     const [headerState, setHeaderState] = useState("expanded");
 
-    useMotionValueEvent(scrollY, "change", (scrollValue) =>
-    {
+    useMotionValueEvent(scrollY, "change", (scrollValue) => {
         toggleMenu(false);
-        if (scrollValue < 120)
-        {
+        if (scrollValue < 120) {
             setHeaderState("expanded");
-        } else
-        {
+        } else {
             setHeaderState("collapsed");
         }
     });
@@ -64,8 +59,7 @@ function HeaderComponent()
                     >
                         {heroInitials[0]}
                     </motion.div>
-                    {heroNonInitials.split("").map((letter, index) =>
-                    {
+                    {heroNonInitials.split("").map((letter, index) => {
                         return letter == " " ? (
                             <React.Fragment key={`hero-initial-letter${index}`}>
                                 <motion.div
@@ -129,7 +123,7 @@ function HeaderComponent()
 
             <motion.button
                 type="button"
-                className={styles.headerMenuButton}
+                className={`${styles.headerMenuButton} ${styles[theme]}`}
                 variants={headerNameMenuButtonAnim}
                 initial="expand"
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
@@ -141,17 +135,17 @@ function HeaderComponent()
                     animate={menuOpen ? "open" : "close"}
                 >
                     <motion.div
-                        className={styles.headerMenuButtonLine}
+                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuUpperAnim}
                         animate={menuOpen ? "close" : "open"}
                     />
                     <motion.div
-                        className={styles.headerMenuButtonLine}
+                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuMiddleAnim}
                         animate={menuOpen ? "close" : "open"}
                     />
                     <motion.div
-                        className={styles.headerMenuButtonLine}
+                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuLowerAnim}
                         animate={menuOpen ? "close" : "open"}
                     />

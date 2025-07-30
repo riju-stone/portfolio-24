@@ -4,20 +4,26 @@
   width: 100%;
 
   .tableHeader {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 3rem;
     color: global.$dark-disabled-color;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    text-wrap: nowrap;
 
     .tableHeaderContent {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-      gap: 155px;
+      text-wrap: nowrap;
+    }
+
+    span {
+      width: 200px;
     }
   }
 
@@ -67,7 +73,7 @@
       font-size: 1.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: global.$dark-text-color;
+      color: global.$pale-orange-color;
     }
 
     .dataMaskCol1 {
@@ -75,7 +81,7 @@
       font-size: 1.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: global.$light-text-color;
+      color: global.$pale-orange-color;
     }
 
     .dataCol2 {
@@ -154,6 +160,7 @@
 
       .dataCol3 {
         font-size: 0.75rem;
+        text-wrap: nowrap;
       }
     }
   }
@@ -171,7 +178,6 @@
     }
 
     .rowWrapper {
-
       &:last-child {
         border-bottom: 2px solid global.$dark-disabled-color;
       }
@@ -217,7 +223,6 @@
     }
 
     .rowWrapper {
-
       &:last-child {
         border-bottom: 2px solid global.$dark-disabled-color;
       }
