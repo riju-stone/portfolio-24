@@ -4,6 +4,7 @@ import React from 'react'
 
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import { useCursorStore } from '@/stores/cursorStore'
 
 const clipAnimation = {
   initial: {
@@ -29,7 +30,12 @@ const clipAnimation = {
 }
 
 function FancyTableComponent({ metadata, tableData }) {
-  return <motion.div className={styles.tableWrapper} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.75 }}>
+  const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
+
+  return <motion.div
+    className={styles.tableWrapper}
+    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, delay: 0.75 }}>
     <div className={`${styles.tableHeader} ${space_grotesk.className}`}>
       <div className={styles.tableHeaderContent}>
         <span>/{metadata.col1}</span>
@@ -38,7 +44,14 @@ function FancyTableComponent({ metadata, tableData }) {
       <span>/{metadata.col3}</span>
     </div>
     {tableData.map((r) => {
-      return <motion.div key={r._id} className={`${styles.rowWrapper} ${pp_nekkei.className}`} initial="unhovered" whileHover="hover">
+      return <motion.div
+        key={r._id}
+        className={`${styles.rowWrapper} ${pp_nekkei.className}`}
+        initial="unhovered"
+        whileHover="hover"
+        onMouseEnter={() => expandCursor()}
+        onMouseLeave={() => defaultCursor()}
+      >
         <Link href={r.link}>
           <div className={styles.rowContainer}>
             <div className={styles.rowContent}>

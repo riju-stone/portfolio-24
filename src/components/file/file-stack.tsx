@@ -6,6 +6,7 @@ import { inter, pp_nueue, space_grotesk } from '@/utils/fonts'
 import { Dot } from "lucide-react"
 import Link from 'next/link'
 import { useDevice } from '@/hooks/useDevice'
+import { useCursorStore } from '@/stores/cursorStore'
 
 const projectsData = [
   {
@@ -96,6 +97,7 @@ const fileTagPositions = {
 
 function FileStackComponent() {
   const device = useDevice();
+  const { defaultCursor, focusCursor } = useCursorStore((state) => state);
   const [tappedItem, setTappedItem] = useState<string | null>(null);
   const topIndex = projectsData.length - 1; // Index of the topmost file
   const totalItems = projectsData.length;
@@ -146,6 +148,8 @@ function FileStackComponent() {
             <motion.div
               key={project.id}
               className={styles.fileItemContainer}
+              onMouseEnter={() => focusCursor()}
+              onMouseLeave={() => defaultCursor()}
               style={{
                 zIndex: index * 20,
                 transform: `scale(${(0.75 + (index * 0.02))}) rotateX(0deg)`

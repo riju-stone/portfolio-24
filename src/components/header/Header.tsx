@@ -22,6 +22,7 @@ import TextZoopComponent from "../text/TextZoop";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
+import { useCursorStore } from "@/stores/cursorStore";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
@@ -30,6 +31,9 @@ function HeaderComponent() {
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
+    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
+
+
     const checkActivePath = useActivePath();
     const { scrollY } = useScroll();
     const [headerState, setHeaderState] = useState("expanded");
@@ -68,6 +72,8 @@ function HeaderComponent() {
                                     initial="initial"
                                     animate={headerState === "collapsed" ? "collapse" : "expand"}
                                     whileHover="hover"
+                                    onMouseEnter={() => focusCursor()}
+                                    onMouseLeave={() => defaultCursor()}
                                 >
                                     <Link href="/studio">&#10022;</Link>
                                 </motion.div>
@@ -109,6 +115,8 @@ function HeaderComponent() {
                             initial="initial"
                             animate={headerState === "collapsed" ? "collapse" : "expand"}
                             className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
+                            onMouseEnter={() => expandCursor()}
+                            onMouseLeave={() => defaultCursor()}
                         >
                             <Link href={data.link}>
                                 <TextZoopComponent text={data.label} />
@@ -128,6 +136,8 @@ function HeaderComponent() {
                 initial="expand"
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => toggleMenu(!menuOpen)}
+                onMouseEnter={() => expandCursor()}
+                onMouseLeave={() => defaultCursor()}
             >
                 <motion.div
                     className={styles.headerMenuButtonLines}

@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "motion/react";
 import styles from "./styles.module.scss";
+import { useCursorStore } from "@/stores/cursorStore";
 
 const hoverTransforms = [
     { x: -0.6, y: -0.4, rotationZ: -20 },
@@ -56,6 +57,7 @@ interface TextDisperseComponentProps {
 
 function TextDisperseComponent({ word }: TextDisperseComponentProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
     // Memoize character splitting to prevent unnecessary re-renders
     const splitCharacters = useMemo(() => {
@@ -68,10 +70,12 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
 
     const handleMouseEnter = useCallback(() => {
         setIsHovered(true);
+        expandCursor();
     }, []);
 
     const handleMouseLeave = useCallback(() => {
         setIsHovered(false);
+        defaultCursor();
     }, []);
 
     // Memoized character rendering
@@ -100,9 +104,6 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
             className={styles.textDisperseContainer}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            style={{
-                cursor: "pointer",
-            }}
         >
             {renderCharacters}
         </p>

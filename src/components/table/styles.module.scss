@@ -30,7 +30,6 @@
   .rowWrapper {
     position: relative;
     border-top: 2px solid global.$dark-disabled-color;
-    cursor: pointer;
 
     &:last-child {
       border-bottom: 2px solid global.$dark-disabled-color;
@@ -125,7 +124,6 @@
     .rowWrapper {
       position: relative;
       border-top: 2px solid global.$dark-disabled-color;
-      cursor: pointer;
 
       &:last-child {
         border-bottom: 2px solid global.$dark-disabled-color;

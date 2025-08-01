@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
 import FooterComponent from "@/components/footer/Footer";
+import CursorComponent from "@/components/cursor/Cursor";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
@@ -138,6 +139,7 @@ export default function RootLayout({
                     <HeaderComponent />
                     {children}
                     <FooterComponent />
+                    <CursorComponent />
                     <BackgroundComponent />
                 </LoaderComponent>
             </body>

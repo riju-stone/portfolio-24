@@ -12,7 +12,7 @@
 		"@sanity/client": "^6.29.1",
 		"@sanity/icons": "^3.7.4",
 		"@sanity/image-url": "^1.1.0",
-		"@sanity/ui": "^2.16.9",
+		"@sanity/ui": "^2.16.12",
 		"@sanity/vision": "^3.99.0",
 		"@studio-freight/lenis": "^1.0.42",
 		"@vercel/analytics": "^1.5.0",
@@ -20,10 +20,10 @@
 		"highlight.js": "^11.11.1",
 		"lucide-react": "^0.439.0",
 		"motion": "^11.18.2",
-		"next": "^15.4.3",
+		"next": "^15.4.5",
 		"next-sanity": "^9.12.3",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
 		"react-markdown": "^10.1.0",
 		"rehype-highlight": "^7.0.2",
 		"rehype-katex": "^7.0.1",
@@ -43,7 +43,7 @@
 		"@types/react-dom": "^18.3.7",
 		"critters": "^0.0.25",
 		"eslint": "^8.57.1",
-		"eslint-config-next": "^15.4.3",
-		"typescript": "^5.8.3"
+		"eslint-config-next": "^15.4.5",
+		"typescript": "^5.9.2"
 	}
 }
