@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo, useCallback } from "react";
 
 import styles from "./styles.module.scss";
 import { motion, AnimatePresence, useAnimationFrame } from "motion/react";
@@ -9,37 +9,55 @@ import { pp_nekkei } from "@/utils/fonts";
 
 function LoaderComponent({ children }) {
     const progressBarRef = useRef(null);
+    const animationStartTimeRef = useRef(null);
+    const lastUpdateTimeRef = useRef(0);
 
     const [loading, setLoading] = useState(true);
-    const [progressPercent, setProgressPercent] = useState("0");
+    const [progressPercent, setProgressPercent] = useState("000");
     const [progressAnim, setProgressAnim] = useState(null);
 
-    const getPercentPosition = (percentStr: string) => {
-        const percent: number = Number(percentStr);
-        return Math.min(Math.max(percent - 5, 0), 90) + "%";
-    }
-
-    // Only get the animation object after component mounts
-    useEffect(() => {
-        setProgressAnim(getProgressAnim());
+    const getPercentPosition = useCallback((percentStr: string) => {
+        const percent = Number(percentStr);
+        return `${Math.min(Math.max(percent - 5, 0), 90)}%`;
     }, []);
 
-    useAnimationFrame(() => {
-        let progressPos = 0;
-        if (progressBarRef.current && typeof window !== 'undefined') {
-            progressPos = progressBarRef.current.getBoundingClientRect().left;
-            progressPos = Math.floor(Math.abs(progressPos));
+    const handleAnimationComplete = useCallback(() => {
+        setTimeout(() => setLoading(false), 400);
+    }, []);
 
-            let percent = Math.abs(progressPos - window.screen.width);
+    const memoizedProgressAnim = useMemo(() => {
+        if (typeof window !== 'undefined') {
+            return getProgressAnim();
+        }
+        return null;
+    }, []);
+
+
+    useEffect(() => {
+        setProgressAnim(memoizedProgressAnim);
+        animationStartTimeRef.current = Date.now();
+    }, [memoizedProgressAnim]);
+
+    useAnimationFrame((time) => {
+        if (!progressAnim || !loading) return;
+
+        if (time - lastUpdateTimeRef.current < 100) return;
+        lastUpdateTimeRef.current = time;
+
+        if (progressBarRef.current && typeof window !== 'undefined') {
+            const progressPos = progressBarRef.current.getBoundingClientRect().left;
+            const normalizedPos = Math.abs(progressPos);
+
+            let percent = Math.abs(normalizedPos - window.screen.width);
             percent = Math.floor((percent / window.screen.width) * 100);
 
-            if (percent % 25 == 0) {
-                setProgressPercent(String(percent).padStart(3, "0"));
+            if (percent % 25 === 0) {
+                const paddedPercent = String(percent).padStart(3, "0");
+                setProgressPercent(paddedPercent);
             }
         }
     });
 
-    // Don't render the progress bar until we have the animation object
     if (!progressAnim) {
         return <>{children}</>;
     }
@@ -76,22 +94,19 @@ function LoaderComponent({ children }) {
                                     {letter}
                                 </motion.span>
                             </AnimatePresence>
-
                         ))}
-
                     </motion.div>
                     <motion.div
                         ref={progressBarRef}
                         className={styles.loadingProgress}
                         variants={progressAnim}
-                        onAnimationComplete={() => setTimeout(() => setLoading(false), 400)}
+                        onAnimationComplete={handleAnimationComplete}
                     />
                 </motion.div>
             ) : (
                 <>{children}</>
-            )
-            }
-        </AnimatePresence >
+            )}
+        </AnimatePresence>
     );
 }
 

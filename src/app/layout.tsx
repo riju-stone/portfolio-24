@@ -110,28 +110,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
-                {/* Preload critical hero images */}
+                <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+                <meta name="theme-color" content="#0c0c0c" />
+                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
                 <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-1.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-2.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-3.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-4.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-5.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-6.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-7.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-8.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-9.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-10.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-1.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-2.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-3.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-4.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-5.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-6.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-7.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-8.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-9.jpg" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-10.jpg" />
+                <link rel="preload" as="image" href="/images/hero-light/row-1-column-3.webp" />
+                <link rel="preload" as="image" href="/images/hero-light/row-1-column-4.webp" />
+                <link rel="preload" as="image" href="/images/hero-light/row-1-column-5.webp" />
+                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-3.webp" />
+                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-4.webp" />
+                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-5.webp" />
             </head>
             <body className="app">
                 <LoaderComponent>

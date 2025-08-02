@@ -63,6 +63,7 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+      cursor: none;
     }
 
     .fileStackItemStack {
@@ -93,6 +94,7 @@
       color: global.$dark-text-color;
       line-height: 1.4;
       user-select: none;
+      cursor: none;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;

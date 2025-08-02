@@ -7,6 +7,9 @@
   max-width: 1000px;
   overflow: hidden;
   z-index: 0;
+  // Add GPU acceleration
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .heroImageSplits {
@@ -15,16 +18,26 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  // Prevent layout shifts
+  contain: layout style paint;
 
   .heroImageSplit {
     overflow: hidden;
     height: 100%;
     width: 100%;
+    // Add GPU acceleration
+    transform: translateZ(0);
+    backface-visibility: hidden;
 
     img {
       height: 100%;
       width: 100%;
       object-fit: contain;
+      // Prevent image flicker during load
+      image-rendering: optimizeQuality;
+      // Add GPU acceleration
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
   }
 }

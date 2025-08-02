@@ -31,7 +31,7 @@ const experienceMetadata = {
     col1: "role",
     col2: "title",
     col3: "duration",
-    link: "#"
+    link: "_"
 }
 const experienceData = [
     {
@@ -39,21 +39,21 @@ const experienceData = [
         title: "Session AI Inc.",
         role: "SWE II",
         duration: "2022 - Present",
-        link: "#"
+        link: "#;"
     },
     {
         _id: "simulacra-tech",
         title: "Simulacra Technologies",
         role: "Freelance",
         duration: "2021 - 2022",
-        link: "#"
+        link: "#;"
     },
     {
         _id: "skill-academia",
         title: "Skill Academia",
         role: "SWE Intern",
         duration: "2021",
-        link: "#"
+        link: "#;"
     }
 ]
 

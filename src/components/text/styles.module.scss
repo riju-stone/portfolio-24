@@ -5,6 +5,7 @@
   display: block;
   overflow: hidden;
   line-height: 1.1;
+  cursor: none;
 }
 
 .textZoopLetter {
@@ -86,6 +87,7 @@
   color: global.$dark-disabled-color;
   margin: 0px;
   transition: color 0.4s ease-out;
+  cursor: none;
 
   &:hover {
     color: global.$pale-orange-color;

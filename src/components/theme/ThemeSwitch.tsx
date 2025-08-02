@@ -16,12 +16,14 @@ function ThemeSwitchComponent({ isMenuOpen }) {
     const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
     useEffect(() => {
-        const switchPos = switchRef.current!.getBoundingClientRect();
-        // Offsetting the center of the circle to the center of the switch
-        switchPos.x = switchPos.x + 12.5;
-        switchPos.y = switchPos.y + 12.5;
-        setSwitchPos(switchPos);
-    });
+        if (switchRef.current) {
+            const switchPos = switchRef.current.getBoundingClientRect();
+            setSwitchPos({
+                x: switchPos.x + 12.5,
+                y: switchPos.y + 12.5
+            });
+        }
+    }, []); // Only run when menu state changes
 
     return (
         <motion.div

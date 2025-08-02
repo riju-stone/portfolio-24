@@ -10,19 +10,14 @@ $pale-blue-color: #00a7ff;
 $light-bg-color: #ededed;
 $dark-bg-color: #0c0c0c;
 
-html,
-body {
-  cursor: none !important;
-}
-
 .app {
   width: 100vw;
   background: none;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  cursor: none;
 
-  // Better text rendering
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
