@@ -11,8 +11,9 @@ import rehypeVideo from "rehype-video";
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import rehypeStringify from "rehype-stringify";
+import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import styles from "./page.module.scss";
 import LazyTextComponent from '@/components/lazy/Lazy';
 import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
@@ -36,16 +37,6 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
         })
     }, [resolvedParams.slug])
 
-    if (loading) {
-        return (
-            <main>
-                <div className={styles.blogsPageWrapper}>
-                    <LazyTextComponent text="Collecting my thoughts." />
-                </div>
-            </main>
-        );
-    }
-
     if (error) {
         return (
             <main>
@@ -59,52 +50,55 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     return (
         <main>
             <SkewScrollComponent>
-                <motion.article
-                    className={styles.postContainer}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.25 }}
-                    style={{ color: "#fff" }}>
-                    <header className={styles.postHeader}>
-                        <h1 className={`${styles.postTitle} ${pp_nueue.className}`}>{post.title}</h1>
-                        <div className={styles.postMetadataWrapper}>
-                            <time className={`${styles.postDate} ${pp_nekkei.className}`}>
-                                {new Date(post.publishedAt).toLocaleDateString()}
-                            </time>
-                            {post.tags?.length > 0 && (
-                                <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
-                                    {post.tags.map((tag: string) => (
-                                        <div className={styles.tag} key={tag}>
-                                            {tag}
+                <AnimatePresence mode="wait">
+                    {loading ?
+                        <div className={styles.blogsPageWrapper}>
+                            <LazyTextComponent text="Collecting my thoughts." />
+                        </div> : <motion.article
+                            className={styles.postContainer}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.25 }}
+                            style={{ color: "#fff" }}>
+                            <header className={styles.postHeader}>
+                                <h1 className={`${styles.postTitle} ${pp_nueue.className}`}>{post.title}</h1>
+                                <div className={styles.postMetadataWrapper}>
+                                    <time className={`${styles.postDate} ${pp_nekkei.className}`}>
+                                        {new Date(post.publishedAt).toLocaleDateString()}
+                                    </time>
+                                    {post.tags?.length > 0 && (
+                                        <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
+                                            {post.tags.map((tag: string) => (
+                                                <div className={styles.tag} key={tag}>
+                                                    {tag}
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    </header>
+                            </header>
 
-                    <section className={`${styles.postContent} ${inter.className}`}>
-                        <Markdown
-                            remarkPlugins={[remarkGfm, remarkMath]}
-                            rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}
-                            components={{
-                                img: ({ src, alt, title, ...props }) => {
-                                    // Don't render img if src is empty or undefined
-                                    if (!src || src.trim() === '') {
-                                        return null;
-                                    }
-                                    return <img src={src} alt={alt} title={title} {...props} />;
-                                }
-                            }}
-                        >
-                            {post.content}
-                        </Markdown>
-
-                    </section>
-                    <div className={`${styles.backLink} ${inter.className}`}>
-                        <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
-                    </div>
-                </motion.article>
+                            <section className={`${styles.postContent} ${inter.className}`}>
+                                <Markdown
+                                    remarkPlugins={[remarkGfm, remarkMath]}
+                                    rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}
+                                    components={{
+                                        img: ({ src, alt, title, ...props }) => {
+                                            if (!src || src.trim() === '') {
+                                                return null;
+                                            }
+                                            return <img src={src} alt={alt} title={title} {...props} />;
+                                        }
+                                    }}
+                                >
+                                    {post.content}
+                                </Markdown>
+                            </section>
+                            <div className={`${styles.backLink} ${inter.className}`}>
+                                <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
+                            </div>
+                        </motion.article>}
+                </AnimatePresence>
             </SkewScrollComponent>
         </main>
     )

@@ -20,7 +20,7 @@ const heroImageAnimation = {
     x: "0%",
     transition: {
       duration: 1.2,
-      delay: 0.5 + index * 0.02,
+      delay: 0.8 + index * 0.01,
       ease: [0.83, 0, 0.17, 1],
     }
   }),
@@ -31,9 +31,6 @@ const heroImageAnimation = {
     }
   }
 }
-
-// Stagger animation delays for smoother loading
-const staggerDelays = [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45];
 
 const IMAGE_CONFIG = {
   light: {

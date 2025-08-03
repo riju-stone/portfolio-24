@@ -7,6 +7,7 @@ import LazyTextComponent from "@/components/lazy/Lazy";
 import { getLatestPosts } from "@/sanity/queries/posts";
 import TextStaggerComponent from "@/components/text/TextStagger";
 import FancyTableComponent from "@/components/table/table";
+import { AnimatePresence } from "motion/react";
 
 const blogMetadata = {
     col1: "publishedAt",
@@ -42,18 +43,6 @@ function BlogsPage() {
         })
     }, [])
 
-    if (loading) {
-        return (
-            <main>
-                <SkewScrollComponent>
-                    <div className={styles.blogMessageWrapper}>
-                        <LazyTextComponent text="Hold on! Contemplating." />
-                    </div>
-                </SkewScrollComponent>
-            </main>
-        );
-    }
-
     if (error) {
         return (
             <main>
@@ -79,18 +68,22 @@ function BlogsPage() {
     return (
         <main>
             <SkewScrollComponent>
-                <div className={styles.blogsPageWrapper}>
-                    <div className={styles.postsWrapper}>
-                        <TextStaggerComponent className={styles.pageTitle} text={["Feed"]} />
-                        <div className={styles.postsGrid}>
-                            <FancyTableComponent metadata={blogMetadata} tableData={posts} />
-                        </div>
-                        {/* <div className={styles.pagination}>
+                <AnimatePresence mode="wait">
+                    {loading ? <div className={styles.blogMessageWrapper}>
+                        <LazyTextComponent text="Hold on!" />
+                    </div> : <div className={styles.blogsPageWrapper}>
+                        <div className={styles.postsWrapper}>
+                            <TextStaggerComponent className={styles.pageTitle} text={["Feed"]} />
+                            <div className={styles.postsGrid}>
+                                <FancyTableComponent metadata={blogMetadata} tableData={posts} />
+                            </div>
+                            {/* <div className={styles.pagination}>
                             <button>Previous</button>
                             <button>Next</button>
                         </div> */}
-                    </div>
-                </div>
+                        </div>
+                    </div>}
+                </AnimatePresence>
             </SkewScrollComponent>
         </main >
     )

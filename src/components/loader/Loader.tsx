@@ -10,7 +10,6 @@ import { pp_nekkei } from "@/utils/fonts";
 function LoaderComponent({ children }) {
     const progressBarRef = useRef(null);
     const animationStartTimeRef = useRef(null);
-    const lastUpdateTimeRef = useRef(0);
 
     const [loading, setLoading] = useState(true);
     const [progressPercent, setProgressPercent] = useState("000");
@@ -40,9 +39,6 @@ function LoaderComponent({ children }) {
 
     useAnimationFrame((time) => {
         if (!progressAnim || !loading) return;
-
-        if (time - lastUpdateTimeRef.current < 100) return;
-        lastUpdateTimeRef.current = time;
 
         if (progressBarRef.current && typeof window !== 'undefined') {
             const progressPos = progressBarRef.current.getBoundingClientRect().left;

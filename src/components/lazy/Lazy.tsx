@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react'
+import { motion } from 'motion/react'
 import React from 'react'
 
 import styles from "./styles.module.scss"
@@ -18,17 +18,15 @@ const lazyTextAnimation = {
 
 function LazyTextComponent({ text }) {
     return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                key={text}
-                className={`${styles.lazyLoaderText} ${pp_nekkei.className}`}
-                variants={lazyTextAnimation}
-                initial="initial"
-                animate="animate"
-                exit="exit">
-                {text}
-            </motion.div>
-        </AnimatePresence>
+        <motion.div
+            key={text}
+            className={`${styles.lazyLoaderText} ${pp_nekkei.className}`}
+            variants={lazyTextAnimation}
+            initial="initial"
+            animate="animate"
+            exit="exit">
+            {text}
+        </motion.div>
     )
 }
 
