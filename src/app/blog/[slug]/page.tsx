@@ -28,9 +28,11 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
 
     useEffect(() => {
         getPost(resolvedParams.slug).then(data => {
-            // console.log(data)
             setPost(data);
             setLoading(false);
+            if (!data) {
+                throw Error("Post not found")
+            }
         }).catch(error => {
             setError(error);
             setLoading(false);
@@ -41,7 +43,7 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
         return (
             <main>
                 <div className={styles.blogsPageWrapper}>
-                    <LazyTextComponent text="Fuck. I don't seem to be able to recall." />
+                    <LazyTextComponent text="Fuck. That doesn't seem right." />
                 </div>
             </main>
         );

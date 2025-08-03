@@ -36,23 +36,6 @@ const projectsData = [
 
   },
   {
-    id: "sevin",
-    name: "sevin",
-    link: "https://www.github.com/riju-stone/sevin",
-    desc: `An asynchronous coding agent that can plan, run, debug and create 
-    appropriate PRs for any given task. It supports local LLMs like Ollama and HuggingFace models, hence
-    all your data stays with you. Inspired from Google Jules and OAI Codex.`,
-    stack: "go/postgres/redis/rabbitmq"
-  },
-  {
-    id: "hostl",
-    name: "hostl",
-    link: "https://www.github.com/riju-stone/hostl",
-    desc: `A minimlistic hosting platform. It's a simple hosting platform that can be used to host static websites.
-    Since, vercel openly admitted itself as an AWS wrapper, why not create something of our own?`,
-    stack: "go/postgres/redis/rabbitmq"
-  },
-  {
     id: "wordinary",
     name: "wordinary",
     link: "https://www.github.com/riju-stone/wordinary",
@@ -60,23 +43,6 @@ const projectsData = [
     You can look up words and get their definitions, synonyms, antonyms, and more.
     It also serves you a few words of the day, just to keep you smart and soophisticated.`,
     stack: "expo/react-native/reanimated/sqlite"
-  },
-  {
-    id: "ask",
-    name: "ask",
-    link: "https://www.github.com/riju-stone/ask",
-    desc: `A beautiful cross-pllatform LLM chat app capable of utilising both Local and Online LLMs.
-    This app is also designed to be able to hide from any screen sharing app, including Google Meet, Zoom, MS Teams and you name it.
-    Inspired from Raycast.`,
-    stack: "typescript/rust/tauri"
-  },
-  {
-    id: "synk",
-    name: "synk",
-    link: "https://www.github.com/riju-stone/synk",
-    desc: `A self-hostable service to sync clipboard and files across all your devices.
-    It's like air drop for all your devices.`,
-    stack: "go/postgres/redis"
   },
   {
     id: "former",
@@ -104,7 +70,7 @@ function FileStackComponent() {
 
   // Calculate base offset to center the stack
   const stackHeight = totalItems * 8; // Total height of the stack in percentage
-  const centerOffset = 50 - (stackHeight / 2.5); // Offset to center the stack
+  const centerOffset = 45 - (stackHeight / 2); // Offset to center the stack
 
   const isTouchDevice = device === 'mobile' || device === 'tablet';
 
@@ -125,7 +91,7 @@ function FileStackComponent() {
         {projectsData.map((project, index) => {
 
           // Calculate centered position for each item
-          const basePosition = Number(centerOffset + ((index + 1) * 2.85));
+          const basePosition = Number(centerOffset + ((index + 1) * 3.25));
           const hoverPosition = Number(basePosition - ((index * 1.2) + 18));
 
           const isTapped = tappedItem === project.id;

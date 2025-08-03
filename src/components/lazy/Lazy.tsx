@@ -16,18 +16,16 @@ const lazyTextAnimation = {
     }
 }
 
-function LazyTextComponent({ text }) {
-    return (
-        <motion.div
-            key={text}
-            className={`${styles.lazyLoaderText} ${pp_nekkei.className}`}
-            variants={lazyTextAnimation}
-            initial="initial"
-            animate="animate"
-            exit="exit">
-            {text}
-        </motion.div>
-    )
+function LazyTextComponent({ text }: { text: string }) {
+    return <motion.div
+        key={text}
+        className={`${styles.lazyLoaderText} ${pp_nekkei.className}`}
+        variants={lazyTextAnimation}
+        initial="initial"
+        animate="animate"
+        exit="exit">
+        {text}
+    </motion.div>
 }
 
 export default LazyTextComponent

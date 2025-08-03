@@ -1,5 +1,13 @@
 @use "./globals.scss" as global;
 
+.notFoundPage {
+	height: 100dvh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .homePageWrapper {
 	height: 100%;
 	width: 100%;
