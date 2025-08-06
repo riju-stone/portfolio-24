@@ -1,0 +1,374 @@
+@use "../../app/globals.scss" as global;
+
+.heroSectionWrapper {
+  display: flex;
+  height: 100dvh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+
+  .heroTextWrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: difference;
+    z-index: 10;
+
+    .heroText {
+      position: absolute;
+      color: global.$dark-text-color;
+      font-size: 8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      &:first-child {
+        top: 10%;
+        left: 5%;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:last-child {
+        bottom: 10%;
+        right: 5%;
+      }
+    }
+  }
+}
+
+.aboutSectionWrapper {
+  display: flex;
+  height: 100dvh;
+  width: 100vw;
+  justify-items: center;
+  align-items: center;
+
+  .aboutText {
+    font-size: 5rem;
+  }
+}
+
+.contactSectionWrapper {
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .introline {
+    display: flex;
+    width: 75vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 8rem;
+
+    .introHeading {
+      margin: 0px;
+      font-size: 6rem;
+      margin-top: 1rem;
+      color: global.$dark-text-color;
+    }
+  }
+
+  .introlinkContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 75vw;
+    margin-top: 1rem;
+    font-size: 5.75rem;
+
+    a {
+      text-decoration: none;
+      color: global.$dark-text-color;
+    }
+  }
+}
+
+.workSectionWrapper {
+  position: relative;
+  height: 300vh;
+  width: 100vw;
+  color: global.$dark-text-color;
+
+  .experienceWrapper {
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: global.$dark-bg-color;
+
+    .experienceText {
+      font-size: 4rem;
+    }
+  }
+
+  .projectWrapper {
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: global.$dark-bg-color;
+
+    .projectText {
+      font-size: 3rem;
+    }
+  }
+}
+
+// Mobile Devices
+@media only screen and (min-width: 240px) and (max-width: 399px) {
+  .heroSectionWrapper {
+    .heroTextWrapper {
+      .heroText {
+        font-size: 2.75rem;
+
+        &:first-child {
+          top: 20%;
+          left: 10%;
+        }
+
+        &:last-child {
+          right: 10%;
+          bottom: 20%;
+        }
+      }
+    }
+  }
+
+  .contactSectionWrapper {
+    .introline {
+      align-items: flex-start;
+      width: 90vw;
+      line-height: 4rem;
+
+      .introHeading {
+        font-size: 2.75rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    .introlinkContainer {
+      width: 90vw;
+      margin-top: 1.5rem;
+      font-size: 2.5rem;
+
+      a {
+        text-decoration: none;
+        color: global.$dark-text-color;
+      }
+    }
+  }
+
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 1.75rem;
+    }
+  }
+
+  .workSectionWrapper {
+    .experienceWrapper {
+      .experienceText {
+        font-size: 1.4rem;
+      }
+    }
+
+    .projectWrapper {
+      flex-direction: column;
+      align-items: flex-end;
+
+      .projectText {
+        font-size: 1.4rem;
+        height: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 639px) {
+  .heroSectionWrapper {
+    .heroTextWrapper {
+      .heroText {
+        font-size: 2.75rem;
+
+        &:first-child {
+          top: 20%;
+          left: 10%;
+        }
+
+        &:last-child {
+          right: 10%;
+          bottom: 20%;
+        }
+      }
+    }
+  }
+
+  .contactSectionWrapper {
+    .introline {
+      align-items: flex-start;
+      width: 90vw;
+      line-height: 4rem;
+
+      .introHeading {
+        font-size: 2.75rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    .introlinkContainer {
+      width: 90vw;
+      margin-top: 1.5rem;
+      font-size: 2.75rem;
+
+      a {
+        text-decoration: none;
+        color: global.$dark-text-color;
+      }
+    }
+  }
+
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 2.25rem;
+    }
+  }
+
+  .workSectionWrapper {
+    .experienceWrapper {
+      .experienceText {
+        font-size: 1.75rem;
+      }
+    }
+
+    .projectWrapper {
+      flex-direction: column;
+      align-items: flex-end;
+
+      .projectText {
+        font-size: 1.65rem;
+        height: 50%;
+      }
+    }
+  }
+}
+
+// Tablet Devices
+@media only screen and (min-width: 640px) and (max-width: 920px) {
+  .heroSectionWrapper {
+    .heroTextWrapper {
+      .heroText {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
+      font-size: 5rem;
+      margin-top: 1rem;
+    }
+
+    .introlinkContainer {
+      width: 90vw;
+      margin-top: 1.5rem;
+      font-size: 5rem;
+    }
+  }
+
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 3rem;
+    }
+  }
+
+  .workSectionWrapper {
+    .experienceWrapper {
+      .experienceText {
+        font-size: 2.75rem;
+      }
+    }
+
+    .projectWrapper {
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .projectText {
+        font-size: 2.5rem;
+        height: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+  .workSectionWrapper {
+    .projectWrapper {
+      flex-direction: column;
+
+      .projectText {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 3.75rem;
+    }
+  }
+
+  .contactSectionWrapper {
+    .introline {
+      width: 90vw;
+      font-size: 6rem;
+      margin-top: 1rem;
+    }
+
+    .introlinkContainer {
+      width: 90vw;
+      margin-top: 1.5rem;
+      font-size: 6rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 3.75rem;
+    }
+  }
+
+  .contactSectionWrapper {
+    .introline {
+      width: 80vw;
+    }
+
+    .introlinkContainer {
+      width: 80vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+  .aboutSectionWrapper {
+    .aboutText {
+      font-size: 3.75rem;
+    }
+  }
+}

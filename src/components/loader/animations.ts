@@ -1,12 +1,13 @@
 export const loadingScreenAnim = {
   show: {
     transition: {
-      when: "afterChildren",
+      when: "beforeChildren",
     },
   },
   exit: {
     transition: {
       when: "afterChildren",
+      delay: 1
     },
   },
 };
@@ -28,8 +29,8 @@ export const getProgressAnim = () => ({
     borderRadius: 0,
     transition: {
       ease: [0.5, 0.001, 0.08, 0.95],
-      duration: 0.8,
-      delay: 0.5,
+      duration: 0.75,
+      delay: 0.25,
     },
   },
 });

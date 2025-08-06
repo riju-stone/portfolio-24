@@ -2,60 +2,22 @@
 
 import React from "react";
 import styles from "./page.module.scss";
-import { motion } from "motion/react";
-
-import { pp_nekkei, pp_nueue } from "@/utils/fonts";
-import TextDisperseComponent from "@/components/text/TextDisperse";
-import TextScrollExpandComponent from "@/components/text/TextScrollExpand";
-import TextStaggerComponent from "@/components/text/TextStagger";
+import dynamic from 'next/dynamic';
 
 import SkewScrollComponent from "@/components/scroll/Scroll";
-import TextScrollRevealComponent from "@/components/text/TextScrollReveal";
-import HeroImage from "@/components/hero-image/hero-image";
-import FileStackComponent from "@/components/file/file-stack";
-import FancyTableComponent from "@/components/table/table";
+import HeroSection from "@/components/sections/hero-section";
 
-const aboutPhrase = `A full-stack wizard who turns ideas into digital masterpieces. 
-I juggle front-end flair and back-end brains to make the web smarter, 
-faster and a lot less boring with style and statement - Mind of an engineer, heart of an artist...`;
+const AboutSection = dynamic(() => import("@/components/sections/about-section"), {
+    ssr: false
+});
 
-const expPhrase = `With close to 3 years of experience working in 
-cross-functional teams and making deadlines sweat, my code is like my documentation -
-clean, clear and occasionally sprinkled with weird jokes.`
+const WorkSection = dynamic(() => import("@/components/sections/work-section"), {
+    ssr: false
+});
 
-const projectPhrase = `Breaking down abstractions for my own amusement.
-I design, build and ship experiences that are not just functional, but also a joy to use.
-Trying my best to stay one step ahead of the AI overlords...`
-
-const experienceMetadata = {
-    col1: "role",
-    col2: "title",
-    col3: "duration",
-    link: "_"
-}
-const experienceData = [
-    {
-        _id: "session-ai",
-        title: "Session AI Inc.",
-        role: "SWE II",
-        duration: "2022 - Present",
-        link: "#;"
-    },
-    {
-        _id: "simulacra-tech",
-        title: "Simulacra Technologies",
-        role: "Freelance",
-        duration: "2021 - 2022",
-        link: "#;"
-    },
-    {
-        _id: "skill-academia",
-        title: "Skill Academia",
-        role: "SWE Intern",
-        duration: "2021",
-        link: "#;"
-    }
-]
+const ContactSection = dynamic(() => import("@/components/sections/contact-section"), {
+    ssr: false
+});
 
 function HomePage() {
     return (
@@ -63,74 +25,13 @@ function HomePage() {
             <SkewScrollComponent>
                 <div className={styles.homePageWrapper}>
                     {/* Hero Section */}
-                    <section className={styles.heroSectionWrapper}>
-                        <div className={styles.heroTextWrapper}>
-                            <TextStaggerComponent className={styles.heroText} text={["Creative"]} />
-                            <TextStaggerComponent className={styles.heroText} text={["Full-Stack"]} />
-                            <TextStaggerComponent className={styles.heroText} text={["Developer"]} />
-                        </div>
-                        <HeroImage />
-                    </section>
+                    <HeroSection />
                     {/* About Section */}
-                    <section className={styles.aboutSectionWrapper}>
-                        <TextScrollRevealComponent
-                            className={styles.aboutText}
-                            phrase={aboutPhrase}
-                            startOffset="0.8"
-                            endOffset="0.25"
-                        />
-                    </section>
+                    <AboutSection />
                     {/* Work Section */}
-                    <section className={styles.workSectionWrapper}>
-                        <TextScrollExpandComponent word={"work"} />
-                        <div className={styles.experienceWrapper}>
-                            <TextScrollRevealComponent
-                                className={styles.experienceText}
-                                phrase={expPhrase}
-                                startOffset="0.8"
-                                endOffset="0.25"
-                            />
-                            <FancyTableComponent metadata={experienceMetadata} tableData={experienceData} />
-                        </div>
-
-                        <div className={styles.projectWrapper}>
-                            <TextScrollRevealComponent
-                                className={styles.projectText}
-                                phrase={projectPhrase}
-                                startOffset="0.85"
-                                endOffset="0.65"
-                            />
-                            <FileStackComponent />
-                        </div>
-                    </section>
-
-                    {/* Contect Section */}
-                    <section
-                        className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
-                    >
-                        <div className={styles.introline}>
-                            <div className={styles.introHeading}>Caught</div>
-                            <div className={styles.introHeading}>a</div>
-                            <div className={styles.introHeading}>Spark ?</div>
-                        </div>
-
-                        <div className={styles.introline}>
-                            <div className={styles.introHeading}>Your</div>
-                            <div className={styles.introHeading}>Move</div>
-                        </div>
-
-                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
-                            {/* <a target="_blank" href="https://drive.google.com/file/d/1oABZdgSt0rzR5rCghPk5-bBVCxpuWTGb/view?usp=sharing"><TextDisperseComponent word="↗Resume" /></a> */}
-                            <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
-                            <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
-                        </div>
-
-                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
-                            <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
-                                <TextDisperseComponent word="↗LinkedIn" /></a>
-                            <a target="_blank" href="https://www.x.com/archrstone"><TextDisperseComponent word="↗Twitter" /></a>
-                        </div>
-                    </section>
+                    <WorkSection />
+                    {/* Contact Section */}
+                    <ContactSection />
                 </div>
             </SkewScrollComponent >
         </main >

@@ -122,14 +122,14 @@ export default function RootLayout({
                 <link rel="preload" as="image" href="/images/hero-dark/row-1-column-5.webp" />
             </head>
             <body className="app">
+                <HamburgerMenuComponent />
                 <LoaderComponent>
-                    <HamburgerMenuComponent />
                     <HeaderComponent />
                     {children}
-                    <FooterComponent />
-                    <CursorComponent />
-                    <BackgroundComponent />
                 </LoaderComponent>
+                <CursorComponent />
+                <FooterComponent />
+                <BackgroundComponent />
             </body>
             <Analytics />
             <SpeedInsights />

@@ -96,12 +96,14 @@
 	}
 
 	blockquote {
-		background-color: global.$pale-orange-color;
+		background-color: global.$dark-bg-color;
 		padding: 5px 15px;
-		border-radius: 12px;
-		color: global.$light-text-color;
-		font-size: 1.1rem;
-		font-weight: 500;
+		border-radius: 8px;
+		border-left: 4px solid global.$pale-orange-color;
+		color: global.$dark-text-color;
+		font-size: 1rem;
+		font-weight: 400;
+		font-style: italic;
 	}
 
 	img {
