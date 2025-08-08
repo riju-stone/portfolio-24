@@ -68,7 +68,7 @@ function BlogsPage() {
     return (
         <main>
             <SkewScrollComponent>
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                     {loading ? <div className={styles.blogMessageWrapper}>
                         <LazyTextComponent text="Hold on!" />
                     </div> : <div className={styles.blogsPageWrapper}>

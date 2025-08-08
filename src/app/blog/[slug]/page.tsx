@@ -52,7 +52,7 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     return (
         <main>
             <SkewScrollComponent>
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                     {loading ?
                         <div className={styles.blogsPageWrapper}>
                             <LazyTextComponent text="Collecting my thoughts." />

@@ -49,12 +49,8 @@ function HeaderComponent() {
 
     return checkActivePath("/studio") ? null : (
         <React.Fragment>
-            <div
-                className={`${styles.headerWrapper}`}
-            >
-                <div
-                    className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}
-                >
+            <div className={`${styles.headerWrapper}`}>
+                <div className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}>
                     <motion.div
                         className={styles.heroInitialLetter}
                         variants={headerNameInitialAnim}
@@ -75,7 +71,7 @@ function HeaderComponent() {
                                     onMouseEnter={() => focusCursor()}
                                     onMouseLeave={() => defaultCursor()}
                                 >
-                                    <Link href="/studio">&#10022;</Link>
+                                    <Link href="/studio" target="_blank">&#10022;</Link>
                                 </motion.div>
                                 <motion.div
                                     className={styles.heroInitialLetter}
@@ -119,7 +115,7 @@ function HeaderComponent() {
                             onMouseLeave={() => defaultCursor()}
                         >
                             <Link href={data.link}>
-                                <TextZoopComponent text={data.label} />
+                                [{index}][<TextZoopComponent text={data.label} />]
                             </Link>
                         </motion.div>
                     ))}

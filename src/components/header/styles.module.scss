@@ -119,9 +119,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 2rem;
 	font-weight: 400;
-	font-size: 1.2rem;
+	gap: 5rem;
+	font-size: 1.1rem;
 	text-transform: lowercase;
 
 	.headerLink {
@@ -129,6 +129,9 @@
 		left: -50%;
 
 		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			transition: color ease-in 0.2s;
 			text-decoration: none;
 			cursor: none;

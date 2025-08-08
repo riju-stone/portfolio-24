@@ -59,22 +59,22 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "https://archst.dev",
-        siteName: "Arighna Chakraborty - Full Stack Developer Portfolio",
-        title: "Arighna Chakraborty - Full Stack Developer Portfolio",
+        siteName: "Arighna Chakraborty - Portfolio",
+        title: "Arighna Chakraborty - Portfolio",
         description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
         images: [
             {
                 url: "/images/seo-hero.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Arighna Chakraborty - Full Stack Developer Portfolio",
+                alt: "Arighna Chakraborty - Portfolio",
                 type: "image/jpeg"
             }
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Arighna Chakraborty - Full Stack Developer Portfolio",
+        title: "Arighna Chakraborty - Portfolio",
         description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills.",
         images: ["/images/seo-hero.jpg"],
         creator: "@RijuStone",
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     other: {
         "theme-color": "#000000", // Adjust to match your site's theme
         "color-scheme": "dark light",
-        "twitter:image:alt": "Arighna Chakraborty - Full Stack Developer Portfolio",
+        "twitter:image:alt": "Arighna Chakraborty - Portfolio",
     }
 };
 
@@ -114,15 +114,11 @@ export default function RootLayout({
                 <meta name="theme-color" content="#0c0c0c" />
                 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
                 <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-3.webp" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-4.webp" />
-                <link rel="preload" as="image" href="/images/hero-light/row-1-column-5.webp" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-3.webp" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-4.webp" />
-                <link rel="preload" as="image" href="/images/hero-dark/row-1-column-5.webp" />
+                <link rel="preload" as="image" href="/images/hero-light.webp" />
+                <link rel="preload" as="image" href="/images/hero-dark.webp" />
             </head>
             <body className="app">
-                <HamburgerMenuComponent />
+                < HamburgerMenuComponent />
                 <LoaderComponent>
                     <HeaderComponent />
                     {children}
