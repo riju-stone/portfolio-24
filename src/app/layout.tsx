@@ -1,14 +1,14 @@
 import React from "react";
-import BackgroundComponent from "@/components/background/background-canvas";
-import HeaderComponent from "@/components/header/header";
-import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
-import LoaderComponent from "@/components/site-loader/site-loader";
+import BackgroundComponent from "@/components/background/background-canvas.tsx";
+import HeaderComponent from "@/components/header/header.tsx";
+import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu.tsx";
+import LoaderComponent from "@/components/site-loader/site-loader.tsx";
 import "./globals.scss";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
-import FooterComponent from "@/components/footer/footer";
+import FooterComponent from "@/components/footer/footer.tsx";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
@@ -26,13 +26,10 @@ export const metadata: Metadata = {
         "Web Developer",
         "Portfolio",
         "React",
-        "Next.js",
         "JavaScript",
         "Frontend Developer",
         "Backend Developer",
         "Software Engineer",
-        "Web Design",
-        "UI/UX",
         "Technology"
     ],
     authors: [
