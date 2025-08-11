@@ -2,36 +2,108 @@
 
 import React from "react";
 import styles from "./page.module.scss";
-import dynamic from 'next/dynamic';
-
-import SkewScrollComponent from "@/components/scroll/Scroll";
-import HeroSection from "@/components/sections/hero-section";
-
-const AboutSection = dynamic(() => import("@/components/sections/about-section"), {
-    ssr: false
-});
-
-const WorkSection = dynamic(() => import("@/components/sections/work-section"), {
-    ssr: false
-});
-
-const ContactSection = dynamic(() => import("@/components/sections/contact-section"), {
-    ssr: false
-});
+import Image from "next/image";
+import { motion } from "motion/react";
+import SkewScrollComponent from "@/components/custom-scroll/custom-scroll";
+import FancyTableComponent from "@/components/custom-table/custom-table";
+import TextStaggerComponent from "@/components/custom-text/text-stagger";
+import TextDisperseComponent from "@/components/custom-text/text-disperse";
+import { inter, pp_nekkei, pp_nueue } from "@/utils/fonts";
+import TextScrollRevealComponent from "@/components/custom-text/text-scroll-reveal";
+import { EXPERIENCE_DATA, EXPERIENCE_METADATA, EXPERIENCE_PHRASE, HEADING_TEXT, INTRO_PHRASE, PROJECT_DATA, PROJECT_METADATA, PROJECT_PHRASE } from "@/utils/constants";
+import { useDevice } from "@/hooks/useDevice";
 
 function HomePage() {
+    const device = useDevice();
+
     return (
-        <main>
+        <main style={{ mixBlendMode: "difference" }}>
             <SkewScrollComponent>
                 <div className={styles.homePageWrapper}>
-                    {/* Hero Section */}
-                    <HeroSection />
-                    {/* About Section */}
-                    <AboutSection />
-                    {/* Work Section */}
-                    <WorkSection />
-                    {/* Contact Section */}
-                    <ContactSection />
+                    <section className={styles.heroSectionWrapper}>
+                        <div className={styles.heroContainer}>
+                            <div className={styles.heroTextWrapper}>
+                                <TextStaggerComponent
+                                    className={`${styles.heroText} ${pp_nueue.className}`}
+                                    text={HEADING_TEXT}
+                                    style="word"
+                                    duration={0.65}
+                                    delay={0.25}
+                                    staggerDelay={0.06}
+                                    once={true}
+                                />
+                            </div>
+                            <div className={styles.heroImageWrapper}>
+                                <motion.div
+                                    style={{ height: "100%", width: "100%" }}
+                                    initial={{ y: "100%" }}
+                                    animate={{ y: 0 }}
+                                    transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}>
+                                    <Image unoptimized src="/images/engineer.gif" alt="Hero Image" width={500} height={500} />
+                                </motion.div>
+                            </div>
+                        </div>
+                        <div className={styles.heroAboutWrapper}>
+                            <TextStaggerComponent
+                                className={`${styles.heroAboutText} ${pp_nekkei.className}`}
+                                text={INTRO_PHRASE}
+                                style="line"
+                                wordsPerLine={8}
+                                duration={1.25}
+                                delay={1.25}
+                                staggerDelay={0.02}
+                                once={true}
+                            />
+                        </div>
+                    </section>
+
+                    <section className={styles.workSectionWrapper}>
+                        <div className={styles.experienceWrapper}>
+                            <TextScrollRevealComponent
+                                phrase="Experience"
+                                startOffset="1"
+                                endOffset="0.75"
+                                style="letter"
+                                className={styles.workHeading} />
+                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={EXPERIENCE_PHRASE} style="word" once={true} />
+                            <FancyTableComponent
+                                metadata={EXPERIENCE_METADATA}
+                                tableData={EXPERIENCE_DATA} />
+                        </div>
+                        <div className={styles.projectWrapper}>
+                            <TextScrollRevealComponent
+                                phrase="Projects"
+                                startOffset="1"
+                                endOffset="0.75"
+                                style="letter"
+                                className={styles.workHeading} />
+                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} />
+                            <FancyTableComponent
+                                metadata={PROJECT_METADATA}
+                                tableData={PROJECT_DATA} />
+                        </div>
+                    </section>
+
+                    <section className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}>
+                        <TextStaggerComponent
+                            className={styles.contactHeading}
+                            text="Caught a Spark? Your Move"
+                            style="line"
+                            wordsPerLine={3}
+                            once={true}
+                            duration={0.65}
+                            delay={0.75}
+                            staggerDelay={0.06} />
+                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
+                            <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
+                            <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>
+                        </div>
+                        <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
+                            <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
+                                <TextDisperseComponent word="↗LinkedIn" /></a>
+                            <a target="_blank" href="https://www.x.com/archrstone"><TextDisperseComponent word="↗Twitter" /></a>
+                        </div>
+                    </section>
                 </div>
             </SkewScrollComponent >
         </main >

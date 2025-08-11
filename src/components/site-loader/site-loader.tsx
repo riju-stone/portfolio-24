@@ -22,7 +22,7 @@ function LoaderComponent({ children }) {
 
     const handleAnimationComplete = useCallback(() => {
         // Remove or reduce the setTimeout delay
-        setTimeout(() => setLoading(false), 500);
+        setTimeout(() => setLoading(false), 600);
     }, []);
 
     const memoizedProgressAnim = useMemo(() => {

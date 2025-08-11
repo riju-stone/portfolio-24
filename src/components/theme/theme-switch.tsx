@@ -6,14 +6,12 @@ import { motion } from "motion/react";
 import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";
-import { useCursorStore } from "@/stores/cursorStore";
 
 function ThemeSwitchComponent({ isMenuOpen }) {
     const theme = useThemeStore((state) => state.theme);
     const switchRef = useRef(null);
     const toggleTheme = useThemeStore((state) => state.changeTheme);
     const setSwitchPos = useThemeStore((state) => state.calibrateThemeTogglePos);
-    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
     useEffect(() => {
         if (switchRef.current) {
@@ -32,8 +30,6 @@ function ThemeSwitchComponent({ isMenuOpen }) {
             animate={isMenuOpen ? "hidden" : "view"}
             ref={switchRef}
             onClick={toggleTheme}
-            onMouseEnter={() => expandCursor()}
-            onMouseLeave={() => defaultCursor()}
         >
             <motion.svg
                 className="sun-moon"

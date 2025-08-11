@@ -1,15 +1,14 @@
 import React from "react";
-import BackgroundComponent from "@/components/background/Background";
-import HeaderComponent from "@/components/header/Header";
-import HamburgerMenuComponent from "@/components/hamburger/Hamburger";
-import LoaderComponent from "@/components/loader/Loader";
+import BackgroundComponent from "@/components/background/background-canvas";
+import HeaderComponent from "@/components/header/header";
+import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
+import LoaderComponent from "@/components/site-loader/site-loader";
 import "./globals.scss";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
-import FooterComponent from "@/components/footer/Footer";
-import CursorComponent from "@/components/cursor/Cursor";
+import FooterComponent from "@/components/footer/footer";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
@@ -114,16 +113,14 @@ export default function RootLayout({
                 <meta name="theme-color" content="#0c0c0c" />
                 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
                 <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-                <link rel="preload" as="image" href="/images/hero-light.webp" />
-                <link rel="preload" as="image" href="/images/hero-dark.webp" />
+                <link rel="preload" as="image" href="/images/engineer.gif" />
             </head>
             <body className="app">
-                < HamburgerMenuComponent />
+                <HamburgerMenuComponent />
                 <LoaderComponent>
                     <HeaderComponent />
                     {children}
                 </LoaderComponent>
-                <CursorComponent />
                 <FooterComponent />
                 <BackgroundComponent />
             </body>

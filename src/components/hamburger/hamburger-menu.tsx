@@ -6,19 +6,17 @@ import { space_grotesk } from "@/utils/fonts";
 import { pageConfig } from "@/utils/pages";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import TextZoopComponent from "../text/TextZoop";
+import TextZoopComponent from "../custom-text/text-zoop";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 import { useDevice } from "@/hooks/useDevice";
 import { useThemeStore } from "@/stores/themeStore";
-import { useCursorStore } from "@/stores/cursorStore";
 
 function HamburgerMenuComponent() {
     const deviceType = useDevice();
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
-    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
     const checkActivePage = useActivePath();
 
     const [windowWidth, setWindowWidth] = useState(1920); // fallback width
@@ -97,8 +95,6 @@ function HamburgerMenuComponent() {
                             return (
                                 <div
                                     key={`MenuLink-${index}`}
-                                    onMouseEnter={() => expandCursor()}
-                                    onMouseLeave={() => defaultCursor()}
                                     className={`${checkActivePage(data.link) ? styles.activeMenuLink : styles.inactiveMenuLink} ${styles[theme]}`}
                                 >
                                     <Link href={data.link} onClick={() => toggleMenu(false)}>

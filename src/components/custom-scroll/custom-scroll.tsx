@@ -28,7 +28,6 @@ function SkewScrollComponent({ children }: { children: React.ReactNode }) {
 
         requestAnimationFrame(raf);
 
-        // Cleanup function
         return () => {
             lenisRef.current?.destroy();
         };
@@ -41,11 +40,11 @@ function SkewScrollComponent({ children }: { children: React.ReactNode }) {
         stiffness: 250,
         damping: 50,
     });
-    const skewVelocityFactor = useTransform(skewVelocity, [-1000, 1000], [-0.75, 0.75]);
+    const skewVelocityFactor = useTransform(skewVelocity, [-1000, 1000], [-0.5, 0.5]);
 
     return (
         <motion.div
-            style={{ skewY: skewVelocityFactor, mixBlendMode: "difference" }}
+            style={{ skewY: skewVelocityFactor }}
         >
             {children}
         </motion.div>

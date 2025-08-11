@@ -9,9 +9,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 3rem;
+    padding: 0.75rem 2rem;
     color: global.$dark-disabled-color;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     text-wrap: nowrap;
 
     .tableHeaderContent {
@@ -22,7 +22,8 @@
       text-wrap: nowrap;
     }
 
-    span {
+    .tableHeaderCol1,
+    .tableHeaderCol2 {
       width: 200px;
     }
   }
@@ -41,9 +42,9 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 3rem;
+      padding: 0.75rem 2rem;
       z-index: 1;
-      cursor: none;
+      cursor: pointer;
     }
 
     .maskRowContainer {
@@ -54,11 +55,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 3rem;
+      padding: 0.75rem 2rem;
       background-color: global.$dark-text-color;
       border: none;
       z-index: 5;
-      cursor: none;
     }
 
     .rowContent {
@@ -71,45 +71,48 @@
 
     .dataCol1 {
       width: 175px;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: global.$pale-orange-color;
+      color: global.$dark-disabled-color;
     }
 
     .dataMaskCol1 {
       width: 175px;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: global.$pale-orange-color;
     }
 
     .dataCol2 {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: global.$dark-text-color;
     }
 
     .dataMaskCol2 {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      font-size: 2.5rem;
       color: global.$light-text-color;
     }
 
     .dataCol3 {
-      font-size: 1.5rem;
+      width: 30%;
+      font-size: 1.15rem;
+      text-align: right;
       text-transform: uppercase;
-      color: global.$dark-text-color;
+      color: global.$dark-disabled-color;
     }
 
     .dataMaskCol3 {
-      font-size: 1.5rem;
+      width: 30%;
+      font-size: 1.15rem;
+      text-align: right;
       text-transform: uppercase;
-      color: global.$light-text-color;
+      color: global.$light-disabled-color;
     }
   }
 }
@@ -124,43 +127,34 @@
     }
 
     .rowWrapper {
-      position: relative;
-      border-top: 2px solid global.$dark-disabled-color;
-
-      &:last-child {
-        border-bottom: 2px solid global.$dark-disabled-color;
-      }
-
       .rowContainer {
-        padding: 0.75rem 1.25rem;
-        z-index: 1;
+        padding: 0.5rem 1rem;
       }
 
       .maskRowContainer {
-        display: none;
+        padding: 0.5rem 1rem;
       }
 
       .rowContent {
+        gap: 0.25rem;
         flex-direction: column;
-        justify-content: center;
         align-items: flex-start;
-        gap: 0.15rem;
       }
 
       .dataCol1 {
+        width: 175px;
         font-size: 0.75rem;
+        letter-spacing: 2px;
       }
 
       .dataCol2 {
-        font-size: 1.25rem;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        color: global.$dark-text-color;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
       }
 
       .dataCol3 {
+        width: 40%;
         font-size: 0.75rem;
-        text-wrap: nowrap;
       }
     }
   }

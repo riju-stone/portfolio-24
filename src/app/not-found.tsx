@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import LazyTextComponent from '@/components/lazy/Lazy'
+import LazyTextComponent from '@/components/lazy-loader/lazy-loader'
 import styles from "./page.module.scss"
 
 function NotFound() {

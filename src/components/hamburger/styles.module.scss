@@ -7,14 +7,7 @@
   width: 100%;
   height: 100dvh;
   transition: background-color ease-in 0.2s;
-
-  &.light {
-    background-color: global.$pale-blue-color;
-  }
-
-  &.dark {
-    background-color: global.$pale-orange-color;
-  }
+  background-color: global.$pale-orange-color;
 }
 
 .hamburgerMenuContainer {
@@ -30,25 +23,16 @@
     text-decoration: none;
     transition: color ease-in 0.2s;
     font-size: 6rem;
-    // text-transform: uppercase;
     font-weight: bold;
+    cursor: pointer;
   }
 }
 
-.activeMenuLink.light>a {
-  color: global.$dark-text-color;
-}
-
-.activeMenuLink.dark>a {
+.activeMenuLink>a {
   color: global.$light-text-color;
 }
 
-.inactiveMenuLink.light>a {
-  color: global.$dark-text-color;
-  opacity: 0.4;
-}
-
-.inactiveMenuLink.dark>a {
+.inactiveMenuLink>a {
   color: global.$light-text-color;
   opacity: 0.4;
 }
@@ -60,14 +44,7 @@
   height: 500px;
   z-index: 999;
   stroke: none;
-
-  &.light {
-    fill: global.$pale-blue-color;
-  }
-
-  &.dark {
-    fill: global.$pale-orange-color;
-  }
+  fill: global.$pale-orange-color;
 }
 
 @media only screen and (max-width: 640px) {

@@ -1,12 +1,12 @@
 "use client";
 
-import SkewScrollComponent from "@/components/scroll/Scroll";
+import SkewScrollComponent from "@/components/custom-scroll/custom-scroll";
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import LazyTextComponent from "@/components/lazy/Lazy";
+import LazyTextComponent from "@/components/lazy-loader/lazy-loader";
 import { getLatestPosts } from "@/sanity/queries/posts";
-import TextStaggerComponent from "@/components/text/TextStagger";
-import FancyTableComponent from "@/components/table/table";
+import TextStaggerComponent from "@/components/custom-text/text-stagger";
+import FancyTableComponent from "@/components/custom-table/custom-table";
 import { AnimatePresence } from "motion/react";
 
 const blogMetadata = {
@@ -45,44 +45,38 @@ function BlogsPage() {
 
     if (error) {
         return (
-            <main>
-                <SkewScrollComponent>
-                    <div className={styles.blogMessageWrapper}>
-                        <LazyTextComponent text="Oops! I fucked up." />
-                    </div>
-                </SkewScrollComponent>
+            <main style={{ mixBlendMode: "difference" }}>
+                <div className={styles.blogMessageWrapper}>
+                    <LazyTextComponent text="Oops! I fucked up." />
+                </div>
             </main>
         );
     }
 
-    if (posts.length === 0) {
-        return <main>
-            <SkewScrollComponent>
-                <div className={styles.blogMessageWrapper}>
-                    <LazyTextComponent text="Working on some stuff!" />
-                </div>
-            </SkewScrollComponent>
-        </main>
-    }
-
     return (
-        <main>
+        <main style={{ mixBlendMode: "difference" }}>
             <SkewScrollComponent>
-                <AnimatePresence>
-                    {loading ? <div className={styles.blogMessageWrapper}>
-                        <LazyTextComponent text="Hold on!" />
-                    </div> : <div className={styles.blogsPageWrapper}>
-                        <div className={styles.postsWrapper}>
-                            <TextStaggerComponent className={styles.pageTitle} text={["Feed"]} />
-                            <div className={styles.postsGrid}>
-                                <FancyTableComponent metadata={blogMetadata} tableData={posts} />
-                            </div>
-                            {/* <div className={styles.pagination}>
+                <AnimatePresence mode="wait">
+                    {loading ?
+                        <div key="loading" className={styles.blogMessageWrapper}>
+                            <LazyTextComponent text="Hold on!" />
+                        </div> :
+                        posts.length === 0 ?
+                            <div key="empty" className={styles.blogMessageWrapper}>
+                                <LazyTextComponent text="Working on some stuff!" />
+                            </div> :
+                            <div key="posts" className={styles.blogsPageWrapper}>
+                                <div className={styles.postsWrapper}>
+                                    <TextStaggerComponent className={styles.pageTitle} text={"Feed"} style="word" />
+                                    <div className={styles.postsGrid}>
+                                        <FancyTableComponent metadata={blogMetadata} tableData={posts} />
+                                    </div>
+                                    {/* <div className={styles.pagination}>
                             <button>Previous</button>
                             <button>Next</button>
                         </div> */}
-                        </div>
-                    </div>}
+                                </div>
+                            </div>}
                 </AnimatePresence>
             </SkewScrollComponent>
         </main >

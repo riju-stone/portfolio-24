@@ -45,7 +45,6 @@
 		a {
 			color: global.$dark-text-color;
 			text-decoration: none;
-			cursor: none;
 		}
 	}
 }
@@ -62,17 +61,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: background-color ease-in 0.2s;
 	z-index: 9999;
-	cursor: none;
-
-	&.light {
-		background-color: global.$pale-blue-color;
-	}
-
-	&.dark {
-		background-color: global.$pale-orange-color;
-	}
+	background-color: global.$pale-orange-color;
+	cursor: pointer;
 
 	.headerMenuButtonLines {
 		position: relative;
@@ -87,15 +78,7 @@
 		background: #171810;
 		border-radius: 2;
 		transform-origin: center;
-		transition: background ease-in 0.2s;
-
-		&.light {
-			background: #fff;
-		}
-
-		&.dark {
-			background: #171810;
-		}
+		background: #171810;
 
 		&:nth-child(1) {
 			top: 6px;
@@ -134,7 +117,6 @@
 			align-items: center;
 			transition: color ease-in 0.2s;
 			text-decoration: none;
-			cursor: none;
 		}
 
 		&.activeLink a {
@@ -154,6 +136,7 @@
 	height: 25px;
 	width: 25px;
 	z-index: 99999;
+	cursor: pointer;
 
 	div {
 		height: 100%;

@@ -1,11 +1,11 @@
 $light-text-color: #0c0c0c;
 $dark-text-color: #ededed;
 
-$light-disabled-color: #b5b5b5;
-$dark-disabled-color: #414141;
+$light-disabled-color: #6c6c6c;
+$dark-disabled-color: #565656;
 
 $pale-orange-color: #ff5800;
-$pale-blue-color: #00a7ff;
+$pale-blue-color: #00A7FF;
 
 $light-bg-color: #ededed;
 $dark-bg-color: #0c0c0c;
@@ -16,7 +16,6 @@ $dark-bg-color: #0c0c0c;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  cursor: none;
 
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;

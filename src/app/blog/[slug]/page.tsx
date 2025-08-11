@@ -1,6 +1,6 @@
 "use client"
 
-import SkewScrollComponent from '@/components/scroll/Scroll'
+import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
 import { getPost } from '@/sanity/queries/posts'
 import React, { use, useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
 import { AnimatePresence, motion } from 'motion/react';
 import styles from "./page.module.scss";
-import LazyTextComponent from '@/components/lazy/Lazy';
+import LazyTextComponent from '@/components/lazy-loader/lazy-loader';
 import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
 import { ArrowLeftIcon } from "lucide-react"
 
@@ -41,7 +41,7 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
 
     if (error) {
         return (
-            <main>
+            <main style={{ mixBlendMode: "difference" }}>
                 <div className={styles.blogsPageWrapper}>
                     <LazyTextComponent text="Fuck. That doesn't seem right." />
                 </div>
@@ -50,13 +50,14 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     }
 
     return (
-        <main>
+        <main style={{ mixBlendMode: "difference" }}>
             <SkewScrollComponent>
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {loading ?
-                        <div className={styles.blogsPageWrapper}>
+                        <div key="loading" className={styles.blogsPageWrapper}>
                             <LazyTextComponent text="Collecting my thoughts." />
                         </div> : <motion.article
+                            key="post"
                             className={styles.postContainer}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}

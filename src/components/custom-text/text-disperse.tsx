@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { motion } from "motion/react";
 import styles from "./styles.module.scss";
-import { useCursorStore } from "@/stores/cursorStore";
+import { useThemeStore } from "@/stores/themeStore";
 
 const hoverTransforms = [
     { x: -0.6, y: -0.4, rotationZ: -20 },
@@ -23,13 +23,13 @@ const hoverTransforms = [
 
 const disperseAnim = {
     hover: (i: number) => {
-        const transform = hoverTransforms[i % hoverTransforms.length]; // Safe array access
+        const transform = hoverTransforms[i % hoverTransforms.length];
         return {
             x: transform.x + "em",
             y: transform.y + "em",
             rotateZ: transform.rotationZ,
             transition: {
-                duration: 0.6, // Slightly faster for better responsiveness
+                duration: 0.6,
                 ease: [0.33, 1, 0.68, 1],
                 type: "spring",
                 stiffness: 300,
@@ -42,7 +42,7 @@ const disperseAnim = {
         y: 0,
         rotateZ: 0,
         transition: {
-            duration: 0.5, // Faster return animation
+            duration: 0.5,
             ease: [0.33, 1, 0.68, 1],
             type: "spring",
             stiffness: 400,
@@ -56,10 +56,9 @@ interface TextDisperseComponentProps {
 }
 
 function TextDisperseComponent({ word }: TextDisperseComponentProps) {
+    const theme = useThemeStore(state => state.theme);
     const [isHovered, setIsHovered] = useState(false);
-    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
-    // Memoize character splitting to prevent unnecessary re-renders
     const splitCharacters = useMemo(() => {
         return word.split("").map((char, index) => ({
             char,
@@ -70,15 +69,12 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
 
     const handleMouseEnter = useCallback(() => {
         setIsHovered(true);
-        expandCursor();
     }, []);
 
     const handleMouseLeave = useCallback(() => {
         setIsHovered(false);
-        defaultCursor();
     }, []);
 
-    // Memoized character rendering
     const renderCharacters = useMemo(() => {
         return splitCharacters.map(({ char, key, index }) => (
             <motion.span
@@ -87,7 +83,6 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
                 animate={isHovered ? "hover" : "leave"}
                 custom={index}
                 style={{
-                    // Performance optimizations
                     display: "inline-block",
                     willChange: "transform",
                     backfaceVisibility: "hidden",
@@ -101,7 +96,8 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
 
     return (
         <p
-            className={styles.textDisperseContainer}
+            className={`${styles.textDisperseContainer} 
+                ${theme === "dark" ? styles[theme] : styles[theme]}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >

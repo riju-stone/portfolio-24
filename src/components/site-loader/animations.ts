@@ -20,7 +20,7 @@ export const getProgressAnim = () => ({
     x: 0,
     transition: {
       ease: [0.25, 0, 0.35, 1],
-      duration: 8,
+      duration: 5,
     },
   },
   exit: {

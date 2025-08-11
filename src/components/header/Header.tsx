@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
-import ThemeSwitchComponent from "../theme/ThemeSwitch";
+import ThemeSwitchComponent from "../theme/theme-switch";
 import {
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
@@ -18,11 +18,10 @@ import {
     headerNameSeparatorAnim,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
-import TextZoopComponent from "../text/TextZoop";
+import TextZoopComponent from "../custom-text/text-zoop";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
-import { useCursorStore } from "@/stores/cursorStore";
 
 const heroInitials = ["A", "C"];
 const heroNonInitials = "righna hakraborty";
@@ -31,7 +30,6 @@ function HeaderComponent() {
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
-    const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
 
     const checkActivePath = useActivePath();
@@ -68,8 +66,6 @@ function HeaderComponent() {
                                     initial="initial"
                                     animate={headerState === "collapsed" ? "collapse" : "expand"}
                                     whileHover="hover"
-                                    onMouseEnter={() => focusCursor()}
-                                    onMouseLeave={() => defaultCursor()}
                                 >
                                     <Link href="/studio" target="_blank">&#10022;</Link>
                                 </motion.div>
@@ -111,11 +107,9 @@ function HeaderComponent() {
                             initial="initial"
                             animate={headerState === "collapsed" ? "collapse" : "expand"}
                             className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
-                            onMouseEnter={() => expandCursor()}
-                            onMouseLeave={() => defaultCursor()}
                         >
                             <Link href={data.link}>
-                                [{index}][<TextZoopComponent text={data.label} />]
+                                <TextZoopComponent text={data.label} />
                             </Link>
                         </motion.div>
                     ))}
@@ -132,8 +126,6 @@ function HeaderComponent() {
                 initial="expand"
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => toggleMenu(!menuOpen)}
-                onMouseEnter={() => expandCursor()}
-                onMouseLeave={() => defaultCursor()}
             >
                 <motion.div
                     className={styles.headerMenuButtonLines}

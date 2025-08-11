@@ -4,7 +4,6 @@ import React from 'react'
 
 import styles from './styles.module.scss'
 import Link from 'next/link'
-import { useCursorStore } from '@/stores/cursorStore'
 
 const clipAnimation = {
   initial: {
@@ -23,14 +22,13 @@ const clipAnimation = {
     clipPath: "inset(0% 0px 0px)",
     transition: {
       duration: 0.5,
-      delay: 0.02,
+      delay: 0.12,
       ease: [0.22, 1, 0.36, 1]
     }
   }
 }
 
 function FancyTableComponent({ metadata, tableData }) {
-  const { expandCursor, defaultCursor, focusCursor } = useCursorStore((state) => state);
 
   return <motion.div
     className={styles.tableWrapper}
@@ -38,10 +36,9 @@ function FancyTableComponent({ metadata, tableData }) {
     transition={{ duration: 0.5, delay: 0.75 }}>
     <div className={`${styles.tableHeader} ${space_grotesk.className}`}>
       <div className={styles.tableHeaderContent}>
-        <span>/{metadata.col1}</span>
-        <span>/{metadata.col2}</span>
+        <span className={styles.tableHeaderCol1}>/{metadata.col1}</span>
+        <span className={styles.tableHeaderCol2}>/{metadata.col2}</span>
       </div>
-      <span>/{metadata.col3}</span>
     </div>
     {tableData.map((r) => {
       return <motion.div
@@ -49,8 +46,6 @@ function FancyTableComponent({ metadata, tableData }) {
         className={`${styles.rowWrapper} ${pp_nekkei.className}`}
         initial="unhovered"
         whileHover="hover"
-        onMouseEnter={() => expandCursor()}
-        onMouseLeave={() => defaultCursor()}
       >
         <Link href={r.link}>
           <div className={styles.rowContainer}>
