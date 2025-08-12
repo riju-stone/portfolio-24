@@ -2,7 +2,6 @@ export const revalidate = 60;
 
 import { ImageResponse } from 'next/og'
 import { getPost } from '@/sanity/queries/posts'
-import { join } from 'path'
 
 export const runtime = 'edge'
 
@@ -38,10 +37,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
       )
     }
 
-    const fontsDir = join(process.cwd(), 'public', 'fonts')
-    const ppNueueBold = await fetch(join(fontsDir, 'pp_nueue', 'ppneuemontreal-bold.otf')).then((res) => res.arrayBuffer())
-    const ppNikkeiRegular = await fetch(join(fontsDir, 'pp_nikkei', 'PPNikkeiMaru-Regular.otf')).then((res) => res.arrayBuffer())
-    const ppNikkeiLight = await fetch(join(fontsDir, 'pp_nikkei', 'PPNikkeiMaru-Light.otf')).then((res) => res.arrayBuffer())
+    // Use URL construction instead of path.join for Edge Runtime compatibility
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000'
+
+    const ppNueueBold = await fetch(`${baseUrl}/fonts/pp_nueue/ppneuemontreal-bold.otf`).then((res) => res.arrayBuffer())
+    const ppNikkeiRegular = await fetch(`${baseUrl}/fonts/pp_nikkei/PPNikkeiMaru-Regular.otf`).then((res) => res.arrayBuffer())
+    const ppNikkeiLight = await fetch(`${baseUrl}/fonts/pp_nikkei/PPNikkeiMaru-Light.otf`).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
       (
