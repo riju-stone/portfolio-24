@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
-import { motion } from "motion/react";
+import React, { useState, useMemo, useCallback, useRef } from "react";
+import { delay, motion, useInView } from "motion/react";
 import styles from "./styles.module.scss";
 import { useThemeStore } from "@/stores/themeStore";
 
@@ -22,9 +22,26 @@ const hoverTransforms = [
 ];
 
 const disperseAnim = {
+    blurred: (i: number) => {
+        const transform = hoverTransforms[i % hoverTransforms.length];
+        return {
+            filter: "blur(12px)",
+            x: (transform.x * Math.random() * 5) + "em",
+            y: (transform.y * Math.random() * 5) + "em",
+            rotateZ: (transform.rotationZ * Math.random() * 20),
+            transition: {
+                duration: 0.75,
+                ease: [0.33, 1, 0.68, 1],
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+            },
+        }
+    },
     hover: (i: number) => {
         const transform = hoverTransforms[i % hoverTransforms.length];
         return {
+            filter: "blur(0px)",
             x: transform.x + "em",
             y: transform.y + "em",
             rotateZ: transform.rotationZ,
@@ -38,6 +55,7 @@ const disperseAnim = {
         };
     },
     leave: {
+        filter: "blur(0px)",
         x: 0,
         y: 0,
         rotateZ: 0,
@@ -56,8 +74,10 @@ interface TextDisperseComponentProps {
 }
 
 function TextDisperseComponent({ word }: TextDisperseComponentProps) {
+    const containerRef = useRef<HTMLParagraphElement>(null);
     const theme = useThemeStore(state => state.theme);
     const [isHovered, setIsHovered] = useState(false);
+    const isInView = useInView(containerRef, { once: true, margin: "0px 0px -200px 0px" });
 
     const splitCharacters = useMemo(() => {
         return word.split("").map((char, index) => ({
@@ -75,12 +95,12 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
         setIsHovered(false);
     }, []);
 
-    const renderCharacters = useMemo(() => {
+    const renderCharacters = () => {
         return splitCharacters.map(({ char, key, index }) => (
             <motion.span
                 key={key}
                 variants={disperseAnim}
-                animate={isHovered ? "hover" : "leave"}
+                animate={isHovered ? "hover" : isInView ? "leave" : "blurred"}
                 custom={index}
                 style={{
                     display: "inline-block",
@@ -92,16 +112,15 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
                 {char}
             </motion.span>
         ));
-    }, [splitCharacters, isHovered]);
+    };
 
     return (
         <p
-            className={`${styles.textDisperseContainer} 
-                ${theme === "dark" ? styles[theme] : styles[theme]}`}
+            ref={containerRef}
+            className={`${styles.textDisperseContainer} ${styles[theme]}`}
             onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            {renderCharacters}
+            onMouseLeave={handleMouseLeave}>
+            {renderCharacters()}
         </p>
     );
 }

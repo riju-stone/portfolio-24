@@ -57,8 +57,7 @@ export const EXPERIENCE_METADATA = {
     col4: "link",
 }
 
-export const EXPERIENCE_PHRASE = `"The best performance improvement is the transition from the
-nonworking state to the working state." — John Ousterhout`
+export const EXPERIENCE_PHRASE = `"The best performance improvement is the transition from the nonworking state to the working state." — John Ousterhout`
 
 export const EXPERIENCE_DATA = [
     {

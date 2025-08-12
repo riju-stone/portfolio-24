@@ -113,10 +113,11 @@
 .textDisperseContainer {
   color: global.$dark-disabled-color;
   margin: 0px;
-  transition: color 0.4s ease-out;
+  z-index: 0;
 
   &.light:hover {
-    color: global.$pale-blue-color;
+    color: global.$pale-orange-color;
+    filter: invert(1);
   }
 
   &.dark:hover {

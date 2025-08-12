@@ -4,6 +4,7 @@ import React from 'react'
 
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import { useThemeStore } from '@/stores/themeStore'
 
 const clipAnimation = {
   initial: {
@@ -29,7 +30,7 @@ const clipAnimation = {
 }
 
 function FancyTableComponent({ metadata, tableData }) {
-
+  const theme = useThemeStore(state => state.theme);
   return <motion.div
     className={styles.tableWrapper}
     initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -57,7 +58,7 @@ function FancyTableComponent({ metadata, tableData }) {
           </div>
           <motion.div className={styles.maskRowContainer} variants={clipAnimation}>
             <div className={styles.rowContent}>
-              <div className={styles.dataMaskCol1}>{r[metadata.col1]}</div>
+              <div className={`${styles.dataMaskCol1} ${styles[theme]}`}>{r[metadata.col1]}</div>
               <div className={styles.dataMaskCol2}>{r[metadata.col2]}</div>
             </div>
             <div className={styles.dataMaskCol3}>{r[metadata.col3]}</div>

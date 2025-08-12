@@ -1,14 +1,15 @@
 import React from "react";
-import BackgroundComponent from "@/components/background/background-canvas.tsx";
-import HeaderComponent from "@/components/header/header.tsx";
-import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu.tsx";
-import LoaderComponent from "@/components/site-loader/site-loader.tsx";
-import "./globals.scss";
+import BackgroundComponent from "@/components/background/background-canvas";
+import HeaderComponent from "@/components/header/header-component";
+import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
+import LoaderComponent from "@/components/site-loader/site-loader";
+import FooterComponent from "@/components/footer/footer-component";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
-import FooterComponent from "@/components/footer/footer.tsx";
+
+import "./globals.scss";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
@@ -51,23 +52,6 @@ export const metadata: Metadata = {
             "max-snippet": -1,
         },
     },
-    openGraph: {
-        type: "website",
-        locale: "en_US",
-        url: "https://archst.dev",
-        siteName: "Arighna Chakraborty - Portfolio",
-        title: "Arighna Chakraborty - Portfolio",
-        description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
-        images: [
-            {
-                url: "/images/seo-hero.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Arighna Chakraborty - Portfolio",
-                type: "image/jpeg"
-            }
-        ],
-    },
     twitter: {
         card: "summary_large_image",
         title: "Arighna Chakraborty - Portfolio",
@@ -76,25 +60,10 @@ export const metadata: Metadata = {
         creator: "@RijuStone",
         site: "@RijuStone",
     },
-    alternates: {
-        canonical: "https://archst.dev",
-    },
     category: "Technology",
     classification: "Portfolio Website",
     verification: {
-        google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION_ID, // Add your Google Search Console 
-    },
-    applicationName: "Arighna Chakraborty Portfolio",
-    referrer: "origin-when-cross-origin",
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
-    other: {
-        "theme-color": "#000000", // Adjust to match your site's theme
-        "color-scheme": "dark light",
-        "twitter:image:alt": "Arighna Chakraborty - Portfolio",
+        google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION_ID,
     }
 };
 
@@ -104,7 +73,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning={true}>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
                 <meta name="theme-color" content="#0c0c0c" />

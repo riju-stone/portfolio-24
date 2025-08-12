@@ -82,7 +82,15 @@
       font-size: 1.15rem;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: global.$pale-orange-color;
+
+      &.light {
+        color: global.$pale-orange-color;
+        filter: invert(1);
+      }
+
+      &.dark {
+        color: global.$pale-orange-color;
+      }
     }
 
     .dataCol2 {

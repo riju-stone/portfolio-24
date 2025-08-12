@@ -2,7 +2,7 @@ $light-text-color: #0c0c0c;
 $dark-text-color: #ededed;
 
 $light-disabled-color: #6c6c6c;
-$dark-disabled-color: #565656;
+$dark-disabled-color: #767676;
 
 $pale-orange-color: #ff5800;
 $pale-blue-color: #00A7FF;
@@ -19,7 +19,7 @@ $dark-bg-color: #0c0c0c;
 
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: antialiased;
 
   box-sizing: border-box;
   text-size-adjust: 100%;
