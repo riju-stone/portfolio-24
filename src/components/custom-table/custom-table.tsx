@@ -1,3 +1,5 @@
+"use client"
+
 import { pp_nekkei, space_grotesk } from '@/utils/fonts'
 import { motion } from 'motion/react'
 import React from 'react'

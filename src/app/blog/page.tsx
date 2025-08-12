@@ -1,13 +1,12 @@
-"use client";
-
 import SkewScrollComponent from "@/components/custom-scroll/custom-scroll";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./page.module.scss";
 import LazyTextComponent from "@/components/lazy-loader/lazy-loader";
-import { getLatestPosts } from "@/sanity/queries/posts";
 import TextStaggerComponent from "@/components/custom-text/text-stagger";
 import FancyTableComponent from "@/components/custom-table/custom-table";
 import { AnimatePresence } from "motion/react";
+import { pp_nueue } from "@/utils/fonts";
+import { getLatestPosts } from "@/sanity/queries/posts";
 
 const blogMetadata = {
     col1: "publishedAt",
@@ -27,23 +26,32 @@ function formatPostsData(posts: any[]) {
     }))
 }
 
-function BlogsPage() {
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+async function BlogsPage() {
+    try {
+        const posts = await getLatestPosts();
+        const formattedData = formatPostsData(posts);
 
-    useEffect(() => {
-        getLatestPosts().then(data => {
-            const formattedData = formatPostsData(data);
-            setPosts(formattedData);
-            setLoading(false);
-        }).catch(error => {
-            setError(error);
-            setLoading(false);
-        })
-    }, [])
+        if (formattedData.length === 0) {
+            return <div key="empty" className={styles.blogMessageWrapper}>
+                <LazyTextComponent text="Working on some stuff!" />
+            </div>
+        }
 
-    if (error) {
+        return (
+            <main style={{ mixBlendMode: "difference" }}>
+                <SkewScrollComponent>
+                    <div key="posts" className={styles.blogsPageWrapper}>
+                        <div className={styles.postsWrapper}>
+                            <TextStaggerComponent className={`${styles.pageTitle} ${pp_nueue.className}`} text={"Breaking down abstractions"} style="word" />
+                            <div className={styles.postsGrid}>
+                                <FancyTableComponent metadata={blogMetadata} tableData={formattedData} />
+                            </div>
+                        </div>
+                    </div>
+                </SkewScrollComponent>
+            </main>
+        )
+    } catch (error) {
         return (
             <main style={{ mixBlendMode: "difference" }}>
                 <div className={styles.blogMessageWrapper}>
@@ -52,35 +60,6 @@ function BlogsPage() {
             </main>
         );
     }
-
-    return (
-        <main style={{ mixBlendMode: "difference" }}>
-            <SkewScrollComponent>
-                <AnimatePresence mode="wait">
-                    {loading ?
-                        <div key="loading" className={styles.blogMessageWrapper}>
-                            <LazyTextComponent text="Hold on!" />
-                        </div> :
-                        posts.length === 0 ?
-                            <div key="empty" className={styles.blogMessageWrapper}>
-                                <LazyTextComponent text="Working on some stuff!" />
-                            </div> :
-                            <div key="posts" className={styles.blogsPageWrapper}>
-                                <div className={styles.postsWrapper}>
-                                    <TextStaggerComponent className={styles.pageTitle} text={"Feed"} style="word" />
-                                    <div className={styles.postsGrid}>
-                                        <FancyTableComponent metadata={blogMetadata} tableData={posts} />
-                                    </div>
-                                    {/* <div className={styles.pagination}>
-                            <button>Previous</button>
-                            <button>Next</button>
-                        </div> */}
-                                </div>
-                            </div>}
-                </AnimatePresence>
-            </SkewScrollComponent>
-        </main >
-    )
 }
 
 export default BlogsPage;

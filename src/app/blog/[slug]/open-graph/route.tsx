@@ -2,9 +2,9 @@ import { getLatestPosts } from "@/sanity/queries/posts";
 import { ImageResponse } from "next/og";
 export const revalidate = 60;
 
-export async function GET(req: Request, props) {
+export async function GET(req: Request, props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const slug = params.slugs;
+  const slug = params.slug;
   const postsData = await getLatestPosts();
 
   const post = postsData.find((post) => post.slug === slug);

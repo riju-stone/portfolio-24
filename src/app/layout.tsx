@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     icons: {
         icon: "/images/seo-hero.jpg",
     },
+    openGraph: {
+        title: "Arighna Chakraborty - Full Stack Developer Portfolio",
+        description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
+        images: ["/images/seo-hero.jpg"],
+    },
     description: "Arighna Chakraborty's portfolio showcasing full-stack development expertise, innovative projects, and technical skills. Explore my journey in web development, design, and technology.",
     keywords: [
         "Arighna Chakraborty",

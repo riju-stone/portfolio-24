@@ -1,45 +1,52 @@
-"use client"
-
-import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
-import { getPost } from '@/sanity/queries/posts'
-import React, { use, useEffect, useState } from 'react'
-import Link from 'next/link'
-import Markdown from "react-markdown";
-import remarkGfm from 'remark-gfm';
-import rehypeHighlight from "rehype-highlight";
-import rehypeVideo from "rehype-video";
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
-import rehypeStringify from "rehype-stringify";
-import "katex/dist/katex.min.css";
-import "highlight.js/styles/github.css";
-import { AnimatePresence, motion } from 'motion/react';
+import React from 'react'
+import { Metadata } from 'next'
 import styles from "./page.module.scss";
 import LazyTextComponent from '@/components/lazy-loader/lazy-loader';
-import { inter, pp_nekkei, pp_nueue } from '@/utils/fonts';
-import { ArrowLeftIcon } from "lucide-react"
+import { pp_nekkei, pp_nueue } from '@/utils/fonts';
+import { getPost } from '@/sanity/queries/posts';
+import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
+import TextStaggerComponent from '@/components/custom-text/text-stagger';
+import PostContentComponent from '@/components/post-content/post-content';
 
-function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-    const [post, setPost] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+type BlogParams = Promise<{ slug: string }>
 
-    const resolvedParams = use(params);
+export const metadata: Metadata = {
+    title: 'Blog',
+    description: 'Blog',
+    openGraph: {
+        title: 'Blog',
+        description: 'Blog',
+        images: ['/open-graph'],
+    },
+}
 
-    useEffect(() => {
-        getPost(resolvedParams.slug).then(data => {
-            setPost(data);
-            setLoading(false);
-            if (!data) {
-                throw Error("Post not found")
-            }
-        }).catch(error => {
-            setError(error);
-            setLoading(false);
-        })
-    }, [resolvedParams.slug])
+async function BlogPostPage({ params }: { params: BlogParams }) {
+    const resolvedParams = await params;
 
-    if (error) {
+    try {
+        const post = await getPost(resolvedParams.slug);
+        
+        return <main style={{ mixBlendMode: "difference" }}>
+            <SkewScrollComponent>
+                <div className={styles.postContainer}>
+                    <div className={styles.postHeader}>
+                        <TextStaggerComponent className={`${styles.postTitle} ${pp_nueue.className}`} text={post.title} style="word" delay={0.5} />
+                        <div className={styles.postMetadataWrapper}>
+                            <TextStaggerComponent className={`${styles.postDate} ${pp_nekkei.className}`} text={new Date(post.publishedAt).toLocaleDateString()} style="letter" delay={0.85} staggerDelay={0.02} />
+                            {post.tags?.length > 0 && (
+                                <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
+                                    {post.tags.map((tag: string) => (
+                                        <TextStaggerComponent className={styles.tag} key={tag} text={tag} style="letter" delay={0.85} staggerDelay={0.02} />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <PostContentComponent content={post.content} />
+                </div>
+            </SkewScrollComponent>
+        </main>
+    } catch (error) {
         return (
             <main style={{ mixBlendMode: "difference" }}>
                 <div className={styles.blogsPageWrapper}>
@@ -48,63 +55,6 @@ function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
             </main>
         );
     }
-
-    return (
-        <main style={{ mixBlendMode: "difference" }}>
-            <SkewScrollComponent>
-                <AnimatePresence mode="wait">
-                    {loading ?
-                        <div key="loading" className={styles.blogsPageWrapper}>
-                            <LazyTextComponent text="Collecting my thoughts." />
-                        </div> : <motion.article
-                            key="post"
-                            className={styles.postContainer}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.25 }}
-                            style={{ color: "#fff" }}>
-                            <header className={styles.postHeader}>
-                                <h1 className={`${styles.postTitle} ${pp_nueue.className}`}>{post.title}</h1>
-                                <div className={styles.postMetadataWrapper}>
-                                    <time className={`${styles.postDate} ${pp_nekkei.className}`}>
-                                        {new Date(post.publishedAt).toLocaleDateString()}
-                                    </time>
-                                    {post.tags?.length > 0 && (
-                                        <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
-                                            {post.tags.map((tag: string) => (
-                                                <div className={styles.tag} key={tag}>
-                                                    {tag}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </header>
-
-                            <section className={`${styles.postContent} ${inter.className}`}>
-                                <Markdown
-                                    remarkPlugins={[remarkGfm, remarkMath]}
-                                    rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}
-                                    components={{
-                                        img: ({ src, alt, title, ...props }) => {
-                                            if (!src || src.trim() === '') {
-                                                return null;
-                                            }
-                                            return <img src={src} alt={alt} title={title} {...props} />;
-                                        }
-                                    }}
-                                >
-                                    {post.content}
-                                </Markdown>
-                            </section>
-                            <div className={`${styles.backLink} ${inter.className}`}>
-                                <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
-                            </div>
-                        </motion.article>}
-                </AnimatePresence>
-            </SkewScrollComponent>
-        </main>
-    )
 }
 
 export default BlogPostPage
