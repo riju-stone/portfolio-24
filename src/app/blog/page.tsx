@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import SkewScrollComponent from "@/components/custom-scroll/custom-scroll";
 import React from "react";
 import styles from "./page.module.scss";

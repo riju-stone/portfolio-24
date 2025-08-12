@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import React from 'react'
 import { Metadata } from 'next'
 import styles from "./page.module.scss";
