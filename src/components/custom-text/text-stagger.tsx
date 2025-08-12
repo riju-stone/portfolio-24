@@ -86,7 +86,7 @@ function TextStaggerComponent({ text, className, style = "letter", wordsPerLine 
     return (
         <motion.div
             ref={containerRef}
-            className={`${styles[`textStaggerWrapper-${style}`]} ${pp_nueue.className} ${className || ''}`}
+            className={`${styles[`textStaggerWrapper-${style}`]} ${className || ''}`}
             variants={containerAnim}
             initial="hidden"
             animate={inView ? "show" : "hidden"}

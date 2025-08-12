@@ -22,9 +22,9 @@ function HomePage() {
                 <div className={styles.homePageWrapper}>
                     <section className={styles.heroSectionWrapper}>
                         <div className={styles.heroContainer}>
-                            <div className={styles.heroTextWrapper}>
+                            <div className={`${styles.heroTextWrapper} ${pp_nueue.className}`}>
                                 <TextStaggerComponent
-                                    className={`${styles.heroText} ${pp_nueue.className}`}
+                                    className={styles.heroText}
                                     text={HEADING_TEXT}
                                     style="word"
                                     duration={0.65}
@@ -43,9 +43,9 @@ function HomePage() {
                                 </motion.div>
                             </div>
                         </div>
-                        <div className={styles.heroAboutWrapper}>
+                        <div className={`${styles.heroAboutWrapper} ${pp_nekkei.className}`}>
                             <TextStaggerComponent
-                                className={`${styles.heroAboutText} ${pp_nekkei.className}`}
+                                className={styles.heroAboutText}
                                 text={INTRO_PHRASE}
                                 style="line"
                                 wordsPerLine={8}
@@ -65,7 +65,7 @@ function HomePage() {
                                 endOffset="0.75"
                                 style="letter"
                                 className={styles.workHeading} />
-                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={EXPERIENCE_PHRASE} style="word" once={true} />
+                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={EXPERIENCE_PHRASE} style="word" once={true} staggerDelay={0.02} />
                             <FancyTableComponent
                                 metadata={EXPERIENCE_METADATA}
                                 tableData={EXPERIENCE_DATA} />
@@ -77,7 +77,7 @@ function HomePage() {
                                 endOffset="0.75"
                                 style="letter"
                                 className={styles.workHeading} />
-                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} />
+                            <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} staggerDelay={0.02} />
                             <FancyTableComponent
                                 metadata={PROJECT_METADATA}
                                 tableData={PROJECT_DATA} />
