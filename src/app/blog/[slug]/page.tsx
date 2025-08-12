@@ -10,14 +10,50 @@ import PostContentComponent from '@/components/post-content/post-content';
 
 type BlogParams = Promise<{ slug: string }>
 
-export const metadata: Metadata = {
-    title: 'Blog',
-    description: 'Blog',
-    openGraph: {
-        title: 'Blog',
-        description: 'Blog',
-        images: ['/open-graph'],
-    },
+export async function generateMetadata({ params }: { params: BlogParams }): Promise<Metadata> {
+    const resolvedParams = await params;
+
+    try {
+        const post = await getPost(resolvedParams.slug);
+        if (!post) {
+            return {
+                title: 'Post Not Found',
+                description: 'The requested blog post could not be found.',
+            };
+        }
+
+        return {
+            title: post.title,
+            description: post.excerpt || `Read about ${post.title} on my blog`,
+            openGraph: {
+                title: post.title,
+                description: post.excerpt,
+                images: [
+                    {
+                        url: `https://archst.dev/blog/${post.slug}/open-graph`,
+                        width: 1200,
+                        height: 630,
+                        alt: post.title,
+                    }
+                ],
+                type: 'article',
+                publishedTime: post.publishedAt,
+                authors: ['Rijustone'],
+                tags: post.tags,
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: post.title,
+                description: post.excerpt,
+                images: [`https://archst.dev/blog/${post.slug}/open-graph`],
+            },
+        }
+    } catch (error) {
+        return {
+            title: 'Post Not Found',
+            description: 'The requested blog post could not be found.',
+        };
+    }
 }
 
 async function BlogPostPage({ params }: { params: BlogParams }) {
@@ -25,7 +61,7 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
 
     try {
         const post = await getPost(resolvedParams.slug);
-        
+
         return <main style={{ mixBlendMode: "difference" }}>
             <SkewScrollComponent>
                 <div className={styles.postContainer}>

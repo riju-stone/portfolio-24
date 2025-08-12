@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client";
+import { cache } from "react";
 
-export const getLatestPosts = async () => {
+export const getLatestPosts = cache(async () => {
   return await client.fetch(`
        *[_type == "post" && defined(publishedAt)] | order(publishedAt desc) [0...10] {
       _id,
@@ -10,9 +11,9 @@ export const getLatestPosts = async () => {
       "slug": slug.current,
       "tags": tags[]->name
     }`);
-};
+})
 
-export const getPost = async (slug: string) => {
+export const getPost = cache(async (slug: string) => {
   return await client.fetch(
     `*[_type == "post" && slug.current == $slug][0] {
       _id,
@@ -25,4 +26,4 @@ export const getPost = async (slug: string) => {
     }`,
     { slug }
   );
-};
+});
