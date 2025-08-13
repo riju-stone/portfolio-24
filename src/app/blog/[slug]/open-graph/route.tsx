@@ -173,8 +173,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
                 textAlign: 'right',
               }}
             >
-              <div>Rijustone</div>
-              <div style={{ fontSize: '16px', marginTop: '4px' }}>Developer & Designer</div>
+              <div>Arighna Chakraborty</div>
+              <div style={{ fontSize: '16px', marginTop: '4px' }}>Full—Stack Engineer</div>
             </div>
           </div>
         </div>

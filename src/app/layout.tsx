@@ -2,7 +2,6 @@ import React from "react";
 import BackgroundComponent from "@/components/background/background-canvas";
 import HeaderComponent from "@/components/header/header-component";
 import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
-import LoaderComponent from "@/components/site-loader/site-loader";
 import FooterComponent from "@/components/footer/footer-component";
 
 import { Analytics } from "@vercel/analytics/react";
@@ -88,10 +87,8 @@ export default function RootLayout({
             </head>
             <body className="app">
                 <HamburgerMenuComponent />
-                <LoaderComponent>
-                    <HeaderComponent />
-                    {children}
-                </LoaderComponent>
+                <HeaderComponent />
+                {children}
                 <FooterComponent />
                 <BackgroundComponent />
             </body>

@@ -1,21 +1,15 @@
-"use client";
-
 import React from "react";
 import styles from "./page.module.scss";
-import Image from "next/image";
-import { motion } from "motion/react";
 import SkewScrollComponent from "@/components/custom-scroll/custom-scroll";
 import FancyTableComponent from "@/components/custom-table/custom-table";
 import TextStaggerComponent from "@/components/custom-text/text-stagger";
 import TextDisperseComponent from "@/components/custom-text/text-disperse";
-import { inter, pp_nekkei, pp_nueue } from "@/utils/fonts";
+import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import TextScrollRevealComponent from "@/components/custom-text/text-scroll-reveal";
 import { EXPERIENCE_DATA, EXPERIENCE_METADATA, EXPERIENCE_PHRASE, HEADING_TEXT, INTRO_PHRASE, PROJECT_DATA, PROJECT_METADATA, PROJECT_PHRASE } from "@/utils/constants";
-import { useDevice } from "@/hooks/useDevice";
+import HeroImageComponent from "@/components/hero-image/hero-image";
 
 function HomePage() {
-    const device = useDevice();
-
     return (
         <main style={{ mixBlendMode: "difference" }}>
             <SkewScrollComponent>
@@ -34,13 +28,7 @@ function HomePage() {
                                 />
                             </div>
                             <div className={styles.heroImageWrapper}>
-                                <motion.div
-                                    style={{ height: "100%", width: "100%" }}
-                                    initial={{ y: "100%" }}
-                                    animate={{ y: 0 }}
-                                    transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}>
-                                    <Image unoptimized src="/images/engineer.gif" alt="Hero Image" width={500} height={500} />
-                                </motion.div>
+                                <HeroImageComponent />
                             </div>
                         </div>
                         <div className={`${styles.heroAboutWrapper} ${pp_nekkei.className}`}>
@@ -48,7 +36,7 @@ function HomePage() {
                                 className={styles.heroAboutText}
                                 text={INTRO_PHRASE}
                                 style="line"
-                                wordsPerLine={8}
+                                wordsPerLine={9}
                                 duration={1.25}
                                 delay={1.25}
                                 staggerDelay={0.02}

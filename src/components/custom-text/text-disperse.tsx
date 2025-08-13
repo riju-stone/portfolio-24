@@ -26,9 +26,9 @@ const disperseAnim = {
         const transform = hoverTransforms[i % hoverTransforms.length];
         return {
             filter: "blur(12px)",
-            x: (transform.x * Math.random() * 4) + "em",
-            y: (transform.y * Math.random() * 4) + "em",
-            rotateZ: (transform.rotationZ * Math.random() * 10),
+            x: (transform.x * Math.random() * 2) + "em",
+            y: (transform.y * Math.random() * 2) + "em",
+            rotateZ: (transform.rotationZ * Math.random() * 8),
             transition: {
                 duration: 0.75,
                 ease: [0.33, 1, 0.68, 1],
