@@ -1,8 +1,11 @@
 import React from "react";
+import dynamic from "next/dynamic";
+
 import BackgroundComponent from "@/components/background/background-canvas";
 import HeaderComponent from "@/components/header/header-component";
-import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
-import FooterComponent from "@/components/footer/footer-component";
+import FooterComponent from "@/components/footer/footer-component"
+
+const HamburgerMenuComponent = dynamic(() => import("@/components/hamburger/hamburger-menu"), { ssr: true });
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
