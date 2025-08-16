@@ -1,38 +1,26 @@
 "use client";
 
-import React, { useMemo, useRef, useCallback } from 'react'
-import { motion, useInView } from "motion/react"
+import React, { useMemo, useRef } from 'react';
+import { motion, useInView } from "motion/react";
+import styles from "./styles.module.scss";
 
-import styles from "./styles.module.scss"
-
-const containerAnim = {
-    hidden: {},
-    show: {
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.5
-        }
-    }
-}
-
-const createTextProcessors = () => {
-    const splitByLetter = (text: string) => {
+// Memoize text processors outside component
+const textProcessors = {
+    splitByLetter: (text: string) => {
         return text.split("").map((letter, index) => ({
             content: letter,
             id: `letter-${index}`,
             idx: index
         }));
-    };
-
-    const splitByWord = (text: string) => {
+    },
+    splitByWord: (text: string) => {
         return text.split(" ").filter(word => word.length > 0).map((word, index) => ({
             content: word,
             id: `word-${index}`,
             idx: index
         }));
-    };
-
-    const splitByLine = (text: string, wordsPerLine: number) => {
+    },
+    splitByLine: (text: string, wordsPerLine: number) => {
         const words = text.split(" ").filter(word => word.length > 0);
         const lines = [];
         for (let i = 0; i < words.length; i += wordsPerLine) {
@@ -43,9 +31,7 @@ const createTextProcessors = () => {
             id: `line-${index}`,
             idx: index
         }));
-    };
-
-    return { splitByLetter, splitByWord, splitByLine };
+    },
 };
 
 interface TextStaggerComponentProps {
@@ -70,69 +56,68 @@ function TextStaggerComponent({
     once = true
 }: TextStaggerComponentProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const inView = useInView(containerRef, { once: once, margin: "0px 100px" });
-    const textProcessors = useMemo(() => createTextProcessors(), []);
+    const inView = useInView(containerRef, { once, margin: "0px 100px" });
 
+    // Memoize processed text
+    const processedText = useMemo(() => {
+        if (style === "letter") return textProcessors.splitByLetter(text);
+        if (style === "word") return textProcessors.splitByWord(text);
+        if (style === "line") return textProcessors.splitByLine(text, wordsPerLine);
+        return [];
+    }, [text, style, wordsPerLine]);
+
+    // Memoize animation variants
     const textStaggerAnim = useMemo(() => ({
-        hidden: {
-            y: "100%",
-            opacity: 0,
-        },
+        hidden: { y: "100%", opacity: 0 },
         show: (i: number) => ({
             y: 0,
             opacity: 1,
             transition: {
-                duration: duration,
+                duration,
                 delay: delay + i * staggerDelay,
                 ease: [0.22, 1, 0.36, 1]
             }
         })
     }), [duration, delay, staggerDelay]);
 
-    const processedText = useMemo(() => {
-        if (style === "letter") return textProcessors.splitByLetter(text);
-        if (style === "word") return textProcessors.splitByWord(text);
-        if (style === "line") return textProcessors.splitByLine(text, wordsPerLine);
-        return [];
-    }, [text, style, wordsPerLine, textProcessors]);
-
-    const renderLineContent = useCallback((content: string) => {
-        if (style === "line") {
-            return content.split(" ").map((word, index) => (
-                <span key={`word-${index}`}>{word}</span>
-            ));
-        }
-        return content;
-    }, [style]);
-
-    const containerClassName = useMemo(() =>
-        `${styles[`textStaggerWrapper-${style}`]} ${className || ''}`.trim(),
-        [style, className]
-    );
+    const TextItem = React.memo(({ item, index }: { item: any, index: number }) => (
+        <div className={styles.textStaggerContainer}>
+            <div className={styles.staggerContent}>
+                <motion.div
+                    className={styles.staggerItem}
+                    variants={textStaggerAnim}
+                    custom={index}
+                >
+                    {style === "line" ?
+                        item.content.split(" ").map((word: string, wordIndex: number) => (
+                            <span key={wordIndex} className={styles.justifiedWord}>
+                                {word}
+                            </span>
+                        ))
+                        : <span>{item.content}</span>}
+                </motion.div>
+            </div>
+        </div>
+    ));
 
     return (
         <motion.div
             ref={containerRef}
-            className={containerClassName}
-            variants={containerAnim}
+            className={`${styles[`textStaggerWrapper-${style}`]} ${className || ''}`.trim()}
+            variants={{
+                hidden: {},
+                show: {
+                    transition: { staggerChildren: 0.1, delayChildren: 0.5 }
+                }
+            }}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
         >
-            {processedText.map(({ id, idx, content }) => (
-                <div key={id} className={styles.textStaggerContainer}>
-                    <div className={styles.staggerContent}>
-                        <motion.div
-                            className={styles.staggerItem}
-                            variants={textStaggerAnim}
-                            custom={idx}
-                        >
-                            {renderLineContent(content)}
-                        </motion.div>
-                    </div>
-                </div>
+            {processedText.map((item, index) => (
+                <TextItem key={item.id} item={item} index={index} />
             ))}
         </motion.div>
-    )
+    );
 }
 
-export default TextStaggerComponent;
+export default React.memo(TextStaggerComponent);
