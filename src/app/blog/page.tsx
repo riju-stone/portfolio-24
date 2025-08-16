@@ -5,10 +5,10 @@ import React from "react";
 import styles from "./page.module.scss";
 import LazyTextComponent from "@/components/lazy-loader/lazy-loader";
 import TextStaggerComponent from "@/components/custom-text/text-stagger";
-import FancyTableComponent from "@/components/custom-table/custom-table";
-import { AnimatePresence } from "motion/react";
 import { pp_nueue } from "@/utils/fonts";
 import { getLatestPosts } from "@/sanity/queries/posts";
+import dynamic from "next/dynamic";
+const FancyTableComponent = dynamic(() => import("@/components/custom-table/custom-table"), { ssr: true });
 
 const blogMetadata = {
     col1: "publishedAt",

@@ -1,10 +1,8 @@
 import React from "react";
 import dynamic from "next/dynamic";
-
-import BackgroundComponent from "@/components/background/background-canvas";
 import HeaderComponent from "@/components/header/header-component";
-import FooterComponent from "@/components/footer/footer-component"
-
+const BackgroundComponent = dynamic(() => import("@/components/background/background-canvas"), { ssr: true });
+const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
 const HamburgerMenuComponent = dynamic(() => import("@/components/hamburger/hamburger-menu"), { ssr: true });
 
 import { Analytics } from "@vercel/analytics/react";
@@ -84,9 +82,10 @@ export default function RootLayout({
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
                 <meta name="theme-color" content="#0c0c0c" />
-                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://va.vercel-scripts.com" />
                 <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-                <link rel="preload" as="image" href="/images/engineer.gif" />
+                <link rel="preload" as="image" href="/images/engineer.webm" />
             </head>
             <body className="app">
                 <HamburgerMenuComponent />

@@ -2,13 +2,14 @@ export const revalidate = 60;
 
 import React from 'react'
 import { Metadata } from 'next'
+import dynamic from 'next/dynamic';
 import styles from "./page.module.scss";
 import LazyTextComponent from '@/components/lazy-loader/lazy-loader';
 import { pp_nekkei, pp_nueue } from '@/utils/fonts';
 import { getPost } from '@/sanity/queries/posts';
 import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
 import TextStaggerComponent from '@/components/custom-text/text-stagger';
-import PostContentComponent from '@/components/post-content/post-content';
+const PostContentComponent = dynamic(() => import('@/components/post-content/post-content'), { ssr: true });
 
 type BlogParams = Promise<{ slug: string }>
 
