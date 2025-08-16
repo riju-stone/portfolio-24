@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useCallback, useRef } from "react";
-import { delay, motion, useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
 import styles from "./styles.module.scss";
 import { useThemeStore } from "@/stores/themeStore";
 

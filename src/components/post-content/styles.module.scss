@@ -4,12 +4,13 @@
   max-width: 75%;
   font-size: 1rem;
   line-height: 1.5rem;
+  mix-blend-mode: difference;
 
   pre {
     padding: 2px 4px;
-    filter: invert(1);
     width: 100%;
     border-radius: 4px;
+    filter: invert(1);
   }
 
   code {

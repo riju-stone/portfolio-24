@@ -9,6 +9,7 @@ import { pp_nekkei, pp_nueue } from '@/utils/fonts';
 import { getPost } from '@/sanity/queries/posts';
 import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
 import TextStaggerComponent from '@/components/custom-text/text-stagger';
+
 const PostContentComponent = dynamic(() => import('@/components/post-content/post-content'), { ssr: true });
 
 type BlogParams = Promise<{ slug: string }>
@@ -65,7 +66,7 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
     try {
         const post = await getPost(resolvedParams.slug);
 
-        return <main style={{ mixBlendMode: "difference" }}>
+        return <main>
             <SkewScrollComponent>
                 <div className={styles.postContainer}>
                     <div className={styles.postHeader}>
@@ -87,7 +88,7 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
         </main>
     } catch (error) {
         return (
-            <main style={{ mixBlendMode: "difference" }}>
+            <main>
                 <div className={styles.blogsPageWrapper}>
                     <LazyTextComponent text="Fuck. That doesn't seem right." />
                 </div>

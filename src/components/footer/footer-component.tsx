@@ -1,13 +1,11 @@
 "use client"
-
 import React from 'react'
 
 import styles from "./styles.module.scss"
 import { space_grotesk } from '@/utils/fonts'
 import { useActivePath } from '@/utils/path'
 
-function FooterComponent()
-{
+function FooterComponent() {
     const checkActivePath = useActivePath();
 
     return checkActivePath("/studio") ? null : (

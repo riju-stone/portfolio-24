@@ -1,5 +1,3 @@
-"use client"
-
 import Markdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from "rehype-highlight";
@@ -13,13 +11,12 @@ import React from 'react'
 import { inter } from '@/utils/fonts'
 import Link from 'next/link'
 import { ArrowLeftIcon } from 'lucide-react'
-import { motion } from 'motion/react'
 
 import styles from "./styles.module.scss";
 
 function PostContentComponent({ content }: { content: string }) {
   return <>
-    <motion.section className={`${styles.postContent} ${inter.className}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 1 }}>
+    <section className={`${styles.postContent} ${inter.className}`}>
       <Markdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeStringify, rehypeHighlight, rehypeVideo, rehypeKatex]}
@@ -34,7 +31,7 @@ function PostContentComponent({ content }: { content: string }) {
       >
         {content}
       </Markdown>
-    </motion.section>
+    </section>
     <div className={`${styles.backLink} ${inter.className}`}>
       <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
     </div>

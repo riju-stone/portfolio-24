@@ -22,15 +22,11 @@
 .nameContainer {
 	display: flex;
 	transition: color ease-in 0.2s;
-	color: global.$light-text-color;
+	color: global.$dark-text-color;
 	font-size: 1.2rem;
 	font-weight: 400;
 	text-transform: lowercase;
-
-	.heroInitialLetter,
-	.heroNonInitialLetter {
-		filter: invert(100%);
-	}
+	mix-blend-mode: difference;
 
 	.heroNameSeparator {
 		height: 20px;

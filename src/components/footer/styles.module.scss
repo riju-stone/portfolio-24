@@ -7,8 +7,6 @@
   left: 0;
   right: 0;
   mix-blend-mode: difference;
-  filter: invert(100%);
-  opacity: 0.2;
 }
 
 .footerContainer {
@@ -19,7 +17,7 @@
   align-items: center;
   font-size: 1.2rem;
   font-weight: 400;
-  color: global.$light-text-color;
+  color: global.$dark-disabled-color;
 }
 
 @media only screen and (min-width: 250px) and (max-width: 639px) {

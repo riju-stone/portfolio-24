@@ -16,11 +16,6 @@
   inset: 0;
 }
 
-.textRippleWrapper {
-  height: 25vh;
-  width: 100%;
-}
-
 .textStaggerWrapper-letter {
   display: flex;
   flex-direction: row;
@@ -113,6 +108,7 @@
   color: global.$dark-disabled-color;
   margin: 0px;
   z-index: 0;
+  mix-blend-mode: difference;
 
   &.light:hover {
     color: global.$pale-orange-color;

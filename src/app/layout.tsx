@@ -1,15 +1,13 @@
 import React from "react";
-import dynamic from "next/dynamic";
 import HeaderComponent from "@/components/header/header-component";
-const BackgroundComponent = dynamic(() => import("@/components/background/background-canvas"), { ssr: true });
-const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
-const HamburgerMenuComponent = dynamic(() => import("@/components/hamburger/hamburger-menu"), { ssr: true });
+import FooterComponent from "@/components/footer/footer-component";
+import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
+import BackgroundComponent from "@/components/background/background-canvas";
 
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Metadata } from "next";
 
 import "./globals.scss";
+import AnalyticsComponent from "./analytics";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),
@@ -88,7 +86,6 @@ export default function RootLayout({
 
                 {/* Preload critical resources */}
                 <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-                <link rel="preload" as="video" href="/images/engineer.webm" />
 
                 {/* Add resource hints */}
                 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -101,8 +98,7 @@ export default function RootLayout({
                 <FooterComponent />
                 <BackgroundComponent />
             </body>
-            <Analytics />
-            <SpeedInsights />
+            <AnalyticsComponent />
         </html>
     );
 }

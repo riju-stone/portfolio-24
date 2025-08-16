@@ -24,6 +24,7 @@
         font-size: 5.25rem;
         font-weight: 500;
         text-transform: uppercase;
+        mix-blend-mode: difference;
       }
     }
 
@@ -54,6 +55,7 @@
     .heroAboutText {
       width: 100%;
       font-size: 1.35rem;
+      mix-blend-mode: difference;
     }
   }
 }
@@ -68,12 +70,14 @@
     font-size: 5rem;
     font-weight: 500;
     text-transform: uppercase;
+    mix-blend-mode: difference;
   }
 
   .workSubtext {
     padding: 0 2rem;
     margin: 2rem 0;
     font-size: 2.25rem;
+    mix-blend-mode: difference;
   }
 
   .experienceWrapper {
@@ -83,6 +87,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    mix-blend-mode: difference;
   }
 
   .projectWrapper {
@@ -92,6 +97,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    mix-blend-mode: difference;
   }
 }
 
@@ -114,6 +120,7 @@
     line-height: 8rem;
     color: global.$dark-text-color;
     z-index: 1;
+    mix-blend-mode: difference;
   }
 
   .introlinkContainer {

@@ -34,6 +34,7 @@
 	margin-top: 4rem;
 	margin-bottom: 1rem;
 	margin-left: 4rem;
+	mix-blend-mode: difference;
 }
 
 .postsGrid {
@@ -44,6 +45,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	mix-blend-mode: difference;
 
 	.postCard {
 		position: relative;

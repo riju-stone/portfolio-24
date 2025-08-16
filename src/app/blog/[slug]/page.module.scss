@@ -38,6 +38,7 @@
 	.postTitle {
 		color: global.$dark-text-color;
 		font-size: 4rem;
+		mix-blend-mode: difference;
 	}
 
 	.tagContainer {

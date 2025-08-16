@@ -41,21 +41,17 @@ function BackgroundComponent() {
 
     circleAnimationRunner();
 
-    const handleResize = () => {
+    const handleResize = throttle(() => {
       Circle.resetCircleCenterCoordinates();
       initializeAnimation();
       circleAnimationRunner();
-    };
+    }, 250);
 
-    window.addEventListener("resize", throttle(debounce(handleResize)), false);
+    window.addEventListener("resize", handleResize, false);
 
     return () => {
       shouldStartAnimation = false;
-      window.removeEventListener(
-        "resize",
-        throttle(debounce(handleResize)),
-        false,
-      );
+      window.removeEventListener("resize", handleResize, false);
     };
   }, [isDark, themeSwitchPos]);
 

@@ -39,7 +39,7 @@ async function BlogsPage() {
         }
 
         return (
-            <main style={{ mixBlendMode: "difference" }}>
+            <main>
                 <SkewScrollComponent>
                     <div key="posts" className={styles.blogsPageWrapper}>
                         <div className={styles.postsWrapper}>
@@ -54,7 +54,7 @@ async function BlogsPage() {
         )
     } catch (error) {
         return (
-            <main style={{ mixBlendMode: "difference" }}>
+            <main>
                 <div className={styles.blogMessageWrapper}>
                     <LazyTextComponent text="Oops! I fucked up." />
                 </div>

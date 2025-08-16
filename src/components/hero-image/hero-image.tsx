@@ -9,7 +9,7 @@ function HeroImageComponent() {
     initial={{ y: "100%" }}
     animate={{ y: 0 }}
     transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}>
-    <video src="/images/engineer.webm" preload='metadata' autoPlay loop muted playsInline />
+    <video src="/images/engineer.webm" autoPlay loop muted playsInline />
   </motion.div>
 }
 
