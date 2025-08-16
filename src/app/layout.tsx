@@ -81,10 +81,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-                <meta name="theme-color" content="#0c0c0c" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://va.vercel-scripts.com" />
-                <link rel="preload" as="image" href="/images/seo-hero.jpg" />
                 <link rel="preload" as="image" href="/images/engineer.webm" />
             </head>
             <body className="app">

@@ -89,7 +89,6 @@ function TextStaggerComponent({
         })
     }), [duration, delay, staggerDelay]);
 
-    // Memoized text processing
     const processedText = useMemo(() => {
         if (style === "letter") return textProcessors.splitByLetter(text);
         if (style === "word") return textProcessors.splitByWord(text);

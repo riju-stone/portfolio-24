@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Space_Grotesk, Inter, Roboto_Mono } from "next/font/google";
+import { Space_Grotesk, Inter } from "next/font/google";
 
 export const pp_nueue = localFont({
     display: "swap",
@@ -62,9 +62,4 @@ export const space_grotesk = Space_Grotesk({
     subsets: ["latin"],
     variable: "--font-space-grotesk",
 });
-
-export const roboto_mono = Roboto_Mono({
-    subsets: ["latin"],
-    variable: "--font-roboto-mono"
-})
 
