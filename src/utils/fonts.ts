@@ -5,26 +5,14 @@ export const pp_nueue = localFont({
     display: "swap",
     preload: true,
     fallback: ["system-ui", "arial"],
+    // Add font-display: optional for non-critical fonts
+    adjustFontFallback: "Arial",
+    // Load only critical weights initially
     src: [
-        {
-            path: "../../public/fonts/pp_nueue/ppneuemontreal-thin.otf",
-            style: "normal",
-            weight: "200",
-        },
         {
             path: "../../public/fonts/pp_nueue/ppneuemontreal-medium.otf",
             style: "normal",
             weight: "400",
-        },
-        {
-            path: "../../public/fonts/pp_nueue/ppneuemontreal-bold.otf",
-            style: "normal",
-            weight: "600",
-        },
-        {
-            path: "../../public/fonts/pp_nueue/ppneuemontreal-book.otf",
-            style: "normal",
-            weight: "800",
         }
     ],
 });
@@ -33,22 +21,13 @@ export const pp_nekkei = localFont({
     display: "swap",
     preload: true,
     fallback: ["system-ui", "arial"],
+    adjustFontFallback: "Arial",
     src: [
-        {
-            path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Light.otf",
-            style: "normal",
-            weight: "200",
-        },
         {
             path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Regular.otf",
             style: "normal",
             weight: "400",
-        },
-        {
-            path: "../../public/fonts/pp_nikkei/PPNikkeiMaru-Ultrabold.otf",
-            style: "normal",
-            weight: "800",
-        },
+        }
     ],
 });
 

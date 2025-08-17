@@ -1,7 +1,16 @@
 import { pp_nekkei, pp_nueue } from '@/utils/fonts'
 import { HEADING_TEXT, INTRO_PHRASE } from '@/utils/constants'
-import TextStaggerComponent from '@/components/custom-text/text-stagger'
-import HeroImageComponent from '@/components/hero-image/hero-image'
+
+import dynamic from 'next/dynamic'
+
+const HeroImageComponent = dynamic(() => import('@/components/hero-image/hero-image'), {
+  ssr: false,
+})
+
+const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
+  ssr: false,
+})
+
 import styles from './styles.module.scss'
 
 function HeroSectionComponent() {

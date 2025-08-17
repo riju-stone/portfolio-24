@@ -8,9 +8,13 @@ import LazyTextComponent from '@/components/lazy-loader/lazy-loader';
 import { pp_nekkei, pp_nueue } from '@/utils/fonts';
 import { getPost } from '@/sanity/queries/posts';
 import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
-import TextStaggerComponent from '@/components/custom-text/text-stagger';
 
-const PostContentComponent = dynamic(() => import('@/components/post-content/post-content'), { ssr: true });
+const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), { ssr: true });
+
+const PostContentComponent = dynamic(() => import('@/components/post-content/post-content'), {
+    loading: () => <LazyTextComponent text="Loading..." />,
+    ssr: true
+});
 
 type BlogParams = Promise<{ slug: string }>
 

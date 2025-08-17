@@ -1,10 +1,20 @@
 import { EXPERIENCE_DATA, EXPERIENCE_METADATA, EXPERIENCE_PHRASE, PROJECT_DATA, PROJECT_METADATA, PROJECT_PHRASE } from '@/utils/constants'
 import React from 'react'
-import FancyTableComponent from '../custom-table/custom-table'
-import TextStaggerComponent from '../custom-text/text-stagger'
 import { pp_nekkei } from '@/utils/fonts'
-import TextScrollRevealComponent from '../custom-text/text-scroll-reveal'
 import styles from './styles.module.scss'
+import dynamic from 'next/dynamic'
+
+const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
+  ssr: false,
+})
+
+const TextScrollRevealComponent = dynamic(() => import('@/components/custom-text/text-scroll-reveal'), {
+  ssr: false,
+})
+
+const FancyTableComponent = dynamic(() => import('@/components/custom-table/custom-table'), {
+  ssr: false,
+})
 
 function WorkSectionComponent() {
   return (

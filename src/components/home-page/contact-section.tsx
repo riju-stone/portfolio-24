@@ -1,8 +1,15 @@
-import TextStaggerComponent from '@/components/custom-text/text-stagger'
 import { pp_nekkei, pp_nueue } from '@/utils/fonts'
 import React from 'react'
 import styles from './styles.module.scss'
-import TextDisperseComponent from '../custom-text/text-disperse'
+import dynamic from 'next/dynamic'
+
+const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
+  ssr: false,
+})
+
+const TextDisperseComponent = dynamic(() => import('@/components/custom-text/text-disperse'), {
+  ssr: false,
+})
 
 function ContactSectionComponent() {
   return (
