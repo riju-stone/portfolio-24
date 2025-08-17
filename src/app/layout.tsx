@@ -1,13 +1,15 @@
 import React from "react";
-import HeaderComponent from "@/components/header/header-component";
-import FooterComponent from "@/components/footer/footer-component";
-import HamburgerMenuComponent from "@/components/hamburger/hamburger-menu";
-import BackgroundComponent from "@/components/background/background-canvas";
+import dynamic from "next/dynamic";
 
 import { Metadata } from "next";
+import AnalyticsComponent from "./analytics";
 
 import "./globals.scss";
-import AnalyticsComponent from "./analytics";
+
+const HeaderComponent = dynamic(() => import("@/components/header/header-component"), { ssr: true });
+const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
+const HamburgerMenuComponent = dynamic(() => import("@/components/hamburger/hamburger-menu"), { ssr: true });
+const BackgroundComponent = dynamic(() => import("@/components/background/background-canvas"), { ssr: true });
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://archst.dev"),

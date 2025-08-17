@@ -4,8 +4,8 @@ import styles from "./page.module.scss"
 
 export default function Loading() {
   return (
-    <div className={styles.blogMessageWrapper}>
+    <main key="blog-page" className={styles.blogMessageWrapper}>
       <LazyTextComponent text="Collecting my thoughts." />
-    </div>
+    </main>
   );
 }

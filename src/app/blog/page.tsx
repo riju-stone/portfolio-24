@@ -40,7 +40,7 @@ async function BlogsPage() {
         }
 
         return (
-            <main>
+            <main key="blog-page">
                 <SkewScrollComponent>
                     <div key="posts" className={styles.blogsPageWrapper}>
                         <div className={styles.postsWrapper}>
@@ -55,7 +55,7 @@ async function BlogsPage() {
         )
     } catch (error) {
         return (
-            <main>
+            <main key="blog-page">
                 <div className={styles.blogMessageWrapper}>
                     <LazyTextComponent text="Oops! I fucked up." />
                 </div>

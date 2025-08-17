@@ -69,7 +69,7 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
     try {
         const post = await getPost(resolvedParams.slug);
 
-        return <main>
+        return <main key="blog-page">
             <SkewScrollComponent>
                 <div className={styles.postContainer}>
                     <div className={styles.postHeader}>
@@ -91,7 +91,7 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
         </main>
     } catch (error) {
         return (
-            <main>
+            <main key="blog-page">
                 <div className={styles.blogsPageWrapper}>
                     <LazyTextComponent text="Fuck. That doesn't seem right." />
                 </div>
