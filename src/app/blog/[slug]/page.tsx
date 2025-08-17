@@ -12,7 +12,6 @@ import SkewScrollComponent from '@/components/custom-scroll/custom-scroll'
 const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), { ssr: true });
 
 const PostContentComponent = dynamic(() => import('@/components/post-content/post-content'), {
-    loading: () => <LazyTextComponent text="Loading..." />,
     ssr: true
 });
 
