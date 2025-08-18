@@ -1,5 +1,3 @@
-"use client"
-
 import Markdown from "react-markdown";
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from "rehype-highlight";
@@ -9,17 +7,16 @@ import remarkMath from 'remark-math';
 import rehypeStringify from "rehype-stringify";
 import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
-import React, { Suspense } from 'react'
+import React from 'react'
 import { inter } from '@/utils/fonts';
 import { motion } from "framer-motion";
 import Link from 'next/link'
 import { ArrowLeftIcon } from 'lucide-react'
 
 import styles from "./styles.module.scss";
-import LazyTextComponent from "../lazy-loader/lazy-loader";
 
 function PostContentComponent({ content }: { content: string }) {
-  return <Suspense fallback={<LazyTextComponent text="Loading..." />}>
+  return <>
     <motion.div className={`${styles.postContent} ${inter.className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -43,7 +40,7 @@ function PostContentComponent({ content }: { content: string }) {
     <div className={`${styles.backLink} ${inter.className}`}>
       <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
     </div>
-  </Suspense>
+  </>
 }
 
 export default PostContentComponent
