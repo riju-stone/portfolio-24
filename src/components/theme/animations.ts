@@ -40,7 +40,7 @@ export const themeToggleAnim = {
       rotateZ: 0,
       opacity: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.8,
       },
     },
   },

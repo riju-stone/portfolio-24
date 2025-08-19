@@ -26,7 +26,7 @@ function HeroImageComponent() {
     initial="initial"
     animate="animate"
   >
-    <Image src="/images/hero.webp" alt="hero" height={500} width={500} quality={80} />
+    <Image src="/images/hero.webp" alt="hero" height={500} width={500} quality={80} priority />
   </motion.div>
 }
 

@@ -35,13 +35,6 @@ export const PROJECT_DATA = [
 
     },
     {
-        _id: "wordinary",
-        name: "wordinary",
-        link: "https://www.github.com/riju-stone/wordinary",
-        desc: `A beautiful, minimalistic dictionary app.`,
-        stack: "expo"
-    },
-    {
         _id: "former",
         name: "Former",
         link: "https://www.github.com/riju-stone/former",

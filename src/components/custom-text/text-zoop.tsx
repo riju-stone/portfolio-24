@@ -40,6 +40,7 @@ function TextZoopComponent({ text }: { text: string }) {
                                 ease: "easeInOut",
                                 delay: index * 0.025,
                             }}
+                            style={{ willChange: "transform, opacity" }}
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}
@@ -59,6 +60,7 @@ function TextZoopComponent({ text }: { text: string }) {
                                 ease: "easeInOut",
                                 delay: index * 0.025,
                             }}
+                            style={{ willChange: "transform, opacity" }}
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}

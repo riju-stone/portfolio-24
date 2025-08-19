@@ -104,7 +104,7 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
                 custom={index}
                 style={{
                     display: "inline-block",
-                    willChange: "transform",
+                    willChange: "transform, opacity",
                     backfaceVisibility: "hidden",
                     transformOrigin: "center center",
                 }}

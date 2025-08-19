@@ -9,9 +9,10 @@ function SkewScrollComponent({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         // Initialize Lenis only on the client side
         lenisRef.current = new Lenis({
-            lerp: 0.1,
+            lerp: 0.12,
             wheelMultiplier: 0.8,
-            touchMultiplier: 2
+            touchMultiplier: 2,
+            infinite: false
         });
 
         let frame: number;

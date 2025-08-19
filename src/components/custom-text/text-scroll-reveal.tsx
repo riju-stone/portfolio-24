@@ -24,7 +24,7 @@ function Word({ children, range, progress }:
   return <div className={styles.wordWrapper}>
     <motion.span
       className={styles.wordContainer}
-      style={{ opacity, filter: blurFilter, x: xValue }}>
+      style={{ opacity, filter: blurFilter, x: xValue, willChange: "transform, opacity" }}>
       {children}
     </motion.span>
   </div>

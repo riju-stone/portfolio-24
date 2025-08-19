@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 import { Metadata } from "next";
@@ -94,11 +94,17 @@ export default function RootLayout({
                 <link rel="dns-prefetch" href="//fonts.gstatic.com" />
             </head>
             <body className="app">
-                <HamburgerMenuComponent />
+                <Suspense fallback={null}>
+                    <HamburgerMenuComponent />
+                </Suspense>
+
                 <HeaderComponent />
                 {children}
                 <FooterComponent />
-                <BackgroundComponent />
+
+                <Suspense fallback={null}>
+                    <BackgroundComponent />
+                </Suspense>
             </body>
             <AnalyticsComponent />
         </html>

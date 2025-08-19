@@ -2,27 +2,28 @@
 
 .heroSectionWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100dvh;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 0 2rem;
-  gap: 4rem;
+  gap: 2rem;
   color: global.$dark-text-color;
-  max-width: 1500px;
 
   .heroContainer {
-    width: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    gap: 2rem;
+    width: 75vw;
 
     .heroTextWrapper {
+      width: 50%;
+
       .heroText {
         color: global.$dark-text-color;
-        font-size: 5.25rem;
+        font-size: 4.5rem;
         font-weight: 500;
         text-transform: uppercase;
         mix-blend-mode: difference;
@@ -31,8 +32,8 @@
     }
 
     .heroImageWrapper {
-      width: 100%;
-      height: 400px;
+      width: 50%;
+      height: 250px;
       aspect-ratio: 16/9;
       overflow: hidden;
       display: flex;
@@ -48,7 +49,7 @@
   }
 
   .heroAboutWrapper {
-    width: 50%;
+    width: 75vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +65,6 @@
 
 .workSectionWrapper {
   position: relative;
-  height: 200dvh;
   width: 100vw;
   color: global.$dark-text-color;
 
@@ -83,7 +83,7 @@
   }
 
   .experienceWrapper {
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -93,7 +93,7 @@
   }
 
   .projectWrapper {
-    height: 100vh;
+    height: 100dvh;
     width: 100dvw;
     display: flex;
     flex-direction: column;
@@ -144,23 +144,29 @@
 // Mobile Devices
 @media only screen and (min-width: 240px) and (max-width: 399px) {
   .heroSectionWrapper {
-    gap: 0.5rem;
-    flex-direction: column;
+    padding: 0 2rem;
+    gap: 1rem;
 
     .heroContainer {
-      width: 100%;
-      align-items: flex-start;
+      flex-direction: column;
+      width: 90vw;
+      gap: 1rem;
 
       .heroTextWrapper {
+        width: 90vw;
+
         .heroText {
           font-size: 2rem;
         }
       }
 
       .heroImageWrapper {
-        width: 100%;
-        height: 125px;
-        margin: 0.5rem 0;
+        width: 90vw;
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
           height: 100%;
@@ -171,7 +177,7 @@
     }
 
     .heroAboutWrapper {
-      width: 100%;
+      width: 90vw;
 
       .heroAboutText {
         width: 100%;
@@ -215,23 +221,29 @@
 
 @media only screen and (min-width: 400px) and (max-width: 639px) {
   .heroSectionWrapper {
-    gap: 0.5rem;
-    flex-direction: column;
+    padding: 0 2rem;
+    gap: 1rem;
 
     .heroContainer {
-      width: 100%;
-      align-items: flex-start;
+      flex-direction: column;
+      width: 90vw;
+      gap: 1rem;
 
       .heroTextWrapper {
+        width: 90vw;
+
         .heroText {
-          font-size: 2.5rem;
+          font-size: 2.25rem;
         }
       }
 
       .heroImageWrapper {
-        width: 100%;
-        height: 200px;
-        margin: 0.5rem 0;
+        width: 90vw;
+        height: 175px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
           height: 100%;
@@ -242,15 +254,9 @@
     }
 
     .heroAboutWrapper {
-      width: 100%;
+      width: 90vw;
 
       .heroAboutText {
-        width: 100%;
-        font-size: 0.875rem;
-      }
-
-      .heroAboutSubText {
-        margin-top: 1rem;
         width: 100%;
         font-size: 0.875rem;
       }
@@ -293,106 +299,155 @@
 // Tablet Devices
 @media only screen and (min-width: 640px) and (max-width: 920px) {
   .heroSectionWrapper {
-    .heroTextWrapper {
-      .heroText {
-        font-size: 5rem;
+    padding: 0 2rem;
+    gap: 1rem;
+
+    .heroContainer {
+      flex-direction: row;
+      width: 90vw;
+      gap: 1rem;
+
+      .heroTextWrapper {
+        width: 90vw;
+
+        .heroText {
+          font-size: 2.75rem;
+        }
+      }
+
+      .heroImageWrapper {
+        width: 90vw;
+        height: 200px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
     }
-  }
 
-  .contactSectionWrapper {
-    .introline {
+    .heroAboutWrapper {
       width: 90vw;
-      font-size: 5rem;
-      margin-top: 1rem;
-    }
 
-    .introlinkContainer {
-      width: 90vw;
-      margin-top: 1.5rem;
-      font-size: 5rem;
-    }
-  }
-
-  .aboutSectionWrapper {
-    .aboutText {
-      font-size: 3rem;
+      .heroAboutText {
+        width: 100%;
+        font-size: 1.25rem;
+      }
     }
   }
 
   .workSectionWrapper {
-    .experienceWrapper {
-      .experienceText {
-        font-size: 2.75rem;
-      }
+    .workHeading {
+      font-size: 2.25rem;
     }
 
-    .projectWrapper {
-      flex-direction: column;
-      justify-content: flex-end;
+    .workSubtext {
+      padding: 0 2rem;
+      margin: 2rem 0;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+  }
 
-      .projectText {
-        font-size: 2.5rem;
-        height: 50%;
+  .contactSectionWrapper {
+    .contactHeading {
+      width: 75vw;
+      font-size: 2.75rem;
+      line-height: 4rem;
+    }
+
+    .introlinkContainer {
+      width: 75vw;
+      margin-top: 1rem;
+      font-size: 2.75rem;
+
+      a {
+        text-decoration: none;
+        color: global.$dark-text-color;
       }
     }
   }
 }
 
 @media only screen and (min-width: 921px) and (max-width: 1024px) {
-  .workSectionWrapper {
-    .projectWrapper {
-      flex-direction: column;
+  .heroSectionWrapper {
+    padding: 0 2rem;
+    gap: 1rem;
 
-      .projectText {
-        font-size: 3.5rem;
+    .heroContainer {
+      flex-direction: row;
+      width: 75vw;
+      gap: 1rem;
+
+      .heroTextWrapper {
+        width: 75vw;
+
+        .heroText {
+          font-size: 3.25rem;
+        }
+      }
+
+      .heroImageWrapper {
+        width: 75vw;
+        height: 250px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .heroAboutWrapper {
+      width: 75vw;
+
+      .heroAboutText {
+        width: 100%;
+        font-size: 1.5rem;
       }
     }
   }
 
-  .aboutSectionWrapper {
-    .aboutText {
+  .workSectionWrapper {
+    .workHeading {
       font-size: 3.75rem;
+    }
+
+    .workSubtext {
+      padding: 0 2rem;
+      margin: 2rem 0;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
   }
 
   .contactSectionWrapper {
-    .introline {
-      width: 90vw;
-      font-size: 6rem;
+    .contactHeading {
+      width: 75vw;
+      font-size: 5rem;
+      line-height: 7rem;
+    }
+
+    .introlinkContainer {
+      width: 75vw;
       margin-top: 1rem;
-    }
+      font-size: 5rem;
+      line-height: 6rem;
 
-    .introlinkContainer {
-      width: 90vw;
-      margin-top: 1.5rem;
-      font-size: 6rem;
-    }
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-  .aboutSectionWrapper {
-    .aboutText {
-      font-size: 3.75rem;
-    }
-  }
-
-  .contactSectionWrapper {
-    .introline {
-      width: 80vw;
-    }
-
-    .introlinkContainer {
-      width: 80vw;
-    }
-  }
-}
-
-@media only screen and (min-width: 1281px) and (max-width: 1440px) {
-  .aboutSectionWrapper {
-    .aboutText {
-      font-size: 3.75rem;
+      a {
+        text-decoration: none;
+        color: global.$dark-text-color;
+      }
     }
   }
 }

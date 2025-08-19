@@ -1,3 +1,5 @@
+"use client"
+
 import { pp_nekkei, pp_nueue } from '@/utils/fonts'
 import { HEADING_TEXT, INTRO_PHRASE } from '@/utils/constants'
 
@@ -12,8 +14,10 @@ const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text
 })
 
 import styles from './styles.module.scss'
+import { useDevice } from '@/hooks/useDevice'
 
 function HeroSectionComponent() {
+  const deviceType = useDevice();
   return (
     <section className={styles.heroSectionWrapper}>
       <div className={styles.heroContainer}>
@@ -37,10 +41,10 @@ function HeroSectionComponent() {
           className={styles.heroAboutText}
           text={INTRO_PHRASE}
           style="line"
-          wordsPerLine={9}
+          wordsPerLine={deviceType === "mobile" ? 9 : 12}
           duration={1.25}
           delay={1.25}
-          staggerDelay={0.02}
+          staggerDelay={0.05}
           once={true}
         />
       </div>
