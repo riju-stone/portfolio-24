@@ -5,15 +5,15 @@ import styles from './styles.module.scss'
 import dynamic from 'next/dynamic'
 
 const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
-  ssr: false,
+  ssr: true,
 })
 
 const TextScrollRevealComponent = dynamic(() => import('@/components/custom-text/text-scroll-reveal'), {
-  ssr: false,
+  ssr: true,
 })
 
 const FancyTableComponent = dynamic(() => import('@/components/custom-table/custom-table'), {
-  ssr: false,
+  ssr: true,
 })
 
 function WorkSectionComponent() {

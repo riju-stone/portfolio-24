@@ -26,7 +26,7 @@ function HeroImageComponent() {
     initial="initial"
     animate="animate"
   >
-    <Image src="/images/hero.webp" alt="hero" height={500} width={500} quality={80} priority />
+    <Image src="/images/hero.webp" alt="hero" height={500} width={500} quality={80} priority placeholder='blur' blurDataURL='/images/hero.webp' />
   </motion.div>
 }
 

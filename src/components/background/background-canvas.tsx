@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Circle from "@/utils/circle";
 import { ThemeState, useThemeStore } from "@/stores/themeStore";
-import { debounce, throttle } from "@/utils/limitors";
+import { throttle } from "@/utils/limitors";
 
 import styles from "./styles.module.scss";
 
@@ -17,7 +17,7 @@ function BackgroundComponent() {
   const canvasRef = useRef(null);
   const isDark: boolean = currTheme === "dark";
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     Circle.setCircleCenterCoordinates(themeSwitchPos.x, themeSwitchPos.y);
     const ctx: CanvasRenderingContext2D = canvasRef.current.getContext("2d");
 

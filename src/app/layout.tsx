@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import AnalyticsComponent from "./analytics";
 
+import { LazyMotion, domAnimation } from "motion/react";
+
 import "./globals.scss";
 
 const HeaderComponent = dynamic(() => import("@/components/header/header-component"), { ssr: true });
@@ -81,30 +83,21 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning={true}>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-                {/* Optimize font loading */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-                {/* Preload critical resources */}
-                <link rel="preload" as="image" href="/images/seo-hero.jpg" />
-
-                {/* Add resource hints */}
-                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="//fonts.gstatic.com" />
             </head>
             <body className="app">
-                <Suspense fallback={null}>
-                    <HamburgerMenuComponent />
-                </Suspense>
+                <LazyMotion features={domAnimation}>
+                    <Suspense fallback={null}>
+                        <HamburgerMenuComponent />
+                    </Suspense>
 
-                <HeaderComponent />
-                {children}
-                <FooterComponent />
+                    <HeaderComponent />
+                    {children}
+                    <FooterComponent />
 
-                <Suspense fallback={null}>
-                    <BackgroundComponent />
-                </Suspense>
+                    <Suspense fallback={null}>
+                        <BackgroundComponent />
+                    </Suspense>
+                </LazyMotion>
             </body>
             <AnalyticsComponent />
         </html>

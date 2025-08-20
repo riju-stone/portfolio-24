@@ -7,6 +7,9 @@ function SkewScrollComponent({ children }: { children: React.ReactNode }) {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReducedMotion) return;
+
         // Initialize Lenis only on the client side
         lenisRef.current = new Lenis({
             lerp: 0.12,

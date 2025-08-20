@@ -4,11 +4,11 @@ import styles from './styles.module.scss'
 import dynamic from 'next/dynamic'
 
 const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
-  ssr: false,
+  ssr: true,
 })
 
 const TextDisperseComponent = dynamic(() => import('@/components/custom-text/text-disperse'), {
-  ssr: false,
+  ssr: true,
 })
 
 function ContactSectionComponent() {
