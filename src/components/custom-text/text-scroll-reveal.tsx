@@ -4,7 +4,7 @@ import React, { useMemo, useRef } from "react";
 
 import styles from "./styles.module.scss";
 import { pp_nekkei } from "@/utils/fonts";
-import { motion, MotionValue, useMotionTemplate, useScroll, useTransform } from "motion/react";
+import { m, MotionValue, useMotionTemplate, useScroll, useTransform } from "motion/react";
 
 type TextScrollRevealProps = {
   phrase: string;
@@ -22,11 +22,11 @@ function Word({ children, range, progress }:
   const blurFilter = useMotionTemplate`blur(${blurValue}px)`;
 
   return <div className={styles.wordWrapper}>
-    <motion.span
+    <m.span
       className={styles.wordContainer}
       style={{ opacity, filter: blurFilter, x: xValue, willChange: "transform, opacity" }}>
       {children}
-    </motion.span>
+    </m.span>
   </div>
 }
 

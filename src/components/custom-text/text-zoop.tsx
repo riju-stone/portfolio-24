@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 import styles from "./styles.module.scss";
 
@@ -23,7 +23,7 @@ const textZoopDownAnim = {
 
 function TextZoopComponent({ text }: { text: string }) {
     return (
-        <motion.div
+        <m.div
             initial="initial"
             whileHover="hovered"
             className={styles.textZoopContainer}
@@ -31,7 +31,7 @@ function TextZoopComponent({ text }: { text: string }) {
             <div>
                 {text.split("").map((letter, index) => {
                     return (
-                        <motion.div
+                        <m.div
                             custom={index}
                             className={styles.textZoopLetter}
                             variants={textZoopUpAnim}
@@ -44,14 +44,14 @@ function TextZoopComponent({ text }: { text: string }) {
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}
-                        </motion.div>
+                        </m.div>
                     );
                 })}
             </div>
             <div className={styles.textZoopHiddenWrapper}>
                 {text.split("").map((letter, index) => {
                     return (
-                        <motion.div
+                        <m.div
                             custom={index}
                             className={styles.textZoopLetter}
                             variants={textZoopDownAnim}
@@ -64,11 +64,11 @@ function TextZoopComponent({ text }: { text: string }) {
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}
-                        </motion.div>
+                        </m.div>
                     );
                 })}
             </div>
-        </motion.div>
+        </m.div>
     );
 }
 

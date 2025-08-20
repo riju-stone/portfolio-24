@@ -26,7 +26,7 @@ function WorkSectionComponent() {
           endOffset="0.75"
           style="letter"
           className={styles.workHeading} />
-        <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={EXPERIENCE_PHRASE} style="word" once={true} staggerDelay={0.01} />
+        <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={EXPERIENCE_PHRASE} style="word" once={true} duration={0.75} staggerDelay={0.025} />
         <FancyTableComponent
           metadata={EXPERIENCE_METADATA}
           tableData={EXPERIENCE_DATA} />
@@ -38,7 +38,7 @@ function WorkSectionComponent() {
           endOffset="0.75"
           style="letter"
           className={styles.workHeading} />
-        <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} staggerDelay={0.01} />
+        <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} duration={0.75} staggerDelay={0.025} />
         <FancyTableComponent
           metadata={PROJECT_METADATA}
           tableData={PROJECT_DATA} />

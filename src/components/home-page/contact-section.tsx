@@ -20,9 +20,9 @@ function ContactSectionComponent() {
         style="line"
         wordsPerLine={3}
         once={true}
-        duration={0.65}
+        duration={0.75}
         delay={0.75}
-        staggerDelay={0.06} />
+        staggerDelay={0.05} />
       <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
         <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com"><TextDisperseComponent word="↗Email" /></a>
         <a target="_blank" href="https://www.github.com/riju-stone"><TextDisperseComponent word="↗Github" /></a>

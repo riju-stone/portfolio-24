@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef } from 'react';
-import { motion, useInView } from "motion/react";
+import { m, useInView } from "motion/react";
 import styles from "./styles.module.scss";
 
 // Memoize text processors outside component
@@ -75,7 +75,7 @@ function TextStaggerComponent({
             transition: {
                 duration,
                 delay: delay + i * staggerDelay,
-                ease: [0.22, 1, 0.36, 1]
+                ease: [0.83, 0, 0.17, 1]
             }
         })
     }), [duration, delay, staggerDelay]);
@@ -83,7 +83,7 @@ function TextStaggerComponent({
     const TextItem = React.memo(({ item, index }: { item: any, index: number }) => (
         <div className={styles.textStaggerContainer}>
             <div className={styles.staggerContent}>
-                <motion.div
+                <m.div
                     className={styles.staggerItem}
                     variants={textStaggerAnim}
                     custom={index}
@@ -95,13 +95,13 @@ function TextStaggerComponent({
                             </span>
                         ))
                         : <span>{item.content}</span>}
-                </motion.div>
+                </m.div>
             </div>
         </div>
     ));
 
     return (
-        <motion.div
+        <m.div
             ref={containerRef}
             className={`${styles[`textStaggerWrapper-${style}`]} ${className || ''}`.trim()}
             variants={{
@@ -116,7 +116,7 @@ function TextStaggerComponent({
             {processedText.map((item, index) => (
                 <TextItem key={item.id} item={item} index={index} />
             ))}
-        </motion.div>
+        </m.div>
     );
 }
 

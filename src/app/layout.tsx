@@ -4,9 +4,8 @@ import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import AnalyticsComponent from "./analytics";
 
-import { LazyMotion, domAnimation } from "motion/react";
-
 import "./globals.scss";
+import { domAnimation, LazyMotion } from "motion/react";
 
 const HeaderComponent = dynamic(() => import("@/components/header/header-component"), { ssr: true });
 const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
@@ -99,6 +98,7 @@ export default function RootLayout({
                     </Suspense>
                 </LazyMotion>
             </body>
+
             <AnalyticsComponent />
         </html>
     );

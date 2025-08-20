@@ -1,5 +1,5 @@
 "use client"
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import React from 'react'
 
 import styles from "./styles.module.scss"
@@ -18,7 +18,7 @@ const lazyTextAnimation = {
 }
 
 function LazyTextComponent({ text }: { text: string }) {
-    return <motion.div
+    return <m.div
         key={text}
         className={`${styles.lazyLoaderText} ${pp_nekkei.className}`}
         variants={lazyTextAnimation}
@@ -26,7 +26,7 @@ function LazyTextComponent({ text }: { text: string }) {
         animate="animate"
         exit="exit">
         {text}
-    </motion.div>
+    </m.div>
 }
 
 export default LazyTextComponent

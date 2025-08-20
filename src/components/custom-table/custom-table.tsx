@@ -1,7 +1,7 @@
 "use client"
 
 import { pp_nekkei, space_grotesk } from '@/utils/fonts'
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import React from 'react'
 
 import styles from './styles.module.scss'
@@ -33,7 +33,7 @@ const clipAnimation = {
 
 function FancyTableComponent({ metadata, tableData }) {
   const theme = useThemeStore(state => state.theme);
-  return <motion.div
+  return <m.div
     className={styles.tableWrapper}
     initial={{ opacity: 0 }} animate={{ opacity: 1 }}
     transition={{ duration: 0.5, delay: 0.75 }}>
@@ -44,7 +44,7 @@ function FancyTableComponent({ metadata, tableData }) {
       </div>
     </div>
     {tableData.map((r) => {
-      return <motion.div
+      return <m.div
         key={r._id}
         className={`${styles.rowWrapper} ${pp_nekkei.className}`}
         initial="unhovered"
@@ -58,17 +58,17 @@ function FancyTableComponent({ metadata, tableData }) {
             </div>
             <div className={styles.dataCol3}>{r[metadata.col3]}</div>
           </div>
-          <motion.div className={styles.maskRowContainer} variants={clipAnimation}>
+          <m.div className={styles.maskRowContainer} variants={clipAnimation}>
             <div className={styles.rowContent}>
               <div className={`${styles.dataMaskCol1} ${styles[theme]}`}>{r[metadata.col1]}</div>
               <div className={styles.dataMaskCol2}>{r[metadata.col2]}</div>
             </div>
             <div className={styles.dataMaskCol3}>{r[metadata.col3]}</div>
-          </motion.div>
+          </m.div>
         </Link>
-      </motion.div>
+      </m.div>
     })}
-  </motion.div>
+  </m.div>
 }
 
 export default FancyTableComponent

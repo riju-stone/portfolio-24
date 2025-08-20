@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { useScroll, useMotionValueEvent, m } from "motion/react";
 import Link from "next/link";
 import ThemeSwitchComponent from "../theme/theme-switch";
 import {
@@ -23,44 +23,45 @@ import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 
-const heroInitials = ["A", "C"];
-const heroNonInitials = "righna hakraborty";
+const HERO_INITIALS = ["A", "C"] as const;
+const NON_INITIALS = "righna hakraborty".split("");
 
 function HeaderComponent() {
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
 
-
     const checkActivePath = useActivePath();
     const { scrollY } = useScroll();
-    const [headerState, setHeaderState] = useState("expanded");
+    const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
+    const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
 
-    useMotionValueEvent(scrollY, "change", (scrollValue) => {
-        toggleMenu(false);
-        if (scrollValue < 120) {
-            setHeaderState("expanded");
-        } else {
-            setHeaderState("collapsed");
+    useMotionValueEvent(scrollY, "change", (v) => {
+        if (menuOpen) toggleMenu(false); // only close when it’s actually open
+
+        const next = v < 120 ? "expanded" : "collapsed";
+        if (next !== lastHeaderState.current) {
+            lastHeaderState.current = next;
+            setHeaderState(next); // state update only on threshold boundary change
         }
     });
 
     return checkActivePath("/studio") ? null : (
-        <React.Fragment>
-            <div className={`${styles.headerWrapper}`}>
-                <div className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}>
-                    <motion.div
+        <>
+            <m.div className={`${styles.headerWrapper}`}>
+                <m.div className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}>
+                    <m.div
                         className={styles.heroInitialLetter}
                         variants={headerNameInitialAnim}
                         initial="initial"
                         animate={menuOpen ? "hidden1" : "expand"}
                     >
-                        {heroInitials[0]}
-                    </motion.div>
-                    {heroNonInitials.split("").map((letter, index) => {
+                        {HERO_INITIALS[0]}
+                    </m.div>
+                    {NON_INITIALS.map((letter, index) => {
                         return letter == " " ? (
                             <React.Fragment key={`hero-initial-letter${index}`}>
-                                <motion.div
+                                <m.div
                                     className={styles.heroNameSeparator}
                                     variants={headerNameSeparatorAnim}
                                     initial="initial"
@@ -68,8 +69,8 @@ function HeaderComponent() {
                                     whileHover="hover"
                                 >
                                     <Link href="/studio" target="_blank">&#10022;</Link>
-                                </motion.div>
-                                <motion.div
+                                </m.div>
+                                <m.div
                                     className={styles.heroInitialLetter}
                                     variants={headerNameInitialAnim}
                                     initial="initial"
@@ -81,11 +82,11 @@ function HeaderComponent() {
                                             : "expand"
                                     }
                                 >
-                                    {heroInitials[1]}
-                                </motion.div>
+                                    {HERO_INITIALS[1]}
+                                </m.div>
                             </React.Fragment>
                         ) : (
-                            <motion.div
+                            <m.div
                                 key={`hero-non-initial-letter-${index}`}
                                 className={styles.heroNonInitialLetter}
                                 variants={headerNameNonInitialsAnim}
@@ -94,13 +95,13 @@ function HeaderComponent() {
                                 custom={index}
                             >
                                 {letter}
-                            </motion.div>
+                            </m.div>
                         );
                     })}
-                </div>
+                </m.div>
                 <div className={`${styles.linksContainer} ${space_grotesk.className}`}>
                     {pageConfig.map((data, index) => (
-                        <motion.div
+                        <m.div
                             key={`header-link-${index}`}
                             custom={index}
                             variants={headerLinkAnim}
@@ -108,18 +109,18 @@ function HeaderComponent() {
                             animate={headerState === "collapsed" ? "collapse" : "expand"}
                             className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
-                            <Link href={data.link}>
+                            <Link href={data.link} prefetch={false}>
                                 <TextZoopComponent text={data.label} />
                             </Link>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
                 <div className={styles.themeSwitchContainer}>
                     <ThemeSwitchComponent isMenuOpen={menuOpen} />
                 </div>
-            </div>
+            </m.div>
 
-            <motion.button
+            <m.button
                 type="button"
                 className={`${styles.headerMenuButton} ${styles[theme]}`}
                 variants={headerNameMenuButtonAnim}
@@ -127,29 +128,29 @@ function HeaderComponent() {
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => toggleMenu(!menuOpen)}
             >
-                <motion.div
+                <m.div
                     className={styles.headerMenuButtonLines}
                     variants={menuButtonAnimation}
                     animate={menuOpen ? "open" : "close"}
                 >
-                    <motion.div
+                    <m.div
                         className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuUpperAnim}
                         animate={menuOpen ? "close" : "open"}
                     />
-                    <motion.div
+                    <m.div
                         className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuMiddleAnim}
                         animate={menuOpen ? "close" : "open"}
                     />
-                    <motion.div
+                    <m.div
                         className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
                         variants={menuLowerAnim}
                         animate={menuOpen ? "close" : "open"}
                     />
-                </motion.div>
-            </motion.button>
-        </React.Fragment>
+                </m.div>
+            </m.button>
+        </>
     );
 }
 

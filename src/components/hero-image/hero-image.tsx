@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import Image from 'next/image';
 import React from 'react'
 
@@ -20,14 +20,14 @@ const heroImageAnimation = {
 }
 
 function HeroImageComponent() {
-  return <motion.div
+  return <m.div
     style={{ height: "100%", width: "100%" }}
     variants={heroImageAnimation}
     initial="initial"
     animate="animate"
   >
     <Image src="/images/hero.webp" alt="hero" height={500} width={500} quality={80} priority placeholder='blur' blurDataURL='/images/hero.webp' />
-  </motion.div>
+  </m.div>
 }
 
 export default HeroImageComponent;

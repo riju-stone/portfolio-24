@@ -2,7 +2,7 @@
 
 import { useThemeStore } from "@/stores/themeStore";
 import React, { useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
 import styles from "./styles.module.scss";
@@ -24,14 +24,14 @@ function ThemeSwitchComponent({ isMenuOpen }) {
     }, []); // Only run when menu state changes
 
     return (
-        <motion.div
+        <m.div
             variants={themeSwitchAnim}
             initial="initial"
             animate={isMenuOpen ? "hidden" : "view"}
             ref={switchRef}
             onClick={toggleTheme}
         >
-            <motion.svg
+            <m.svg
                 className="sun-moon"
                 ref={switchRef}
                 aria-hidden="true"
@@ -39,7 +39,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                 height="25"
                 viewBox="0 0 25 25"
             >
-                <motion.circle
+                <m.circle
                     className={styles.sun}
                     cx="12"
                     cy="12"
@@ -49,7 +49,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     stroke="#ededed"
                     strokeWidth="1.5px"
                 />
-                <motion.g
+                <m.g
                     className="sun-beams"
                     stroke="#ededed"
                     strokeWidth="1.5px"
@@ -64,9 +64,9 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     <line x1="21" y1="12" x2="23" y2="12" />
                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </motion.g>
-                <motion.mask className="moon" id="moon-mask">
-                    <rect
+                </m.g>
+                <m.mask className="moon" id="moon-mask">
+                    <m.rect
                         x="0"
                         y="0"
                         width="100%"
@@ -75,7 +75,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                         stroke="#ededed"
                         strokeWidth="1.5px"
                     />
-                    <motion.circle
+                    <m.circle
                         cx="24"
                         cy="10"
                         r="6"
@@ -85,9 +85,9 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                         variants={themeToggleAnim.moonCircle}
                         animate={theme === "light" ? "light" : "dark"}
                     />
-                </motion.mask>
-            </motion.svg>
-        </motion.div>
+                </m.mask>
+            </m.svg>
+        </m.div>
     );
 }
 

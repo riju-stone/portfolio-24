@@ -11,7 +11,7 @@ import "katex/dist/katex.min.css";
 import "highlight.js/styles/github.css";
 import React from 'react'
 import { inter } from '@/utils/fonts';
-import { motion } from "framer-motion";
+import { m } from "motion/react";
 import Link from 'next/link'
 import { ArrowLeftIcon } from 'lucide-react'
 
@@ -19,7 +19,7 @@ import styles from "./styles.module.scss";
 
 function PostContentComponent({ content }: { content: string }) {
   return <>
-    <motion.div className={`${styles.postContent} ${inter.className}`}
+    <m.div className={`${styles.postContent} ${inter.className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.8 }}
@@ -38,7 +38,7 @@ function PostContentComponent({ content }: { content: string }) {
       >
         {content}
       </Markdown>
-    </motion.div>
+    </m.div>
     <div className={`${styles.backLink} ${inter.className}`}>
       <Link href="/blog"><ArrowLeftIcon /> All Articles</Link>
     </div>

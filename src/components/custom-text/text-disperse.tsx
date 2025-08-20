@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useCallback, useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { m, useInView, LazyMotion, domAnimation } from "motion/react";
 import styles from "./styles.module.scss";
 import { useThemeStore } from "@/stores/themeStore";
 
@@ -97,7 +97,7 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
 
     const renderCharacters = () => {
         return splitCharacters.map(({ char, key, index }) => (
-            <motion.span
+            <m.span
                 key={key}
                 variants={disperseAnim}
                 animate={isHovered ? "hover" : isInView ? "leave" : "blurred"}
@@ -110,18 +110,20 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
                 }}
             >
                 {char}
-            </motion.span>
+            </m.span>
         ));
     };
 
     return (
-        <p
-            ref={containerRef}
-            className={`${styles.textDisperseContainer} ${styles[theme]}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
-            {renderCharacters()}
-        </p>
+        <LazyMotion features={domAnimation}>
+            <p
+                ref={containerRef}
+                className={`${styles.textDisperseContainer} ${styles[theme]}`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}>
+                {renderCharacters()}
+            </p>
+        </LazyMotion>
     );
 }
 

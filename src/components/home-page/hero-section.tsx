@@ -26,7 +26,7 @@ function HeroSectionComponent() {
             className={styles.heroText}
             text={HEADING_TEXT}
             style="word"
-            duration={0.65}
+            duration={0.85}
             delay={0.25}
             staggerDelay={0.06}
             once={true}
@@ -41,10 +41,10 @@ function HeroSectionComponent() {
           className={styles.heroAboutText}
           text={INTRO_PHRASE}
           style="line"
-          wordsPerLine={deviceType === "mobile" ? 9 : 12}
-          duration={1.25}
+          wordsPerLine={deviceType === "mobile" ? 9 : 14}
+          duration={1.2}
           delay={1.25}
-          staggerDelay={0.05}
+          staggerDelay={0.04}
           once={true}
         />
       </div>

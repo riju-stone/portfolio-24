@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { space_grotesk } from "@/utils/fonts";
 import { pageConfig } from "@/utils/pages";
 import styles from "./styles.module.scss";
@@ -81,7 +81,7 @@ function HamburgerMenuComponent() {
     return (
         <AnimatePresence mode="wait">
             {menuOpen ? (
-                <motion.div
+                <m.div
                     className={`${styles.hamburgerMenuWrapper} ${styles[theme]}`}
                     variants={hamburgerMenuAnim}
                     initial="initial"
@@ -105,14 +105,14 @@ function HamburgerMenuComponent() {
                         })}
                     </div>
                     <svg className={`${styles.hamburgerMenuCurve} ${styles[theme]}`}>
-                        <motion.path
+                        <m.path
                             variants={hamburgerCurveAnim}
                             initial="initial"
                             animate="animate"
                             exit="exit"
                         />
                     </svg>
-                </motion.div>
+                </m.div>
             ) : null}
         </AnimatePresence>
     );
