@@ -38,6 +38,8 @@ export const inter = Inter({
 });
 
 export const space_grotesk = Space_Grotesk({
+    display: "swap",
+    fallback: ["system-ui", "arial"],
     subsets: ["latin"],
     variable: "--font-space-grotesk",
 });

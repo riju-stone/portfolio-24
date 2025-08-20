@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
 import { useScroll, useMotionValueEvent, m } from "motion/react";
@@ -23,10 +23,10 @@ import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 
-const HERO_INITIALS = ["A", "C"] as const;
-const NON_INITIALS = "righna hakraborty".split("");
+const HeaderComponent = React.memo(() => {
+    const heroInitials = ["A", "C"];
+    const nonInitials = "righna hakraborty".split("");
 
-function HeaderComponent() {
     const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
     const toggleMenu = usePageStore((state) => state.toggleMenu);
@@ -36,15 +36,23 @@ function HeaderComponent() {
     const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
     const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
 
-    useMotionValueEvent(scrollY, "change", (v) => {
-        if (menuOpen) toggleMenu(false); // only close when it’s actually open
+    // Replace the scroll handler with a throttled version
+    const lastScrollCheck = useRef(0);
+    const SCROLL_THRESHOLD = 16;
+
+    useMotionValueEvent(scrollY, "change", useMemo(() => ((v) => {
+        const now = Date.now();
+        if (now - lastScrollCheck.current < SCROLL_THRESHOLD) return;
+        lastScrollCheck.current = now;
+
+        if (menuOpen) toggleMenu(false);
 
         const next = v < 120 ? "expanded" : "collapsed";
         if (next !== lastHeaderState.current) {
             lastHeaderState.current = next;
-            setHeaderState(next); // state update only on threshold boundary change
+            setHeaderState(next);
         }
-    });
+    }), [menuOpen, toggleMenu]));
 
     return checkActivePath("/studio") ? null : (
         <>
@@ -56,9 +64,9 @@ function HeaderComponent() {
                         initial="initial"
                         animate={menuOpen ? "hidden1" : "expand"}
                     >
-                        {HERO_INITIALS[0]}
+                        {heroInitials[0]}
                     </m.div>
-                    {NON_INITIALS.map((letter, index) => {
+                    {nonInitials.map((letter, index) => {
                         return letter == " " ? (
                             <React.Fragment key={`hero-initial-letter${index}`}>
                                 <m.div
@@ -82,7 +90,7 @@ function HeaderComponent() {
                                             : "expand"
                                     }
                                 >
-                                    {HERO_INITIALS[1]}
+                                    {heroInitials[1]}
                                 </m.div>
                             </React.Fragment>
                         ) : (
@@ -109,7 +117,7 @@ function HeaderComponent() {
                             animate={headerState === "collapsed" ? "collapse" : "expand"}
                             className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
-                            <Link href={data.link} prefetch={false}>
+                            <Link href={data.link}>
                                 <TextZoopComponent text={data.label} />
                             </Link>
                         </m.div>
@@ -125,6 +133,7 @@ function HeaderComponent() {
                 className={`${styles.headerMenuButton} ${styles[theme]}`}
                 variants={headerNameMenuButtonAnim}
                 initial="expand"
+                style={{ pointerEvents: headerState === "collapsed" ? "auto" : "none" }}
                 animate={headerState === "collapsed" ? "collapse" : "expand"}
                 onClick={() => toggleMenu(!menuOpen)}
             >
@@ -152,6 +161,6 @@ function HeaderComponent() {
             </m.button>
         </>
     );
-}
+});
 
 export default HeaderComponent;

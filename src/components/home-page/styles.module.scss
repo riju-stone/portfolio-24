@@ -466,66 +466,27 @@
 // Large Devices
 @media only screen and (min-width: 1025px) and (max-width: 1280px) {
   .heroSectionWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
     gap: 2rem;
-    color: global.$dark-text-color;
 
     .heroContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
       gap: 2rem;
-      width: 75vw;
-      max-width: 1200px;
 
       .heroTextWrapper {
         width: 50%;
 
         .heroText {
-          color: global.$dark-text-color;
-          font-size: 4rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          mix-blend-mode: difference;
-          contain: layout style;
+          font-size: 3.75rem;
         }
       }
 
       .heroImageWrapper {
-        width: 50%;
-        height: 250px;
-        aspect-ratio: 16/9;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
+        height: 220px;
       }
     }
 
     .heroAboutWrapper {
-      width: 75vw;
-      max-width: 1200px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
       .heroAboutText {
-        width: 100%;
         font-size: 1.1rem;
-        mix-blend-mode: difference;
       }
     }
   }
