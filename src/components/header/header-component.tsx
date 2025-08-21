@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback, useMemo } from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
 import { useScroll, useMotionValueEvent, m, AnimatePresence } from "motion/react";
@@ -44,7 +44,7 @@ function HeaderComponent() {
     const lastScrollCheck = useRef(0);
     const SCROLL_THRESHOLD = 16;
 
-    const handleScroll = useCallback(() => (v: number) => {
+    const handleScroll = () => (v: number) => {
         const now = Date.now();
         if (now - lastScrollCheck.current < SCROLL_THRESHOLD) return;
         lastScrollCheck.current = now;
@@ -56,7 +56,7 @@ function HeaderComponent() {
             lastHeaderState.current = next;
             setHeaderState(next);
         }
-    }, [menuOpen, toggleMenu]);
+    };
 
     useMotionValueEvent(scrollY, "change", handleScroll);
 
