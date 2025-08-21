@@ -18,14 +18,16 @@ import {
     menuButtonAnimation,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
-import TextZoopComponent from "../custom-text/text-zoop";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 
 const ThemeSwitchComponent = dynamic(() => import("../theme/theme-switch"), {
     ssr: false,
-    loading: () => <div className={styles.themeSwitchContainer} />
+});
+
+const TextZoopComponent = dynamic(() => import("../custom-text/text-zoop"), {
+    ssr: false,
 });
 
 function HeaderComponent() {
@@ -41,14 +43,7 @@ function HeaderComponent() {
     const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
     const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
 
-    const lastScrollCheck = useRef(0);
-    const SCROLL_THRESHOLD = 16;
-
-    const handleScroll = () => (v: number) => {
-        const now = Date.now();
-        if (now - lastScrollCheck.current < SCROLL_THRESHOLD) return;
-        lastScrollCheck.current = now;
-
+    const handleScroll = useMemo(() => (v: number) => {
         if (menuOpen) toggleMenu(false);
 
         const next = v < 120 ? "expanded" : "collapsed";
@@ -56,7 +51,7 @@ function HeaderComponent() {
             lastHeaderState.current = next;
             setHeaderState(next);
         }
-    };
+    }, [menuOpen, toggleMenu]);
 
     useMotionValueEvent(scrollY, "change", handleScroll);
 
