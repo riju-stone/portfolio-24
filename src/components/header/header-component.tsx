@@ -1,21 +1,21 @@
 "use client";
 
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
-import { useScroll, useMotionValueEvent, m } from "motion/react";
+import { useScroll, useMotionValueEvent, m, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import ThemeSwitchComponent from "../theme/theme-switch";
+import dynamic from 'next/dynamic';
 import {
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
     headerNameMenuButtonAnim,
-    headerLinkAnim,
     menuUpperAnim,
     menuMiddleAnim,
     menuLowerAnim,
-    menuButtonAnimation,
     headerNameSeparatorAnim,
+    headerLinkAnim,
+    menuButtonAnimation,
 } from "./animations";
 import { useThemeStore } from "@/stores/themeStore";
 import TextZoopComponent from "../custom-text/text-zoop";
@@ -23,7 +23,12 @@ import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
 
-const HeaderComponent = React.memo(() => {
+const ThemeSwitchComponent = dynamic(() => import("../theme/theme-switch"), {
+    ssr: false,
+    loading: () => <div className={styles.themeSwitchContainer} />
+});
+
+function HeaderComponent() {
     const heroInitials = ["A", "C"];
     const nonInitials = "righna hakraborty".split("");
 
@@ -36,11 +41,10 @@ const HeaderComponent = React.memo(() => {
     const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
     const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
 
-    // Replace the scroll handler with a throttled version
     const lastScrollCheck = useRef(0);
     const SCROLL_THRESHOLD = 16;
 
-    useMotionValueEvent(scrollY, "change", useMemo(() => ((v) => {
+    const handleScroll = useCallback(() => (v: number) => {
         const now = Date.now();
         if (now - lastScrollCheck.current < SCROLL_THRESHOLD) return;
         lastScrollCheck.current = now;
@@ -52,12 +56,18 @@ const HeaderComponent = React.memo(() => {
             lastHeaderState.current = next;
             setHeaderState(next);
         }
-    }), [menuOpen, toggleMenu]));
+    }, [menuOpen, toggleMenu]);
+
+    useMotionValueEvent(scrollY, "change", handleScroll);
+
+    const handleMenuToggle = useCallback(() => {
+        toggleMenu(!menuOpen);
+    }, [menuOpen, toggleMenu]);
 
     return checkActivePath("/studio") ? null : (
-        <>
+        <React.Fragment>
             <m.div className={`${styles.headerWrapper}`}>
-                <m.div className={`${styles.nameContainer} ${styles[theme]} ${space_grotesk.className}`}>
+                <m.div className={`${styles.nameContainer} ${space_grotesk.className}`}>
                     <m.div
                         className={styles.heroInitialLetter}
                         variants={headerNameInitialAnim}
@@ -115,7 +125,7 @@ const HeaderComponent = React.memo(() => {
                             variants={headerLinkAnim}
                             initial="initial"
                             animate={headerState === "collapsed" ? "collapse" : "expand"}
-                            className={`${styles.headerLink} ${styles[theme]} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
+                            className={`${styles.headerLink} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
                             <Link href={data.link}>
                                 <TextZoopComponent text={data.label} />
@@ -128,39 +138,44 @@ const HeaderComponent = React.memo(() => {
                 </div>
             </m.div>
 
-            <m.button
-                type="button"
-                className={`${styles.headerMenuButton} ${styles[theme]}`}
-                variants={headerNameMenuButtonAnim}
-                initial="expand"
-                style={{ pointerEvents: headerState === "collapsed" ? "auto" : "none" }}
-                animate={headerState === "collapsed" ? "collapse" : "expand"}
-                onClick={() => toggleMenu(!menuOpen)}
-            >
-                <m.div
-                    className={styles.headerMenuButtonLines}
-                    variants={menuButtonAnimation}
-                    animate={menuOpen ? "open" : "close"}
-                >
-                    <m.div
-                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
-                        variants={menuUpperAnim}
-                        animate={menuOpen ? "close" : "open"}
-                    />
-                    <m.div
-                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
-                        variants={menuMiddleAnim}
-                        animate={menuOpen ? "close" : "open"}
-                    />
-                    <m.div
-                        className={`${styles.headerMenuButtonLine} ${styles[theme]}`}
-                        variants={menuLowerAnim}
-                        animate={menuOpen ? "close" : "open"}
-                    />
-                </m.div>
-            </m.button>
-        </>
+            <AnimatePresence>
+                {headerState === "collapsed" &&
+                    <m.button
+                        key="header-menu-button"
+                        type="button"
+                        className={`${styles.headerMenuButton} ${styles[theme]}`}
+                        variants={headerNameMenuButtonAnim}
+                        initial="expand"
+                        animate={headerState === "collapsed" ? "collapse" : "expand"}
+                        exit="expand"
+                        onClick={handleMenuToggle}
+                    >
+                        <m.div
+                            className={styles.headerMenuButtonLines}
+                            variants={menuButtonAnimation}
+                            animate={menuOpen ? "open" : "close"}
+                        >
+                            <m.div
+                                className={styles.headerMenuButtonLine}
+                                variants={menuUpperAnim}
+                                animate={menuOpen ? "close" : "open"}
+                            />
+                            <m.div
+                                className={styles.headerMenuButtonLine}
+                                variants={menuMiddleAnim}
+                                animate={menuOpen ? "close" : "open"}
+                            />
+                            <m.div
+                                className={styles.headerMenuButtonLine}
+                                variants={menuLowerAnim}
+                                animate={menuOpen ? "close" : "open"}
+                            />
+                        </m.div>
+                    </m.button>
+                }
+            </AnimatePresence>
+        </React.Fragment>
     );
-});
+};
 
 export default HeaderComponent;
