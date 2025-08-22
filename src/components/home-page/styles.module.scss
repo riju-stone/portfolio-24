@@ -104,7 +104,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    mix-blend-mode: difference;
   }
 }
 
@@ -151,7 +150,6 @@
 // Mobile Devices
 @media only screen and (min-width: 240px) and (max-width: 399px) {
   .heroSectionWrapper {
-    padding: 0 2rem;
     gap: 1rem;
 
     .heroContainer {
@@ -201,9 +199,8 @@
 
     .workSubtext {
       width: 90vw;
-      padding: 0 2rem;
-      margin: 2rem 0;
-      font-size: 1.25rem;
+      margin: 1rem 0;
+      font-size: 1.1rem;
       letter-spacing: 1px;
     }
   }
@@ -230,7 +227,6 @@
 
 @media only screen and (min-width: 400px) and (max-width: 639px) {
   .heroSectionWrapper {
-    padding: 0 2rem;
     gap: 1rem;
 
     .heroContainer {
@@ -280,10 +276,7 @@
 
     .workSubtext {
       width: 90vw;
-      padding: 0 2rem;
-      margin: 2rem 0;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
+      font-size: 1.25rem;
     }
   }
 

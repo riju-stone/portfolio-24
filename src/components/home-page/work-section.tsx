@@ -3,6 +3,7 @@ import React from 'react'
 import { pp_nekkei } from '@/utils/fonts'
 import styles from './styles.module.scss'
 import dynamic from 'next/dynamic'
+import ExpandedDrawerComponent from '../expanded/expanded-drawer'
 
 const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
   ssr: true,
@@ -39,7 +40,7 @@ function WorkSectionComponent() {
           style="letter"
           className={styles.workHeading} />
         <TextStaggerComponent className={`${styles.workSubtext} ${pp_nekkei.className}`} text={PROJECT_PHRASE} style="word" once={true} duration={0.75} staggerDelay={0.025} />
-        <FancyTableComponent
+        <ExpandedDrawerComponent
           metadata={PROJECT_METADATA}
           tableData={PROJECT_DATA} />
       </div>

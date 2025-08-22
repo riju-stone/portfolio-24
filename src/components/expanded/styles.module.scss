@@ -1,0 +1,120 @@
+@use '../../app/globals.scss' as global;
+
+.rowWrapper {
+  width: 100vw;
+  position: relative;
+  border-top: 2px solid global.$dark-disabled-color;
+  mix-blend-mode: difference;
+  overflow-y: hidden;
+
+  &:last-child {
+    border-bottom: 2px solid global.$dark-disabled-color;
+  }
+
+  .rowContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    z-index: 1;
+    overflow-y: hidden;
+  }
+
+  .rowContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .dataCol1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: global.$dark-text-color;
+    text-align: right;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .expandIcon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .expandedContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: hidden;
+
+    .dataCol2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: global.$pale-orange-color;
+      margin-bottom: 0.5rem;
+
+      span {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+
+    .dataCol3 {
+      width: 50%;
+      font-size: 1.25rem;
+      text-align: left;
+      color: global.$dark-text-color;
+    }
+  }
+}
+
+// Mobile Devices
+@media only screen and (min-width: 240px) and (max-width: 639px) {
+  .rowWrapper {
+    .rowContainer {
+      padding: 0.5rem 1rem;
+    }
+
+    .dataCol1 {
+      font-size: 1.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .expandIcon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .expandedContainer {
+
+      .dataCol2 {
+        font-size: 0.75rem;
+      }
+
+      .dataCol3 {
+        width: 100%;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

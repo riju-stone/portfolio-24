@@ -1,12 +1,12 @@
 export const HEADING_TEXT = `Creative & Full — Stack Engineer`
 
-export const INTRO_PHRASE = `A full-stack software engineer, trying to find a place in the world of instructions and logic; driven by this one simple philosophy — a few lines of code, simplest version of an idea, and the ability to make something off it, and you can make a dent in the universe; to stop waiting for someone else to take the risk and just do it yourself and the world will be better for it. Based out of India, I am passionate about solving problems that makes the world more simple and memorable to experience. I strive to make each and every part of the system seamless and a joy to use — whether its the shining armour on the outside or the numerous nuts and bolts keeping it together underneath. If I had to sum up myself in just a few words — Mind of an engineer, heart of an artist.`
+export const INTRO_PHRASE = `A full-stack engineer, trying to find a place in the world of instructions and logic; driven by this one simple philosophy — a few lines of code, simplest version of an idea, and the ability to make something off it, and you can make a dent in the universe; to stop waiting for someone else to take the risk and just do it yourself. Based out of India, I am passionate about solving problems that makes the world more simple and memorable to experience. I strive to make each and every part of the system seamless and a joy to use — whether its the shining armour on the outside or the numerous nuts and bolts keeping it together underneath. To sum up — a guy with the mind of an engineer, heart of an artist.`
 
 export const PROJECT_PHRASE = `"Don't make something unless its both necessary and useful; but if it is both necessary and useful; don't hesitate to make it beautiful." — The Shaker Design Philosophy`
 
 export const PROJECT_METADATA = {
-    col1: "stack",
-    col2: "name",
+    col1: "name",
+    col2: "stack",
     col3: "desc",
     col4: "link",
 }
@@ -16,30 +16,30 @@ export const PROJECT_DATA = [
         _id: "chess",
         name: "Chess",
         link: "https://www.github.com/riju-stone/chess",
-        desc: `A minimalistic chess engine.`,
-        stack: "electron"
+        desc: `A simple cross-platform desktop chess app with chess engine written from scratch in javascript using the minimax algorithm.`,
+        stack: "javascript/electron"
     },
     {
         _id: "caligator",
         name: "Caligator",
         link: "https://www.github.com/riju-stone/caligator",
-        desc: `A simple yet smart calculator.`,
-        stack: "electron"
+        desc: `A simple yet smart calculator, that understands your language. Capable of evaluating complex expressions and also performing a variety of conversions. Inspired from Numi.`,
+        stack: "javascript/vite/electron"
     },
     {
         _id: "rss",
         name: "RSS",
         link: "https://www.github.com/riju-stone/go-rss",
-        desc: `A simple RSS aggregator`,
-        stack: "go"
+        desc: `A simple RSS aggregator API capable of fetching and displaying RSS feeds from a variety of sources. Supports key based authentication and rate limiting.`,
+        stack: "go/postgresql"
 
     },
     {
         _id: "former",
         name: "Former",
         link: "https://www.github.com/riju-stone/former",
-        desc: `A modular form builder.`,
-        stack: "next"
+        desc: `A modular form builder with an in-built drag and drop editor. Inspired from the likes of Google Forms and Typeform.`,
+        stack: "next/typescript/postgresql"
     },
 ]
 

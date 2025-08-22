@@ -90,7 +90,9 @@ export default function RootLayout({
                     </Suspense>
 
                     <HeaderComponent />
-                    {children}
+                    <Suspense fallback={null}>
+                        {children}
+                    </Suspense>
                     <FooterComponent />
 
                     <Suspense fallback={null}>

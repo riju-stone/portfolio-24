@@ -30,7 +30,7 @@ function ContactSectionComponent() {
       <div className={`${styles.introlinkContainer} ${pp_nekkei.className}`}>
         <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
           <TextDisperseComponent word="↗LinkedIn" /></a>
-        <a target="_blank" href="https://www.x.com/archrstone"><TextDisperseComponent word="↗Twitter" /></a>
+        <a target="_blank" href="https://www.x.com/archrstone"><TextDisperseComponent word={"Twitter"} /></a>
       </div>
     </section>
   )
