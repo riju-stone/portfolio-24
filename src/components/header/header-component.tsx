@@ -47,7 +47,7 @@ function HeaderComponent() {
                                     animate="expand"
                                     whileHover="hover"
                                 >
-                                    <Link href="/studio" target="_blank">&#10022;</Link>
+                                    <Link href="/studio" target="_blank" prefetch={false}>&#10022;</Link>
                                 </m.div>
                                 <m.div
                                     className={styles.heroInitialLetter}
