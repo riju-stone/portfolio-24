@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import { m } from "motion/react";
 
 import styles from "./styles.module.scss";
@@ -24,29 +24,28 @@ const textZoopDownAnim = {
 };
 
 function TextZoopComponent({ text }: { text: string }) {
-    const [isHovered, setIsHovered] = useState(false);
+    const splitText = useMemo(() => {
+        return text.split("")
+    }, [text])
 
     return (
         <m.div
             initial="initial"
             whileHover="hovered"
-            className={styles.textZoopContainer}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-        >
+            className={styles.textZoopContainer}>
             <div>
-                {text.split("").map((letter, index) => {
+                {splitText.map((letter, index) => {
                     return (
                         <m.div
                             custom={index}
                             className={styles.textZoopLetter}
                             variants={textZoopUpAnim}
                             transition={{
-                                duration: 0.12,
+                                duration: 0.15,
                                 ease: "easeInOut",
-                                delay: index * 0.02,
+                                delay: index * 0.04,
                             }}
-                            style={isHovered ? { willChange: "transform" } : {}}
+                            style={{ willChange: "transform" }}
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}
@@ -55,18 +54,18 @@ function TextZoopComponent({ text }: { text: string }) {
                 })}
             </div>
             <div className={styles.textZoopHiddenWrapper}>
-                {text.split("").map((letter, index) => {
+                {splitText.map((letter, index) => {
                     return (
                         <m.div
                             custom={index}
                             className={styles.textZoopLetter}
                             variants={textZoopDownAnim}
                             transition={{
-                                duration: 0.12,
+                                duration: 0.15,
                                 ease: "easeInOut",
-                                delay: index * 0.02,
+                                delay: index * 0.04,
                             }}
-                            style={isHovered ? { willChange: "transform" } : {}}
+                            style={{ willChange: "transform" }}
                             key={`Stagger-Text-Letter-Hidden${index}`}
                         >
                             {letter}

@@ -74,18 +74,14 @@ function HeaderComponent() {
                 </m.div>
                 <div className={`${styles.linksContainer} ${space_grotesk.className}`}>
                     {pageConfig.map((data, index) => (
-                        <m.div
+                        <div
                             key={`header-link-${index}`}
-                            custom={index}
-                            variants={headerLinkAnim}
-                            initial="initial"
-                            animate="expand"
                             className={`${styles.headerLink} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
                             <Link href={data.link}>
                                 <TextZoopComponent text={data.label} />
                             </Link>
-                        </m.div>
+                        </div>
                     ))}
                 </div>
                 <div className={styles.themeSwitchContainer}>
