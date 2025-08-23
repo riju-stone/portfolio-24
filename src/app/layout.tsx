@@ -9,7 +9,6 @@ import { domAnimation, LazyMotion } from "motion/react";
 
 const HeaderComponent = dynamic(() => import("@/components/header/header-component"), { ssr: true });
 const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
-const HamburgerMenuComponent = dynamic(() => import("@/components/hamburger/hamburger-menu"), { ssr: true });
 const BackgroundComponent = dynamic(() => import("@/components/background/background-canvas"), { ssr: true });
 
 export const metadata: Metadata = {
@@ -85,17 +84,12 @@ export default function RootLayout({
             </head>
             <body className="app">
                 <LazyMotion features={domAnimation}>
-                    <Suspense fallback={null}>
-                        <HeaderComponent />
-                    </Suspense>
+                    <HeaderComponent />
                     <Suspense fallback={null}>
                         {children}
                     </Suspense>
                     <FooterComponent />
-
-                    <Suspense fallback={null}>
-                        <BackgroundComponent />
-                    </Suspense>
+                    <BackgroundComponent />
                 </LazyMotion>
             </body>
 

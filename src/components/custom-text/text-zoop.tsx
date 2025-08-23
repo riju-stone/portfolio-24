@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { m } from "motion/react";
 
 import styles from "./styles.module.scss";
@@ -22,11 +22,15 @@ const textZoopDownAnim = {
 };
 
 function TextZoopComponent({ text }: { text: string }) {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <m.div
             initial="initial"
             whileHover="hovered"
             className={styles.textZoopContainer}
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
         >
             <div>
                 {text.split("").map((letter, index) => {
@@ -36,11 +40,11 @@ function TextZoopComponent({ text }: { text: string }) {
                             className={styles.textZoopLetter}
                             variants={textZoopUpAnim}
                             transition={{
-                                duration: 0.15,
+                                duration: 0.12,
                                 ease: "easeInOut",
-                                delay: index * 0.025,
+                                delay: index * 0.02,
                             }}
-                            style={{ willChange: "transform, opacity" }}
+                            style={isHovered ? { willChange: "transform" } : {}}
                             key={`Stagger-Text-Letter${index}`}
                         >
                             {letter}
@@ -56,12 +60,12 @@ function TextZoopComponent({ text }: { text: string }) {
                             className={styles.textZoopLetter}
                             variants={textZoopDownAnim}
                             transition={{
-                                duration: 0.15,
+                                duration: 0.12,
                                 ease: "easeInOut",
-                                delay: index * 0.025,
+                                delay: index * 0.02,
                             }}
-                            style={{ willChange: "transform, opacity" }}
-                            key={`Stagger-Text-Letter${index}`}
+                            style={isHovered ? { willChange: "transform" } : {}}
+                            key={`Stagger-Text-Letter-Hidden${index}`}
                         >
                             {letter}
                         </m.div>

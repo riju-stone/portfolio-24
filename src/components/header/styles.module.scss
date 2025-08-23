@@ -46,51 +46,6 @@
 	}
 }
 
-.headerMenuButton {
-	position: fixed;
-	top: 1.2rem;
-	left: 3rem;
-	height: 1.8rem;
-	width: 1.8rem;
-	border: none;
-	outline: none;
-	border-radius: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 9999;
-	background-color: global.$pale-orange-color;
-	cursor: pointer;
-
-	.headerMenuButtonLines {
-		position: relative;
-		width: 24px;
-		height: 26px;
-	}
-
-	.headerMenuButtonLine {
-		position: absolute;
-		width: 100%;
-		height: 2.5px;
-		background: #171810;
-		border-radius: 2;
-		transform-origin: center;
-		background: #171810;
-
-		&:nth-child(1) {
-			top: 6px;
-		}
-
-		&:nth-child(2) {
-			top: 12px;
-		}
-
-		&:nth-child(3) {
-			top: 18px;
-		}
-	}
-}
-
 .linksContainer {
 	position: absolute;
 	left: 50%;
@@ -151,14 +106,6 @@
 		display: none;
 	}
 
-	// .headerMenuButton {
-	// 	top: 1rem;
-	// 	left: 1.5rem;
-	// 	height: 1.8rem;
-	// 	width: 1.8rem;
-	// 	padding: 5px;
-	// }
-
 	.linksContainer {
 		position: relative;
 		left: 1rem;
@@ -170,14 +117,6 @@
 
 // Tablet Devices
 @media only screen and (min-width: 640px) and (max-width: 920px) {
-	.headerMenuButton {
-		top: 1.1rem;
-		left: 3rem;
-		height: 1.8rem;
-		width: 1.8rem;
-		padding: 5px;
-	}
-
 	.linksContainer {
 		position: relative;
 		left: 1rem;

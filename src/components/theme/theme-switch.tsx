@@ -13,7 +13,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
     const toggleTheme = useThemeStore((state) => state.changeTheme);
     const setSwitchPos = useThemeStore((state) => state.calibrateThemeTogglePos);
 
-    useEffect(() => {
+    const handleClick = () => {
         if (switchRef.current) {
             const switchPos = switchRef.current.getBoundingClientRect();
             setSwitchPos({
@@ -21,7 +21,8 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                 y: switchPos.y + 12.5
             });
         }
-    }, []); // Only run when menu state changes
+        toggleTheme();
+    };
 
     return (
         <m.div
@@ -30,12 +31,15 @@ function ThemeSwitchComponent({ isMenuOpen }) {
             initial="initial"
             animate={isMenuOpen ? "hidden" : "view"}
             ref={switchRef}
-            onClick={toggleTheme}
+            onClick={handleClick}
         >
             <m.svg
                 className="sun-moon"
                 ref={switchRef}
                 aria-hidden="true"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
             >
                 <m.circle
                     className={styles.sun}
@@ -53,6 +57,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     strokeWidth="1.5px"
                     variants={themeToggleAnim.sunBeams}
                     animate={theme === "light" ? "light" : "dark"}
+                    style={{ transformOrigin: "12px 12px" }}
                 >
                     <line x1="12" y1="1" x2="12" y2="3" />
                     <line x1="12" y1="21" x2="12" y2="23" />
@@ -63,7 +68,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </m.g>
-                <m.mask className="moon" id="moon-mask">
+                <m.mask className="moon" id="moon-mask">    
                     <m.rect
                         x="0"
                         y="0"

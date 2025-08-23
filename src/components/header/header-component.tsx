@@ -27,31 +27,9 @@ const TextZoopComponent = dynamic(() => import("../custom-text/text-zoop"), {
 function HeaderComponent() {
     const heroInitials = ["A", "C"];
     const nonInitials = "righna hakraborty".split("");
-
-    // const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
-    // const toggleMenu = usePageStore((state) => state.toggleMenu);
 
     const checkActivePath = useActivePath();
-    // const { scrollY } = useScroll();
-    // const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
-    // const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
-
-    // const handleScroll = useMemo(() => (v: number) => {
-    //     if (menuOpen) toggleMenu(false);
-
-    //     const next = v < 120 ? "expanded" : "collapsed";
-    //     if (next !== lastHeaderState.current) {
-    //         lastHeaderState.current = next;
-    //         setHeaderState(next);
-    //     }
-    // }, [menuOpen, toggleMenu]);
-
-    // useMotionValueEvent(scrollY, "change", handleScroll);
-
-    // const handleMenuToggle = useCallback(() => {
-    //     toggleMenu(!menuOpen);
-    // }, [menuOpen, toggleMenu]);
 
     return checkActivePath("/studio") ? null : (
         <React.Fragment>
@@ -120,43 +98,6 @@ function HeaderComponent() {
                     <ThemeSwitchComponent isMenuOpen={menuOpen} />
                 </div>
             </m.div>
-
-            {/* <AnimatePresence>
-                {headerState === "collapsed" &&
-                    <m.button
-                        key="header-menu-button"
-                        type="button"
-                        className={`${styles.headerMenuButton} ${styles[theme]}`}
-                        variants={headerNameMenuButtonAnim}
-                        initial="expand"
-                        animate={headerState === "collapsed" ? "collapse" : "expand"}
-                        exit="expand"
-                        onClick={handleMenuToggle}
-                    >
-                        <m.div
-                            className={styles.headerMenuButtonLines}
-                            variants={menuButtonAnimation}
-                            animate={menuOpen ? "open" : "close"}
-                        >
-                            <m.div
-                                className={styles.headerMenuButtonLine}
-                                variants={menuUpperAnim}
-                                animate={menuOpen ? "close" : "open"}
-                            />
-                            <m.div
-                                className={styles.headerMenuButtonLine}
-                                variants={menuMiddleAnim}
-                                animate={menuOpen ? "close" : "open"}
-                            />
-                            <m.div
-                                className={styles.headerMenuButtonLine}
-                                variants={menuLowerAnim}
-                                animate={menuOpen ? "close" : "open"}
-                            />
-                        </m.div>
-                    </m.button>
-                }
-            </AnimatePresence> */}
         </React.Fragment>
     );
 };

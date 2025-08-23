@@ -30,17 +30,21 @@ export const themeSwitchAnim = {
 export const themeToggleAnim = {
   sunBeams: {
     light: {
-      rotateZ: -120,
+      rotate: -120,
       opacity: 1,
+      transformOrigin: "center",
       transition: {
         duration: 0.8,
+        ease: [0.4, 0, 0.2, 1],
       },
     },
     dark: {
-      rotateZ: 0,
+      rotate: 0,
       opacity: 0,
+      transformOrigin: "center",
       transition: {
         duration: 0.8,
+        ease: [0.4, 0, 0.2, 1],
       },
     },
   },
