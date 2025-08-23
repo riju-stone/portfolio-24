@@ -15,14 +15,8 @@ import {
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
-
-const ThemeSwitchComponent = dynamic(() => import("../theme/theme-switch"), {
-    ssr: false,
-});
-
-const TextZoopComponent = dynamic(() => import("../custom-text/text-zoop"), {
-    ssr: false,
-});
+import TextZoopComponent from "../custom-text/text-zoop";
+import ThemeSwitchComponent from "../theme/theme-switch";
 
 function HeaderComponent() {
     const heroInitials = ["A", "C"];

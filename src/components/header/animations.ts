@@ -1,6 +1,5 @@
 export const headerNameNonInitialsAnim = {
 	collapse: (i: number) => ({
-		x: -10,
 		opacity: 0,
 		transition: {
 			duration: 0.15,
@@ -9,7 +8,6 @@ export const headerNameNonInitialsAnim = {
 		},
 	}),
 	expand: (i: number) => ({
-		x: 0,
 		opacity: 1,
 		transition: {
 			duration: 0.15,
@@ -21,13 +19,9 @@ export const headerNameNonInitialsAnim = {
 
 export const headerNameInitialAnim = {
 	initial: {
-		y: -15,
-		x: 0,
 		opacity: 0,
 	},
 	expand: {
-		y: 0,
-		x: 0,
 		opacity: 1,
 		transition: {
 			ease: [0.76, 0, 0.24, 1],
@@ -66,7 +60,7 @@ export const headerLinkAnim = {
 		opacity: 1,
 		transition: {
 			duration: 0.3,
-			delay: 0.2 + i * 0.05,
+			delay: 0.2 + i * 0.1,
 			ease: [0.68, -0.6, 0.32, 1.6],
 		},
 	}),

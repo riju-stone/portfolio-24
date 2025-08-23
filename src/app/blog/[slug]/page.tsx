@@ -73,13 +73,13 @@ async function BlogPostPage({ params }: { params: BlogParams }) {
             <SkewScrollComponent>
                 <div className={styles.postContainer}>
                     <div className={styles.postHeader}>
-                        <TextStaggerComponent className={`${styles.postTitle} ${pp_nueue.className}`} text={post.title} style="word" delay={0.5} />
+                        <TextStaggerComponent className={`${styles.postTitle} ${pp_nueue.className}`} text={post.title} style="word" delay={0.25} />
                         <div className={styles.postMetadataWrapper}>
-                            <TextStaggerComponent className={`${styles.postDate} ${pp_nekkei.className}`} text={new Date(post.publishedAt).toLocaleDateString()} style="letter" delay={0.85} staggerDelay={0.02} />
+                            <TextStaggerComponent className={`${styles.postDate} ${pp_nekkei.className}`} text={new Date(post.publishedAt).toLocaleDateString()} style="letter" delay={0.35} staggerDelay={0.02} />
                             {post.tags?.length > 0 && (
                                 <div className={`${styles.tagContainer} ${pp_nueue.className}`}>
                                     {post.tags.map((tag: string) => (
-                                        <TextStaggerComponent className={styles.tag} key={tag} text={tag} style="letter" delay={0.85} staggerDelay={0.02} />
+                                        <TextStaggerComponent className={styles.tag} key={tag} text={tag} style="letter" delay={0.5} staggerDelay={0.02} />
                                     ))}
                                 </div>
                             )}
