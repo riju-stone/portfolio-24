@@ -151,20 +151,20 @@
 		display: none;
 	}
 
-	.headerMenuButton {
-		top: 1rem;
-		left: 1.5rem;
-		height: 1.8rem;
-		width: 1.8rem;
-		padding: 5px;
-	}
+	// .headerMenuButton {
+	// 	top: 1rem;
+	// 	left: 1.5rem;
+	// 	height: 1.8rem;
+	// 	width: 1.8rem;
+	// 	padding: 5px;
+	// }
 
 	.linksContainer {
 		position: relative;
 		left: 1rem;
 		transform: translateX(50%);
 		gap: 0.75rem;
-		font-size: 1rem;
+		font-size: 0.875rem;
 	}
 }
 

@@ -94,6 +94,7 @@
     }
 
     .dataCol2 {
+      width: fit-content;
       font-size: 2.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
@@ -101,6 +102,7 @@
     }
 
     .dataMaskCol2 {
+      width: fit-content;
       font-size: 2.25rem;
       text-transform: uppercase;
       letter-spacing: 4px;
@@ -108,7 +110,7 @@
     }
 
     .dataCol3 {
-      width: 30%;
+      width: fit-content;
       font-size: 1.15rem;
       text-align: right;
       text-transform: uppercase;
@@ -116,7 +118,7 @@
     }
 
     .dataMaskCol3 {
-      width: 30%;
+      width: fit-content;
       font-size: 1.15rem;
       text-align: right;
       text-transform: uppercase;
@@ -162,7 +164,6 @@
       }
 
       .dataCol3 {
-        width: 30%;
         font-size: 0.75rem;
       }
     }
@@ -207,52 +208,6 @@
       .dataCol3 {
         width: 50%;
         font-size: 1rem;
-      }
-    }
-  }
-}
-
-// Desktop Devices
-@media only screen and (min-width: 921px) and (max-width: 1024px) {
-  .tableWrapper {
-    width: 100%;
-
-    .tableHeader {
-      .tableHeaderContent {
-        width: 150px;
-      }
-    }
-
-    .rowWrapper {
-      &:last-child {
-        border-bottom: 2px solid global.$dark-disabled-color;
-      }
-
-      .rowContainer {
-        padding: 1.5rem 2.4rem;
-        z-index: 1;
-      }
-
-      .maskRowContainer {
-        display: none;
-      }
-
-      .rowContent {
-        gap: 1.5rem;
-      }
-
-      .dataCol1 {
-        width: 150px;
-        font-size: 1.25rem;
-      }
-
-      .dataCol2 {
-        font-size: 2.2rem;
-      }
-
-      .dataCol3 {
-        text-wrap: nowrap;
-        font-size: 1.25rem;
       }
     }
   }

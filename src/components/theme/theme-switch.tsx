@@ -26,6 +26,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
     return (
         <m.div
             variants={themeSwitchAnim}
+            className={styles.themeSwitchContainer}
             initial="initial"
             animate={isMenuOpen ? "hidden" : "view"}
             ref={switchRef}
@@ -35,9 +36,6 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                 className="sun-moon"
                 ref={switchRef}
                 aria-hidden="true"
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
             >
                 <m.circle
                     className={styles.sun}

@@ -1,23 +1,17 @@
 "use client";
 
-import React, { useRef, useState, useCallback, useMemo } from "react";
+import React from "react";
 import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
-import { useScroll, useMotionValueEvent, m, AnimatePresence } from "motion/react";
+import { m } from "motion/react";
 import Link from "next/link";
 import dynamic from 'next/dynamic';
 import {
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
-    headerNameMenuButtonAnim,
-    menuUpperAnim,
-    menuMiddleAnim,
-    menuLowerAnim,
     headerNameSeparatorAnim,
     headerLinkAnim,
-    menuButtonAnimation,
 } from "./animations";
-import { useThemeStore } from "@/stores/themeStore";
 import { pageConfig } from "@/utils/pages";
 import { usePageStore } from "@/stores/navStore";
 import { useActivePath } from "@/utils/path";
@@ -34,30 +28,30 @@ function HeaderComponent() {
     const heroInitials = ["A", "C"];
     const nonInitials = "righna hakraborty".split("");
 
-    const theme = useThemeStore((state) => state.theme);
+    // const theme = useThemeStore((state) => state.theme);
     const menuOpen = usePageStore((state) => state.menuOpen);
-    const toggleMenu = usePageStore((state) => state.toggleMenu);
+    // const toggleMenu = usePageStore((state) => state.toggleMenu);
 
     const checkActivePath = useActivePath();
-    const { scrollY } = useScroll();
-    const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
-    const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
+    // const { scrollY } = useScroll();
+    // const [headerState, setHeaderState] = useState<"expanded" | "collapsed">("expanded");
+    // const lastHeaderState = useRef<"expanded" | "collapsed">("expanded");
 
-    const handleScroll = useMemo(() => (v: number) => {
-        if (menuOpen) toggleMenu(false);
+    // const handleScroll = useMemo(() => (v: number) => {
+    //     if (menuOpen) toggleMenu(false);
 
-        const next = v < 120 ? "expanded" : "collapsed";
-        if (next !== lastHeaderState.current) {
-            lastHeaderState.current = next;
-            setHeaderState(next);
-        }
-    }, [menuOpen, toggleMenu]);
+    //     const next = v < 120 ? "expanded" : "collapsed";
+    //     if (next !== lastHeaderState.current) {
+    //         lastHeaderState.current = next;
+    //         setHeaderState(next);
+    //     }
+    // }, [menuOpen, toggleMenu]);
 
-    useMotionValueEvent(scrollY, "change", handleScroll);
+    // useMotionValueEvent(scrollY, "change", handleScroll);
 
-    const handleMenuToggle = useCallback(() => {
-        toggleMenu(!menuOpen);
-    }, [menuOpen, toggleMenu]);
+    // const handleMenuToggle = useCallback(() => {
+    //     toggleMenu(!menuOpen);
+    // }, [menuOpen, toggleMenu]);
 
     return checkActivePath("/studio") ? null : (
         <React.Fragment>
@@ -78,7 +72,7 @@ function HeaderComponent() {
                                     className={styles.heroNameSeparator}
                                     variants={headerNameSeparatorAnim}
                                     initial="initial"
-                                    animate={headerState === "collapsed" ? "collapse" : "expand"}
+                                    animate="expand"
                                     whileHover="hover"
                                 >
                                     <Link href="/studio" target="_blank">&#10022;</Link>
@@ -87,13 +81,7 @@ function HeaderComponent() {
                                     className={styles.heroInitialLetter}
                                     variants={headerNameInitialAnim}
                                     initial="initial"
-                                    animate={
-                                        headerState === "collapsed"
-                                            ? menuOpen
-                                                ? "hidden2"
-                                                : "collapse"
-                                            : "expand"
-                                    }
+                                    animate="expand"
                                 >
                                     {heroInitials[1]}
                                 </m.div>
@@ -104,7 +92,7 @@ function HeaderComponent() {
                                 className={styles.heroNonInitialLetter}
                                 variants={headerNameNonInitialsAnim}
                                 initial="collapse"
-                                animate={headerState === "collapsed" ? "collapse" : "expand"}
+                                animate="expand"
                                 custom={index}
                             >
                                 {letter}
@@ -119,7 +107,7 @@ function HeaderComponent() {
                             custom={index}
                             variants={headerLinkAnim}
                             initial="initial"
-                            animate={headerState === "collapsed" ? "collapse" : "expand"}
+                            animate="expand"
                             className={`${styles.headerLink} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
                             <Link href={data.link}>
@@ -133,7 +121,7 @@ function HeaderComponent() {
                 </div>
             </m.div>
 
-            <AnimatePresence>
+            {/* <AnimatePresence>
                 {headerState === "collapsed" &&
                     <m.button
                         key="header-menu-button"
@@ -168,7 +156,7 @@ function HeaderComponent() {
                         </m.div>
                     </m.button>
                 }
-            </AnimatePresence>
+            </AnimatePresence> */}
         </React.Fragment>
     );
 };

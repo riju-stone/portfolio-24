@@ -86,10 +86,8 @@ export default function RootLayout({
             <body className="app">
                 <LazyMotion features={domAnimation}>
                     <Suspense fallback={null}>
-                        <HamburgerMenuComponent />
+                        <HeaderComponent />
                     </Suspense>
-
-                    <HeaderComponent />
                     <Suspense fallback={null}>
                         {children}
                     </Suspense>
