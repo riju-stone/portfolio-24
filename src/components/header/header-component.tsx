@@ -5,7 +5,6 @@ import styles from "./styles.module.scss";
 import { space_grotesk } from "@/utils/fonts";
 import { m } from "motion/react";
 import Link from "next/link";
-import dynamic from 'next/dynamic';
 import {
     headerNameInitialAnim,
     headerNameNonInitialsAnim,
@@ -74,14 +73,18 @@ function HeaderComponent() {
                 </m.div>
                 <div className={`${styles.linksContainer} ${space_grotesk.className}`}>
                     {pageConfig.map((data, index) => (
-                        <div
+                        <m.div
+                            variants={headerLinkAnim}
+                            initial="initial"
+                            animate="expand"
+                            custom={index}
                             key={`header-link-${index}`}
                             className={`${styles.headerLink} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
                         >
                             <Link href={data.link}>
                                 <TextZoopComponent text={data.label} />
                             </Link>
-                        </div>
+                        </m.div>
                     ))}
                 </div>
                 <div className={styles.themeSwitchContainer}>

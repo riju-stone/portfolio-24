@@ -22,7 +22,7 @@ function PostContentComponent({ content }: { content: string }) {
     <m.div className={`${styles.postContent} ${inter.className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 1.2 }}
+      transition={{ duration: 0.5, delay: 1 }}
     >
       <Markdown
         remarkPlugins={[remarkGfm, remarkMath]}

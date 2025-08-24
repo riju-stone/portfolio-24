@@ -13,6 +13,8 @@
 	z-index: 999;
 	transform: translate3d(0, 0, 0);
 	mix-blend-mode: difference;
+	backdrop-filter: blur(8px);
+	mask: linear-gradient(to bottom, black 82%, transparent 100%);
 }
 
 .hideHeader {
@@ -25,7 +27,7 @@
 	transition: color ease-in 0.2s;
 	color: global.$dark-text-color;
 	font-size: 1.2rem;
-	font-weight: 400;
+	font-weight: 500;
 	text-transform: lowercase;
 	mix-blend-mode: difference;
 
@@ -54,7 +56,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-weight: 400;
 	gap: 5rem;
 	font-size: 1.1rem;
 	text-transform: lowercase;
@@ -73,10 +74,12 @@
 
 		&.activeLink a {
 			color: global.$dark-text-color;
+			font-weight: 500;
 		}
 
 		&.inactiveLink a {
 			color: global.$dark-disabled-color;
+			font-weight: 400;
 		}
 	}
 }

@@ -25,7 +25,7 @@ const disperseAnim = {
     blurred: (i: number) => {
         const transform = hoverTransforms[i % hoverTransforms.length];
         return {
-            filter: "blur(12px)",
+            filter: "blur(8px)",
             x: (transform.x * Math.random() * 2) + "em",
             y: (transform.y * Math.random() * 2) + "em",
             rotateZ: (transform.rotationZ * Math.random() * 8),

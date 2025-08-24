@@ -32,7 +32,6 @@ export const themeToggleAnim = {
     light: {
       rotate: -120,
       opacity: 1,
-      transformOrigin: "center",
       transition: {
         duration: 0.8,
         ease: [0.4, 0, 0.2, 1],
@@ -41,7 +40,6 @@ export const themeToggleAnim = {
     dark: {
       rotate: 0,
       opacity: 0,
-      transformOrigin: "center",
       transition: {
         duration: 0.8,
         ease: [0.4, 0, 0.2, 1],

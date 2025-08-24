@@ -6,9 +6,9 @@ import AnalyticsComponent from "./analytics";
 
 import "./globals.scss";
 import { domAnimation, LazyMotion } from "motion/react";
+import HeaderComponent from "@/components/header/header-component";
+import FooterComponent from "@/components/footer/footer-component";
 
-const HeaderComponent = dynamic(() => import("@/components/header/header-component"), { ssr: true });
-const FooterComponent = dynamic(() => import("@/components/footer/footer-component"), { ssr: true });
 const BackgroundComponent = dynamic(() => import("@/components/background/background-canvas"), { ssr: true });
 
 export const metadata: Metadata = {

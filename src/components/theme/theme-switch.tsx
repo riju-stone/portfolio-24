@@ -1,7 +1,7 @@
 "use client";
 
 import { useThemeStore } from "@/stores/themeStore";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { m } from "motion/react";
 import { themeSwitchAnim, themeToggleAnim } from "./animations";
 
@@ -35,7 +35,6 @@ function ThemeSwitchComponent({ isMenuOpen }) {
         >
             <m.svg
                 className="sun-moon"
-                ref={switchRef}
                 aria-hidden="true"
                 width="24"
                 height="24"
@@ -56,6 +55,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     stroke="#ededed"
                     strokeWidth="1.5px"
                     variants={themeToggleAnim.sunBeams}
+                    initial="dark"
                     animate={theme === "light" ? "light" : "dark"}
                     style={{ transformOrigin: "12px 12px" }}
                 >
@@ -68,7 +68,7 @@ function ThemeSwitchComponent({ isMenuOpen }) {
                     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </m.g>
-                <m.mask className="moon" id="moon-mask">    
+                <m.mask className="moon" id="moon-mask">
                     <m.rect
                         x="0"
                         y="0"
