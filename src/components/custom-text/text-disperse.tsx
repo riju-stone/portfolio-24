@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { m, useInView, LazyMotion, domAnimation } from "motion/react";
 import styles from "./styles.module.scss";
 import { useThemeStore } from "@/stores/themeStore";
@@ -87,13 +87,13 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
         }));
     }, [word]);
 
-    const handleMouseEnter = useCallback(() => {
+    const handleMouseEnter = () => {
         setIsHovered(true);
-    }, []);
+    };
 
-    const handleMouseLeave = useCallback(() => {
+    const handleMouseLeave = () => {
         setIsHovered(false);
-    }, []);
+    };
 
     const renderCharacters = () => {
         return splitCharacters.map(({ char, key, index }) => (
