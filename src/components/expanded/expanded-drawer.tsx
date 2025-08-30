@@ -76,7 +76,7 @@ function ExpandedDrawerComponent({ metadata, tableData }) {
       >
         <div className={styles.rowContainer}>
           <div className={styles.rowContent}>
-            <Link href={r.link}>
+            <Link href={r.link} prefetch={false} target="_blank">
               <div className={`${styles.dataCol1} ${pp_nekkei.className}`}><ArrowUpRight />{r[metadata.col1]}</div>
             </Link>
             <m.div className={styles.expandIcon}
@@ -94,11 +94,11 @@ function ExpandedDrawerComponent({ metadata, tableData }) {
             animate={expanded[r._id].expanded ? "expanded" : "collapsed"}
           >
             <div className={`${styles.dataCol2} ${pp_nueue.className}`}>
-              {r[metadata.col2].split("/").map((s, idx) =>
+              {r[metadata.col2].split("/").map((s: string, idx: number) =>
                 <span key={`${idx}-${s}`}><Dot />{s}</span>
               )}
             </div>
-            <div className={`${styles.dataCol3} ${inter.className}`}>{r[metadata.col3]}</div>
+            <div className={`${styles.dataCol3} ${inter.className}`}>{r[metadata.col3] as string}</div>
           </m.div>
         </div>
       </div>

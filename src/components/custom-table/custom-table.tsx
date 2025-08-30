@@ -50,7 +50,7 @@ function FancyTableComponent({ metadata, tableData }) {
         initial="unhovered"
         whileHover="hover"
       >
-        <Link href={r.link}>
+        <Link href={r.link} prefetch={false} target="_blank">
           <div className={styles.rowContainer}>
             <div className={styles.rowContent}>
               <div className={styles.dataCol1}>{r[metadata.col1]}</div>
