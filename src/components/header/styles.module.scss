@@ -2,19 +2,16 @@
 
 .headerWrapper {
 	height: 4rem;
+	width: 100vw;
 	position: fixed;
 	top: 0;
 	box-sizing: border-box;
-	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 1.2rem 2rem;
 	z-index: 999;
-	transform: translate3d(0, 0, 0);
 	mix-blend-mode: difference;
-	backdrop-filter: blur(8px);
-	mask: linear-gradient(to bottom, black 82%, transparent 100%);
 }
 
 .hideHeader {
@@ -114,7 +111,7 @@
 		left: 1rem;
 		transform: translateX(50%);
 		gap: 0.75rem;
-		font-size: 0.875rem;
+		font-size: 1rem;
 	}
 }
 

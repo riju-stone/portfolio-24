@@ -41,7 +41,7 @@ function HeroSectionComponent() {
           className={styles.heroAboutText}
           text={INTRO_PHRASE}
           style="line"
-          wordsPerLine={deviceType === "mobile" ? 9 : 14}
+          wordsPerLine={deviceType === "mobile" ? 7 : 11}
           duration={1.2}
           delay={0.8}
           staggerDelay={0.04}
