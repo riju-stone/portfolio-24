@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@r4ai/remark-callout": "^0.6.2",
 		"@sanity/client": "^6.29.1",
 		"@sanity/icons": "^3.7.4",
 		"@sanity/image-url": "^1.1.0",
@@ -27,8 +28,8 @@
 		"react-markdown": "^10.1.0",
 		"rehype-highlight": "^7.0.2",
 		"rehype-katex": "^7.0.1",
-		"rehype-stringify": "^10.0.1",
 		"rehype-video": "^2.3.0",
+		"remark-directive": "^4.0.0",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",
 		"sanity": "^3.99.0",
