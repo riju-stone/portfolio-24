@@ -31,7 +31,7 @@ const clipAnimation = {
   }
 }
 
-function FancyTableComponent({ metadata, tableData }) {
+function FancyTableComponent({ metadata, tableData, linksStyle = "_self" }) {
   const theme = useThemeStore(state => state.theme);
   return <m.div
     className={styles.tableWrapper}
@@ -50,7 +50,7 @@ function FancyTableComponent({ metadata, tableData }) {
         initial="unhovered"
         whileHover="hover"
       >
-        <Link href={r.link} prefetch={false} target="_blank">
+        <Link href={r.link} prefetch={false} target={linksStyle}>
           <div className={styles.rowContainer}>
             <div className={styles.rowContent}>
               <div className={styles.dataCol1}>{r[metadata.col1]}</div>

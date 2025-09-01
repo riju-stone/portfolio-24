@@ -65,7 +65,7 @@ export const EXPERIENCE_DATA = [
         title: "Simulacra Technologies",
         role: "Freelance",
         duration: "2021 - 2022",
-        link: "#;"
+        link: "https://www.linkedin.com/company/simulacra-technologies/"
     },
     {
         _id: "skill-academia",
