@@ -32,6 +32,7 @@ function WorkSectionComponent() {
           metadata={EXPERIENCE_METADATA}
           tableData={EXPERIENCE_DATA}
           linksStyle="_blank"
+          prefetch={false}
         />
       </div>
       <div className={styles.projectWrapper}>

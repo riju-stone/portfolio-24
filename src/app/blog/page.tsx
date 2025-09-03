@@ -46,7 +46,12 @@ async function BlogsPage() {
                         <div className={styles.postsWrapper}>
                             <TextStaggerComponent className={`${styles.pageTitle} ${pp_nueue.className}`} text={"Breaking down abstractions"} style="word" />
                             <div className={styles.postsGrid}>
-                                <FancyTableComponent metadata={blogMetadata} tableData={formattedData} linksStyle="_self" />
+                                <FancyTableComponent
+                                    metadata={blogMetadata}
+                                    tableData={formattedData}
+                                    linksStyle="_self"
+                                    prefetch={true}
+                                />
                             </div>
                         </div>
                     </div>
