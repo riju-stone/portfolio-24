@@ -5,7 +5,6 @@
   position: relative;
   border-top: 2px solid global.$dark-disabled-color;
   mix-blend-mode: difference;
-  overflow-y: hidden;
 
   &:last-child {
     border-bottom: 2px solid global.$dark-disabled-color;
