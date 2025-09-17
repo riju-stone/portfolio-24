@@ -469,12 +469,12 @@
         width: 50%;
 
         .heroText {
-          font-size: 3.75rem;
+          font-size: 3.5rem;
         }
       }
 
       .heroImageWrapper {
-        height: 220px;
+        height: 200px;
       }
     }
 
@@ -484,40 +484,26 @@
       }
     }
   }
-}
-
-// Devices with smaller height
-@media only screen and (min-height: 600px) and (max-height: 900px) {
-  
-  .heroSectionWrapper {
-    .heroContainer {
-      .heroTextWrapper {
-        .heroText {
-          font-size: 3.75rem;
-        }
-      }
-    }
-  }
 
   .workSectionWrapper {
     .workHeading {
-      font-size: 4.5rem;
+      font-size: 4rem;
     }
 
     .workSubtext {
-      font-size: 2rem;
+      font-size: 1.75rem;
     }
   }
 
   .contactSectionWrapper {
     .contactHeading {
-      font-size: 4.5rem;
+      font-size: 5rem;
       line-height: 6rem;
     }
 
     .introlinkContainer {
-      font-size: 4.5rem;
-      line-height: 5rem;
+      font-size: 5rem;
+      line-height: 6rem;
     }
   }
 }

@@ -1,4 +1,4 @@
-@use '../../app/globals.scss' as global;
+@use "../../app/globals.scss" as global;
 
 .rowWrapper {
   width: 100vw;
@@ -109,7 +109,6 @@
     }
 
     .expandedContainer {
-
       .dataCol2 {
         font-size: 0.75rem;
       }
@@ -117,6 +116,40 @@
       .dataCol3 {
         width: 100%;
         font-size: 0.875rem;
+      }
+    }
+  }
+}
+
+// Large Devices
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .rowWrapper {
+    .rowContainer {
+      padding: 1rem 2rem;
+    }
+
+    .dataCol1 {
+      font-size: 2.15rem;
+      letter-spacing: 4px;
+    }
+
+    .expandIcon {
+      width: 2.15rem;
+      height: 2.15rem;
+
+      svg {
+        stroke-width: 2px;
+      }
+    }
+
+    .expandedContainer {
+      .dataCol2 {
+        font-size: 1rem;
+      }
+
+      .dataCol3 {
+        width: 60%;
+        font-size: 1.1rem;
       }
     }
   }
