@@ -1,20 +1,26 @@
-"use client"
+"use client";
 
-import { pp_nekkei, pp_nueue } from '@/utils/fonts'
-import { HEADING_TEXT, INTRO_PHRASE } from '@/utils/constants'
+import { pp_nekkei, pp_nueue } from "@/utils/fonts";
+import { HEADING_TEXT, INTRO_PHRASE } from "@/utils/constants";
 
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-const HeroImageComponent = dynamic(() => import('@/components/hero-image/hero-image'), {
-  ssr: false,
-})
+const HeroImageComponent = dynamic(
+  () => import("@/components/hero-image/hero-image"),
+  {
+    ssr: true,
+  }
+);
 
-const TextStaggerComponent = dynamic(() => import('@/components/custom-text/text-stagger'), {
-  ssr: false,
-})
+const TextStaggerComponent = dynamic(
+  () => import("@/components/custom-text/text-stagger"),
+  {
+    ssr: false,
+  }
+);
 
-import styles from './styles.module.scss'
-import { useDevice } from '@/hooks/useDevice'
+import styles from "./styles.module.scss";
+import { useDevice } from "@/hooks/useDevice";
 
 function HeroSectionComponent() {
   const deviceType = useDevice();
@@ -49,7 +55,7 @@ function HeroSectionComponent() {
         />
       </div>
     </section>
-  )
+  );
 }
 
-export default HeroSectionComponent
+export default HeroSectionComponent;

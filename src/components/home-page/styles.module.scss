@@ -3,7 +3,7 @@
 .heroSectionWrapper {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100svh;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -89,7 +89,7 @@
   }
 
   .experienceWrapper {
-    height: 100dvh;
+    height: 100svh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@
   }
 
   .projectWrapper {
-    height: 100dvh;
+    height: 100svh;
     width: 100dvw;
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
 }
 
 .contactSectionWrapper {
-  height: 100dvh;
+  height: 100svh;
   width: 100vw;
   display: flex;
   flex-direction: column;

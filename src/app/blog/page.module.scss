@@ -1,117 +1,117 @@
 @use "../globals.scss" as global;
 
 .blogMessageWrapper {
-	height: 100dvh;
-	width: 100vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  height: 100svh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .blogsPageWrapper {
-	height: 100dvh;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .postsWrapper {
-	height: 100%;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .pageTitle {
-	width: 100vw;
-	display: flex;
-	color: global.$dark-text-color;
-	font-size: 4.25rem;
-	margin-top: 4rem;
-	margin-bottom: 1rem;
-	margin-left: 4rem;
-	mix-blend-mode: difference;
+  width: 100vw;
+  display: flex;
+  color: global.$dark-text-color;
+  font-size: 4.25rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  margin-left: 4rem;
+  mix-blend-mode: difference;
 }
 
 .postsGrid {
-	height: 100%;
-	width: 100%;
-	padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	mix-blend-mode: difference;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  mix-blend-mode: difference;
 
-	.postCard {
-		position: relative;
-		width: 100%;
-	}
+  .postCard {
+    position: relative;
+    width: 100%;
+  }
 
-	.postLink {
-		width: 100%;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-	}
+  .postLink {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-	.postMetadataContainer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-end;
-		opacity: 0.65;
-	}
+  .postMetadataContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0.65;
+  }
 
-	.postDate {
-		font-size: 1.25rem;
-		color: global.$pale-orange-color;
-	}
+  .postDate {
+    font-size: 1.25rem;
+    color: global.$pale-orange-color;
+  }
 
-	.postTitle {
-		font-size: 2rem;
-		color: global.$dark-text-color;
-	}
+  .postTitle {
+    font-size: 2rem;
+    color: global.$dark-text-color;
+  }
 
-	.tagContainer {
-		font-size: 0.85rem;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		gap: 1rem;
-		color: global.$pale-orange-color;
-	}
+  .tagContainer {
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    color: global.$pale-orange-color;
+  }
 }
 
 // Mobile Devices
 @media only screen and (min-width: 240px) and (max-width: 639px) {
-	.pageTitle {
-		width: 90%;
-		margin-top: 4rem;
-		margin-bottom: 1rem;
-		margin-left: 0;
-		font-size: 2.5rem;
-		justify-content: flex-start;
-	}
+  .pageTitle {
+    width: 90%;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    font-size: 2.5rem;
+    justify-content: flex-start;
+  }
 
-	.postsGrid {
-		padding: 0;
+  .postsGrid {
+    padding: 0;
 
-		.postTitle {
-			width: 45%;
-			font-size: 1.2rem;
-		}
+    .postTitle {
+      width: 45%;
+      font-size: 1.2rem;
+    }
 
-		.postDate {
-			font-size: 0.75rem;
-		}
+    .postDate {
+      font-size: 0.75rem;
+    }
 
-		.tagContainer {
-			font-size: 0.75rem;
-		}
-	}
+    .tagContainer {
+      font-size: 0.75rem;
+    }
+  }
 }
