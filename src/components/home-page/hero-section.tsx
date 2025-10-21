@@ -1,7 +1,11 @@
 "use client";
 
 import { pp_nekkei, pp_nueue } from "@/utils/fonts";
-import { HEADING_TEXT, INTRO_PHRASE } from "@/utils/constants";
+import {
+  HEADING_TEXT,
+  INTRO_PHRASE,
+  MOBILE_INTRO_PHRASE,
+} from "@/utils/constants";
 
 import dynamic from "next/dynamic";
 
@@ -45,7 +49,7 @@ function HeroSectionComponent() {
       <div className={`${styles.heroAboutWrapper} ${pp_nekkei.className}`}>
         <TextStaggerComponent
           className={styles.heroAboutText}
-          text={INTRO_PHRASE}
+          text={deviceType === "mobile" ? MOBILE_INTRO_PHRASE : INTRO_PHRASE}
           style="line"
           wordsPerLine={deviceType === "mobile" ? 7 : 11}
           duration={1.2}
