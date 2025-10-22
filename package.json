@@ -32,6 +32,7 @@
 		"remark-directive": "^4.0.0",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",
+		"remark-toc": "^9.0.0",
 		"sanity": "^3.99.0",
 		"sanity-plugin-markdown": "^4.1.2",
 		"sass": "^1.93.2",

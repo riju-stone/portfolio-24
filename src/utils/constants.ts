@@ -15,32 +15,39 @@ export const PROJECT_METADATA = {
 
 export const PROJECT_DATA = [
   {
+    _id: "former",
+    name: "Former",
+    link: "https://www.github.com/riju-stone/former",
+    desc: `A modular form builder with an in-built drag and drop editor. Create and manage complex forms with ease using a variety of field types, validation rules, and customization options. Inspired from the likes of Google Forms and Typeform.`,
+    stack: "next/typescript/better-auth/hono/redis/postgresql",
+  },
+  {
+    _id: "ask",
+    name: "Ask",
+    link: "https://www.github.com/riju-stone/ask",
+    desc: `An elegant launcher app that utilizes both local and remote LLMs to answer queries, perform tasks, and automate workflows right from your desktop. Features a sleek and intuitive UI with support for custom plugins and integrations.`,
+    stack: "electron/vite/typescript/ai-sdk",
+  },
+  {
     _id: "chess",
     name: "Chess",
     link: "https://www.github.com/riju-stone/chess",
-    desc: `A simple cross-platform desktop chess app with chess engine written from scratch in javascript using the minimax algorithm.`,
+    desc: `A simple cross-platform desktop chess app with chess engine written from scratch in javascript using the minimax algorithm. Supports single player mode with adjustable difficulty levels with an intuitive and sleek UI.`,
     stack: "javascript/electron",
   },
   {
     _id: "caligator",
     name: "Caligator",
     link: "https://www.github.com/riju-stone/caligator",
-    desc: `A simple yet smart calculator, that understands your language. Capable of evaluating complex expressions and also performing a variety of conversions. Inspired from Numi.`,
+    desc: `A beautiful and smart calculator, that understands your language and blends math with natural language. Capable of evaluating complex expressions and also performing a variety of conversions.`,
     stack: "javascript/vite/electron",
   },
   {
     _id: "rss",
     name: "RSS",
     link: "https://www.github.com/riju-stone/go-rss",
-    desc: `A simple RSS aggregator API capable of fetching and displaying RSS feeds from a variety of sources. Supports key based authentication and rate limiting.`,
+    desc: `A simple RSS aggregator API capable of fetching and displaying RSS feeds from a variety of sources. Supports key based authentication, rate limiting and the ability to fetch feeds from multiple sources in a single request.`,
     stack: "go/postgresql",
-  },
-  {
-    _id: "former",
-    name: "Former",
-    link: "https://www.github.com/riju-stone/former",
-    desc: `A modular form builder with an in-built drag and drop editor. Inspired from the likes of Google Forms and Typeform.`,
-    stack: "next/typescript/postgresql",
   },
 ];
 

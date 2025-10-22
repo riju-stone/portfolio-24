@@ -13,13 +13,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 5rem;
   color: global.$dark-text-color;
 }
 
 .postHeader {
-  width: 75%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
