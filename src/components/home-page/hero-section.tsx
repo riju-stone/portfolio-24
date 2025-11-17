@@ -38,7 +38,7 @@ function HeroSectionComponent() {
             style="word"
             duration={0.85}
             delay={0.25}
-            staggerDelay={0.06}
+            staggerDelay={0.1}
             once={true}
           />
         </div>
@@ -53,8 +53,8 @@ function HeroSectionComponent() {
           style="line"
           wordsPerLine={deviceType === "mobile" ? 7 : 11}
           duration={1.2}
-          delay={0.8}
-          staggerDelay={0.04}
+          delay={1}
+          staggerDelay={0.075}
           once={true}
         />
       </div>

@@ -66,9 +66,9 @@ const TextItem = React.memo(
   }) => {
     const textStaggerAnim = useMemo(
       () => ({
-        hidden: { y: "100%", opacity: 0 },
+        hidden: { y: "90%", opacity: 0 },
         show: (i: number) => ({
-          y: 0,
+          y: "0%",
           opacity: 1,
           transition: {
             duration,

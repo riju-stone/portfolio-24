@@ -68,10 +68,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1rem;
+      font-size: 0.875rem;
       text-transform: uppercase;
-      color: global.$pale-orange-color;
       margin-bottom: 0.5rem;
+
+      &.light {
+        color: global.$pale-blue-color;
+      }
+
+      &.dark {
+        color: global.$pale-orange-color;
+      }
 
       span {
         display: flex;
@@ -83,7 +90,7 @@
 
     .dataCol3 {
       width: 50%;
-      font-size: 1.25rem;
+      font-size: 1rem;
       text-align: left;
       color: global.$dark-text-color;
     }
@@ -110,12 +117,21 @@
 
     .expandedContainer {
       .dataCol2 {
-        font-size: 0.75rem;
+        font-size: 0.5rem;
+
+        span {
+          gap: 0.025rem;
+
+          svg {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
       }
 
       .dataCol3 {
         width: 100%;
-        font-size: 0.875rem;
+        font-size: 0.65rem;
       }
     }
   }

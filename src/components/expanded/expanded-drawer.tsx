@@ -7,6 +7,7 @@ import React, { useMemo, useState } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { ArrowUpRight, Dot, PlusIcon } from "lucide-react";
+import { useThemeStore } from "@/stores/themeStore";
 
 const plusIconAnimation = {
   initial: {
@@ -44,6 +45,8 @@ const expandedContainerAnimation = {
 };
 
 function ExpandedDrawerComponent({ metadata, tableData }) {
+  const theme = useThemeStore((state) => state.theme);
+
   const initialState = useMemo(() => {
     let state = {};
     tableData.forEach((r) => {
@@ -97,10 +100,12 @@ function ExpandedDrawerComponent({ metadata, tableData }) {
                 initial="collapsed"
                 animate={expanded[r._id].expanded ? "expanded" : "collapsed"}
               >
-                <div className={`${styles.dataCol2} ${pp_nueue.className}`}>
+                <div
+                  className={`${styles.dataCol2} ${pp_nueue.className} ${styles[theme]}`}
+                >
                   {r[metadata.col2].split("/").map((s: string, idx: number) => (
                     <span key={`${idx}-${s}`}>
-                      <Dot />
+                      {idx !== 0 && <Dot />}
                       {s}
                     </span>
                   ))}

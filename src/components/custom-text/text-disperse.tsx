@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef } from "react";
-import { m, useInView, LazyMotion, domAnimation } from "motion/react";
+import { m, useInView, LazyMotion, domAnimation, delay } from "motion/react";
 import styles from "./styles.module.scss";
 import { useThemeStore } from "@/stores/themeStore";
 
@@ -25,7 +25,7 @@ const disperseAnim = {
   blurred: (i: number) => {
     const transform = hoverTransforms[i % hoverTransforms.length];
     return {
-      filter: "blur(8px)",
+      filter: "blur(12px)",
       x: transform.x * Math.random() * 2 + "em",
       y: transform.y * Math.random() * 2 + "em",
       rotateZ: transform.rotationZ * Math.random() * 8,
@@ -79,7 +79,7 @@ function TextDisperseComponent({ word }: TextDisperseComponentProps) {
   const [isHovered, setIsHovered] = useState(false);
   const isInView = useInView(containerRef, {
     once: true,
-    margin: "0px 0px -200px 0px",
+    margin: "0px 0px -100px 0px",
   });
 
   const splitCharacters = useMemo(() => {

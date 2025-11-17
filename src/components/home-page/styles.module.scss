@@ -20,7 +20,7 @@
     max-width: 1200px;
 
     .heroTextWrapper {
-      width: 50%;
+      width: 60%;
 
       .heroText {
         color: global.$dark-text-color;
@@ -33,7 +33,7 @@
     }
 
     .heroImageWrapper {
-      width: 50%;
+      width: 40%;
       height: 250px;
       aspect-ratio: 16/9;
       overflow: hidden;
@@ -123,23 +123,33 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    font-size: 5.75rem;
+    font-size: 5rem;
     font-weight: 400;
-    line-height: 7.75rem;
-    color: global.$dark-text-color;
+    line-height: 5.75rem;
     z-index: 1;
     mix-blend-mode: difference;
+
+    &.contactName {
+      color: global.$dark-disabled-color;
+    }
+
+    &.contactStatement {
+      color: global.$dark-text-color;
+    }
   }
 
   .introlinkContainer {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    column-gap: 5rem;
+    text-wrap: nowrap;
     width: 75vw;
     max-width: 1200px;
+    font-size: 5rem;
     margin-top: 1rem;
-    font-size: 5.75rem;
 
     a {
       text-decoration: none;
@@ -210,12 +220,12 @@
     .contactHeading {
       width: 90vw;
       font-size: 2.5rem;
-      line-height: 4rem;
+      line-height: 3.25rem;
     }
 
     .introlinkContainer {
       width: 90vw;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       font-size: 2.5rem;
 
       a {
