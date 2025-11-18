@@ -12,9 +12,6 @@
   padding: 1.2rem 2rem;
   z-index: 999;
   mix-blend-mode: difference;
-  backdrop-filter: blur(5px);
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 92%);
-  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
 
 .hideHeader {
