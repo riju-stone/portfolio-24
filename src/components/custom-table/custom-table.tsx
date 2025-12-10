@@ -7,6 +7,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { useThemeStore } from "@/stores/themeStore";
+import { useDevice } from "@/hooks/useDevice";
 
 const clipAnimation = {
   initial: {
@@ -38,6 +39,7 @@ function FancyTableComponent({
   prefetch = false,
 }) {
   const theme = useThemeStore((state) => state.theme);
+  const deviceType = useDevice();
   return (
     <m.div
       className={styles.tableWrapper}
@@ -67,18 +69,22 @@ function FancyTableComponent({
                 </div>
                 <div className={styles.dataCol3}>{r[metadata.col3]}</div>
               </div>
-              <m.div
-                className={styles.maskRowContainer}
-                variants={clipAnimation}
-              >
-                <div className={styles.rowContent}>
-                  <div className={`${styles.dataMaskCol1} ${styles[theme]}`}>
-                    {r[metadata.col1]}
+              {deviceType === "desktop" && (
+                <m.div
+                  className={styles.maskRowContainer}
+                  variants={clipAnimation}
+                >
+                  <div className={styles.rowContent}>
+                    <div className={`${styles.dataMaskCol1} ${styles[theme]}`}>
+                      {r[metadata.col1]}
+                    </div>
+                    <div className={styles.dataMaskCol2}>
+                      {r[metadata.col2]}
+                    </div>
                   </div>
-                  <div className={styles.dataMaskCol2}>{r[metadata.col2]}</div>
-                </div>
-                <div className={styles.dataMaskCol3}>{r[metadata.col3]}</div>
-              </m.div>
+                  <div className={styles.dataMaskCol3}>{r[metadata.col3]}</div>
+                </m.div>
+              )}
             </Link>
           </m.div>
         );
