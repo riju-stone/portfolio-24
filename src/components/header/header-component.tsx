@@ -83,7 +83,7 @@ function HeaderComponent() {
               key={`header-link-${index}`}
               className={`${styles.headerLink} ${checkActivePath(data.link) ? styles.activeLink : styles.inactiveLink}`}
             >
-              <Link href={data.link}>
+              <Link href={data.link} prefetch={false}>
                 <TextZoopComponent text={data.label} />
               </Link>
             </m.div>

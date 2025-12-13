@@ -53,6 +53,13 @@
   }
 }
 
+.postContentWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 // Mobile Devices
 @media only screen and (min-width: 240px) and (max-width: 639px) {
   .postContainer {

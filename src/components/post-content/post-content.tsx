@@ -7,6 +7,7 @@ import remarkCallout from "@r4ai/remark-callout";
 import rehypeHighlight from "rehype-highlight";
 import rehypeVideo from "rehype-video";
 import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
 import remarkMath from "remark-math";
 import remarkToc from "remark-toc";
 import "katex/dist/katex.min.css";
@@ -36,7 +37,12 @@ function PostContentComponent({ content }: { content: string }) {
             remarkCallout,
             remarkToc,
           ]}
-          rehypePlugins={[rehypeHighlight, rehypeVideo, rehypeKatex]}
+          rehypePlugins={[
+            rehypeHighlight,
+            rehypeVideo,
+            rehypeKatex,
+            rehypeSlug,
+          ]}
           components={{
             img: ({ src, alt, title, ...props }) => {
               if (!src || src.trim() === "") {
@@ -48,12 +54,12 @@ function PostContentComponent({ content }: { content: string }) {
         >
           {content}
         </Markdown>
+        <div className={`${styles.backLink} ${inter.className}`}>
+          <Link href="/blog">
+            <ArrowLeftIcon /> All Articles
+          </Link>
+        </div>
       </m.div>
-      <div className={`${styles.backLink} ${inter.className}`}>
-        <Link href="/blog">
-          <ArrowLeftIcon /> All Articles
-        </Link>
-      </div>
     </>
   );
 }

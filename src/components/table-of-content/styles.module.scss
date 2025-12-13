@@ -1,0 +1,55 @@
+@use "../../app/globals.scss" as global;
+
+.tableOfContentsWrapper {
+  width: 30%;
+  position: sticky;
+  top: 5%;
+  padding: 2rem 0;
+  mix-blend-mode: difference;
+}
+
+.tableOfContents {
+  position: relative;
+}
+
+.headingItem {
+  position: relative;
+  margin-bottom: 0.1rem;
+}
+
+.headingContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0.1rem;
+
+  a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: global.$dark-disabled-color;
+    word-break: keep-all;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+    mix-blend-mode: difference;
+
+    &.active {
+      color: global.$dark-text-color;
+    }
+  }
+}
+
+.childrenContainer {
+  position: relative;
+  margin-left: 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    width: 1.5px;
+    height: 100%;
+    background-color: global.$dark-disabled-color;
+    opacity: 0.4;
+  }
+}
