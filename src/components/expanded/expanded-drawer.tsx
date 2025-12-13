@@ -76,20 +76,20 @@ function ExpandedDrawerComponent({ metadata, tableData }) {
       {tableData.map((r) => {
         return (
           <div key={r._id} className={styles.rowWrapper}>
-            <div className={styles.rowContainer}>
+            <div
+              className={styles.rowContainer}
+              onClick={() => handleExpand(r)}
+            >
               <div className={styles.rowContent}>
-                <Link href={r.link} prefetch={false} target="_blank">
-                  <div className={`${styles.dataCol1} ${pp_nekkei.className}`}>
-                    <ArrowUpRight />
-                    {r[metadata.col1]}
-                  </div>
-                </Link>
+                <div className={`${styles.dataCol1} ${pp_nekkei.className}`}>
+                  <ArrowUpRight className={styles.arrowIcon} />
+                  {r[metadata.col1]}
+                </div>
                 <m.div
                   className={styles.expandIcon}
                   variants={plusIconAnimation}
                   initial="initial"
                   animate={expanded[r._id].expanded ? "tap" : "initial"}
-                  onClick={() => handleExpand(r)}
                 >
                   <PlusIcon />
                 </m.div>
@@ -112,6 +112,11 @@ function ExpandedDrawerComponent({ metadata, tableData }) {
                 </div>
                 <div className={`${styles.dataCol3} ${inter.className}`}>
                   {r[metadata.col3] as string}
+                </div>
+                <div className={`${styles.projectLink} ${pp_nueue.className}`}>
+                  <Link href={r.link} prefetch={false} target="_blank">
+                    Details
+                  </Link>
                 </div>
               </m.div>
             </div>

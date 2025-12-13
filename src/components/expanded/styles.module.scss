@@ -28,6 +28,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    cursor: pointer;
   }
 
   .dataCol1 {
@@ -41,6 +42,11 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+
+    .arrowIcon {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .expandIcon {
@@ -94,6 +100,16 @@
       text-align: left;
       color: global.$dark-text-color;
     }
+
+    .projectLink {
+      margin-top: 1rem;
+
+      a {
+        font-size: 2rem;
+        color: global.$dark-text-color;
+        text-decoration: underline;
+      }
+    }
   }
 }
 
@@ -133,6 +149,16 @@
         width: 100%;
         font-size: 0.65rem;
       }
+
+      .projectLink {
+        margin-top: 1rem;
+
+        a {
+          font-size: 1.25rem;
+          color: global.$dark-text-color;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
@@ -166,6 +192,16 @@
       .dataCol3 {
         width: 60%;
         font-size: 1.1rem;
+      }
+
+      .projectLink {
+        margin-top: 1rem;
+
+        a {
+          font-size: 1.75rem;
+          color: global.$dark-text-color;
+          text-decoration: underline;
+        }
       }
     }
   }
