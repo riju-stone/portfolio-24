@@ -119,7 +119,7 @@ function TableOfContentComponent({ markdown }: { markdown: string }) {
       e.preventDefault();
       const element = document.getElementById(slug);
       if (element) {
-        const offset = 300;
+        const offset = 200;
         const elementPosition =
           element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - offset;
