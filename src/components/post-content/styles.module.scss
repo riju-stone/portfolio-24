@@ -7,6 +7,10 @@
   line-height: 1.5rem;
   mix-blend-mode: difference;
 
+  .paragraph {
+    margin-bottom: 1rem;
+  }
+
   [data-callout="true"] {
     color: global.$dark-text-color;
     border-radius: 8px;
@@ -67,22 +71,22 @@
 
   h2 {
     font-size: 2.75rem;
-    line-height: 2.25rem;
+    line-height: 2.75rem;
   }
 
   h3 {
     font-size: 1.75rem;
-    line-height: 1.25rem;
+    line-height: 1.75rem;
   }
 
   h4 {
     font-size: 1.45rem;
-    line-height: 1rem;
+    line-height: 1.5rem;
   }
 
   h5 {
     font-size: 1.25rem;
-    line-height: 1rem;
+    line-height: 1.25rem;
   }
 
   pre {

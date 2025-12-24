@@ -92,11 +92,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0;
   color: global.$dark-text-color;
   font-size: 1.5rem;
   mix-blend-mode: difference;
   margin-bottom: 2rem;
+  margin-top: 4rem;
 
   .paginationButton {
     display: flex;
@@ -150,6 +150,15 @@
 
     .tagContainer {
       font-size: 0.75rem;
+    }
+  }
+
+  .paginationWrapper {
+    font-size: 1rem;
+
+    .paginationButton {
+      margin: 0 1rem;
+      padding: 3px 6px;
     }
   }
 }

@@ -1,4 +1,4 @@
-@use '../../app/globals.scss' as global;
+@use "../../app/globals.scss" as global;
 
 .tableWrapper {
   width: 100%;
@@ -151,19 +151,22 @@
         align-items: flex-start;
       }
 
-      .dataCol1 {
+      .dataCol1,
+      .dataMaskCol1 {
         width: 175px;
         font-size: 0.75rem;
         letter-spacing: 2px;
       }
 
-      .dataCol2 {
+      .dataCol2,
+      .dataMaskCol2 {
         width: 100%;
         font-size: 1.1rem;
         letter-spacing: 2px;
       }
 
-      .dataCol3 {
+      .dataCol3,
+      .dataMaskCol3 {
         font-size: 0.75rem;
       }
     }
@@ -194,18 +197,21 @@
         align-items: flex-start;
       }
 
-      .dataCol1 {
+      .dataCol1,
+      .dataMaskCol1 {
         width: 175px;
         font-size: 1rem;
         letter-spacing: 2px;
       }
 
-      .dataCol2 {
+      .dataCol2,
+      .dataMaskCol2 {
         font-size: 1.5rem;
         letter-spacing: 2px;
       }
 
-      .dataCol3 {
+      .dataCol3,
+      .dataMaskCol3 {
         width: 50%;
         font-size: 1rem;
       }
