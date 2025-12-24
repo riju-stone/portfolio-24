@@ -50,6 +50,9 @@ function PostContentComponent({ content }: { content: string }) {
               }
               return <img src={src} alt={alt} title={title} {...props} />;
             },
+            p: ({ node, ...props }) => (
+              <div className={styles.paragraph} {...props} />
+            ),
           }}
         >
           {content}
