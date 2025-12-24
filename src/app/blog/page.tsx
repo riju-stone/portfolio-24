@@ -23,6 +23,11 @@ const FancyTableComponent = dynamic(
   { ssr: true }
 );
 
+const POSTS_PER_PAGE = parseInt(
+  process.env.NEXT_PUBLIC_BLOG_POSTS_PER_PAGE || "10",
+  10
+);
+
 const blogMetadata = {
   col1: "publishedAt",
   col2: "title",
@@ -69,8 +74,9 @@ function BlogsPage() {
           getAllPostCount(),
           getPostCountsByTag(),
         ]);
+
         setTotalPosts(total);
-        setTotalBlogPages(Math.ceil(total / 10));
+        setTotalBlogPages(Math.ceil(total / POSTS_PER_PAGE));
         setPostCountByTag(tagsCount);
       } catch (error) {
         setBlogError("Failed to fetch blog metadata.");
@@ -108,14 +114,6 @@ function BlogsPage() {
     setCurrentBlogPage(currentBlogPage + 1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  if (totalPosts === 0) {
-    return (
-      <div key="empty" className={styles.blogMessageWrapper}>
-        <LazyTextComponent text="Working on some stuff!" />
-      </div>
-    );
-  }
 
   if (blogError) {
     return (
@@ -158,8 +156,8 @@ function BlogsPage() {
                 <ChevronLeft />
               </button>
               <span className={pp_nekkei.className}>
-                Showing {currentBlogPage + 1} of {Math.ceil(totalPosts / 10)}{" "}
-                Pages
+                Showing {currentBlogPage + 1} of{" "}
+                {Math.ceil(totalPosts / POSTS_PER_PAGE)} Pages
               </span>
               <button
                 className={styles.paginationButton}

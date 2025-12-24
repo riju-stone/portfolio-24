@@ -36,12 +36,12 @@
 		"remark-toc": "^9.0.0",
 		"sanity": "^3.99.0",
 		"sanity-plugin-markdown": "^4.1.2",
-		"sass": "^1.96.0",
+		"sass": "^1.97.1",
 		"styled-components": "^6.1.19",
 		"zustand": "^4.5.7"
 	},
 	"devDependencies": {
-		"@types/node": "^20.19.26",
+		"@types/node": "^20.19.27",
 		"@types/react": "^18.3.27",
 		"@types/react-dom": "^18.3.7",
 		"critters": "^0.0.25",
