@@ -3,11 +3,11 @@
 .rowWrapper {
   width: 100vw;
   position: relative;
-  border-top: 2px solid global.$dark-disabled-color;
+  border-top: 1px solid global.$dark-disabled-color;
   mix-blend-mode: difference;
 
   &:last-child {
-    border-bottom: 2px solid global.$dark-disabled-color;
+    border-bottom: 1px solid global.$dark-disabled-color;
   }
 
   .rowContainer {
