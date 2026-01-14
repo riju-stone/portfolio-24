@@ -130,7 +130,7 @@ function BlogsPage() {
           <div className={styles.postsWrapper}>
             <TextStaggerComponent
               className={`${styles.pageTitle} ${pp_nueue.className}`}
-              text={`Breaking down abstractions (${totalPosts})`}
+              text={`Breaking down abstractions`}
               style="word"
             />
             <TagFilterComponent />
