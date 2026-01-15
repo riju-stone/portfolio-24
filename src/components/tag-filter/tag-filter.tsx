@@ -14,6 +14,11 @@ function TagFilterComponent() {
   const setTagFilter = useBlogStore((state) => state.setTagFilter);
   const tagsCount = useBlogStore((state) => state.postCountsByTag);
 
+  const tagFilterAnim = {
+    hidden: { opacity: 0, y: 10 },
+    visible: (i: number) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: 1 + (i * 0.04) } }),
+  };
+
   return (
     <m.div
       className={styles.tagsWrapper}
@@ -28,18 +33,21 @@ function TagFilterComponent() {
         <X />
       </button>
       <div className={styles.tagsList}>
-        {tagsCount.map((tag: any) => {
+        {tagsCount.map((tag: any, index: number) => {
           return (
             tag.count > 0 && (
-              <button
+              <m.button
                 key={tag.name}
+                variants={tagFilterAnim}
+                initial="hidden"
+                animate="visible"
+                custom={index}
                 onClick={() => setTagFilter(tag.name)}
-                className={`${styles.tagItem} ${styles[theme]} ${pp_nekkei.className} ${
-                  tagFilter === tag.name ? styles.activeTag : ""
-                }`}
+                className={`${styles.tagItem} ${styles[theme]} ${pp_nekkei.className} ${tagFilter === tag.name ? styles.activeTag : ""
+                  }`}
               >
                 {tag.name} ({tag.count})
-              </button>
+              </m.button>
             )
           );
         })}
