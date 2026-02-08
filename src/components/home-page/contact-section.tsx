@@ -6,25 +6,17 @@ import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";
 import { useDevice } from "@/hooks/useDevice";
 
-const TextStaggerComponent = dynamic(
-  () => import("@/components/custom-text/text-stagger"),
-  {
-    ssr: true,
-  }
-);
+const TextStaggerComponent = dynamic(() => import("@/components/custom-text/text-stagger"), {
+  ssr: true,
+});
 
-const TextDisperseComponent = dynamic(
-  () => import("@/components/custom-text/text-disperse"),
-  {
-    ssr: true,
-  }
-);
+const TextDisperseComponent = dynamic(() => import("@/components/custom-text/text-disperse"), {
+  ssr: true,
+});
 
 function ContactSectionComponent() {
   return (
-    <section
-      className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}
-    >
+    <section className={`${styles.contactSectionWrapper} ${pp_nueue.className}`}>
       <TextStaggerComponent
         className={`${styles.contactHeading} ${styles.contactName}`}
         text="(Ar)ighna (Ch)akraborty"
@@ -57,19 +49,13 @@ function ContactSectionComponent() {
         <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com">
           <TextDisperseComponent word="Email" />
         </a>
-        <a
-          target="_blank"
-          href="https://drive.google.com/file/d/1f3amg2vx3cYSC5f2vBk-79-1MQ7okwPl/view?usp=sharing"
-        >
+        <a target="_blank" href="https://drive.google.com/file/d/1M11LzACXza1nOEEm6UAcPSxY1NAwkQC-/view?usp=sharing">
           <TextDisperseComponent word="Resume" />
         </a>
         <a target="_blank" href="https://www.github.com/riju-stone">
           <TextDisperseComponent word="Github" />
         </a>
-        <a
-          target="_blank"
-          href="https://www.linkedin.com/in/arighna-chakraborty/"
-        >
+        <a target="_blank" href="https://www.linkedin.com/in/arighna-chakraborty/">
           <TextDisperseComponent word="LinkedIn" />
         </a>
         <a target="_blank" href="https://www.x.com/archrstone">
