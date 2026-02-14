@@ -4,7 +4,6 @@ import { pp_nekkei, pp_nueue } from "@/utils/fonts";
 import React from "react";
 import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";
-import { useDevice } from "@/hooks/useDevice";
 
 const TextStaggerComponent = dynamic(() => import("@/components/custom-text/text-stagger"), {
   ssr: true,
@@ -49,7 +48,7 @@ function ContactSectionComponent() {
         <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com">
           <TextDisperseComponent word="Email" />
         </a>
-        <a target="_blank" href="https://drive.google.com/file/d/1M11LzACXza1nOEEm6UAcPSxY1NAwkQC-/view?usp=sharing">
+        <a target="_blank" href="https://drive.google.com/file/d/1St4AEZuUbc5prw5lp0cw7o4QhsC9synI/view?usp=sharing">
           <TextDisperseComponent word="Resume" />
         </a>
         <a target="_blank" href="https://www.github.com/riju-stone">

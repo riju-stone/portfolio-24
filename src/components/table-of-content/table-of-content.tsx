@@ -31,15 +31,10 @@ const extractHeadings = (markdown: string) => {
 
       return { level, text, slug };
     })
-    .filter(
-      (item): item is { level: number; text: string; slug: string } =>
-        item !== null
-    );
+    .filter((item): item is { level: number; text: string; slug: string } => item !== null);
 };
 
-const buildHeadingTree = (
-  headings: { level: number; text: string; slug: string }[]
-) => {
+const buildHeadingTree = (headings: { level: number; text: string; slug: string }[]) => {
   const tree: any[] = [];
   const stack: any[] = [];
 
@@ -69,10 +64,7 @@ const TOCList = ({
 }: {
   nodes: any[];
   activeId: string;
-  onScroll: (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    slug: string
-  ) => void;
+  onScroll: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, slug: string) => void;
 }) => {
   return (
     <>
@@ -90,11 +82,7 @@ const TOCList = ({
           </div>
           {node.children.length > 0 && (
             <div className={styles.childrenContainer}>
-              <TOCList
-                nodes={node.children}
-                activeId={activeId}
-                onScroll={onScroll}
-              />
+              <TOCList nodes={node.children} activeId={activeId} onScroll={onScroll} />
             </div>
           )}
         </div>
@@ -109,29 +97,22 @@ function TableOfContentComponent({ markdown }: { markdown: string }) {
   const [activeId, setActiveId] = React.useState<string>("");
 
   const headings = React.useMemo(() => extractHeadings(markdown), [markdown]);
-  const headingTree = React.useMemo(
-    () => buildHeadingTree(headings),
-    [headings]
-  );
+  const headingTree = React.useMemo(() => buildHeadingTree(headings), [headings]);
 
-  const handleScroll = React.useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, slug: string) => {
-      e.preventDefault();
-      const element = document.getElementById(slug);
-      if (element) {
-        const offset = 200;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - offset;
+  const handleScroll = React.useCallback((e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, slug: string) => {
+    e.preventDefault();
+    const element = document.getElementById(slug);
+    if (element) {
+      const offset = 200;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    },
-    []
-  );
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, []);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -142,7 +123,7 @@ function TableOfContentComponent({ markdown }: { markdown: string }) {
           }
         });
       },
-      { rootMargin: "0px 0px -70% 0px" }
+      { rootMargin: "0px 0px -70% 0px" },
     );
 
     headings.forEach((heading) => {
@@ -172,11 +153,7 @@ function TableOfContentComponent({ markdown }: { markdown: string }) {
         className={`${styles.tableOfContentsWrapper} ${pp_nekkei.className}`}
       >
         <div className={styles.tableOfContents}>
-          <TOCList
-            nodes={headingTree}
-            activeId={activeId}
-            onScroll={handleScroll}
-          />
+          <TOCList nodes={headingTree} activeId={activeId} onScroll={handleScroll} />
         </div>
       </m.div>
     )
