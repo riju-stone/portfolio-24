@@ -67,8 +67,13 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         will-change: transform, opacity;
+
+        span {
+          margin: 0;
+          padding: 0;
+        }
       }
     }
   }
@@ -174,6 +179,8 @@
   }
 }
 
-@media only screen and (min-width: 921px) and (max-width: 1024px) {}
+@media only screen and (min-width: 921px) and (max-width: 1024px) {
+}
 
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+}

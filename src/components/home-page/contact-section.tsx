@@ -48,7 +48,7 @@ function ContactSectionComponent() {
         <a target="_blank" href="mailto:arighna.chakraborty.17@gmail.com">
           <TextDisperseComponent word="Email" />
         </a>
-        <a target="_blank" href="https://drive.google.com/file/d/1St4AEZuUbc5prw5lp0cw7o4QhsC9synI/view?usp=sharing">
+        <a target="_blank" href="https://drive.google.com/file/d/1gU2tetgoQ1Cx9vyuW-XMQJwdw0PlQvFk/view?usp=sharing">
           <TextDisperseComponent word="Resume" />
         </a>
         <a target="_blank" href="https://www.github.com/riju-stone">
